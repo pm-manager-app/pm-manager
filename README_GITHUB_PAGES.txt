@@ -1,22 +1,24 @@
-PM MANAGER – GITHUB PAGES STARTPAKET (Stand 23.10.2026)
+PM MANAGER – GITHUB PAGES UPLOAD (27.10.2026)
 
-Diese Dateien sind fuer einen ersten Test gedacht. Die lokale Anmeldung der HTML-App bietet keine sichere Benutzerisolation oder Zugriffssperre gegen Personen mit Zugriff auf den Browser. Keine vertraulichen Firmendaten im Repository ablegen.
+INHALT
+- index.html: PM Manager mit korrigierter Datumsauswahl und Tagesrapport-PDF
+- manifest.webmanifest: App-Installation
+- sw.js: Offline-Zwischenspeicher, Cache-Version fuer dieses Update erhoeht
+- icons/: App-Symbole
 
-1. Vor dem Wechsel aus dem bisherigen PM Manager ein Backup exportieren und ausserhalb von GitHub aufbewahren.
-2. Auf https://github.com/new ein PUBLIC Repository namens pm-manager erstellen.
-3. ZIP entpacken. Alle Dateien und den Unterordner icons in das Stammverzeichnis des Repositorys hochladen. Die ZIP-Datei selbst NICHT hochladen.
+ERSTMALIGE EINRICHTUNG
+1. ZIP auf dem Computer entpacken.
+2. GitHub-Repository erstellen (z.B. pm-manager, Public).
+3. Alle entpackten Dateien und den Ordner icons/ ins Hauptverzeichnis hochladen, nicht die ZIP-Datei selbst.
 4. Settings > Pages > Deploy from a branch > main > /(root) > Save.
-5. Die App oeffnet sich unter https://BENUTZERNAME.github.io/pm-manager/
-6. App zuerst ohne echte Daten testen. Alte HTML-Datei weiterhin als Rueckfalloption behalten.
-7. Falls ein Backup importiert wird, die Daten nach dem Import anhand eines Testprojekts und der Dokumente pruefen.
+5. PM Manager unter https://BENUTZERNAME.github.io/pm-manager/ aufrufen.
 
-WICHTIG
-- GitHub veroeffentlicht alle Repository-Dateien. Keine Backups, Kennwoerter, Protokolle oder Echtdaten hochladen.
-- Die Daten in localStorage/IndexedDB bleiben im jeweiligen Browserprofil und synchronisieren NICHT zwischen PC, Handy und Tablet.
-- Ein Repository-Update aendert nicht automatisch Daten im Browser; es kann aber App-Programmcode aendern.
-- Lokaler Speicher ist keine verschluesselte Datenbank; Browserdaten koennen geloescht werden.
-- Internet und HTTPS sind fuer das erste Laden notwendig; Offline-Support haengt vom Browser und Service Worker ab.
-- Externe Bibliotheken und Wetterfunktionen koennen Netzwerkanfragen ausloesen.
-- Die private Mitarbeiter-Anmeldung der App ist kein internetfaehiges Authentifizierungssystem.
+AKTUALISIERUNG EINER BESTEHENDEN INSTALLATION
+1. ZUERST im bisherigen PM Manager eine Datensicherung exportieren und lokal behalten.
+2. index.html und sw.js ins Repository-Hauptverzeichnis hochladen und bestehende Dateien ersetzen.
+3. Commit changes. Bei Bedarf Seite neu laden oder den Offline-Cache aktualisieren.
 
-Wenn die App spaeter mit vertraulichen Firmendaten produktiv genutzt werden soll, braucht es weitere Sicherheits- und Funktionstests.
+DATENSCHUTZ
+GitHub Pages stellt den App-Code oeffentlich bereit; lokale Browserdaten werden nicht durch den Upload synchronisiert.
+NIEMALS Daten-Backups, Projekt-/Mitarbeiterdaten oder Passwoerter in ein oeffentliches Repository hochladen.
+Die lokale App-Anmeldung ersetzt keine serverseitige Zugriffskontrolle.
