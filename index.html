@@ -3461,6 +3461,104 @@ body.pm-modern-light .pm-week-load-remaining,body[data-pm-theme="light"] .pm-wee
 .pm7-task-workspace>summary:hover,.pm7-calendar-weekplan>summary:hover{background:rgba(51,132,147,.2)}
 .pm7-task-workspace>.pm-workspace,.pm7-calendar-weekplan>.pm-weekplan{margin:12px}
 .pm7-task-workspace .pm-workspace-stage3{box-shadow:none}
+</style><style id="pm7-board-filters-style">
+.pm7-board-filters{display:flex;align-items:end;gap:10px;flex-wrap:wrap;margin:10px 0 16px;padding:13px;border:1px solid rgba(102,166,177,.28);background:rgba(27,64,76,.20);border-radius:13px}
+.pm7-board-filters label{display:flex;flex-direction:column;gap:5px;min-width:135px;font-size:12px;font-weight:650;color:#c4dee5;flex:1 1 145px}
+.pm7-board-filters label:first-child{flex:2 1 250px}
+.pm7-board-filters input,.pm7-board-filters select{width:100%;height:39px;min-height:39px;box-sizing:border-box;border-radius:9px;border:1px solid #618a9b;background:#203b4d;color:#f4fbff;padding:8px 11px;font:inherit;font-size:13px}
+.pm7-board-filters input::placeholder{color:#acc5cf}
+.pm7-board-filters input:focus,.pm7-board-filters select:focus{outline:2px solid #4ac9be;outline-offset:1px}
+.pm7-board-filters .btn{height:39px;margin:0;flex:0 0 auto}
+@media(max-width:600px){.pm7-board-filters{padding:10px;gap:8px}.pm7-board-filters label{min-width:120px}.pm7-board-filters .btn{width:100%}}
+</style><style id="pm-dashboard-week-restore-style">
+.pm-dashboard-week-wrap{margin:0 0 20px;min-width:0}
+.pm-dashboard-week-details{border:1px solid rgba(111,183,198,.36);border-radius:15px;background:rgba(18,45,66,.72);overflow:visible;box-shadow:0 8px 26px rgba(8,25,41,.12)}
+.pm-dashboard-week-details>summary{display:flex;gap:12px;align-items:center;flex-wrap:wrap;cursor:pointer;padding:16px 20px;font-size:17px;font-weight:750;color:#eaf7fa;list-style:none}
+.pm-dashboard-week-details>summary::-webkit-details-marker{display:none}
+.pm-dashboard-week-details>summary:after{content:'⌄';font-weight:700;margin-left:auto;color:#7bd9d6;transition:transform .18s}
+.pm-dashboard-week-details:not([open])>summary:after{transform:rotate(-90deg)}
+.pm-dashboard-week-hint{font-size:12px;font-weight:500;color:#a9cbd6}
+.pm-dashboard-week-content{padding:0 14px 14px}
+.pm-dashboard-week-content .pm-weekplan{margin:0}
+@media(max-width:700px){.pm-dashboard-week-details>summary{padding:13px 14px;font-size:15px}.pm-dashboard-week-content{padding:0 8px 10px}}
+</style><style id="pm-dashboard-priority-layout">
+.pm-dashboard-week-details>.pm-dashboard-week-title{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:16px 20px;font-size:17px;font-weight:750;color:#eaf7fa}
+.pm-dashboard-week-details>.pm-dashboard-week-title:after{display:none}
+.pm-dashboard-rest{margin:16px 0 25px;border:1px solid rgba(111,183,198,.36);border-radius:15px;background:rgba(18,45,66,.72);overflow:hidden}
+.pm-dashboard-rest>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:17px 20px;color:#eaf7fa;font-size:16px;font-weight:750}
+.pm-dashboard-rest>summary::-webkit-details-marker{display:none}
+.pm-dashboard-rest>summary::after{content:'▾';margin-left:auto;color:#75d8d1}
+.pm-dashboard-rest:not([open])>summary::after{content:'▸'}
+.pm-dashboard-rest-help{font-size:12px;font-weight:450;color:#a9cbd6}
+.pm-dashboard-rest-body{padding:0 12px 14px}
+.pm-dashboard-rest-body .navo-exec-home{margin-top:0}
+@media(max-width:700px){.pm-dashboard-week-details>.pm-dashboard-week-title,.pm-dashboard-rest>summary{padding:13px 14px}.pm-dashboard-rest-body{padding:0 7px 9px}}
+</style><style id="pm-project-cockpit-style">
+.pm-cockpit{margin:0 0 22px;border:1px solid rgba(111,183,198,.4);background:#1c394b;border-radius:16px;padding:18px;color:#e9f7fa}
+.pm-cockpit-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.pm-cockpit-head h2{margin:0 0 5px;color:#f2fafc}.pm-cockpit-head p,.pm-cockpit-help{color:#b8d2d9;font-size:12px;margin:4px 0 12px}
+.pm-cockpit-counts{display:flex;flex-wrap:wrap;gap:7px}.pm-cockpit-counts span{border-radius:99px;padding:7px 10px;background:#28495a;font-size:12px;font-weight:700}.pm-cockpit-counts .red{color:#ffb9b3}.pm-cockpit-counts .amber{color:#f7d99b}.pm-cockpit-counts .green{color:#99e4cb}
+.pm-cockpit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:11px}.pm-cockpit-card{padding:15px;background:#2a4b5d;border:1px solid #446a7c;border-radius:12px;display:flex;flex-direction:column;gap:12px}.pm-cockpit-card.red{border-left:4px solid #e77978}.pm-cockpit-card.amber{border-left:4px solid #e7bc67}.pm-cockpit-card.green{border-left:4px solid #55c7a1}.pm-cockpit-card-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.pm-cockpit-card-head strong{flex:1;min-width:100px;color:#f4fafc}.pm-cockpit-light{height:11px;width:11px;border-radius:50%;background:#55c7a1;flex-shrink:0}.pm-cockpit-card.red .pm-cockpit-light{background:#e77978}.pm-cockpit-card.amber .pm-cockpit-light{background:#e7bc67}.pm-cockpit-tone{font-size:11px;color:#d8e9ec}.pm-cockpit-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pm-cockpit-metrics span{font-size:11px;color:#d6e5e9}.pm-cockpit-metrics b{font-size:16px;color:#fff;margin-right:3px}.pm-cockpit-warning{color:#ffc0b8;font-size:12px;margin:0}.pm-cockpit-muted{color:#c7dbe1;font-size:12px;margin:0}.pm-cockpit-card .btn{align-self:flex-start;margin-top:auto}.pm-cockpit-empty{color:#b8d2d9}
+</style><style id="pm-project-collapse-81">
+.pm-project-details-collapse{margin:18px 0 12px;border:1px solid rgba(103,169,187,.42);border-radius:14px;background:rgba(25,54,73,.62);overflow:hidden}
+.pm-project-details-collapse>summary{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:17px 19px;cursor:pointer;list-style:none;color:#f0fafb;font-weight:750;font-size:16px}
+.pm-project-details-collapse>summary::-webkit-details-marker{display:none}
+.pm-project-details-collapse>summary:after{content:'▸';margin-left:auto;color:#73dad0;font-size:18px}
+.pm-project-details-collapse[open]>summary:after{content:'▾'}
+.pm-project-details-collapse>summary small{font-size:12px;font-weight:450;color:#b5d5df}
+.pm-project-details-collapse-body{padding:0 12px 16px}
+.pm-project-details-collapse:focus-within{border-color:#6acfc7}
+@media(max-width:620px){.pm-project-details-collapse>summary{padding:14px}.pm-project-details-collapse-body{padding:0 7px 10px}}
+</style><style id="pm-project-fullview-styles">
+body.pm-project-fullview-open{overflow:hidden}
+#pm-project-fullview{position:fixed;inset:0;z-index:20500}
+.pm-project-fullview-backdrop{position:absolute;inset:0;background:rgba(3,13,25,.72);backdrop-filter:blur(5px)}
+.pm-project-fullview-window{position:absolute;inset:3vh 3vw;display:flex;flex-direction:column;max-width:1500px;margin:auto;overflow:hidden;border:1px solid #508393;border-radius:18px;background:#19374b;color:#eaf6fa;box-shadow:0 25px 75px rgba(0,0,0,.45)}
+.pm-project-fullview-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 25px;border-bottom:1px solid #3d6575;background:#203f52}
+.pm-project-fullview-header small{font-size:10px;letter-spacing:.13em;font-weight:800;color:#82d7d1}
+.pm-project-fullview-header h2{margin:4px 0 0;color:#f6fbfe;font-size:23px}
+.pm-project-fullview-content{flex:1;overflow:auto;padding:22px 25px 32px;overscroll-behavior:contain}
+.pm-project-fullview-slot .navo-pboard-project{width:100%;box-sizing:border-box;max-width:none;margin:0}
+.pm-project-fullview-slot .navo-pboard-project>summary{cursor:default}
+.pm-project-fullview-slot .navo-pboard-details{display:block!important}
+.pm-project-fullview-slot .navo-pboard-nested{margin-top:14px}
+.pm-project-fullview-slot .navo-pboard-nested[open]>summary{margin-bottom:10px}
+@media(max-width:700px){.pm-project-fullview-window{inset:0;border-radius:0}.pm-project-fullview-header{padding:13px 15px}.pm-project-fullview-header h2{font-size:18px}.pm-project-fullview-content{padding:12px}}
+</style><style id="pm83-project-jump-style">
+.pm-project-fullview-nav{display:flex;gap:7px;overflow-x:auto;padding:12px 22px;background:#203f52;border-bottom:1px solid #426b7c;scrollbar-width:thin;flex-shrink:0}
+.pm-project-jump{border:1px solid #587c8d;border-radius:999px;background:#294d60;color:#d7edf1;padding:9px 14px;white-space:nowrap;cursor:pointer;font-size:12px;font-weight:700;flex-shrink:0}
+.pm-project-jump:hover,.pm-project-jump:focus-visible{background:#326578;border-color:#8fd5d5;color:#fff;outline-offset:2px}
+.pm-project-jump.active{background:#0b797b;color:#fff;border-color:#59c8c2}
+.pm-project-fullview-slot details.navo-pboard-nested{scroll-margin-top:16px}
+@media(max-width:700px){.pm-project-fullview-nav{padding:9px 12px}.pm-project-jump{padding:8px 10px}}
+</style><style id="pm84-project-summary-style">
+.pm84-summary{border:1px solid #477584;background:#23485b;border-radius:15px;padding:18px 20px;margin:0 0 18px;color:#f0f8fa}
+.pm84-summary-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.pm84-summary h3{margin:0;font-size:19px;color:#fff}.pm84-summary-top p{font-size:12px;color:#bbd6df;margin:5px 0 0}
+.pm84-health{font-size:12px;font-weight:750;padding:7px 11px;border-radius:50px}.pm84-health.ok{background:#194d45;color:#99f0cf}.pm84-health.warning{background:#604b2c;color:#ffe1a2}.pm84-health.critical{background:#633942;color:#ffd4da}
+.pm84-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:17px 0}
+.pm84-stat{padding:13px;border:1px solid #537788;background:#2c5265;border-radius:11px;display:grid;gap:6px;min-width:0}
+.pm84-stat small{font-size:11px;color:#c3dde4}.pm84-stat strong{font-size:20px;color:#fff;overflow-wrap:anywhere}.pm84-stat span{font-size:11px;color:#b9d4dd}
+.pm84-progress{margin:12px 0 18px}.pm84-progress>div:first-child{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}.pm84-progress-track{height:8px;background:#15384b;border-radius:99px;overflow:hidden}.pm84-progress-track i{display:block;height:100%;background:#4ed0b9;border-radius:inherit}
+.pm84-progress small{display:block;margin-top:7px;color:#bed5dc;font-size:11px}
+.pm84-next{border-top:1px solid #527788;padding-top:14px}.pm84-next>b{display:block;margin-bottom:8px}.pm84-next-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-top:1px solid #3a6575;font-size:12px}
+.pm84-next-row span{color:#88e1d6;min-width:80px}.pm84-next-row strong{color:#fff;flex:1;min-width:0}.pm84-next-row small{color:#b2d4de}.pm84-next p{font-size:12px;color:#c6dce2}
+@media(max-width:900px){.pm84-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.pm84-stat-grid{grid-template-columns:1fr 1fr}.pm84-summary{padding:12px}.pm84-stat{padding:10px}.pm84-next-row{flex-wrap:wrap}}
+</style><style id="pm85-project-task-style">
+.pm85-project-tasks{background:#23485b;border:1px solid #477584;border-radius:15px;padding:18px 20px;margin:0 0 18px;color:#eaf7fa}
+.pm85-title{display:flex;align-items:center;justify-content:space-between;gap:12px}.pm85-title h3{margin:0;color:#fff;font-size:19px}.pm85-title p{font-size:12px;color:#bcd9e1;margin:5px 0 0}
+.pm85-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:16px 0 12px}
+.pm85-filter{display:flex;gap:5px;padding:4px;background:#17374a;border-radius:11px;flex-wrap:wrap}
+.pm85-filter button{border:0;border-radius:8px;background:transparent;color:#c8e2e8;padding:8px 12px;font:inherit;font-size:12px;font-weight:650;cursor:pointer}
+.pm85-filter button.active{background:#0c7e83;color:#fff}
+.pm85-controls input{flex:1 1 190px;min-width:0;max-width:360px;background:#142f42;color:#fff;border:1px solid #638a9b;border-radius:9px;padding:10px 12px;font:inherit;font-size:12px}
+.pm85-controls input::placeholder{color:#bed0d8}
+.pm85-task-row{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:12px;border:1px solid #507789;background:#2b5063;border-radius:10px;margin:7px 0}
+.pm85-task-info{min-width:0;flex:1}.pm85-task-info strong{display:block;overflow-wrap:anywhere;font-size:13px;color:#fff;margin-bottom:6px}
+.pm85-task-info>div{display:flex;flex-wrap:wrap;gap:7px;align-items:center;font-size:11px;color:#c6dfe6}
+.pm85-chip{padding:3px 8px;background:#315c77;border-radius:99px;color:#e7f6fb}.pm85-chip.late{background:#633945;color:#ffe0e4}.pm85-chip.done{background:#1a5b4c;color:#a5eed7}
+.pm85-task-row .btn{flex-shrink:0;font-size:12px}.pm85-empty{font-size:12px;color:#c9e0e6;padding:14px 0}
+@media(max-width:620px){.pm85-project-tasks{padding:12px}.pm85-task-row{flex-wrap:wrap}.pm85-task-row .btn{margin-left:auto}}
 </style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -3750,12 +3848,12 @@ document.addEventListener('submit',async e=>{if(e.target.id!=='navo-new-account'
 document.addEventListener('change',e=>{const el=e.target;if(!el.matches('[data-access-right]'))return;if(navoAuthUser?.role!=='admin')return;const u=navoAuthAccounts.find(x=>x.id===el.dataset.accessRight);if(u&&u.role!=='admin'){u.rights[el.dataset.accessModule]=el.value;navoAuthPersist()}},true);
 document.addEventListener('click',async e=>{const el=e.target.closest('[data-access-delete],[data-access-reset],[data-access-admin-password],[data-auth-logout]');if(!el)return;e.preventDefault();e.stopImmediatePropagation();if(el.hasAttribute('data-auth-logout')){navoAuthLogout();return}if(navoAuthUser?.role!=='admin')return;if(el.hasAttribute('data-access-admin-password')){await navoAuthSetPassword(navoAuthUser);return}const u=navoAuthAccounts.find(x=>x.id===(el.dataset.accessReset||el.dataset.accessDelete));if(!u||u.role==='admin')return;if(el.hasAttribute('data-access-reset')){await navoAuthSetPassword(u);return}if(confirm('Benutzerkonto '+u.username+' löschen? Das Mitarbeiterprofil und die Projektdaten bleiben bestehen.')){navoAuthAccounts=navoAuthAccounts.filter(x=>x.id!==u.id);navoAuthPersist();render()}},true);
 // Diese Sperren sind nur UI-Sperren. Direkter Zugriff auf Browserdaten ist weiterhin möglich.
-document.addEventListener('click',e=>{if(!navoAuthReady||!navoAuthUser)return;const target=e.target,scope=target.closest('#content,#modalRoot');if(!scope)return;if((page==='access'||page==='backup')&&navoAuthUser.role==='admin')return;if(page==='archive')return;if(!navoAuthCanEdit(page)){
+document.addEventListener('click',e=>{if(!navoAuthReady||!navoAuthUser)return;const target=e.target,scope=target.closest('#content,#modalRoot');if(!scope)return;if((page==='access'||page==='backup')&&navoAuthUser.role==='admin')return;if(page==='archive')return;if(!navoAuthCanEdit(target.closest('#navoNotesForm')?'notes':page)){
  const button=target.closest('button,[data-action],[data-task-check],[data-note-delete],[data-note-add],[data-note-edit]');
  if(button&&!button.hasAttribute('data-page')&&!button.hasAttribute('data-note-pdf')&&!button.hasAttribute('data-notes-pdf-list')&&!button.closest('summary')){e.preventDefault();e.stopImmediatePropagation();navoAuthForbidden()}
 }},true);
-document.addEventListener('submit',e=>{if(navoAuthReady&&navoAuthUser&&!navoAuthCanEdit(page)&&page!=='access'&&page!=='backup'&&page!=='archive'&&e.target.closest('#content,#modalRoot')){e.preventDefault();e.stopImmediatePropagation();navoAuthForbidden()}},true);
-document.addEventListener('change',e=>{if(navoAuthReady&&navoAuthUser&&!navoAuthCanEdit(page)&&page!=='access'&&page!=='backup'&&page!=='archive'&&e.target.closest('#content,#modalRoot')){e.preventDefault();e.stopImmediatePropagation();navoAuthForbidden()}},true);
+document.addEventListener('submit',e=>{const module=e.target?.id==='navoNotesForm'?'notes':page;if(navoAuthReady&&navoAuthUser&&!navoAuthCanEdit(module)&&module!=='access'&&module!=='backup'&&module!=='archive'&&e.target.closest('#content,#modalRoot')){e.preventDefault();e.stopImmediatePropagation();navoAuthForbidden()}},true);
+document.addEventListener('change',e=>{const module=e.target?.closest('#navoNotesForm')?'notes':page;if(navoAuthReady&&navoAuthUser&&!navoAuthCanEdit(module)&&module!=='access'&&module!=='backup'&&module!=='archive'&&e.target.closest('#content,#modalRoot')){e.preventDefault();e.stopImmediatePropagation();navoAuthForbidden()}},true);
 
 function navoSidebarAccount(){
  const root=document.getElementById('navo-sidebar-account');
@@ -4178,7 +4276,7 @@ let navoNotesData=[];
 try{const stored=JSON.parse(localStorage.getItem(NAVO_NOTES_KEY)||'[]');if(Array.isArray(stored))navoNotesData=stored.filter(n=>n&&typeof n==='object'&&typeof n.id==='string')}catch{}
 let navoNotesFilter='all',navoNotesSearch='',navoNotesEditing=null,navoNotesProjectPrefill='',navoNotesTaskPrefill='';
 function pmActiveNotes(){return navoNotesData.filter(n=>!n.archivedAt)}
-function navoNotesSave(){try{pmHistoryBeforeSave(NAVO_NOTES_KEY,navoNotesData);localStorage.setItem(NAVO_NOTES_KEY,JSON.stringify(navoNotesData))}catch{alert('Notizen konnten nicht gespeichert werden. Bitte den lokalen Speicher prüfen.')}}
+function navoNotesSave(){try{pmHistoryBeforeSave(NAVO_NOTES_KEY,navoNotesData);localStorage.setItem(NAVO_NOTES_KEY,JSON.stringify(navoNotesData));return true}catch(err){console.error('Notiz speichern fehlgeschlagen:',err);alert('Notiz konnte nicht gespeichert werden. Bitte freien Browserspeicher prüfen und erneut versuchen. Das Eingabefenster bleibt geöffnet.');return false}}
 function navoNoteDate(iso){if(!iso)return '–';const date=new Date(iso);return Number.isNaN(date.getTime())?'–':date.toLocaleDateString('de-CH',{day:'2-digit',month:'2-digit',year:'numeric'})+' · '+date.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'})}
 function navoNoteSafeLink(note){const p=state.projects.find(x=>x.id===note.projectId),t=state.tasks.find(x=>x.id===note.taskId);return {p,t}}
 function navoNotesForProject(projectId){return pmActiveNotes().filter(n=>n.projectId===projectId||state.tasks.some(t=>t.projectId===projectId&&t.id===n.taskId))}
@@ -4329,6 +4427,7 @@ function pmNoteParticipantPicker(current){
  return `<div class="pm-note-people-grid"><fieldset class="pm-note-people"><legend>Mitarbeitende (optional)</legend><div class="pm-note-people-list">${members||'<span class="muted sub">Noch keine Mitarbeitenden erfasst.</span>'}</div></fieldset><fieldset class="pm-note-people"><legend>Externe Kontakte (optional)</legend><div class="pm-note-people-list">${contacts||'<span class="muted sub">Noch keine externen Kontakte erfasst.</span>'}</div></fieldset></div>`;
 }
 function navoNoteEditor(record,projectId='',taskId=''){
+ if(!navoAuthCanEdit('notes')){navoAuthForbidden();return}
  navoNotesEditing=record?.id||null;
  const current=record||{};
  const projectChosen=current.projectId||projectId||'';
@@ -4341,7 +4440,7 @@ function navoNoteEditor(record,projectId='',taskId=''){
   e.preventDefault();const f=e.currentTarget;
   const title=f.elements.title.value.trim(),contentEl=document.getElementById('navoNoteContentRich');
   contentEl?.querySelectorAll('input[type="checkbox"]').forEach(box=>{if(box.checked)box.setAttribute('checked','');else box.removeAttribute('checked')});
-  const content=(contentEl?.innerText||'').trim(),contentHtml=pmNoteCleanHtml(contentEl?.innerHTML||''),taskId=f.elements.taskId.value,projectId=f.elements.projectId.value;
+  const content=(contentEl?.innerText||contentEl?.textContent||'').trim(),contentHtml=pmNoteCleanHtml(contentEl?.innerHTML||''),taskId=f.elements.taskId.value,projectId=f.elements.projectId.value;
   if(!title||!content){alert('Bitte Titel und Notiztext erfassen.');return}
   const task=state.tasks.find(t=>t.id===taskId);
   if(taskId&&!task){alert('Der zugeordnete Aufgabe existiert nicht mehr.');return}
@@ -4349,8 +4448,10 @@ function navoNoteEditor(record,projectId='',taskId=''){
   if(task?.projectId&&projectId&&task.projectId!==projectId){alert('Aufgabe und Projekt müssen zusammenpassen.');return}
   const now=new Date().toISOString();const old=navoNotesData.find(n=>n.id===navoNotesEditing);
   const next={id:old?.id||id(),title,content,contentHtml,due:f.elements.due.value||'',dueTime:f.elements.due.value?(f.elements.dueTime.value||''):'',projectId:projectId||task?.projectId||'',taskId,memberIds:[...new Set([...new FormData(f).getAll('noteMemberIds')].filter(id=>state.members.some(m=>m.id===id)))],contactIds:[...new Set([...new FormData(f).getAll('noteContactIds')].filter(id=>(state.contacts||[]).some(c=>c.id===id)))],createdAt:old?.createdAt||now,updatedAt:now,...(old?.archivedAt?{archivedAt:old.archivedAt,archivedBy:old.archivedBy||""}:{})};
-  if(old)navoNotesData=navoNotesData.map(n=>n.id===old.id?next:n);else navoNotesData.unshift(next);
-  navoNotesSave();$('#modalRoot').innerHTML='';render();
+  const previousNotes=navoNotesData;
+  if(old)navoNotesData=navoNotesData.map(n=>n.id===old.id?next:n);else navoNotesData=[next,...navoNotesData];
+  if(!navoNotesSave()){navoNotesData=previousNotes;return}
+  $('#modalRoot').innerHTML='';render();
  });
  $('#navoNoteProject').addEventListener('change',e=>{
   const pid=e.target.value,select=$('#navoNoteTask'),value=select.value;
@@ -5030,7 +5131,7 @@ function pmHistoryPage(){
 document.addEventListener('input',e=>{if(e.target?.id!=='pm-history-search')return;pmHistoryFilters.search=e.target.value;const focus=e.target.selectionStart;const content=document.getElementById('content');if(page!=='history'||!content)return;content.innerHTML=pmHistoryPage();const el=document.getElementById('pm-history-search');if(el){el.focus();el.setSelectionRange(focus,focus)}});
 document.addEventListener('change',e=>{const values={'pm-history-area':'area','pm-history-project':'project','pm-history-action':'action'};const prop=values[e.target?.id];if(!prop||page!=='history')return;pmHistoryFilters[prop]=e.target.value;document.getElementById('content').innerHTML=pmHistoryPage()});
 
-function render(){if(!navoAuthReady||!navoAuthUser)return;if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();$('#content').prepend(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild)$('#content').prepend(banner.firstElementChild)}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
+function render(){if(!navoAuthReady||!navoAuthUser)return;if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(work);else $('#content').append(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild){const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(banner.firstElementChild);else $('#content').append(banner.firstElementChild)}}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
 const stat=(label,val,info)=>`<div class="card stat"><span>${label}</span><strong>${val}</strong><span>${info}</span></div>`;
 
 function navoTopChip(label,value,tone=''){
@@ -5550,7 +5651,7 @@ function navoWeatherLocate(){
 document.addEventListener('click',e=>{const btn=e.target.closest('[data-weather-action]');if(!btn)return;e.preventDefault();e.stopPropagation();const action=btn.dataset.weatherAction;if(action==='locate')navoWeatherLocate();else if(action==='reload'){navoWeatherResult=null;navoWeatherFetch()}else if(action==='city')navoWeatherCitySearch()});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target?.id==='navo-weather-city'){e.preventDefault();navoWeatherCitySearch()}});
 
-function dashboard(){return navoExecutiveDashboard()}
+function dashboard(){return `<section class="pm-dashboard-week-wrap" aria-label="Wochenplanung"><div class="pm-dashboard-week-details"><div class="pm-dashboard-week-title">📅 Meine Wochenplanung <span class="pm-dashboard-week-hint">Aufgaben · Termine · Tagesauslastung</span></div><div class="pm-dashboard-week-content">${pmWeeklyPanel()}</div></div></section><details class="pm-dashboard-rest"><summary>Weitere Dashboard-Bereiche aufklappen <span class="pm-dashboard-rest-help">Mein Arbeitsplatz · Rückmeldungen · Aufgaben · Projekte</span></summary><div class="pm-dashboard-rest-body">${navoExecutiveDashboard()}</div></details>`}
 function dateDiff(a,b){if(!a||!b)return null;return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)}
 function projectSchedule(p,ts){let today=new Date().toLocaleDateString('sv-SE'),dates=[p.start,p.end,...ts.flatMap(t=>[t.start,t.due])].filter(Boolean).sort(),begin=dates[0]||today,finish=dates[dates.length-1]||begin,total=Math.max(1,dateDiff(begin,finish)||1),remaining=p.end!=null&&p.end!==''?dateDiff(today,p.end):null;let dated=ts.filter(t=>t.due).length;return `<details class="schedule" open><summary><b>📅 Terminplan</b> · ${dated}/${ts.length} Aufgaben terminiert ${remaining===null?'· Projektende offen':`· ${remaining<0?'<span class="schedule-overdue">'+Math.abs(remaining)+' Tage überfällig</span>':remaining+' Tage bis Projektende'}`}</summary><p class="schedule-meta">Projekt: ${esc(p.start||'Start offen')} → ${esc(p.end||'Ende offen')} · Termine und Dauer direkt anpassbar. Änderungen werden gespeichert.</p><div class="schedule-row"><b class="schedule-title">Projektstart / Projektende</b><div class="schedule-actions"><input aria-label="Projektstart" class="schedule-date" style="width:140px" type="date" data-project-date="start" data-project-id="${esc(p.id)}" value="${esc(p.start||'')}"><input aria-label="Projektende" class="schedule-date" style="width:140px" type="date" data-project-date="end" data-project-id="${esc(p.id)}" value="${esc(p.end||'')}"></div><span class="schedule-meta">${remaining===null?'Offen':remaining+' Tage'}</span></div>${[...ts].sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).map(t=>{let left=t.due?dateDiff(today,t.due):null,barStart=t.start||t.due||begin,offset=Math.max(0,Math.min(100,(dateDiff(begin,barStart)||0)/total*100)),width=Math.max(2,Math.min(100-offset,((dateDiff(barStart,t.due)||0)+1)/total*100));return `<div class="schedule-row"><div class="schedule-title">${taskTip(t)}<div class="schedule-meta">${t.status==='Erledigt'?'✓ Erledigt':left===null?'Kein Endtermin':left<0?'<span class="schedule-overdue">'+Math.abs(left)+' Tage überfällig</span>':left===0?'Heute fällig':left+' Tage verbleibend'}</div></div><div><div class="schedule-track" title="${esc(t.start||'Start offen')} bis ${esc(t.due||'Ende offen')}">${t.due?`<span class="schedule-bar ${t.status==='Erledigt'?'done':''}" style="left:${offset}%;width:${width}%"></span>`:''}</div><div class="schedule-actions" style="margin-top:6px"><input aria-label="Aufgabenstart" title="Startdatum" class="schedule-date" style="width:140px" type="date" data-task-date="start" data-task-id="${esc(t.id)}" value="${esc(t.start||'')}"><input aria-label="Aufgabenende" title="Fälligkeit" class="schedule-date" style="width:140px" type="date" data-task-date="due" data-task-id="${esc(t.id)}" value="${esc(t.due||'')}"></div></div><button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(t.id)}">Bearbeiten</button></div>`}).join('')||'<p class="schedule-meta">Noch keine Aufgaben vorhanden.</p>'}</details>`}
 function navoPortfolioGroup(p){return navoProjectCompleted(p)||p.status==='Abgeschlossen'?'completed':(p.status==='Planung'||!p.status?'planned':(['On Hold','Pausiert'].includes(p.status)?'hold':'active'))}
@@ -5715,6 +5816,137 @@ setInterval(()=>{
 
 function pmProjectRoleLabel(p){return ({eigen:'Eigenes Projekt',teilprojekt:'Teilprojekt / eigener Bereich',mitarbeit:'Mitarbeit im Projekt'})[p.pmProjectRole]||'Rolle noch nicht festgelegt'}
 function pmProjectRoleInfo(p){return `<div class="pm-role-info"><b>Meine Beteiligung:</b> ${esc(pmProjectRoleLabel(p))}${p.pmOverallLead?`<span><b>Gesamtprojektleitung:</b> ${esc(p.pmOverallLead)}</span>`:''}${p.pmMyScope?`<span><b>Mein Bereich:</b> ${esc(p.pmMyScope)}</span>`:''}${p.pmMyDeliverables?`<span><b>Meine Leistungen:</b> ${esc(p.pmMyDeliverables)}</span>`:''}${p.pmInterfaces?`<span><b>Schnittstellen:</b> ${esc(p.pmInterfaces)}</span>`:''}${p.pmDependencies?`<span><b>Abhängigkeiten:</b> ${esc(p.pmDependencies)}</span>`:''}</div>`}
+function pmProjectCockpit(){
+ const today=new Date().toLocaleDateString('sv-SE');
+ const visible=state.projects.filter(p=>!navoProjectCompleted(p));
+ const items=visible.map(p=>{
+  const ts=state.tasks.filter(t=>t.projectId===p.id&&t.status!=='Erledigt');
+  const pending=(state.pendingRecords||[]).filter(r=>r.projectId===p.id&&!pmPendingClosed(r));
+  const late=ts.filter(t=>t.due&&t.due<today).length;
+  const latePending=pending.filter(r=>r.due&&r.due<today).length;
+  const endLate=p.end&&p.end<today;
+  const soon=ts.filter(t=>t.due&&t.due>=today&&t.due<=new Date(Date.now()+7*86400000).toLocaleDateString('sv-SE')).length;
+  const tone=late||latePending||endLate?'red':pending.length||soon?'amber':'green';
+  return {p,ts,pending,late,latePending,endLate,soon,tone};
+ });
+ const rank={red:0,amber:1,green:2};items.sort((a,b)=>rank[a.tone]-rank[b.tone]||a.p.name.localeCompare(b.p.name,'de'));
+ const counts={red:items.filter(x=>x.tone==='red').length,amber:items.filter(x=>x.tone==='amber').length,green:items.filter(x=>x.tone==='green').length};
+ return `<section class="pm-cockpit" aria-label="Projekt-Cockpit mit Ampelstatus"><div class="pm-cockpit-head"><div><h2>◉ Projekt-Cockpit</h2><p>Offene Aufgaben, Fristen und Entscheidungen im Blick</p></div><div class="pm-cockpit-counts"><span class="red">● ${counts.red} kritisch</span><span class="amber">● ${counts.amber} prüfen</span><span class="green">● ${counts.green} im Plan</span></div></div><p class="pm-cockpit-help">Automatische Hinweise aus gespeicherten Fristen und Pendenzen, keine manuelle Projektbewertung. Abgeschlossene Projekte sind ausgeblendet.</p><div class="pm-cockpit-grid">${items.map(x=>`<article class="pm-cockpit-card ${x.tone}"><div class="pm-cockpit-card-head"><span class="pm-cockpit-light" aria-hidden="true"></span><strong>${esc(x.p.name)}</strong><span class="pm-cockpit-tone">${x.tone==='red'?'Kritisch':x.tone==='amber'?'Prüfen':'Im Plan'}</span></div><div class="pm-cockpit-metrics"><span><b>${x.ts.length}</b> Aufgaben offen</span><span><b>${x.late}</b> überfällig</span><span><b>${x.pending.length}</b> Pendenzen offen</span><span><b>${x.latePending}</b> Pendenzen überfällig</span></div>${x.endLate?'<p class="pm-cockpit-warning">Projektendtermin überschritten</p>':x.soon?`<p class="pm-cockpit-muted">${x.soon} Aufgabe(n) in den nächsten 7 Tagen fällig</p>`:''}<button type="button" class="btn small secondary" data-pm-cockpit-open="${esc(x.p.id)}">Projekt öffnen →</button></article>`).join('')||'<div class="pm-cockpit-empty">Keine offenen Projekte vorhanden.</div>'}</div></section>`;
+}
+function pmProjectQuickSummary(p){
+ const today=new Date().toLocaleDateString('sv-SE');
+ const tasks=state.tasks.filter(t=>t.projectId===p.id);
+ const open=tasks.filter(t=>!['Erledigt','Abgeschlossen','Archiviert'].includes(t.status));
+ const finished=tasks.length-open.length;
+ const pending=(state.pendingRecords||[]).filter(r=>r.projectId===p.id&&!pmPendingClosed(r));
+ const overdue=open.filter(t=>t.due&&t.due<today).length;
+ const pendingLate=pending.filter(r=>r.due&&r.due<today).length;
+ const upcoming=[
+  ...open.filter(t=>t.due&&t.due>=today).map(t=>({date:t.due,title:t.name,kind:'Aufgabe'})),
+  ...pending.filter(r=>r.due&&r.due>=today).map(r=>({date:r.due,title:r.title,kind:'Pendenz'}))
+ ].sort((a,b)=>a.date.localeCompare(b.date)).slice(0,3);
+ const ratio=tasks.length?Math.round(finished/tasks.length*100):0;
+ const endOverdue=!!(p.end&&p.end<today&&!navoProjectCompleted(p));
+ const critical=overdue||pendingLate||endOverdue;
+ const warn=!critical&&(pending.length||open.some(t=>t.due&&t.due<=new Date(Date.now()+7*86400000).toLocaleDateString('sv-SE')));
+ const tone=critical?'critical':warn?'warning':'ok';
+ const status=critical?'Kritisch':warn?'Prüfen':'Im Plan';
+ const stat=(label,value,sub)=>`<div class="pm84-stat"><small>${esc(label)}</small><strong>${value}</strong><span>${esc(sub)}</span></div>`;
+ return `<section class="pm84-summary" aria-label="Projektkennzahlen">
+  <div class="pm84-summary-top"><div><h3>Projekt auf einen Blick</h3><p>Automatisch aus Aufgaben, Fristen und Pendenzen berechnet</p></div><span class="pm84-health ${tone}">● ${status}</span></div>
+  <div class="pm84-stat-grid">${stat('Aufgaben offen',open.length,'davon '+overdue+' überfällig')}${stat('Aufgaben erledigt',finished,'von '+tasks.length+' Aufgaben')}${stat('Pendenzen offen',pending.length,'davon '+pendingLate+' überfällig')}${stat('Projektendtermin',p.end?esc(formatSwissDate(p.end)):'–',endOverdue?'Termin überschritten':'laut Projektdaten')}</div>
+  <div class="pm84-progress"><div><span>Aufgabenfortschritt</span><b>${ratio}%</b></div><div class="pm84-progress-track"><i style="width:${ratio}%"></i></div><small>Auf Basis erledigter Aufgaben, keine Bewertung des tatsächlichen Projektfortschritts.</small></div>
+  <div class="pm84-next"><b>Nächste Fristen</b>${upcoming.length?upcoming.map(x=>`<div class="pm84-next-row"><span>${esc(formatSwissDate(x.date))}</span><strong>${esc(x.title||'Ohne Bezeichnung')}</strong><small>${esc(x.kind)}</small></div>`).join(''):'<p>Keine bevorstehenden Aufgaben- oder Pendenzenfristen erfasst.</p>'}</div>
+ </section>`;
+}
+function pm85TaskDone(t){return ['Erledigt','Abgeschlossen','Archiviert'].includes(t.status)||!!t.completedAt}
+function pm85ProjectTasks(projectId,filter='open',search=''){
+ const today=new Date().toLocaleDateString('sv-SE');
+ const query=search.trim().toLocaleLowerCase('de-CH');
+ return state.tasks.filter(t=>t.projectId===projectId).filter(t=>{
+  const done=pm85TaskDone(t);
+  if(filter==='open'&&done)return false;
+  if(filter==='late'&&(done||!t.due||t.due>=today))return false;
+  if(filter==='done'&&!done)return false;
+  if(query&&!`${t.name||''} ${t.description||''} ${t.pmRequester||''}`.toLocaleLowerCase('de-CH').includes(query))return false;
+  return true;
+ }).sort((a,b)=>Number(pm85TaskDone(a))-Number(pm85TaskDone(b))||(a.due||'9999').localeCompare(b.due||'9999'));
+}
+function pm85TaskRows(projectId,filter='open',search=''){
+ const tasks=pm85ProjectTasks(projectId,filter,search);
+ const today=new Date().toLocaleDateString('sv-SE');
+ return tasks.length?tasks.map(t=>{
+  const done=pm85TaskDone(t),late=!done&&t.due&&t.due<today;
+  return `<div class="pm85-task-row"><div class="pm85-task-info"><strong>${esc(t.name||'Unbenannte Aufgabe')}</strong><div><span class="pm85-chip ${late?'late':done?'done':''}">${esc(done?'Erledigt':t.status||'Offen')}</span><span>${esc(t.priority||'Mittel')}</span><span>${t.due?'Fällig: '+esc(formatSwissDate(t.due)):'Ohne Fälligkeit'}</span></div></div>${navoAuthCanView('tasks')?`<button type="button" class="btn small secondary" data-pm85-task-open="${esc(t.id)}">Öffnen</button>`:''}</div>`;
+ }).join(''):'<p class="pm85-empty">Keine Aufgaben für diese Auswahl vorhanden.</p>';
+}
+function pm85ProjectTaskPanel(p){
+ const tasks=state.tasks.filter(t=>t.projectId===p.id);
+ const today=new Date().toLocaleDateString('sv-SE');
+ const open=tasks.filter(t=>!pm85TaskDone(t)).length,late=tasks.filter(t=>!pm85TaskDone(t)&&t.due&&t.due<today).length,done=tasks.length-open;
+ return `<section class="pm85-project-tasks" data-pm85-project="${esc(p.id)}" aria-label="Projektaufgaben"><div class="pm85-title"><div><h3>Aufgaben dieses Projekts</h3><p>${open} offen · ${late} überfällig · ${done} erledigt</p></div></div><div class="pm85-controls"><div class="pm85-filter" role="group" aria-label="Aufgabenfilter"><button type="button" data-pm85-filter="open" class="active">Offen</button><button type="button" data-pm85-filter="late">Überfällig</button><button type="button" data-pm85-filter="done">Erledigt</button><button type="button" data-pm85-filter="all">Alle</button></div><input type="search" data-pm85-search placeholder="Aufgaben durchsuchen …" aria-label="Projektaufgaben durchsuchen" autocomplete="off"></div><div class="pm85-list" aria-live="polite">${pm85TaskRows(p.id)}</div></section>`;
+}
+function pm85UpdateTasks(panel){
+ const id=panel.dataset.pm85Project,filter=panel.querySelector('[data-pm85-filter].active')?.dataset.pm85Filter||'open';
+ panel.querySelector('.pm85-list').innerHTML=pm85TaskRows(id,filter,panel.querySelector('[data-pm85-search]')?.value||'');
+}
+document.addEventListener('click',e=>{
+ const filter=e.target.closest('#pm-project-fullview [data-pm85-filter]');
+ if(filter){const panel=filter.closest('.pm85-project-tasks');panel.querySelectorAll('[data-pm85-filter]').forEach(b=>b.classList.toggle('active',b===filter));pm85UpdateTasks(panel);return}
+ const open=e.target.closest('#pm-project-fullview [data-pm85-task-open]');
+ if(open&&navoAuthCanView('tasks'))pm2ShowTask(open.dataset.pm85TaskOpen);
+});
+document.addEventListener('input',e=>{if(e.target.matches('#pm-project-fullview [data-pm85-search]'))pm85UpdateTasks(e.target.closest('.pm85-project-tasks'))});
+function pmProjectFullViewClose(){
+ const root=document.getElementById('pm-project-fullview');
+ if(root)root.remove();
+ document.body.classList.remove('pm-project-fullview-open');
+}
+function pmProjectFullViewOpen(id){
+ if(!navoAuthCanView('projects'))return;
+ const project=state.projects.find(p=>p.id===id);
+ if(!project)return;
+ const target=[...document.querySelectorAll('.navo-pboard-project')].find(el=>el.dataset.pboardProject===id);
+ if(!target)return;
+ pmProjectFullViewClose();
+ const root=document.createElement('div');root.id='pm-project-fullview';
+ root.innerHTML=`<div class="pm-project-fullview-backdrop" data-pm-project-window-close="1"></div><section class="pm-project-fullview-window" role="dialog" aria-modal="true" aria-label="Projektübersicht: ${esc(project.name)}"><header class="pm-project-fullview-header"><div><small>PROJEKTÜBERSICHT</small><h2>${esc(project.name)}</h2></div><button class="btn secondary" type="button" data-pm-project-window-close="1">✕ Schliessen</button></header><nav class="pm-project-fullview-nav" aria-label="Projektbereiche"><button type="button" class="pm-project-jump active" data-pm-project-jump="top">Übersicht</button></nav><div class="pm-project-fullview-content"><div class="pm-project-fullview-slot"></div></div></section>`;
+ document.body.appendChild(root);
+ const clone=target.cloneNode(true);clone.open=true;
+ clone.querySelectorAll('details').forEach(d=>d.open=true);
+ root.querySelector('.pm-project-fullview-slot').insertAdjacentHTML('beforebegin',pmProjectQuickSummary(project));
+ root.querySelector('.pm-project-fullview-slot').insertAdjacentHTML('beforebegin',pm85ProjectTaskPanel(project));
+ root.querySelector('.pm-project-fullview-slot').appendChild(clone);
+ const navigation=root.querySelector('.pm-project-fullview-nav');
+ const sections=[...clone.querySelectorAll('details.navo-pboard-nested')];
+ sections.forEach((section,index)=>{
+  const summary=section.querySelector(':scope > summary');
+  const label=(summary?.textContent||'').replace(/\s+/g,' ').trim();
+  if(!label)return;
+  section.id='pm-project-section-'+index;
+  const button=document.createElement('button');button.type='button';button.className='pm-project-jump';
+  button.dataset.pmProjectJump=section.id;
+  button.textContent=label.slice(0,55);
+  navigation.appendChild(button);
+ });
+ document.body.classList.add('pm-project-fullview-open');
+ root.querySelector('[data-pm-project-window-close]')?.focus();
+}
+document.addEventListener('click',e=>{
+ const close=e.target.closest('[data-pm-project-window-close]');
+ if(close){pmProjectFullViewClose();return}
+ const button=e.target.closest('[data-pm-cockpit-open]');if(!button)return;
+ pmProjectFullViewOpen(button.dataset.pmCockpitOpen);
+},true);
+document.addEventListener('click',e=>{
+ const button=e.target.closest('#pm-project-fullview [data-pm-project-jump]');if(!button)return;
+ const root=document.getElementById('pm-project-fullview');if(!root)return;
+ const content=root.querySelector('.pm-project-fullview-content');
+ const target=button.dataset.pmProjectJump==='top'?null:root.querySelector('#'+button.dataset.pmProjectJump);
+ if(target){target.open=true;target.scrollIntoView({behavior:'smooth',block:'start'});}else if(content){content.scrollTo({top:0,behavior:'smooth'});}
+ root.querySelectorAll('.pm-project-jump').forEach(el=>el.classList.toggle('active',el===button));
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('pm-project-fullview'))pmProjectFullViewClose()},true);
 function projects(){
  const today=new Date().toLocaleDateString('sv-SE');
  const projectGroup=p=>navoPortfolioGroup(p);
@@ -5751,10 +5983,10 @@ function projects(){
  const indicators=phases.map(([key,label,icon])=>{const value=groups[key].length,pct=n?Math.round(value/n*100):0;return `<div class="navo-phase-line ${key}"><div class="navo-phase-line-heading"><span><i>${icon}</i> ${label}</span><strong>${value} <small>(${pct} %)</small></strong></div><div class="navo-phase-track"><span style="width:${pct}%"></span></div></div>`}).join('');
  const kpi=(label,value,note,tone='',side='',meta=[])=>`<div class="navo-portfolio-stat ${tone}"><span>${label}</span><strong>${value}</strong>${side?`<em class="navo-portfolio-side">${side}</em>`:''}<small>${note}</small>${meta.length?`<div class="navo-portfolio-meta">${meta.map(item=>`<b>${item}</b>`).join('')}</div>`:''}</div>`;
  const miniKpi=(label,value,tone='')=>`<div class="pm-portfolio-mini-kpi ${tone}" title="${esc(label)}: ${value}"><span>${esc(label)}</span><strong>${value}</strong></div>`;
- return `<div class="navo-portfolio-clean"><div class="navo-portfolio-heading pm-portfolio-compact-heading"><div class="pm-portfolio-heading-copy"><h2>Projekte</h2><p>Deine Projekte, Fristen und Fortschritte auf einen Blick</p></div><div class="pm-portfolio-header-actions"><div class="pm-portfolio-mini-stats" aria-label="Projektkennzahlen">${miniKpi('Alle',n)}${miniKpi('Laufend',groups.active.length,'active')}${miniKpi('Offene Aufgaben',openTasks)}${miniKpi('Überfällig',overdue,overdue?'warning':'')}${miniKpi('Abgeschlossen',completed,'finished')}${miniKpi('Nächstes Ende',upcoming?esc(formatSwissDate(upcoming.end)):'–','info')}</div><button class="btn small secondary pm-report-top-btn" type="button" data-pm-project-report-select>▤ Statusbericht PDF</button><button class="btn pm-portfolio-new-btn" data-action="startproject">+ Neues Projekt</button></div></div>
+ return `${pmProjectCockpit()}<div class="navo-portfolio-clean"><div class="navo-portfolio-heading pm-portfolio-compact-heading"><div class="pm-portfolio-heading-copy"><h2>Projekte</h2><p>Deine Projekte, Fristen und Fortschritte auf einen Blick</p></div><div class="pm-portfolio-header-actions"><div class="pm-portfolio-mini-stats" aria-label="Projektkennzahlen">${miniKpi('Alle',n)}${miniKpi('Laufend',groups.active.length,'active')}${miniKpi('Offene Aufgaben',openTasks)}${miniKpi('Überfällig',overdue,overdue?'warning':'')}${miniKpi('Abgeschlossen',completed,'finished')}${miniKpi('Nächstes Ende',upcoming?esc(formatSwissDate(upcoming.end)):'–','info')}</div><button class="btn small secondary pm-report-top-btn" type="button" data-pm-project-report-select>▤ Statusbericht PDF</button><button class="btn pm-portfolio-new-btn" data-action="startproject">+ Neues Projekt</button></div></div>
  <div class="navo-portfolio-insights navo-portfolio-insights-full"><section class="navo-portfolio-insight navo-portfolio-event-panel"><div class="navo-portfolio-insight-header"><div><h3>Wichtige Projekttermine</h3><p>Besprechungen und Bausitzungen · nächste 7 Tage</p></div><button class="btn small secondary" type="button" data-page="calendar">Terminkalender →</button></div><div id="navo-portfolio-event-list" class="navo-portfolio-event-list">${navoPortfolioProjectEvents()}</div></section></div>
- <div class="navo-portfolio-board-title"><div><h3>Geplante, laufende, pausierte und abgeschlossene Projekte</h3><p>Alle vier Projektphasen im Überblick. Karten anklicken für Aufgaben, Beteiligte und Termine.</p></div></div>
- <div class="navo-pboard-columns">${lane('planned','Geplant','Noch nicht gestartet','◷')}${lane('active','Laufend','Aktuell in Bearbeitung','◉')}${lane('hold','On Hold','Vorübergehend pausiert','Ⅱ')}${lane('completed','Abgeschlossen','Erfolgreich beendet','✓')}</div></div>`;
+ <details class="pm-project-details-collapse"><summary><span>Weitere Projektübersicht</span><small>Projektphasen, Karten und Details anzeigen</small></summary><div class="pm-project-details-collapse-body"><div class="navo-portfolio-board-title"><div><h3>Geplante, laufende, pausierte und abgeschlossene Projekte</h3><p>Alle vier Projektphasen im Überblick. Karten anklicken für Aufgaben, Beteiligte und Termine.</p></div></div>
+ <div class="navo-pboard-columns">${lane('planned','Geplant','Noch nicht gestartet','◷')}${lane('active','Laufend','Aktuell in Bearbeitung','◉')}${lane('hold','On Hold','Vorübergehend pausiert','Ⅱ')}${lane('completed','Abgeschlossen','Erfolgreich beendet','✓')}</div></div></details></div>`;
 }
 function daysToDue(t){
  if(t.status==='Erledigt')return '<span class="due-chip due-done">✓ Erledigt</span>';
@@ -6241,12 +6473,21 @@ document.addEventListener('submit',e=>{
 },true);
 // Design Refresh 2.0: Planner-like task board and right-side task preview.
 let pmTaskDisplayMode='board';
+let pmBoardSearch='',pmBoardPriority='',pmBoardDue='all';
 const PM_BOARD_COLUMNS=[
  ['Offen','Eingang / Offen'],['Geplant','Geplant'],['In Arbeit','In Bearbeitung'],
  ['Warte auf Rückmeldung','Warte auf Rückmeldung'],['Zur Kontrolle','Zur Kontrolle']
 ];
 function pmBoardFilterTasks(){
- return state.tasks.filter(t=>t.status!=='Erledigt' && (!filter || (filter==='__unlinked__'?!t.projectId||!state.projects.some(p=>p.id===t.projectId):t.projectId===filter)));
+ const today=pmWeekISO(new Date());
+ const weekEnd=pmWeekISO(new Date(Date.now()+7*86400000));
+ const query=pmBoardSearch.trim().toLocaleLowerCase('de-CH');
+ return state.tasks.filter(t=>t.status!=='Erledigt'
+  && (!filter || (filter==='__unlinked__'?!t.projectId||!state.projects.some(p=>p.id===t.projectId):t.projectId===filter))
+  && (!pmBoardPriority || (t.priority||'Mittel')===pmBoardPriority)
+  && (!query || [t.name,t.description,t.pmRequester,t.projectId?proj(t.projectId):'Einzelauftrag'].some(v=>String(v||'').toLocaleLowerCase('de-CH').includes(query)))
+  && (pmBoardDue==='all' || (pmBoardDue==='overdue' ? !!t.due&&t.due<today : pmBoardDue==='today' ? t.due===today : pmBoardDue==='week' ? !!t.due&&t.due>=today&&t.due<=weekEnd : !t.due)));
+
 }
 // Design Refresh 4.0: Planner-style checklists live on each task and use the existing app save() flow.
 function pm4Checklist(task){return Array.isArray(task?.pmChecklist)?task.pmChecklist.filter(x=>x&&typeof x==='object'):[]}
@@ -6267,8 +6508,25 @@ function pmTaskBoardHtml(){
  return `<section class="pm2-column" data-pm2-column="${esc(status)}" aria-label="${esc(label)}"><header class="pm2-column-header"><h3>${esc(label)}</h3><span class="pm2-count">${items.length}</span></header><div class="pm2-card-stack">${items.map(t=>{
  const priority=t.priority||'Mittel',due=t.due?formatSwissDate(t.due):'Ohne Fälligkeit';
  return `<article class="pm2-taskcard" data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}"><div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small>${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
- return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
+ return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm7-board-filters" role="search" aria-label="Aufgaben im Planner-Board filtern"><label><span>Aufgabe suchen</span><input type="search" id="pm7BoardSearch" placeholder="Titel, Beschreibung, Auftraggeber …" value="${esc(pmBoardSearch)}" autocomplete="off"></label><label><span>Priorität</span><select id="pm7BoardPriority"><option value="">Alle</option>${['Hoch','Mittel','Niedrig'].map(v=>`<option value="${v}" ${pmBoardPriority===v?'selected':''}>${v}</option>`).join('')}</select></label><label><span>Fälligkeit</span><select id="pm7BoardDue"><option value="all" ${pmBoardDue==='all'?'selected':''}>Alle</option><option value="overdue" ${pmBoardDue==='overdue'?'selected':''}>Überfällig</option><option value="today" ${pmBoardDue==='today'?'selected':''}>Heute</option><option value="week" ${pmBoardDue==='week'?'selected':''}>Nächste 7 Tage</option><option value="none" ${pmBoardDue==='none'?'selected':''}>Ohne Fälligkeit</option></select></label><button type="button" class="btn small secondary" data-pm7-reset>Zurücksetzen</button></div><div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
 }
+function pm7UpdateBoard(){
+ const current=document.querySelector('.pm2-board');if(!current)return;
+ const template=document.createElement('div');template.innerHTML=pmTaskBoardHtml();
+ const replacement=template.querySelector('.pm2-board');
+ if(replacement)current.replaceWith(replacement);
+}
+document.addEventListener('input',e=>{if(e.target?.id!=='pm7BoardSearch')return;pmBoardSearch=e.target.value;pm7UpdateBoard();});
+document.addEventListener('change',e=>{
+ if(e.target?.id==='pm7BoardPriority'){pmBoardPriority=e.target.value;pm7UpdateBoard()}
+ if(e.target?.id==='pm7BoardDue'){pmBoardDue=e.target.value;pm7UpdateBoard()}
+});
+document.addEventListener('click',e=>{
+ if(!e.target.closest('[data-pm7-reset]'))return;
+ pmBoardSearch='';pmBoardPriority='';pmBoardDue='all';
+ const search=document.getElementById('pm7BoardSearch'),priority=document.getElementById('pm7BoardPriority'),due=document.getElementById('pm7BoardDue');
+ if(search)search.value='';if(priority)priority.value='';if(due)due.value='all';pm7UpdateBoard();
+});
 function pm2ShowTask(id){
  const t=state.tasks.find(x=>x.id===id);if(!t||!navoAuthCanView('tasks'))return;
  let root=document.getElementById('pm2DrawerRoot');if(!root){root=document.createElement('div');root.id='pm2DrawerRoot';document.body.appendChild(root)}
