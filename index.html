@@ -2961,7 +2961,523 @@ input,select,textarea,button{touch-action:manipulation}
 .pm-day-overload{margin:8px 0;padding:9px;border:1px solid #db9c5a;border-radius:9px;background:rgba(208,130,45,.12);font-size:12px;display:grid;gap:7px}
 .pm-move-suggestion{display:grid;gap:7px}
 .pm-move-suggestion button{justify-self:start;white-space:normal}
-</style><style id="pm-task-dependency-style">.pm-task-blocked-label{display:inline-block;margin:5px 5px 5px 0;padding:4px 8px;border:1px solid #dcaa68;border-radius:7px;background:rgba(223,153,70,.16);font-size:12px;font-weight:650;color:#ffe0aa}.pm-dependency-summary{padding:10px 12px;margin:8px 0 12px;border:1px solid rgba(212,165,99,.4);border-radius:9px;display:grid;gap:5px;font-size:12px}.pm-dependency-summary strong{font-size:13px}</style><style id="pm-stage12-style">.pm-approval-fields{margin:14px 0;padding:12px;border:1px solid rgba(125,170,218,.35);border-radius:10px}.pm-approval-fields[hidden]{display:none!important}.pm-approval-fields h3{margin:0 0 7px}.pm-approval-reason{padding:10px 12px;white-space:pre-wrap;overflow-wrap:anywhere;background:rgba(89,142,198,.1);border-radius:8px;margin:9px 0;font-size:13px}.pm-approval-history{margin:8px 0;font-size:12px;color:#b8cbe2}.pm-approval-history>div{padding:4px 0}</style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
+</style><style id="pm-task-dependency-style">.pm-task-blocked-label{display:inline-block;margin:5px 5px 5px 0;padding:4px 8px;border:1px solid #dcaa68;border-radius:7px;background:rgba(223,153,70,.16);font-size:12px;font-weight:650;color:#ffe0aa}.pm-dependency-summary{padding:10px 12px;margin:8px 0 12px;border:1px solid rgba(212,165,99,.4);border-radius:9px;display:grid;gap:5px;font-size:12px}.pm-dependency-summary strong{font-size:13px}</style><style id="pm-stage12-style">.pm-approval-fields{margin:14px 0;padding:12px;border:1px solid rgba(125,170,218,.35);border-radius:10px}.pm-approval-fields[hidden]{display:none!important}.pm-approval-fields h3{margin:0 0 7px}.pm-approval-reason{padding:10px 12px;white-space:pre-wrap;overflow-wrap:anywhere;background:rgba(89,142,198,.1);border-radius:8px;margin:9px 0;font-size:13px}.pm-approval-history{margin:8px 0;font-size:12px;color:#b8cbe2}.pm-approval-history>div{padding:4px 0}</style><style id="pm-health-styles">.pm-health-panel{margin:15px 0}.pm-health-results{white-space:pre-line;line-height:1.55;background:rgba(40,112,91,.11);border:1px solid rgba(97,178,150,.37);border-radius:9px;padding:12px;margin-top:10px;font-size:13px}.pm-health-results.has-issues{background:rgba(174,112,35,.1);border-color:#d5a05d}</style><style id="pm-update-checklist-style">
+.pm-update-checklist{margin:14px 0}
+.pm-update-check-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pm-update-check-head strong{color:#b6deff}
+.pm-update-check-rows{display:grid;gap:7px}
+.pm-update-check-row{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:rgba(105,150,200,.08);border:1px solid rgba(125,160,195,.25);border-radius:9px;cursor:pointer;font-size:13px;line-height:1.45}
+.pm-update-check-row input{accent-color:#65b1ff;margin-top:3px;flex-shrink:0;width:16px;height:16px}
+.pm-update-check-row:has(input:checked){background:rgba(71,151,114,.12);border-color:rgba(93,192,142,.38)}
+.pm-update-check-row:has(input:checked) span{color:#c6e7d7}
+.pm-update-check-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:12px}
+.pm-update-check-status{font-size:12px;color:#b8cde4}
+</style><style id="pm-nav-grouping-style">
+#nav .pm-nav-filter{padding:5px 8px 13px}
+#nav #pmNavSearch{width:100%;box-sizing:border-box;border:1px solid rgba(141,177,213,.32);border-radius:9px;background:rgba(9,25,48,.65);color:#f2f7ff;font:inherit;font-size:13px;padding:10px 11px;outline:none}
+#nav #pmNavSearch:focus{border-color:#78b6f6;box-shadow:0 0 0 2px rgba(90,159,236,.2)}
+#nav .pm-nav-section{margin:4px 0 12px}
+#nav .pm-nav-section-title{color:#9bb4d5;font-size:10px;letter-spacing:.085em;text-transform:uppercase;font-weight:800;padding:10px 12px 6px}
+#nav .pm-nav-no-results{padding:8px 12px;color:#b8cbe2;font-size:12px}
+</style><style id="pm-stage16-dashboard-style">
+.pm-dash-waiting,.pm-dash-upcoming{margin-top:14px}
+.pm-dash-wait-count{display:inline-grid;place-items:center;border-radius:999px;background:rgba(243,176,79,.16);border:1px solid rgba(243,176,79,.35);padding:2px 9px;font-size:12px;color:#f9cb8b}
+.pm-dash-wait-row{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(115,145,185,.07);color:inherit;border:1px solid rgba(125,153,185,.22);border-radius:9px;padding:11px;margin-top:7px;cursor:pointer}
+.pm-dash-wait-row:hover{background:rgba(125,162,207,.16);border-color:#70a8db}
+.pm-dash-wait-row b,.pm-dash-wait-row small{display:block}.pm-dash-wait-row small{font-size:12px;color:var(--muted,#a8bdd1);margin-top:3px}.pm-dash-wait-arrow{color:#a4cbf5}
+.pm-dash-more{margin-top:16px;border:1px solid rgba(125,153,185,.4);border-radius:12px;overflow:hidden}
+.pm-dash-more>summary{cursor:pointer;padding:15px 17px;font-weight:700;background:rgba(115,145,185,.1);display:flex;justify-content:space-between;gap:10px}
+.pm-dash-more>summary:hover{background:rgba(115,145,185,.19)}.pm-dash-more-body{padding:12px;display:grid;gap:13px}
+.pm-dash-more-body>.card{margin:0}
+</style><style id="pm-global-search-style">
+#nav .pm-global-launch{padding:7px 8px 3px}#nav .pm-global-launch button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left}#nav .pm-global-launch small{opacity:.7;font-size:11px;white-space:nowrap}
+.pm-global-modal{max-width:720px;width:min(92vw,720px);max-height:85vh;display:flex;flex-direction:column;gap:12px}.pm-global-head{display:flex;justify-content:space-between;align-items:center}.pm-global-head h2{margin:0}.pm-global-modal input[type=search]{width:100%;padding:13px;border:1px solid #6b90b9;border-radius:9px;background:#14263f;color:#fff;font:inherit}.pm-global-results{overflow:auto;min-height:120px}.pm-global-hit{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:12px;border:1px solid rgba(128,165,209,.22);background:rgba(116,161,208,.07);border-radius:9px;margin:6px 0;color:inherit;text-align:left;cursor:pointer}.pm-global-hit:hover,.pm-global-hit:focus-visible{border-color:#83bdff;background:rgba(120,176,242,.17)}.pm-global-hit span{display:grid;gap:4px;min-width:0}.pm-global-hit b{overflow-wrap:anywhere}.pm-global-hit small{opacity:.7}.pm-global-hit em{font-style:normal;font-size:11px;opacity:.8;white-space:nowrap}
+</style><style id="pm-stage18-quick-capture">
+.pm-global-quick-button{white-space:nowrap}
+.pm-quick-dialog{width:min(560px,94vw);max-height:88vh;overflow:auto}
+.pm-quick-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pm-quick-top h2{margin:0}
+.pm-quick-options{display:grid;gap:10px;margin:14px 0}
+.pm-quick-option{text-align:left;display:grid;gap:4px;background:rgba(100,150,210,.11);border:1px solid rgba(140,185,230,.32);border-radius:10px;padding:13px 16px;color:inherit;cursor:pointer;font:inherit}
+.pm-quick-option:hover,.pm-quick-option:focus-visible{border-color:#88c8ff;background:rgba(100,155,220,.22)}
+.pm-quick-option small{color:var(--muted,#abbdd2)}
+.pm-quick-task-dialog{width:min(780px,96vw)}
+.pm-quick-task-dialog .pm-work-capture{margin:10px 0}
+@media(max-width:720px){.pm-global-quick-button{font-size:12px;padding:8px 9px}}
+</style><style id="pm-fluent-refresh-v1">
+/* Design-Refresh 1.0: optionales helles, Microsoft-inspiriertes Arbeitsdesign */
+body.pm-fluent-light{background:#f3f6fb;color:#24354c;color-scheme:light}
+body.pm-fluent-light .app{background:#f3f6fb}
+body.pm-fluent-light .side{background:linear-gradient(180deg,#ffffff 0%,#f8faff 100%);border-right:1px solid #dce5f0;box-shadow:3px 0 22px rgba(26,49,82,.035)}
+body.pm-fluent-light .brand{color:#24354c}
+body.pm-fluent-light .pm-brand-badge{background:linear-gradient(145deg,#5c73e8,#3459b8);border:0;box-shadow:0 7px 18px rgba(62,89,174,.19)}
+body.pm-fluent-light .pm-brand-title{color:#24354c}
+body.pm-fluent-light .pm-brand-kicker{color:#788aa3}
+body.pm-fluent-light .nav button{color:#52647e;border-radius:9px}
+body.pm-fluent-light .nav button:hover{color:#293f67;background:#edf3fd;border-color:#e1e9f5;transform:none}
+body.pm-fluent-light .nav button.active{color:#284da4;background:#e7efff;border-color:#d8e5ff;box-shadow:none}
+body.pm-fluent-light .nav button.active::before{background:#5577dc}
+body.pm-fluent-light .pm-nav-section-title{color:#8292a7!important}
+body.pm-fluent-light #nav #pmNavSearch{background:#f4f7fc;color:#263a54;border:1px solid #d8e2ef}
+body.pm-fluent-light #nav #pmNavSearch::placeholder{color:#879ab1}
+body.pm-fluent-light .main{max-width:1650px;padding:27px clamp(16px,3vw,44px)}
+body.pm-fluent-light .top{padding:5px 0 17px;border-bottom:1px solid #e3eaf3;margin-bottom:21px}
+body.pm-fluent-light .top h1{color:#1e314e;letter-spacing:-.035em;font-weight:750}
+body.pm-fluent-light .muted,body.pm-fluent-light .sub{color:#70829a}
+body.pm-fluent-light .pill{background:#eaf0fa;color:#4a658a;border:1px solid #dce5f2}
+body.pm-fluent-light .btn{background:#4a69c8;color:#fff;border:1px solid #4a69c8;border-radius:9px;box-shadow:0 2px 6px rgba(32,73,150,.07);transition:background .16s,transform .16s}
+body.pm-fluent-light .btn:hover:not(:disabled){background:#3858ae;transform:translateY(-1px)}
+body.pm-fluent-light .btn.secondary{background:#fff;color:#355582;border:1px solid #d8e2f0;box-shadow:none}
+body.pm-fluent-light .btn.secondary:hover:not(:disabled){background:#eef4ff}
+body.pm-fluent-light .btn.danger{background:#ad4658;border-color:#ad4658;color:#fff}
+body.pm-fluent-light .card,body.pm-fluent-light .pm-weekplan,body.pm-fluent-light .pm-backup-card{background:#fff;border:1px solid #e0e7f0;border-radius:13px;box-shadow:0 4px 17px rgba(35,58,89,.045);color:#263b55}
+body.pm-fluent-light .card h3,body.pm-fluent-light .section-head h2,body.pm-fluent-light h2,body.pm-fluent-light h3{color:#233852}
+body.pm-fluent-light .item,body.pm-fluent-light .pm-weekday{background:#f7f9fd;border:1px solid #e2e9f3;border-radius:10px;color:#293f57}
+body.pm-fluent-light .item small,body.pm-fluent-light .pm-week-task small{color:#73849b}
+body.pm-fluent-light .stat span{color:#70829a}
+body.pm-fluent-light .stat strong{color:#223f68}
+body.pm-fluent-light .tag{background:#e9f0ff;color:#3c5d9c}
+body.pm-fluent-light .progress{background:#e5eaf2}
+body.pm-fluent-light .progress i{background:#6485d5}
+body.pm-fluent-light .field label{color:#566c87;font-weight:600}
+body.pm-fluent-light .field input,body.pm-fluent-light .field select,body.pm-fluent-light .field textarea,body.pm-fluent-light .toolbar input,body.pm-fluent-light .toolbar select,body.pm-fluent-light .pm-week-lunch input[type=time],body.pm-fluent-light .pm-week-lunch select{background:#fff;color:#243b58;border:1px solid #cdd9e9;border-radius:9px;color-scheme:light;box-shadow:0 1px 2px rgba(35,62,91,.03)}
+body.pm-fluent-light input::placeholder,body.pm-fluent-light textarea::placeholder{color:#91a0b3}
+body.pm-fluent-light .data th{color:#5c7190;border-bottom:1px solid #dce5ef;background:#f6f8fc}
+body.pm-fluent-light .data td{color:#2f4660;border-bottom:1px solid #e8edf5}
+body.pm-fluent-light .notice{background:#edf4fe;color:#365a85;border:1px solid #cddff4}
+body.pm-fluent-light .modal{background:#fff;color:#253c58;border-color:#d7e2ee;box-shadow:0 26px 80px rgba(19,38,71,.2)}
+body.pm-fluent-light .modal-bg{background:rgba(22,39,65,.38)}
+body.pm-fluent-light .top-chip{background:#fff;border:1px solid #dce5f0;box-shadow:none}
+body.pm-fluent-light .top-chip small{color:#70839d}
+body.pm-fluent-light .top-chip strong{color:#2f4a6c}
+body.pm-fluent-light .top-chip.red strong{color:#c34754}body.pm-fluent-light .top-chip.amber strong{color:#a96f16}body.pm-fluent-light .top-chip.green strong{color:#197d57}
+body.pm-fluent-light .pm-weekday.pm-week-today{border:2px solid #4c77d6;background:#eaf2ff;box-shadow:0 0 0 3px rgba(87,128,212,.12)}
+body.pm-fluent-light .pm-weekday.pm-week-tomorrow{background:#eff9f4;border-color:#a2dcc0}
+body.pm-fluent-light .pm-weekday.pm-week-over{border-color:#edbc8e;background:#fff5ea}
+body.pm-fluent-light .pm-weekday.pm-week-past{opacity:.74}
+body.pm-fluent-light .pm-day-overload,body.pm-fluent-light .pm-conflict-warning{background:#fff4e8;color:#875116;border-color:#edc391}
+body.pm-fluent-light .day{background:#fff;border-color:#dfe7f1;color:#314967}
+body.pm-fluent-light .day .date{color:#6b7f99}
+body.pm-fluent-light .day.head{background:transparent}
+body.pm-fluent-light .pm-update-check-row{background:#f6f8fc;color:#344964;border-color:#e2e8f1}
+body.pm-fluent-light .pm-update-check-row:has(input:checked){background:#edf9f2;border-color:#bfe4ce}
+body.pm-fluent-light .pm-update-check-row:has(input:checked) span{color:#236246}
+body.pm-fluent-light a{color:#376ab5}
+body.pm-fluent-light input[type=checkbox]{accent-color:#5878d7}
+body.pm-fluent-light .pm-nav-no-results{color:#8192a7}
+body.pm-fluent-light .mobile-nav{background:#fff;border-top:1px solid #dce5f0;box-shadow:0 -5px 18px rgba(31,56,92,.06)}
+body.pm-fluent-light .mobile-nav button{color:#425e85}
+/* Keep the existing dark palette for specialized charts and PDF previews until individually redesigned. */
+.pm-theme-toggle{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid #587092;border-radius:9px;background:#203854;color:#dfeaff;font-weight:650;font-size:12px;white-space:nowrap;cursor:pointer}
+body.pm-fluent-light .pm-theme-toggle{background:#fff;color:#385782;border-color:#d8e2f0}
+.pm-theme-toggle:hover{filter:brightness(1.07)}
+@media(max-width:650px){body.pm-fluent-light .main{padding:15px 12px 85px}body.pm-fluent-light .top{gap:9px}.pm-theme-toggle{padding:7px 9px}}
+</style><style id="pm-design-refresh-two">
+.pm2-viewbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.pm2-segment{display:inline-flex;padding:4px;border:1px solid #d6dfed;border-radius:12px;background:#eef2f9;gap:3px}.pm2-segment button{font:inherit;font-size:13px;border:0;border-radius:9px;padding:9px 15px;background:transparent;color:#47566e;cursor:pointer}.pm2-segment button.is-active{background:#fff;color:#2458a7;font-weight:750;box-shadow:0 2px 9px #183b6a1c}
+.pm2-board-intro{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:16px 0 13px}.pm2-board-intro strong{font-size:17px}.pm2-board-intro p{margin:4px 0;color:#64748b;font-size:13px}.pm2-board{display:grid;grid-template-columns:repeat(5,minmax(220px,1fr));gap:13px;overflow-x:auto;padding:3px 2px 18px;align-items:start}.pm2-column{min-width:0;background:#f1f5fb;border:1px solid #dce5f1;border-radius:15px;padding:12px;min-height:230px;transition:background .15s,border .15s}.pm2-column.pm2-drop-over{background:#deebff;border-color:#5e98e7}.pm2-column-header{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.pm2-column-header h3{font-size:13px;margin:0;color:#34465f}.pm2-count{background:#e3eaf4;color:#39506a;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700}.pm2-card-stack{display:grid;gap:9px}.pm2-taskcard{background:#fff;color:#21334b;border:1px solid #dce4ef;border-radius:12px;padding:13px;cursor:pointer;box-shadow:0 3px 11px #192c4910;display:grid;gap:8px}.pm2-taskcard:hover,.pm2-taskcard:focus-visible{border-color:#6493d3;box-shadow:0 6px 18px #2a4d8029;outline:none}.pm2-taskcard.pm2-dragging{opacity:.45}.pm2-taskcard strong{font-size:13px;line-height:1.35}.pm2-taskcard small{color:#63758e}.pm2-card-top{display:flex;align-items:center;gap:6px}.pm2-dot{width:9px;height:9px;border-radius:50%}.pm2-red{background:#d95b5b}.pm2-blue{background:#508fe9}.pm2-green{background:#3fa177}.pm2-priority{color:#68788e;font-size:11px}.pm2-taskcard footer{border-top:1px solid #edf1f7;display:flex;align-items:center;justify-content:space-between;padding-top:7px;font-size:11px;color:#64748b}.pm2-card-open{border:none;background:#eef3fc;color:#32649b;padding:3px 9px;border-radius:7px;cursor:pointer}.pm2-empty{font-size:12px;text-align:center;padding:25px 8px;color:#8794a7;border:1px dashed #ccd8e9;border-radius:10px}.pm2-board-footnote{font-size:12px;color:#788ba2;margin:0 0 20px}
+#pm2DrawerRoot:empty{display:none}.pm2-drawer-backdrop{position:fixed;inset:0;background:#12233a66;z-index:21000}.pm2-drawer{position:fixed;right:0;top:0;bottom:0;width:min(480px,100vw);box-sizing:border-box;z-index:21001;background:#fff;color:#1b2c41;box-shadow:-14px 0 48px #1329424d;display:flex;flex-direction:column;animation:pm2Slide .23s ease-out}@keyframes pm2Slide{from{transform:translateX(100%)}to{transform:translateX(0)}}.pm2-drawer-head{padding:20px 25px;border-bottom:1px solid #e3e9f3;display:flex;justify-content:space-between;align-items:center;color:#52617c;font-weight:700}.pm2-drawer-head button{border:0;background:#eef2f8;border-radius:9px;padding:8px 12px;cursor:pointer}.pm2-drawer-body{padding:26px;overflow-y:auto;flex:1}.pm2-drawer-body h2{color:#1d3554;font-size:23px;line-height:1.25;margin:15px 0}.pm2-drawer-body p{line-height:1.6;color:#4d5e77}.pm2-drawer-status{border-radius:999px;padding:6px 11px;background:#e5efff;color:#2d63ad;font-size:12px;font-weight:700}.pm2-drawer-body dl{display:grid;grid-template-columns:135px 1fr;gap:17px 12px;margin-top:28px;font-size:13px}.pm2-drawer-body dt{color:#78869b}.pm2-drawer-body dd{margin:0;font-weight:650;color:#273b56}.pm2-drawer-footer{display:flex;justify-content:flex-end;gap:8px;padding:17px 24px;border-top:1px solid #e3e9f3}.pm2-drawer-footer .btn.secondary{color:#365373}
+@media(max-width:750px){.pm2-board{grid-template-columns:repeat(5,minmax(235px,80vw))}.pm2-drawer-body{padding:20px}.pm2-drawer-body dl{grid-template-columns:110px 1fr}}
+body:not(.pm-light) .pm2-column{background:#1d304b;border-color:#3b577b}body:not(.pm-light) .pm2-column-header h3{color:#e1edfa}body:not(.pm-light) .pm2-board-intro p,body:not(.pm-light) .pm2-board-footnote{color:#abc0da}
+</style><style id="pm-petrol-palette-v21">
+/* Design 2.1 – Petrol / Schiefer / Türkis: erssetzt nur das frühere helle Thema. */
+body.pm-fluent-light{--bg:#172b3b;--panel:#243c4d;--card:#294556;--text:#e8f3f5;--muted:#b5cbd2;--line:#426071;--accent:#30b9b0;background:#172b3b;color:#e8f3f5;color-scheme:dark}
+body.pm-fluent-light .app{background:linear-gradient(145deg,#172b3b,#1b3442 65%,#203b47)}
+body.pm-fluent-light .side{background:linear-gradient(165deg,#142937,#203b48);border-right:1px solid #3e596a;box-shadow:4px 0 20px #0a172433}
+body.pm-fluent-light .brand,body.pm-fluent-light .pm-brand-title{color:#f2f9fa}
+body.pm-fluent-light .pm-brand-kicker{color:#a6c1ca}
+body.pm-fluent-light .pm-brand-badge{background:linear-gradient(145deg,#26c7b6,#137c9e);box-shadow:0 8px 20px #051c264d}
+body.pm-fluent-light .nav button{color:#bed4db}
+body.pm-fluent-light .nav button:hover{background:#315265;color:#fff;border-color:#436979}
+body.pm-fluent-light .nav button.active{background:linear-gradient(90deg,#245f69,#294859);color:#eaffff;border-color:#3b8992}
+body.pm-fluent-light .nav button.active::before{background:#40d9c5}
+body.pm-fluent-light .pm-nav-section-title{color:#98b9c6!important}
+body.pm-fluent-light #nav #pmNavSearch{background:#203b4c;color:#f1faff;border-color:#4b7180}
+body.pm-fluent-light #nav #pmNavSearch::placeholder{color:#aec7d0}
+body.pm-fluent-light .top{border-color:#456272}
+body.pm-fluent-light .top h1,body.pm-fluent-light h2,body.pm-fluent-light h3,body.pm-fluent-light .card h3,body.pm-fluent-light .section-head h2{color:#effafb}
+body.pm-fluent-light .muted,body.pm-fluent-light .sub{color:#b8cbd2}
+body.pm-fluent-light .pill{background:#315264;color:#cdece9;border-color:#4d7886}
+body.pm-fluent-light .btn{background:#128d90;color:#fff;border-color:#28aeb0;box-shadow:0 2px 8px #061b2630}
+body.pm-fluent-light .btn:hover:not(:disabled){background:#17a9a8}
+body.pm-fluent-light .btn.secondary{background:#314e60;color:#effcfc;border-color:#537787}
+body.pm-fluent-light .btn.secondary:hover:not(:disabled){background:#3c6373}
+body.pm-fluent-light .btn.danger{background:#ad4c5f;border-color:#bf6474;color:white}
+body.pm-fluent-light .card,body.pm-fluent-light .pm-weekplan,body.pm-fluent-light .pm-backup-card{background:#243d4e;color:#e9f3f5;border-color:#426373;box-shadow:0 5px 20px #0718212b}
+body.pm-fluent-light .item,body.pm-fluent-light .pm-weekday{background:#294657;color:#e5f1f4;border-color:#496b7b}
+body.pm-fluent-light .item small,body.pm-fluent-light .pm-week-task small,body.pm-fluent-light .stat span{color:#b7cbd3}
+body.pm-fluent-light .stat strong{color:#eaf7f7}
+body.pm-fluent-light .tag{background:#305d68;color:#b5f2e8}
+body.pm-fluent-light .progress{background:#3b5867}
+body.pm-fluent-light .progress i{background:#37c6b6}
+body.pm-fluent-light .field label{color:#d3e3e8}
+body.pm-fluent-light .field input,body.pm-fluent-light .field select,body.pm-fluent-light .field textarea,body.pm-fluent-light .toolbar input,body.pm-fluent-light .toolbar select,body.pm-fluent-light .pm-week-lunch input[type=time],body.pm-fluent-light .pm-week-lunch select{background:#1b3445;color:#f1fbfc;border-color:#51717f;color-scheme:dark}
+body.pm-fluent-light input::placeholder,body.pm-fluent-light textarea::placeholder{color:#a7c1cb}
+body.pm-fluent-light .data th{background:#1c3748;color:#d3e6ea;border-color:#4a6978}
+body.pm-fluent-light .data td{color:#e1eef0;border-color:#3b5b6a}
+body.pm-fluent-light .notice{background:#254c5a;color:#d2f3f3;border-color:#3d8790}
+body.pm-fluent-light .modal{background:#243e4e;color:#eaf5f6;border-color:#557585}
+body.pm-fluent-light .top-chip{background:#294858;border-color:#4b7080}
+body.pm-fluent-light .top-chip small{color:#c0d3db}
+body.pm-fluent-light .top-chip strong{color:#f0f8fa}
+body.pm-fluent-light .top-chip.red strong{color:#ff9b9e}
+body.pm-fluent-light .top-chip.amber strong{color:#f3c379}
+body.pm-fluent-light .top-chip.green strong{color:#8de3b7}
+body.pm-fluent-light .pm-weekday.pm-week-today{background:#255362;border-color:#3dd9c6;box-shadow:0 0 0 3px #28ab9b2a}
+body.pm-fluent-light .pm-weekday.pm-week-tomorrow{background:#284c4b;border-color:#56bca0}
+body.pm-fluent-light .pm-weekday.pm-week-over{background:#554635;border-color:#dcac6d}
+body.pm-fluent-light .pm-day-overload,body.pm-fluent-light .pm-conflict-warning{background:#51412f;color:#f7d2a4;border-color:#ab7b49}
+body.pm-fluent-light .day{background:#294858;color:#e8f5f6;border-color:#456879}
+body.pm-fluent-light .day .date{color:#b9d1d7}
+body.pm-fluent-light .day.head{background:transparent}
+body.pm-fluent-light .pm-update-check-row{background:#294757;color:#e0eff2;border-color:#4a6b79}
+body.pm-fluent-light .pm-update-check-row:has(input:checked){background:#24574e;border-color:#46a68d}
+body.pm-fluent-light .pm-update-check-row:has(input:checked) span{color:#c5f6de}
+body.pm-fluent-light a{color:#75ddd5}
+body.pm-fluent-light input[type=checkbox]{accent-color:#2fc6b2}
+body.pm-fluent-light .pm-nav-no-results{color:#b2c6cf}
+body.pm-fluent-light .mobile-nav{background:#1b3645;border-color:#466575}
+body.pm-fluent-light .mobile-nav button{color:#cce1e6}
+body.pm-fluent-light .pm-theme-toggle{background:#255464;color:#e9ffff;border-color:#3daab2}
+/* Planner Board and right-hand drawer follow the same theme. */
+body.pm-fluent-light .pm2-segment{background:#203b4c;border-color:#507184}
+body.pm-fluent-light .pm2-segment button{color:#c6dce2}
+body.pm-fluent-light .pm2-segment button.is-active{background:#24777c;color:#fff;box-shadow:0 2px 10px #081d2830}
+body.pm-fluent-light .pm2-board-intro p,body.pm-fluent-light .pm2-board-footnote{color:#b8cdd4}
+body.pm-fluent-light .pm2-column{background:#203c4c;border-color:#4b6c79}
+body.pm-fluent-light .pm2-column.pm2-drop-over{background:#255b60;border-color:#45dfca}
+body.pm-fluent-light .pm2-column-header h3{color:#e2f2f4}
+body.pm-fluent-light .pm2-count{background:#355766;color:#e5f5f6}
+body.pm-fluent-light .pm2-taskcard{background:#2a495a;color:#eef8f9;border-color:#517080;box-shadow:0 3px 13px #06182537}
+body.pm-fluent-light .pm2-taskcard:hover,body.pm-fluent-light .pm2-taskcard:focus-visible{border-color:#48d2c3;box-shadow:0 5px 20px #04243054}
+body.pm-fluent-light .pm2-taskcard small,body.pm-fluent-light .pm2-priority,body.pm-fluent-light .pm2-taskcard footer{color:#c5d8de}
+body.pm-fluent-light .pm2-taskcard footer{border-color:#4d6b79}
+body.pm-fluent-light .pm2-card-open{background:#2b686e;color:#e2fffb}
+body.pm-fluent-light .pm2-empty{color:#b1c8d0;border-color:#52717f}
+body.pm-fluent-light .pm2-drawer{background:#213b4b;color:#e8f4f5}
+body.pm-fluent-light .pm2-drawer-head{border-color:#4d6b79;color:#cbe1e6}
+body.pm-fluent-light .pm2-drawer-head button{background:#34586a;color:#e7f8fa}
+body.pm-fluent-light .pm2-drawer-body{color:#e4f2f4}
+body.pm-fluent-light .pm2-drawer-body strong,body.pm-fluent-light .pm2-drawer-body h2{color:#f1fbfc}
+</style><style id="pm-calendar-refresh-3">
+/* Calendar 3.0: Outlook-inspiriert, bestehende Funktionen beibehalten */
+.navo-new-calendar{--pm-cal-teal:#36c4bc}
+.navo-new-calendar .section-head{padding:14px 4px 16px;gap:16px}
+.pm-calendar-eyebrow{display:block;font-size:10px;letter-spacing:.15em;font-weight:800;color:#65d6ca;margin-bottom:7px}
+.navo-new-calendar .section-head h2{font-size:clamp(23px,2vw,30px);letter-spacing:-.035em}
+.pm-cal-toolbar{display:flex;align-items:center;gap:16px;padding:13px 16px;margin:0 0 14px;border-radius:15px;background:linear-gradient(110deg,rgba(53,105,123,.32),rgba(38,65,86,.65));border:1px solid rgba(128,188,201,.24);box-shadow:0 5px 24px rgba(8,23,38,.08)}
+.pm-cal-week-switch{display:flex;gap:7px}.pm-cal-week-switch button{min-width:37px;border-radius:9px}
+.pm-cal-week-label{display:flex;flex-direction:column;gap:3px}.pm-cal-week-label strong{font-size:15px}.pm-cal-week-label small{font-size:11px;opacity:.7}
+.pm-cal-view-pill{margin-left:auto;border-radius:9px;background:rgba(54,196,188,.16);border:1px solid rgba(74,207,195,.4);color:#b7f3ed;font-size:12px;font-weight:800;padding:8px 12px}
+.navo-new-calendar .navo-new-day{border-radius:14px;overflow:hidden;border:1px solid rgba(148,194,208,.19);box-shadow:0 4px 18px rgba(0,17,28,.07)}
+.navo-new-calendar .navo-new-day.current{border-color:rgba(62,215,199,.72);box-shadow:0 0 0 1px rgba(62,215,199,.24),0 8px 22px rgba(0,24,35,.12)}
+.navo-new-calendar .navo-new-day-header{border-bottom:1px solid rgba(127,183,197,.22)}
+.navo-new-calendar .navo-new-day.current .navo-new-day-header{background:rgba(40,170,163,.15)}
+.navo-new-calendar .navo-day-rail-event{border-radius:7px;box-shadow:0 2px 8px rgba(0,19,29,.14);transition:filter .15s,box-shadow .15s;outline-offset:2px}
+.navo-new-calendar .navo-day-rail-event:hover{filter:brightness(1.13);box-shadow:0 4px 14px rgba(0,17,28,.25)}
+.navo-new-calendar .navo-new-mini-panel,.navo-new-calendar .navo-side-day-agenda{border-radius:16px}
+.navo-new-calendar button:focus-visible,.pm-cal-drawer button:focus-visible{outline:3px solid #4bd7c7;outline-offset:2px}
+#pm-calendar-drawer-root{position:fixed;inset:0;z-index:99999;pointer-events:none}
+.pm-cal-drawer-backdrop{position:absolute;inset:0;background:rgba(4,18,31,.57);pointer-events:auto;animation:pmCalFade .16s ease-out}
+.pm-cal-drawer{position:absolute;right:0;top:0;bottom:0;width:min(440px,100vw);background:#223d4d;border-left:1px solid rgba(120,193,201,.35);color:#f3fafb;box-shadow:-15px 0 45px rgba(4,15,25,.3);padding:26px;box-sizing:border-box;display:flex;flex-direction:column;overflow:auto;pointer-events:auto;animation:pmCalSlide .18s ease-out}
+.pm-cal-drawer-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.pm-cal-drawer-kicker{color:#81dfd7;text-transform:uppercase;letter-spacing:.11em;font-size:11px;font-weight:800}
+.pm-cal-drawer-close{border:1px solid #527483;border-radius:10px;background:#345563;color:#fff;padding:9px 12px;cursor:pointer}
+.pm-cal-drawer h2{color:#fff;line-height:1.22;margin:18px 0 24px;font-size:25px;overflow-wrap:anywhere}
+.pm-cal-drawer-meta{display:grid;gap:12px}.pm-cal-drawer-meta>div,.pm-cal-drawer-desc{display:flex;flex-direction:column;gap:5px;background:#2e4c5d;border:1px solid #496d7c;border-radius:12px;padding:13px 15px}
+.pm-cal-drawer-meta span,.pm-cal-drawer-desc>span{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:#a8c8d3}.pm-cal-drawer-meta b{font-size:14px;overflow-wrap:anywhere}
+.pm-cal-drawer-desc{margin-top:14px}.pm-cal-drawer-desc p{margin:0;line-height:1.5;font-size:13px;overflow-wrap:anywhere}
+.pm-cal-drawer-bottom{margin-top:auto;display:flex;gap:9px;padding-top:30px;justify-content:flex-end;flex-wrap:wrap}
+@keyframes pmCalSlide{from{transform:translateX(24px);opacity:.6}to{transform:translateX(0);opacity:1}}@keyframes pmCalFade{from{opacity:0}to{opacity:1}}
+@media(max-width:650px){.pm-cal-toolbar{flex-wrap:wrap;padding:12px}.pm-cal-view-pill{display:none}.pm-cal-week-label strong{font-size:13px}.pm-cal-drawer{padding:20px}}
+</style><style id="pm4-checklist-style">
+.pm4-checklist{margin-top:25px;padding:18px;border:1px solid rgba(94,197,190,.32);background:rgba(13,61,74,.32);border-radius:15px;color:#e9f6f6}
+.pm4-checklist header{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:12px}
+.pm4-checklist h3{margin:0 0 4px;font-size:16px}.pm4-checklist small{color:#b7d9df;font-size:12px}.pm4-progress-percent{font-weight:800;color:#60ddd0}
+.pm4-progress-track,.pm4-mini-track{background:rgba(170,210,215,.19);border-radius:50px;overflow:hidden}
+.pm4-progress-track{height:8px;margin-bottom:15px}.pm4-progress-track span,.pm4-mini-track i{display:block;height:100%;border-radius:50px;background:linear-gradient(90deg,#23a89f,#75dfcf);transition:width .2s ease}
+.pm4-checklist-items{display:grid;gap:6px}.pm4-checklist-row{display:flex;align-items:center;gap:10px;min-height:38px;padding:7px 9px;border-radius:9px;background:rgba(180,210,223,.075);border:1px solid rgba(171,211,227,.1)}
+.pm4-checklist-row input{accent-color:#44c9b9;width:18px;height:18px;flex-shrink:0;cursor:pointer}.pm4-checklist-row span{flex:1;line-height:1.45;overflow-wrap:anywhere;font-size:13px}.pm4-checklist-row.pm4-done span{text-decoration:line-through;opacity:.62}
+.pm4-checklist-row button{background:transparent;border:0;color:#b8d8e4;cursor:pointer;font-size:22px;border-radius:7px;padding:1px 7px}.pm4-checklist-row button:hover{color:#fff;background:rgba(210,80,95,.25)}
+.pm4-add-form{display:flex;gap:8px;margin-top:13px;align-items:center}.pm4-add-form input{min-width:0;flex:1;padding:10px 12px;border-radius:9px;border:1px solid rgba(152,207,215,.4);background:#1c3746;color:#f5ffff;font:inherit;font-size:13px}.pm4-add-form input:focus{outline:2px solid rgba(89,214,206,.45)}
+.pm4-hint,.pm4-empty{font-size:11px;color:#afcdd5;margin:10px 0 0;line-height:1.45}.pm4-card-progress{display:flex;align-items:center;gap:8px;margin-top:9px;color:#b4dcd9;font-size:11px;font-weight:700}.pm4-mini-track{flex:1;height:5px}
+@media(max-width:600px){.pm4-add-form{flex-direction:column;align-items:stretch}}
+</style><style id="pm4-contrast-hotfix">
+/* Design Refresh 4.1: an explicit readable colour system for the task details.
+   Keep this consistent regardless of the app's light/petrol theme. */
+.pm2-drawer{background:#f7fafc!important;color:#203449!important}
+.pm2-drawer-head{background:#fff!important;border-bottom:1px solid #d9e4ec!important;color:#344b63!important}
+.pm2-drawer-head button{background:#edf3f8!important;color:#243e55!important;min-width:38px;min-height:38px;font-size:20px}
+.pm2-drawer-body{background:#f7fafc!important;color:#203449!important}
+.pm2-drawer-body h2,.pm2-drawer-body strong{color:#18344e!important}
+.pm2-drawer-body p{color:#53697d!important}
+.pm2-drawer-body dt{color:#5b7084!important}
+.pm2-drawer-body dd{color:#253c56!important}
+.pm2-drawer-status{background:#e1effd!important;color:#24598d!important}
+.pm2-drawer-footer{background:#fff!important;border-top:1px solid #d9e4ec!important}
+.pm2-drawer-footer .btn.secondary{background:#e7eef6!important;color:#233d58!important;border-color:#cddce9!important}
+.pm2-drawer-footer .btn:not(.secondary){background:#2469a6!important;color:#fff!important;border-color:#2469a6!important}
+.pm4-checklist{background:#e5f1f2!important;border:1px solid #a1c8cb!important;color:#163e48!important;box-shadow:0 2px 12px rgba(22,75,88,.07)}
+.pm4-checklist h3{color:#123d49!important;font-weight:800}
+.pm4-checklist small,.pm4-hint,.pm4-empty{color:#446570!important}
+.pm4-progress-percent{color:#086d72!important;font-size:16px}
+.pm4-progress-track{background:#c1d9db!important}
+.pm4-checklist-row{background:#fff!important;border:1px solid #c1d9df!important;color:#1d3b49!important}
+.pm4-checklist-row span{color:#1d3b49!important;font-weight:550}
+.pm4-checklist-row.pm4-done{background:#eaf7f2!important;border-color:#a4d2bd!important}
+.pm4-checklist-row.pm4-done span{color:#456b5a!important;opacity:1!important}
+.pm4-checklist-row input{accent-color:#087e82!important}
+.pm4-checklist-row button{color:#365669!important;background:#edf2f6!important;min-width:30px;min-height:30px}
+.pm4-checklist-row button:hover{background:#ffe6e6!important;color:#9e2936!important}
+.pm4-add-form input{background:#fff!important;color:#1a3344!important;border:1px solid #92b9c1!important;min-height:40px;box-sizing:border-box}
+.pm4-add-form input::placeholder{color:#647b8b!important;opacity:1}
+.pm4-add-form input:focus{outline:2px solid #278a9a!important;outline-offset:1px}
+.pm4-add-form .btn{background:#096a85!important;color:#fff!important;border:1px solid #096a85!important;font-weight:750;min-height:40px}
+.pm4-add-form .btn:hover{background:#064f68!important}
+.pm4-card-progress{color:#1e6f78!important}
+@media(max-width:600px){.pm4-checklist{padding:15px!important}}
+</style>
+<style id="pm-design-refresh-five">
+/* Design Refresh 5.0: einheitliche Formular- und Panel-Kontraste; keine Datenlogik geändert */
+body.pm-fluent-light .modal,
+body.pm-fluent-light .pm2-drawer{background:#f5f9fb!important;color:#173449!important;border:1px solid #bdd5dc!important;box-shadow:0 22px 65px rgba(5,24,37,.35)!important}
+body.pm-fluent-light .modal h2,
+body.pm-fluent-light .modal h3,
+body.pm-fluent-light .pm2-drawer-body h2,
+body.pm-fluent-light .pm2-drawer-body h3{color:#173449!important}
+body.pm-fluent-light .modal label,
+body.pm-fluent-light .pm2-drawer label{color:#36576a!important;font-weight:650}
+body.pm-fluent-light .modal .muted,
+body.pm-fluent-light .modal .sub,
+body.pm-fluent-light .pm2-drawer .muted,
+body.pm-fluent-light .pm2-drawer-body p{color:#4c6677!important}
+body.pm-fluent-light .modal .field input:not([type=checkbox]):not([type=radio]),
+body.pm-fluent-light .modal .field select,
+body.pm-fluent-light .modal .field textarea,
+body.pm-fluent-light .modal .toolbar input,
+body.pm-fluent-light .modal .toolbar select,
+body.pm-fluent-light .pm2-drawer input:not([type=checkbox]):not([type=radio]):not([type=hidden]),
+body.pm-fluent-light .pm2-drawer select,
+body.pm-fluent-light .pm2-drawer textarea{background:#ffffff!important;color:#193a4d!important;border:1px solid #9ebdc9!important;border-radius:10px!important;min-height:38px;box-sizing:border-box}
+body.pm-fluent-light .modal input::placeholder,
+body.pm-fluent-light .modal textarea::placeholder,
+body.pm-fluent-light .pm2-drawer input::placeholder{color:#637d8a!important;opacity:1}
+body.pm-fluent-light .modal :is(input,select,textarea):focus-visible,
+body.pm-fluent-light .pm2-drawer :is(input,select,textarea):focus-visible{outline:2px solid #078f94!important;outline-offset:2px;border-color:#078f94!important}
+body.pm-fluent-light .modal input[type=checkbox],
+body.pm-fluent-light .modal input[type=radio],
+body.pm-fluent-light .pm2-drawer input[type=checkbox],
+body.pm-fluent-light .pm2-drawer input[type=radio]{accent-color:#087f88;min-width:17px;min-height:17px}
+body.pm-fluent-light .pm2-drawer-head{background:#e9f2f5!important;border-bottom:1px solid #c7dce3!important;color:#254657!important}
+body.pm-fluent-light .pm2-drawer-head button{background:#d5e5eb!important;color:#18394d!important;border:1px solid #b1ced8!important}
+body.pm-fluent-light .pm2-drawer-foot{background:#edf4f7!important;border-top:1px solid #c7dce3!important}
+body.pm-fluent-light .pm2-drawer-body{color:#254657!important}
+body.pm-fluent-light .pm2-drawer-body strong{color:#18394d!important}
+body.pm-fluent-light .modal-actions{border-top:1px solid #d5e3e8;margin-top:16px;padding-top:14px;flex-wrap:wrap}
+body.pm-fluent-light .modal .btn.primary,
+body.pm-fluent-light .pm2-drawer .btn.primary{background:#096d85!important;color:#ffffff!important;border-color:#096d85!important}
+body.pm-fluent-light .modal .btn.secondary,
+body.pm-fluent-light .pm2-drawer .btn.secondary{background:#d9e7ed!important;color:#1a4055!important;border-color:#acc8d3!important}
+body.pm-fluent-light .modal .notice{background:#e5f1f4!important;border:1px solid #b7d3dc!important;color:#244b60!important}
+body.pm-fluent-light .modal .data th{background:#e7f0f4!important;color:#284e63!important}
+body.pm-fluent-light .modal .data td{color:#254657!important;border-color:#d2e0e6!important}
+/* Checklistenbereich bleibt wie in 4.1 kontrastreich; keine pauschale Überfärbung. */
+@media(max-width:620px){body.pm-fluent-light .modal{padding:16px!important;max-height:calc(100dvh - 20px)}body.pm-fluent-light .pm2-drawer-body{padding:18px!important}}
+</style>
+<style id="pm5-task-actions-style">
+.pm2-drawer-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pm2-drawer-footer-left,.pm2-drawer-footer-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pm2-drawer-footer .btn{white-space:nowrap;min-height:36px;padding:8px 14px;font-size:14px;border-radius:11px}
+.pm2-drawer-footer .btn.secondary{min-width:auto}
+.pm2-drawer-footer .btn[data-pm2-edit]{background:#2469a6!important;color:#fff!important;border-color:#2469a6!important}
+.pm2-drawer-footer .pm5-drawer-done{background:#087f78!important;color:#fff!important;border-color:#087f78!important}
+.pm2-drawer-footer .btn.danger{background:#fff1f0!important;color:#a5242b!important;border:1px solid #eab0b3!important}
+.pm2-drawer-footer .btn.danger:hover{background:#f9dfe0!important}
+.pm2-drawer-footer .pm5-drawer-done,.pm2-drawer-footer .btn[data-pm2-edit]{box-shadow:0 4px 14px rgba(22,45,74,.12)}
+@media(max-width:650px){.pm2-drawer-footer{align-items:stretch}.pm2-drawer-footer-left,.pm2-drawer-footer-right{width:100%}.pm2-drawer-footer-right .btn,.pm2-drawer-footer-left .btn{flex:1 1 calc(50% - 8px);justify-content:center;text-align:center}.pm2-drawer-footer-right .btn.danger{flex-basis:100%}}
+</style><style id="pm-week-appointments-v1">
+.pm-week-appointments{margin-top:12px;padding-top:11px;border-top:1px solid rgba(91,170,187,.4);display:grid;gap:7px}
+.pm-week-appointments-head{display:flex;flex-wrap:wrap;gap:5px;justify-content:space-between;align-items:baseline}
+.pm-week-appointments-head b{font-size:12px;color:#93e7e1}
+.pm-week-appointments-head small{font-size:10px;color:#bad3df}
+.pm-week-appointment{display:flex;gap:8px;align-items:center;padding:9px;border-radius:9px;border:1px solid rgba(99,181,194,.32);background:rgba(33,100,119,.28)}
+.pm-week-appointment>div{min-width:0;flex:1;display:grid;gap:3px}
+.pm-week-appointment strong{font-size:12px;color:#eefcff;overflow-wrap:anywhere}
+.pm-week-appointment small{font-size:11px;color:#c3dce6}
+.pm-week-appointment-dot{width:7px;height:7px;background:#55d9c8;border-radius:50%;flex-shrink:0}
+.pm-week-appointment button{flex-shrink:0;font-size:11px}
+body.pm-refresh-light .pm-week-appointments-head b,body.pm-light .pm-week-appointments-head b{color:#12677a}
+body.pm-refresh-light .pm-week-appointments-head small,body.pm-light .pm-week-appointments-head small{color:#41576b}
+body.pm-refresh-light .pm-week-appointment,body.pm-light .pm-week-appointment{background:#e3f2f4;border-color:#91c9ce}
+body.pm-refresh-light .pm-week-appointment strong,body.pm-light .pm-week-appointment strong{color:#183849}
+body.pm-refresh-light .pm-week-appointment small,body.pm-light .pm-week-appointment small{color:#375468}
+</style>
+<style id="pm-sidebar-collapse-v6">
+/* Desktop navigation can shrink into a compact icon rail. */
+.app > .side{transition:width .2s ease,flex-basis .2s ease,padding .2s ease;}
+.pm-sidebar-toggle{margin-left:auto;flex:0 0 32px;width:32px;height:32px;display:grid;place-items:center;border:1px solid rgba(139,186,207,.38);border-radius:9px;background:rgba(103,154,178,.13);color:#e6faff;font-size:22px;line-height:1;cursor:pointer;}
+.pm-sidebar-toggle:hover,.pm-sidebar-toggle:focus-visible{background:rgba(52,185,185,.3);border-color:#64cfcd;outline:2px solid transparent}
+.pm-sidebar-toggle:focus-visible{outline:2px solid #60d4d0;outline-offset:2px}
+@media(min-width:651px){
+ body.pm-sidebar-collapsed .app > .side{width:76px!important;flex:0 0 76px!important;flex-basis:76px!important;padding:15px 8px!important;}
+ body.pm-sidebar-collapsed .side .navo-pm-brand{display:flex;flex-direction:column;align-items:center;gap:9px;padding:0 0 12px!important;min-width:0;}
+ body.pm-sidebar-collapsed .side .pm-brand-text,body.pm-sidebar-collapsed .side .navo-sidebar-account,body.pm-sidebar-collapsed .side .navo-side-foot{display:none!important;}
+ body.pm-sidebar-collapsed .side .pm-sidebar-toggle{margin:0;transform:none;width:36px;height:30px;flex-basis:30px;}
+ body.pm-sidebar-collapsed #nav .pm-nav-section-title{height:1px;overflow:hidden;color:transparent;padding:0;margin:9px 7px;border-top:1px solid rgba(152,186,206,.22);font-size:0;}
+ body.pm-sidebar-collapsed #nav .pm-nav-filter{display:none!important;}
+ body.pm-sidebar-collapsed #nav .pm-global-launch{padding:0 0 7px!important;}
+ body.pm-sidebar-collapsed #nav .pm-global-launch [data-pm-global-open]{font-size:0!important;width:48px;height:43px;min-height:43px!important;display:flex!important;align-items:center;justify-content:center;padding:0!important;margin:auto;overflow:hidden;}
+ body.pm-sidebar-collapsed #nav .pm-global-launch [data-pm-global-open] small{display:none!important;}
+ body.pm-sidebar-collapsed #nav .pm-global-launch [data-pm-global-open]::before{content:'⌕';font-size:27px;line-height:1;color:#c5eaf1;}
+ body.pm-sidebar-collapsed #nav button[data-page]{width:50px!important;height:46px!important;min-height:46px!important;display:flex!important;align-items:center!important;justify-content:center!important;margin:2px auto!important;padding:0!important;overflow:visible!important;}
+ body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-main{padding:0!important;margin:0!important;display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;}
+ body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-title{display:flex!important;justify-content:center!important;align-items:center!important;gap:0!important;width:100%!important;}
+ body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-icon{display:grid!important;place-items:center!important;margin:0!important;width:35px!important;height:35px!important;min-width:35px!important;}
+ body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-label-wrap,body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-label,body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-count,body.pm-sidebar-collapsed #nav button[data-page] .pm-nav-badge{display:none!important;}
+ body.pm-sidebar-collapsed #nav button[data-page].active{box-shadow:inset 3px 0 #51d1cb!important;}
+}
+@media(max-width:650px){.pm-sidebar-toggle{display:none!important}}
+@media(prefers-reduced-motion:reduce){.app>.side{transition:none!important}}
+</style>
+<style id="pm-week-load-design-6-1">
+.pm-week-load{border:1px solid rgba(74,185,175,.45);border-radius:10px;padding:10px;margin:9px 0 10px;background:rgba(26,83,93,.24);color:#e6f7f7;font-size:12px;line-height:1.45}
+.pm-week-load-title{display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.pm-week-load-title strong{font-size:13px;color:#b9fff3}
+.pm-week-load-track{height:8px;background:rgba(4,26,40,.55);border-radius:99px;overflow:hidden;margin:9px 0}
+.pm-week-load-track span{height:100%;display:block;background:#45c4b1;border-radius:99px}
+.pm-week-load-track span.is-over{background:#ff947e}
+.pm-week-load-breakdown{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:5px}
+.pm-week-load-remaining{display:block;color:#a3f3d9;margin-bottom:5px}
+.pm-week-load-remaining.is-over{color:#ffc5ac}
+.pm-week-load small{display:block;font-size:10px;color:#c6dbde;margin-top:4px}
+body.pm-modern-light .pm-week-load,body[data-pm-theme="light"] .pm-week-load{background:#e2f4f3;color:#1c3c49;border-color:#8cc8c8}
+body.pm-modern-light .pm-week-load small,body[data-pm-theme="light"] .pm-week-load small{color:#365c68}
+body.pm-modern-light .pm-week-load-title strong,body[data-pm-theme="light"] .pm-week-load-title strong{color:#006e72}
+body.pm-modern-light .pm-week-load-remaining,body[data-pm-theme="light"] .pm-week-load-remaining{color:#086d59}
+</style><style id="pm-week-compact-design">
+.pm-week-display-control{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0;color:#d4e9ec;font-size:13px}
+.pm-weekplan.pm-week-compact .pm-weekdays{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;gap:10px}
+.pm-week-summary{display:none}
+.pm-weekplan.pm-week-compact .pm-week-summary{display:flex;flex-direction:column;align-items:stretch;gap:8px;width:100%;padding:14px;text-align:left;border:1px solid rgba(130,195,200,.4);background:#233e52;color:#eaf6f8;border-radius:12px;cursor:pointer;min-height:155px}
+.pm-weekplan.pm-week-compact .pm-weekday{min-width:0;display:block;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+.pm-weekplan.pm-week-compact .pm-weekday.pm-week-selected{grid-column:1/-1;order:10;display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr);align-items:stretch;gap:12px}
+.pm-weekplan.pm-week-compact .pm-weekday:not(.pm-week-selected) .pm-week-detail-content{display:none}
+.pm-weekplan.pm-week-compact .pm-week-detail-content{padding:16px;background:#233e52;border:1px solid #4c7785;border-radius:12px;min-width:0}
+.pm-weekplan.pm-week-compact .pm-week-summary:hover,.pm-weekplan.pm-week-compact .pm-week-summary:focus-visible{border-color:#70cfc7;outline:2px solid transparent;background:#315368}
+.pm-weekplan.pm-week-compact .pm-week-selected .pm-week-summary{border-color:#67d2c2;background:#345c68}
+.pm-week-summary-day{font-weight:800;display:flex;flex-wrap:wrap;gap:5px;align-items:center;justify-content:space-between}.pm-week-summary-day small{font-size:11px;color:#c4dfe5}
+.pm-week-summary-usage{font-weight:750;font-size:15px}.pm-week-summary-track{height:7px;background:#142c3b;border-radius:30px;overflow:hidden}.pm-week-summary-track i{display:block;background:#54d0c1;height:100%;border-radius:30px}
+.pm-week-summary-count{color:#d0e3e8;font-size:12px}.pm-week-summary-free{color:#8af5d9;font-weight:800;font-size:12px}.pm-week-summary-free.over{color:#ffb6a7}.pm-week-summary-chevron{font-size:12px;color:#b3d6df}
+@media(max-width:1150px){.pm-weekplan.pm-week-compact .pm-weekdays{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.pm-weekplan.pm-week-compact .pm-weekdays{grid-template-columns:repeat(2,minmax(0,1fr))}.pm-weekplan.pm-week-compact .pm-weekday.pm-week-selected{grid-template-columns:1fr}.pm-weekplan.pm-week-compact .pm-week-summary{min-height:138px}}
+@media(max-width:420px){.pm-weekplan.pm-week-compact .pm-weekdays{grid-template-columns:1fr}}
+</style><style id="pm-day-agenda-v63">
+.pm-day-agenda{margin:12px 0 18px;border:1px solid #49758a;border-radius:13px;padding:14px;background:#1d394c;color:#f1f8fa}
+.pm-day-agenda-heading{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.pm-day-agenda-heading strong{color:#f6fcfd;font-size:15px}
+.pm-day-agenda-heading small,.pm-day-agenda-info small{color:#b9d5dd}
+.pm-day-agenda-item{display:flex;align-items:center;gap:12px;padding:10px 2px;border-top:1px solid #3b6274;min-width:0}
+.pm-day-agenda-time{width:77px;flex-shrink:0;font-size:12px;font-weight:700;color:#e2f4f7;line-height:1.5}
+.pm-day-agenda-time small{color:#a8c6d0;font-weight:500}
+.pm-day-agenda-marker{width:5px;border-radius:4px;align-self:stretch;flex-shrink:0;background:#40bdac}
+.pm-day-agenda-marker.calendar{background:#8cb8fc}
+.pm-day-agenda-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pm-day-agenda-info strong{font-size:13px;color:#f6fcfd;overflow-wrap:anywhere}
+.pm-day-agenda-info small{font-size:11px;overflow-wrap:anywhere}
+.pm-day-agenda-item .btn{flex-shrink:0;color:#ecf8fa;background:#31596e;border:1px solid #618ba0}
+.pm-day-agenda-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:11px;color:#bed6de;margin-top:10px}
+.pm-day-agenda-legend span{display:flex;align-items:center;gap:6px}
+.pm-day-agenda-legend i{width:8px;height:8px;border-radius:50%;background:#40bdac}
+.pm-day-agenda-legend i.calendar{background:#8cb8fc}
+@media(max-width:600px){.pm-day-agenda-item{gap:8px}.pm-day-agenda-time{width:57px;font-size:11px}.pm-day-agenda{padding:10px}.pm-day-agenda-item .btn{padding:6px 8px}}
+</style><style id="pm-day-timeaxis-v64">
+.pm-day-timeaxis{margin:16px 0;padding:15px;border:1px solid #49697a;border-radius:14px;background:#213a4b;color:#edf7fa}
+.pm-day-timeaxis-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.pm-day-timeaxis-head strong{font-size:14px;color:#e7f7f7}.pm-day-timeaxis-head small,.pm-axis-note{color:#b8d5dd;font-size:12px}
+.pm-axis-viewport{display:grid;grid-template-columns:57px minmax(0,1fr);overflow-x:hidden}
+.pm-axis-hours,.pm-axis-canvas{position:relative;height:612px}
+.pm-axis-tick{position:absolute;left:0;right:0;height:1px;border-top:1px solid #426071;pointer-events:none}
+.pm-axis-tick span{position:absolute;left:1px;top:-8px;color:#bbd5e0;background:#213a4b;padding-right:7px;font-size:11px}
+.pm-axis-canvas{border-left:1px solid #62808d;background:repeating-linear-gradient(to bottom,transparent 0,transparent 50px,rgba(164,199,210,.2) 50px,rgba(164,199,210,.2) 51px)}
+.pm-axis-block{position:absolute;display:flex;flex-direction:column;align-items:flex-start;gap:2px;box-sizing:border-box;padding:5px 7px;overflow:hidden;border-radius:8px;border:1px solid #58c4b5;background:#235d67;color:#f2fffe;text-align:left;cursor:pointer;min-width:0;z-index:1}
+.pm-axis-block.is-event{background:#314b75;border-color:#8daee5;color:#f3f7ff}
+.pm-axis-block:hover,.pm-axis-block:focus-visible{filter:brightness(1.18);outline:2px solid #e8fffe;outline-offset:0;z-index:5}
+.pm-axis-block strong{font-size:12px;line-height:1.15;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pm-axis-block span{font-size:10px;color:#e2f5f5;white-space:nowrap}
+.pm-axis-note{display:block;margin-top:9px}
+@media(max-width:680px){.pm-day-timeaxis{padding:9px}.pm-axis-viewport{grid-template-columns:43px minmax(0,1fr)}.pm-axis-block{padding:4px}.pm-axis-block strong{font-size:10px}.pm-axis-block span{font-size:9px}}
+</style><style id="pm-note-sections-expand-css">
+.navo-note-modal .pm-note-modal-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.navo-note-modal .pm-note-modal-heading h2{margin:0}
+.navo-note-modal .pm-note-quicksections{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:10px 11px;background:#213d52;border:1px solid #57758a;border-radius:10px 10px 0 0}
+.navo-note-modal .pm-note-quicksections label{font-size:12px;font-weight:700;color:#effbff}
+.navo-note-modal .pm-note-quicksections select{flex:1;min-width:155px;max-width:310px;width:auto!important;background:#f5fafb!important;color:#17374b!important;border:1px solid #8eabbc!important;border-radius:8px;padding:9px}
+.navo-note-modal .pm-note-quicksections .btn{white-space:nowrap}
+.navo-note-modal .pm-note-rich-input h3{margin:16px 0 7px;padding:6px 10px;border-left:4px solid #19aea7;border-radius:3px;background:rgba(51,177,169,.13);font-size:1.1em}
+.navo-note-modal.pm-note-fullscreen{position:fixed!important;inset:12px!important;left:12px!important;top:12px!important;transform:none!important;width:auto!important;max-width:none!important;height:calc(100dvh - 24px)!important;max-height:none!important;overflow-y:auto!important;z-index:10000!important;padding:22px clamp(16px,3vw,42px)!important;box-sizing:border-box!important}
+.navo-note-modal.pm-note-fullscreen .pm-note-rich-input{min-height:42vh!important;max-height:none!important}
+.navo-note-modal.pm-note-fullscreen #navoNotesForm{max-width:1250px;margin:auto}
+.navo-note-modal.pm-note-fullscreen .pm-note-modal-heading{max-width:1250px;margin:0 auto 18px}
+@media(max-width:640px){.navo-note-modal.pm-note-fullscreen{inset:0!important;height:100dvh!important;padding:14px!important}.navo-note-modal .pm-note-quicksections select{max-width:none}}
+</style><style id="pm-note-template-style">
+.navo-note-modal .pm-note-template-picker{display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:11px 12px;margin:0 0 11px;border-radius:10px;border:1px solid rgba(75,170,167,.45);background:rgba(35,108,121,.19)}
+.navo-note-modal .pm-note-template-picker label{font-size:13px;font-weight:750;color:#e4f9f7;white-space:nowrap}
+.navo-note-modal .pm-note-template-picker select{flex:1;min-width:160px;max-width:320px;margin:0;padding:8px 10px;border:1px solid #587e91;border-radius:7px;background:#183249;color:#f2fbfd}
+.navo-note-modal .pm-note-template-picker select:focus{outline:2px solid #54d1c5;outline-offset:1px}
+.navo-note-modal .pm-note-rich-input h3{margin:16px 0 7px;padding-bottom:5px;border-bottom:1px solid rgba(80,174,172,.4);color:inherit}
+</style><style id="pm-note-to-task-style">.pm-note-to-task{background:#087b87!important;border-color:#0c8995!important;color:#fff!important;font-weight:700}.pm-note-to-task:hover{background:#056572!important}.navo-note-actions{flex-wrap:wrap}</style><style id="pm-note-linked-tasks-style">
+.pm-note-linked-tasks{margin:16px 0;padding:14px;border:1px solid #699caa;border-radius:12px;background:#e5f1f2;color:#173444}
+.pm-note-linked-title{font-size:14px;font-weight:800;color:#173444;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.pm-note-task-count{font-size:12px;background:#d1e9e8;border-radius:30px;padding:4px 9px;color:#135c62}
+.pm-note-linked-list{display:grid;gap:8px}
+.pm-note-linked-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:1px solid #b8d3d9;border-radius:9px;padding:10px}
+.pm-note-linked-info{display:flex;flex-wrap:wrap;align-items:center;gap:9px;min-width:0;color:#183b4d}
+.pm-note-linked-info b{overflow-wrap:anywhere}
+.pm-note-linked-status{font-size:11px;font-weight:700;border-radius:18px;padding:4px 8px;background:#e2eafb;color:#244a8a}
+.pm-note-linked-status.is-done{background:#d6f3e5;color:#166441}
+.pm-note-linked-row .btn{background:#17657d!important;color:#fff!important;border:1px solid #17657d!important}
+.pm-note-linked-empty,.pm-note-linked-hint{font-size:12px;line-height:1.5;color:#3e5e6d;margin:7px 0 0}
+</style><style id="pm69-note-actions-style">.pm-note-linked-row .btn{white-space:nowrap}.pm-note-linked-hint .pm69-refresh{margin-left:8px;vertical-align:middle}.pm-note-linked-row{gap:12px}@media(max-width:600px){.pm-note-linked-row{flex-wrap:wrap}.pm-note-linked-row .btn{width:100%}}</style><style id="pm70-pending-design">
+.pm70-pending{border-color:#6898a5;background:#e5f1f2;color:#193b48}
+.pm70-summary{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.pm70-summary span{padding:5px 9px;border:1px solid #b5d0d5;background:#fff;border-radius:999px;color:#244e5a;font-size:12px;font-weight:750}
+.pm70-summary .pm70-late{color:#9a3030;border-color:#edb7b7;background:#fff0ef}
+.pm70-row{align-items:center}
+.pm70-main{min-width:0;flex:1;display:grid;gap:7px}
+.pm70-main>b{color:#143b4a;overflow-wrap:anywhere;font-size:13px}
+.pm70-meta{display:flex;flex-wrap:wrap;gap:6px 15px;font-size:12px;align-items:center;color:#345665}
+.pm70-meta strong{color:#193b48}
+.pm70-meta .pm70-late{color:#a53636}
+.pm70-row .btn{flex-shrink:0}
+@media(max-width:680px){.pm70-row{align-items:stretch}.pm70-meta{display:grid;gap:5px}.pm70-row .btn{width:100%}}
+</style><style id="pm71-protocol-btn-style">.pm71-protocol-btn{border:1px solid rgba(70,173,162,.5)!important;background:#1a6065!important;color:#f1ffff!important}.pm71-protocol-btn:hover{background:#127b7a!important}</style><style id="pm-week-dnd-v73">
+.pm-week-dnd-help{border:1px solid #477a83;background:#203e4d;color:#d0f3ef;border-radius:10px;padding:10px 14px;font-size:12px;line-height:1.55;margin:12px 0}
+.pm-day-agenda-item[data-pm-drag-task],.pm-axis-block[data-pm-drag-task]{cursor:grab}
+.pm-day-agenda-item[data-pm-drag-task]:active,.pm-axis-block[data-pm-drag-task]:active{cursor:grabbing}
+.pm-week-dragging{opacity:.43!important}
+.pm-week-summary.pm-week-drop-hover,.pm-axis-canvas.pm-week-drop-hover{outline:3px dashed #4ee4ce!important;outline-offset:-4px;background:rgba(36,169,161,.16)!important}
+</style><style id="pm7-task-layout">
+.pm7-task-workspace,.pm7-calendar-weekplan{margin:22px 0 16px;border:1px solid rgba(92,173,174,.36);border-radius:14px;background:rgba(15,45,61,.12);overflow:hidden}
+.pm7-task-workspace>summary,.pm7-calendar-weekplan>summary{list-style:none;cursor:pointer;padding:15px 20px;font-weight:700;color:inherit;background:rgba(51,132,147,.12)}
+.pm7-task-workspace>summary::-webkit-details-marker,.pm7-calendar-weekplan>summary::-webkit-details-marker{display:none}
+.pm7-task-workspace>summary:hover,.pm7-calendar-weekplan>summary:hover{background:rgba(51,132,147,.2)}
+.pm7-task-workspace>.pm-workspace,.pm7-calendar-weekplan>.pm-weekplan{margin:12px}
+.pm7-task-workspace .pm-workspace-stage3{box-shadow:none}
+</style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
+// Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
+(function(){
+ const key='pm-manager-fluent-theme-v1';
+ let choice='light';
+ try{choice=localStorage.getItem(key)||'light'}catch(e){}
+ document.body.classList.toggle('pm-fluent-light',choice!=='dark');
+ function sync(){const b=document.getElementById('pmThemeToggle');if(!b)return;b.textContent=document.body.classList.contains('pm-fluent-light')?'☾ Dunkles Design':'☀ Helles Design';b.setAttribute('aria-pressed',String(document.body.classList.contains('pm-fluent-light')))}
+ sync();
+ document.addEventListener('click',e=>{
+  if(!e.target.closest('#pmThemeToggle'))return;
+  document.body.classList.toggle('pm-fluent-light');
+  try{localStorage.setItem(key,document.body.classList.contains('pm-fluent-light')?'light':'dark')}catch(e){}
+  sync();
+ });
+})();
+
 'use strict';
 const KEY='projectpilot-v1';const modules=[['dashboard','⌂','Dashboard'],['projects','▣','Projekte'],['tasks','☑','Aufgaben'],['calendar','▦','Terminkalender'],['meetings','♧','Projektmeetings'],['finance','◈','Finanzen'],['time','◷','Zeiterfassung'],['team','♙','Mitarbeiter'],['calculator','▧','Rechner'],['notes','✎','Notizen'],['standards','⚡','Wissensassistent'],['ai','✦','KI-Assistent']];
 modules.splice(modules.findIndex(x=>x[0]==='calculator'),0,['docs','▤','Dokumente']);modules.splice(modules.findIndex(x=>x[0]==='notes')+1,0,['archive','▣','Archiv']);modules.push(['backup','⬇','Datensicherung']);modules.splice(modules.findIndex(x=>x[0]==='meetings')+1,0,['pending','☷','Pendenzen & Entscheide']);modules.splice(modules.findIndex(x=>x[0]==='backup'),0,['history','◴','Änderungsverlauf']);modules.push(['access','⚙','Berechtigungen']);const initial=()=>({projects:[{id:'p1',name:'Website Relaunch',sector:'IT & Software',description:'Neue Firmenwebsite',status:'In Arbeit',budget:18000,start:'2026-10-01',end:'2026-12-20'},{id:'p2',name:'Büroumbau',sector:'Bauwesen',description:'Umbau der Büroräume',status:'Planung',budget:65000,start:'2026-11-01',end:'2027-02-28'}],tasks:[{id:'t1',name:'Anforderungen abstimmen',projectId:'p1',owner:'m1',due:'2026-10-18',status:'In Arbeit',priority:'Hoch'},{id:'t2',name:'Entwurf freigeben',projectId:'p1',owner:'m2',due:'2026-10-25',status:'Offen',priority:'Mittel'},{id:'t3',name:'Bestandsaufnahme',projectId:'p2',owner:'m1',due:'2026-11-05',status:'Offen',priority:'Hoch'}],expenses:[{id:'e1',projectId:'p1',name:'Designleistungen',amount:2400,date:'2026-10-08'}],members:[{id:'m1',name:'Alex Muster',role:'Projektleitung',email:'alex@beispiel.ch'},{id:'m2',name:'Sam Beispiel',role:'Design',email:'sam@beispiel.ch'}],docs:[],chat:[],timeEntries:[],interviews:[]});
@@ -3373,12 +3889,113 @@ function pmRefreshNavCounts(){
   });
  }
 }
+let pmNavigationSearch='';
+const PM_NAV_GROUPS=[
+ {title:'Mein Arbeitsalltag',items:['dashboard','tasks','calendar','notes','time']},
+ {title:'Projekte & Zusammenarbeit',items:['projects','meetings','pending','team','contacts','docs','finance']},
+ {title:'Werkzeuge & Wissen',items:['calculator','standards','ai']},
+ {title:'Nachvollziehen & Verwalten',items:['archive','history','backup','access']}
+];
+function pmNavMatch(text,needle){return text.toLocaleLowerCase('de-CH').includes(needle.toLocaleLowerCase('de-CH'))}
+function pmNavGroupMarkup(allowed,alerts){
+ const allowedMap=new Map(allowed.map(x=>[x[0],x]));
+ const query=pmNavigationSearch.trim();
+ const decorate=k=>alerts[k]?' pm-nav-has-'+alerts[k].tone:'';
+ const entry=([k,icon,name])=>`<button class="${(page===k||(page==='interview'&&k==='projects'))?'active':''}${decorate(k)}" data-page="${k}"><span class="pm-nav-main"><span class="pm-nav-title"><span class="pm-nav-icon" aria-hidden="true">${icon}</span><span class="pm-nav-label-wrap"><span class="pm-nav-label">${name}</span></span></span></span>${pmNavBadge(k,alerts)}</button>`;
+ const groups=PM_NAV_GROUPS.map(g=>({title:g.title,entries:g.items.map(key=>allowedMap.get(key)).filter(Boolean).filter(([, ,name])=>!query||pmNavMatch(name,query))})).filter(g=>g.entries.length);
+ const ungrouped=allowed.filter(([k,,name])=>!PM_NAV_GROUPS.some(g=>g.items.includes(k))&&(!query||pmNavMatch(name,query)));
+ if(ungrouped.length)groups.push({title:'Weitere Bereiche',entries:ungrouped});
+ return `<div class="pm-global-launch"><button type="button" class="btn secondary" data-pm-global-open>⌕ Überall suchen <small>Strg + K</small></button></div><div class="pm-nav-filter"><input type="search" id="pmNavSearch" placeholder="Bereich suchen ..." aria-label="Navigation durchsuchen" value="${esc(pmNavigationSearch)}"></div><div id="pmNavGroups">${groups.map(g=>`<div class="pm-nav-section"><div class="pm-nav-section-title">${esc(g.title)}</div>${g.entries.map(entry).join('')}</div>`).join('')||'<p class="pm-nav-no-results">Kein passender Bereich gefunden.</p>'}</div>`;
+}
+document.addEventListener('input',e=>{
+ if(e.target?.id!=='pmNavSearch')return;
+ pmNavigationSearch=e.target.value;
+ const target=document.getElementById('pmNavGroups');
+ if(!target)return;
+ const wrap=document.createElement('div');wrap.innerHTML=pmNavGroupMarkup(modules.filter(([key])=>navoAuthCanView(key)),pmNavAlerts());
+ target.innerHTML=wrap.querySelector('#pmNavGroups')?.innerHTML||'';
+});
+// Zentrale Suche: ausschliesslich die im aktuellen Browser vorhandenen Daten.
+function pmGlobalSearchEntries(){
+ const entries=[];
+ const add=(area,id,title,details,extra='')=>{if(id&&title)entries.push({area,id,title:String(title),details:String(details||''),extra:String(extra||'')})};
+ if(navoAuthCanView('projects'))(state.projects||[]).forEach(p=>add('projects',p.id,p.name,'Projekt',p.description));
+ if(navoAuthCanView('tasks'))(state.tasks||[]).forEach(t=>add('tasks',t.id,t.name,'Aufgabe · '+(t.status||'Offen')+' · '+(t.projectId?proj(t.projectId):'Ohne Projekt'),t.description));
+ if(navoAuthCanView('notes'))pmActiveNotes().forEach(n=>add('notes',n.id,n.title,'Notiz',n.content));
+ if(navoAuthCanView('contacts'))(state.contacts||[]).forEach(c=>add('contacts',c.id,c.company||c.person,'Kontakt · '+(c.person||c.company||''),[c.company,c.person,c.role,c.email,c.notes].join(' ')));
+ if(navoAuthCanView('meetings'))(state.meetings||[]).forEach(m=>add('meetings',m.id,m.title||m.name,'Besprechung · '+(m.date||''),m.agenda||m.description));
+ return entries;
+}
+function pmGlobalSearchResults(query){
+ const terms=String(query||'').trim().toLocaleLowerCase('de-CH').split(/\s+/).filter(Boolean);
+ if(!terms.length)return '<p class="muted sub">Gib einen Suchbegriff ein, beispielsweise Projektname, Aufgabenname oder Kontakt.</p>';
+ const hits=pmGlobalSearchEntries().map(x=>({...x,hay:[x.title,x.details,x.extra].join(' ').toLocaleLowerCase('de-CH')})).filter(x=>terms.every(t=>x.hay.includes(t)));
+ const labels={projects:'Projekt',tasks:'Aufgabe',notes:'Notiz',contacts:'Kontakt',meetings:'Besprechung'};
+ return `<p class="muted sub">${hits.length} Treffer${hits.length>60?' · erste 60 angezeigt':''}</p>${hits.slice(0,60).map(x=>`<button type="button" class="pm-global-hit" data-pm-global-area="${x.area}" data-pm-global-id="${esc(x.id)}"><span><b>${esc(x.title)}</b><small>${esc(x.details)}</small></span><em>${labels[x.area]}</em></button>`).join('')||'<p class="muted sub">Keine passenden Einträge gefunden.</p>'}`;
+}
+function pmOpenQuickCapture(){
+ if(!navoAuthUser)return;
+ const options=[['task','Aufgabe','Spontanen Auftrag oder eigene Aufgabe erfassen','tasks'],['note','Notiz','Information oder Gesprächsnotiz festhalten','notes'],['pending','Pendenz','Offene Rückmeldung oder Verpflichtung erfassen','pending']].filter(x=>navoAuthCanEdit(x[3]));
+ if(!options.length){navoAuthForbidden();return}
+ document.getElementById('modalRoot').innerHTML=`<div class="modal-bg pm-quick-bg"><div class="modal pm-quick-dialog" role="dialog" aria-modal="true" aria-label="Schnellerfassung"><div class="pm-quick-top"><h2>Schnell erfassen</h2><button type="button" class="btn small secondary" data-pm-quick-close>Schliessen</button></div><p class="muted sub">Was möchtest du aufnehmen? Du kannst Details und Projektzuordnung später ergänzen.</p><div class="pm-quick-options">${options.map(([kind,title,help])=>`<button type="button" class="pm-quick-option" data-pm-quick-kind="${kind}"><b>${title}</b><small>${help}</small></button>`).join('')}</div></div></div>`;
+ document.querySelector('[data-pm-quick-kind]')?.focus();
+}
+document.addEventListener('click',e=>{
+ if(e.target.closest('[data-pm-quick-open]')){e.preventDefault();pmOpenQuickCapture();return}
+ if(e.target.closest('[data-pm-quick-close]')){e.preventDefault();document.getElementById('modalRoot').innerHTML='';return}
+ const button=e.target.closest('[data-pm-quick-kind]');if(!button)return;
+ e.preventDefault();const kind=button.dataset.pmQuickKind;
+ const permission={task:'tasks',note:'notes',pending:'pending'}[kind];
+ if(!permission||!navoAuthCanEdit(permission)){navoAuthForbidden();return}
+ document.getElementById('modalRoot').innerHTML='';
+ if(kind==='task'){
+  const template=document.createElement('div');template.innerHTML=pmWorkspacePanel();
+  const form=template.querySelector('#pmQuickTaskForm');
+  if(!form){go('tasks');modal('task');return}
+  document.getElementById('modalRoot').innerHTML=`<div class="modal-bg pm-quick-bg"><div class="modal pm-quick-dialog pm-quick-task-dialog" role="dialog" aria-modal="true" aria-label="Aufgabe schnell erfassen"><div class="pm-quick-top"><h2>Neue Aufgabe</h2><button type="button" class="btn small secondary" data-pm-quick-close>Schliessen</button></div><div id="pmQuickFormSlot"></div></div></div>`;
+  document.getElementById('pmQuickFormSlot').appendChild(form);
+  form.querySelector('input[name="name"]')?.focus();
+ }else if(kind==='note')navoNoteEditor(null);
+ else pmPendingModal(null,'Pendenz');
+});
+document.addEventListener('keydown',e=>{
+ if((e.ctrlKey||e.metaKey)&&e.shiftKey&&e.key.toLowerCase()==='n'){
+  e.preventDefault();pmOpenQuickCapture();
+ }
+});
+function pmOpenGlobalSearch(){
+ if(!navoAuthUser)return;
+ $('#modalRoot').innerHTML=`<div class="modal-bg pm-global-bg"><div class="modal pm-global-modal" role="dialog" aria-modal="true" aria-label="Globale Suche"><div class="pm-global-head"><h2>Überall suchen</h2><button type="button" class="btn small secondary" data-pm-global-close>Schliessen</button></div><input type="search" id="pmGlobalQuery" aria-label="Einträge durchsuchen" autocomplete="off" placeholder="Projekte, Aufgaben, Notizen, Kontakte …"><div class="pm-global-results" id="pmGlobalResults" role="region" aria-live="polite">${pmGlobalSearchResults('')}</div><p class="muted sub">Nur lokal gespeicherte, für dich sichtbare Daten werden durchsucht.</p></div></div>`;
+ document.getElementById('pmGlobalQuery')?.focus();
+}
+document.addEventListener('keydown',e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k') {e.preventDefault();pmOpenGlobalSearch()}
+ if(e.key==='Escape'&&document.querySelector('.pm-global-bg')){$('#modalRoot').innerHTML=''}
+});
+document.addEventListener('input',e=>{
+ if(e.target?.id!=='pmGlobalQuery')return;
+ document.getElementById('pmGlobalResults').innerHTML=pmGlobalSearchResults(e.target.value);
+});
+document.addEventListener('click',e=>{
+ if(e.target.closest('[data-pm-global-open]')){pmOpenGlobalSearch();return}
+ if(e.target.closest('[data-pm-global-close]')){$('#modalRoot').innerHTML='';return}
+ const btn=e.target.closest('[data-pm-global-area]');if(!btn)return;
+ const area=btn.dataset.pmGlobalArea,id=btn.dataset.pmGlobalId;
+ if(!navoAuthCanView(area)){navoAuthForbidden();return}
+ const kinds={projects:['project','projects'],tasks:['task','tasks']};
+ const found=kinds[area]?state[kinds[area][1]]?.find(x=>x.id===id):null;
+ $('#modalRoot').innerHTML='';
+ if(found){go(area);if(navoAuthCanEdit(area))modal(kinds[area][0],found);return}
+ if(area==='notes'){const n=pmActiveNotes().find(x=>x.id===id);go('notes');if(n){navoNotesSearch='';render();const card=[...document.querySelectorAll('.navo-note-card')].find(el=>el.querySelector(`[data-note-edit="${CSS.escape(id)}"]`));if(card){card.open=true;card.scrollIntoView({block:'center'})}}return}
+ if(area==='contacts'){const c=state.contacts.find(x=>x.id===id);contactSearch='';contactProjectFilter='';go('contacts');if(c){const card=[...document.querySelectorAll('.navo-contact-card')].find(el=>el.querySelector(`[data-contact-action="edit"][data-id="${CSS.escape(id)}"]`));card?.scrollIntoView({block:'center'});if(navoAuthCanEdit('contacts'))contactModal(c)}return}
+ if(area==='meetings'){go('meetings');const m=state.meetings.find(x=>x.id===id);if(m&&navoAuthCanEdit('meetings'))meetingModal(m)}
+});
 function nav(){
  navoSidebarAccount();
  const allowed=modules.filter(([key])=>navoAuthCanView(key));
  const alerts=pmNavAlerts();
  const decorate=k=>alerts[k]?' pm-nav-has-'+alerts[k].tone:'';
- $('#nav').innerHTML=allowed.map(([k,icon,name])=>`<button class="${(page===k||(page==='interview'&&k==='projects'))?'active':''}${decorate(k)}" data-page="${k}"><span class="pm-nav-main"><span class="pm-nav-title"><span class="pm-nav-icon" aria-hidden="true">${icon}</span><span class="pm-nav-label-wrap"><span class="pm-nav-label">${name}</span></span></span></span>${pmNavBadge(k,alerts)}</button>`).join('');
+ $('#nav').innerHTML=pmNavGroupMarkup(allowed,alerts);
  $('#mobileNav').innerHTML=allowed.slice(0,4).map(([k,icon,name])=>`<button class="${decorate(k).trim()}" data-page="${k}">${icon}<br>${name}${pmNavBadge(k,alerts)}</button>`).join('')+`<button data-more="1">☰<br>Mehr</button>`;
 }
 setInterval(pmRefreshNavCounts,60000);
@@ -3635,6 +4252,37 @@ function pmNoteInitToolbar(){
  const capture=()=>{const sel=window.getSelection();if(sel?.rangeCount&&edit.contains(sel.anchorNode))storedRange=sel.getRangeAt(0).cloneRange()};
  const restore=()=>{edit.focus();if(!storedRange)return;const sel=window.getSelection();sel.removeAllRanges();try{sel.addRange(storedRange)}catch{}}
  edit.addEventListener('mouseup',capture);edit.addEventListener('keyup',capture);edit.addEventListener('blur',capture);
+ const templateSelect=document.getElementById('pmNoteTemplatePreset');
+ const templates={
+  meeting:[['Allgemein','Datum / Ort / Thema:'],['Teilnehmende','Teilnehmende und Entschuldigte:'],['Aktuelles / Neu','Neue Informationen:'],['Traktanden / Themen','Besprochene Punkte:'],['Beschlüsse','Was wurde entschieden?'],['Pendenzen','Wer macht was bis wann?'],['Nächste Schritte','Nächster Termin / nächste Schritte:']],
+  quick:[['Anlass','Datum / Gesprächspartner:'],['Besprochen','Wichtigste Informationen:'],['Entscheide','Vereinbarungen:'],['Pendenzen','Wer / was / bis wann:']],
+  pending:[['Offene Pendenzen','Offener Punkt / zuständig / Termin:'],['Warte auf Rückmeldung','Von wem / seit wann:'],['Erledigt / Rückmeldungen','Abgeschlossene Punkte:']]
+ };
+ templateSelect?.addEventListener('change',()=>{
+  const key=templateSelect.value;templateSelect.value='';if(!templates[key])return;
+  const existing=edit.innerText.trim();
+  if(existing&&!confirm('Die Vorlage wird unter dem bestehenden Notiztext angefügt. Möchtest du fortfahren?'))return;
+  const html=templates[key].map(([head,hint])=>'<h3>'+head+'</h3><p>'+hint+'</p>').join('');
+  // Eine bestehende Notiz bleibt unverändert; die Vorlage wird nur ergänzt.
+  edit.insertAdjacentHTML('beforeend',(existing?'<hr>':'')+html);
+  edit.focus();
+  const selection=window.getSelection(),range=document.createRange();range.selectNodeContents(edit);range.collapse(false);selection.removeAllRanges();selection.addRange(range);
+  capture();
+ });
+ const preset=document.getElementById('pmNoteSectionPreset');
+ function insertSection(title){
+  if(!title)return;
+  restore();
+  const safeTitle=title.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+  document.execCommand('insertHTML',false,`<h3>${safeTitle}</h3><p><br></p>`);
+  edit.focus();capture();
+ }
+ preset?.addEventListener('pointerdown',capture);
+ preset?.addEventListener('change',()=>{const title=preset.value;preset.value='';insertSection(title)});
+ document.getElementById('pmNoteCustomSection')?.addEventListener('mousedown',e=>e.preventDefault());
+ document.getElementById('pmNoteCustomSection')?.addEventListener('click',()=>{
+  capture();const title=prompt('Titel für neuen Abschnitt:');if(title?.trim())insertSection(title.trim().slice(0,100));
+ });
  edit.addEventListener('paste',e=>{e.preventDefault();const plain=e.clipboardData?.getData('text/plain')||'';document.execCommand('insertText',false,plain)});
  bar.addEventListener('mousedown',e=>{if(e.target.closest('button'))e.preventDefault()});
  bar.addEventListener('click',e=>{
@@ -3688,7 +4336,7 @@ function navoNoteEditor(record,projectId='',taskId=''){
  const taskOpts=state.tasks.filter(t=>!projectChosen||!t.projectId||t.projectId===projectChosen);
  const projects=[['','Kein Projekt'],...state.projects.map(p=>[p.id,p.name])];
  const tasks=[['','Kein Aufgabe'],...taskOpts.map(t=>[t.id,t.name+(t.projectId?' · '+(state.projects.find(p=>p.id===t.projectId)?.name||'Projekt'):' · Einzelaufgabe')])];
- $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal navo-note-modal" role="dialog" aria-modal="true" aria-label="Notiz erfassen"><h2>${record?'Notiz bearbeiten':'Neue Notiz'}</h2><form id="navoNotesForm"><div class="field"><label for="navoNoteTitle">Titel *</label><input id="navoNoteTitle" name="title" required maxlength="160" placeholder="z. B. Besprechung Baustelle" value="${esc(current.title||'')}"></div><div class="field"><label for="navoNoteContentRich">Notiz *</label><div class="pm-note-editor-wrap"><div class="pm-note-rich-toolbar" id="pm-note-rich-toolbar" role="toolbar" aria-label="Notiztext formatieren"><button type="button" data-note-format="bold" title="Fett (Strg+B)"><b>F</b></button><button type="button" data-note-format="italic" title="Kursiv"><i>K</i></button><button type="button" data-note-format="underline" title="Unterstreichen"><u>U</u></button><button type="button" data-note-format="heading" title="Unterüberschrift">Überschrift</button><button type="button" data-note-format="bullets" title="Aufzählung">• Liste</button><button type="button" data-note-format="numbers" title="Nummerierte Liste">1. Liste</button><button type="button" data-note-format="indent" title="Unterpunkt einrücken">↳ Einrücken</button><button type="button" data-note-format="outdent" title="Einzug verringern">↰ Zurück</button><button type="button" data-note-format="checklist" title="Checkliste einfügen">☐ Checkliste</button><label title="Schriftfarbe"><span>Textfarbe</span><input type="color" data-note-color="text" value="#e9eef9" aria-label="Textfarbe wählen"></label><label title="Text farbig markieren"><span>Markieren</span><input type="color" data-note-color="highlight" value="#fff16b" aria-label="Markierungsfarbe wählen"></label><button type="button" data-note-format="clear" title="Formatierung entfernen">Format löschen</button></div><div id="navoNoteContentRich" class="pm-note-rich-input" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Notiztext" data-placeholder="Informationen, Beschlüsse, offene Punkte …">${pmNoteEditorHtml(current)}</div></div><small class="muted sub">Listen, Unterpunkte und Checklisten wie in Word einfügen. Checkboxen beim Bearbeiten anklicken und anschliessend die Notiz speichern.</small></div><div class="field"><label for="navoNoteDue">Fälligkeitsdatum (optional – erscheint im Terminkalender)</label><input id="navoNoteDue" name="due" type="date" value="${esc(current.due||'')}"><small class="muted sub">Ohne Datum bleibt die Notiz nur unter «Notizen» sichtbar.</small></div><div class="field"><label for="navoNoteDueTime">Fälligkeitszeit (optional, 24-Stunden-Format)</label><input id="navoNoteDueTime" name="dueTime" type="time" step="60" value="${esc(current.dueTime||'')}"><small class="muted sub">Ohne Uhrzeit ist die Notiz ab Beginn des Fälligkeitstages fällig.</small></div><div class="formgrid"><div class="field"><label for="navoNoteProject">Projekt zuordnen (optional)</label><select id="navoNoteProject" name="projectId">${opt(projects,projectChosen)}</select></div><div class="field"><label for="navoNoteTask">Aufgabe zuordnen (optional)</label><select id="navoNoteTask" name="taskId">${opt(tasks,taskChosen)}</select></div></div>${pmNoteParticipantPicker(current)}<p class="muted sub">Notizen können ohne Verknüpfung, nur mit einem Projekt, nur mit einem Aufgabe oder mit beiden gespeichert werden.</p><div class="modal-actions">${record?`<button type="button" class="btn secondary" data-note-pdf="${esc(record.id)}" title="Gespeicherte Notiz als PDF ausgeben">PDF erstellen</button>`:''}<button type="button" class="btn secondary" data-note-close>Abbrechen</button><button type="submit" class="btn">Notiz speichern</button></div></form></div></div>`;
+ $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal navo-note-modal" role="dialog" aria-modal="true" aria-label="Notiz erfassen"><div class="pm-note-modal-heading"><h2>${record?'Notiz bearbeiten':'Neue Notiz'}</h2><button type="button" id="pmNoteExpand" class="btn secondary small" aria-pressed="false" title="Notizeditor vergrössern">⛶ Grossansicht</button></div><form id="navoNotesForm"><div class="field"><label for="navoNoteTitle">Titel *</label><input id="navoNoteTitle" name="title" required maxlength="160" placeholder="z. B. Besprechung Baustelle" value="${esc(current.title||'')}"></div><div class="field"><label for="navoNoteContentRich">Notiz *</label><div class="pm-note-editor-wrap"><div class="pm-note-template-picker"><label for="pmNoteTemplatePreset">Notizvorlage</label><select id="pmNoteTemplatePreset" aria-label="Komplette Notizvorlage einfügen"><option value="">Vorlage auswählen …</option><option value="meeting">Sitzungsprotokoll</option><option value="quick">Kurzbesprechung</option><option value="pending">Pendenzenliste</option></select></div><div class="pm-note-quicksections"><label for="pmNoteSectionPreset">Abschnitt einfügen</label><select id="pmNoteSectionPreset" aria-label="Vorbereitete Überschrift in Notiz einfügen"><option value="">Überschrift wählen …</option><option>Allgemein</option><option>Aktuelles / Neu</option><option>Pendenzen</option><option>Entscheide</option><option>Beschlüsse</option><option>Nächste Schritte</option><option>Offene Fragen</option><option>Termine</option><option>Verantwortlichkeiten</option><option>Informationen</option></select><button type="button" id="pmNoteCustomSection" class="btn secondary small">+ Eigene Überschrift</button></div><div class="pm-note-rich-toolbar" id="pm-note-rich-toolbar" role="toolbar" aria-label="Notiztext formatieren"><button type="button" data-note-format="bold" title="Fett (Strg+B)"><b>F</b></button><button type="button" data-note-format="italic" title="Kursiv"><i>K</i></button><button type="button" data-note-format="underline" title="Unterstreichen"><u>U</u></button><button type="button" data-note-format="heading" title="Unterüberschrift">Überschrift</button><button type="button" data-note-format="bullets" title="Aufzählung">• Liste</button><button type="button" data-note-format="numbers" title="Nummerierte Liste">1. Liste</button><button type="button" data-note-format="indent" title="Unterpunkt einrücken">↳ Einrücken</button><button type="button" data-note-format="outdent" title="Einzug verringern">↰ Zurück</button><button type="button" data-note-format="checklist" title="Checkliste einfügen">☐ Checkliste</button><label title="Schriftfarbe"><span>Textfarbe</span><input type="color" data-note-color="text" value="#e9eef9" aria-label="Textfarbe wählen"></label><label title="Text farbig markieren"><span>Markieren</span><input type="color" data-note-color="highlight" value="#fff16b" aria-label="Markierungsfarbe wählen"></label><button type="button" data-note-format="clear" title="Formatierung entfernen">Format löschen</button></div><div id="navoNoteContentRich" class="pm-note-rich-input" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Notiztext" data-placeholder="Informationen, Beschlüsse, offene Punkte …">${pmNoteEditorHtml(current)}</div></div><small class="muted sub">Listen, Unterpunkte und Checklisten wie in Word einfügen. Checkboxen beim Bearbeiten anklicken und anschliessend die Notiz speichern.</small></div><div class="field"><label for="navoNoteDue">Fälligkeitsdatum (optional – erscheint im Terminkalender)</label><input id="navoNoteDue" name="due" type="date" value="${esc(current.due||'')}"><small class="muted sub">Ohne Datum bleibt die Notiz nur unter «Notizen» sichtbar.</small></div><div class="field"><label for="navoNoteDueTime">Fälligkeitszeit (optional, 24-Stunden-Format)</label><input id="navoNoteDueTime" name="dueTime" type="time" step="60" value="${esc(current.dueTime||'')}"><small class="muted sub">Ohne Uhrzeit ist die Notiz ab Beginn des Fälligkeitstages fällig.</small></div><div class="formgrid"><div class="field"><label for="navoNoteProject">Projekt zuordnen (optional)</label><select id="navoNoteProject" name="projectId">${opt(projects,projectChosen)}</select></div><div class="field"><label for="navoNoteTask">Aufgabe zuordnen (optional)</label><select id="navoNoteTask" name="taskId">${opt(tasks,taskChosen)}</select></div></div>${pmNoteParticipantPicker(current)}<p class="muted sub">Notizen können ohne Verknüpfung, nur mit einem Projekt, nur mit einem Aufgabe oder mit beiden gespeichert werden.</p><div class="modal-actions">${record?`<button type="button" class="btn secondary" data-note-pdf="${esc(record.id)}" title="Gespeicherte Notiz als PDF ausgeben">PDF erstellen</button><button type="button" class="btn secondary" data-pm-protocol-pdf="${esc(record.id)}" title="Gespeichertes Sitzungsprotokoll inklusive Pendenzen drucken">Sitzungsprotokoll PDF</button>`:''}<button type="button" class="btn secondary" data-note-close>Abbrechen</button><button type="submit" class="btn">Notiz speichern</button></div></form></div></div>`;
  $('#navoNotesForm').addEventListener('submit',e=>{
   e.preventDefault();const f=e.currentTarget;
   const title=f.elements.title.value.trim(),contentEl=document.getElementById('navoNoteContentRich');
@@ -3714,8 +4362,58 @@ function navoNoteEditor(record,projectId='',taskId=''){
   if(t?.projectId)$('#navoNoteProject').value=t.projectId;
  });
  pmNoteInitToolbar();
+ const expandBtn=document.getElementById('pmNoteExpand');
+ expandBtn?.addEventListener('click',()=>{
+  const modal=expandBtn.closest('.navo-note-modal');const expanded=modal.classList.toggle('pm-note-fullscreen');
+  expandBtn.setAttribute('aria-pressed',String(expanded));
+  expandBtn.textContent=expanded?'↙ Normalansicht':'⛶ Grossansicht';
+ });
  $('#navoNoteTitle')?.focus();
 }
+/* Design Refresh 6.8: Verknüpfte Aufgaben werden rein lesend über die
+   Notiz-ID aus dem bestehenden Aufgabenbeschreibungstext ermittelt. */
+function pmNoteLinkedTasks(note){
+ const needle='(Notiz-ID: '+String(note.id)+')';
+ return navoAuthCanView('tasks')?(state.tasks||[]).filter(t=>String(t.description||'').includes(needle)):[];
+}
+function pmNoteTaskStatus(task){
+ if(task.archivedAt||task.completedAt||task.done===true||['Erledigt','Abgeschlossen','Archiviert'].includes(task.status))return 'Erledigt';
+ return task.status||'Offen';
+}
+function pmNoteLinkedTasksMarkup(note){
+ const links=pmNoteLinkedTasks(note);
+ if(!links.length)return `<section class="pm-note-linked-tasks" data-pm-note-link-section="${esc(note.id)}"><div class="pm-note-linked-title">☑ Übernommene Aufgaben <span class="pm-note-task-count">0</span></div><p class="pm-note-linked-empty">Noch keine Aufgabe mit dieser Notiz verknüpft. Markiere einen Pendenzpunkt und nutze «Pendenz → Aufgabe».</p></section>`;
+ const finished=links.filter(t=>pmNoteTaskStatus(t)==='Erledigt').length;
+ const today=new Date();const localDay=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+ const open=links.length-finished;
+ const overdue=links.filter(t=>pmNoteTaskStatus(t)!=='Erledigt'&&t.due&&t.due<localDay).length;
+ const summary=`<div class="pm70-summary"><span>${links.length} Pendenz${links.length===1?'':'en'}</span><span>${open} offen</span><span>${finished} erledigt</span>${overdue?`<span class="pm70-late">${overdue} überfällig</span>`:''}</div>`;
+ const rows=links.map(t=>{
+  const status=pmNoteTaskStatus(t),done=status==='Erledigt';
+  const responsibleIds=Array.isArray(t.owners)?t.owners:Array.isArray(t.assignees)?t.assignees:[];
+  const assigned=responsibleIds.length?responsibleIds.map(member).join(', '):(t.owner?member(t.owner):(t.memberId?member(t.memberId):'Nicht zugewiesen'));
+  const date=t.due?formatSwissDate(t.due):'Kein Termin';
+  const late=!done&&t.due&&t.due<localDay;
+  return `<div class="pm-note-linked-row pm70-row"><div class="pm70-main"><b>${esc(t.name||t.title||'Unbenannte Aufgabe')}</b><div class="pm70-meta"><span><strong>Zuständig:</strong> ${esc(assigned)}</span><span class="${late?'pm70-late':''}"><strong>Fällig:</strong> ${esc(date)}${late?' · überfällig':''}</span><span class="pm-note-linked-status ${done?'is-done':''}">${esc(status)}</span></div></div><button type="button" class="btn small secondary" data-pm-note-linked-open="${esc(t.id)}" aria-label="Aufgabe ${esc(t.name||t.title||'')} öffnen">Aufgabe öffnen</button></div>`;
+ }).join('');
+ return `<section class="pm-note-linked-tasks pm70-pending" data-pm-note-link-section="${esc(note.id)}"><div class="pm-note-linked-title">☑ Pendenzen aus dieser Notiz <span class="pm-note-task-count">${finished}/${links.length} erledigt</span></div>${summary}<div class="pm-note-linked-list">${rows}</div><p class="pm-note-linked-hint">Zuständigkeit, Fälligkeit und Status stammen aus den verknüpften Aufgaben. Änderungen bitte über «Aufgabe öffnen» vornehmen. <button type="button" class="btn small secondary pm69-refresh" data-pm-note-linked-refresh="${esc(note.id)}">↻ Status aktualisieren</button></p></section>`;
+}
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-note-linked-open]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(!navoAuthCanView('tasks')){navoAuthForbidden();return}
+ const task=(state.tasks||[]).find(t=>String(t.id)===btn.dataset.pmNoteLinkedOpen);
+ if(!task){alert('Diese Aufgabe ist nicht mehr vorhanden.');return}
+ pm2ShowTask(task.id);
+},true);
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-note-linked-refresh]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ const note=(state.notes||[]).find(n=>String(n.id)===btn.dataset.pmNoteLinkedRefresh);
+ if(!note)return;
+ const section=Array.from(document.querySelectorAll('[data-pm-note-link-section]')).find(el=>el.dataset.pmNoteLinkSection===String(note.id));
+ if(section)section.outerHTML=pmNoteLinkedTasksMarkup(note);
+},true);
 function notes(){
  const active=pmActiveNotes();const total=active.length,projectsCount=active.filter(n=>n.projectId).length,taskCount=active.filter(n=>n.taskId).length,free=active.filter(n=>!n.projectId&&!n.taskId).length;
  const filtered=active.filter(n=>{
@@ -3728,7 +4426,7 @@ function notes(){
  return `<div class="section-head"><div><h2>Notizen</h2><p class="muted sub">Gedanken, Sitzungsnotizen und Projektinformationen zentral erfassen und verknüpfen.</p></div><button type="button" class="btn" data-note-add="1">+ Notiz erfassen</button></div>
  <div class="navo-notes-metrics"><div class="card"><small>Notizen gesamt</small><strong>${total}</strong></div><div class="card"><small>Mit Projekt</small><strong>${projectsCount}</strong></div><div class="card"><small>Mit Aufgabe</small><strong>${taskCount}</strong></div><div class="card"><small>Ohne Zuordnung</small><strong>${free}</strong></div></div>
  <section class="card navo-notes-browser"><div class="navo-notes-toolbar"><div class="field"><label for="navoNotesSearch">Notizen durchsuchen</label><input id="navoNotesSearch" placeholder="Titel, Text, Projekt, Aufgabe …" value="${esc(navoNotesSearch)}"></div><div class="field"><label for="navoNotesFilter">Anzeigen</label><select id="navoNotesFilter">${opt([['all','Alle Notizen'],['project','Mit Projektverknüpfung'],['task','Mit Aufgabenverknüpfung'],['free','Ohne Zuordnung']],navoNotesFilter)}</select></div></div>
- <div class="navo-notes-exportbar"><span>${filtered.length} ${filtered.length===1?'Notiz':'Notizen'} in dieser Ansicht</span><button type="button" class="btn small secondary" data-notes-pdf-list="1" ${filtered.length?'':'disabled'}>🖨 Ansicht als PDF</button></div><div class="navo-notes-list">${filtered.map(n=>{const {p,t}=navoNoteSafeLink(n);return `<details class="navo-note-card"><summary><span class="navo-note-title"><b>${esc(n.title)}</b><small>${esc(n.content.slice(0,140))}</small></span><span class="navo-note-date">${n.due?`Fällig: ${esc(pmNoteDueLabel(n))} · `:``}${esc(navoNoteDate(n.updatedAt))}</span><span class="navo-note-caret">⌄</span></summary><div class="navo-note-details"><div class="navo-note-content pm-note-formatted">${pmNoteDisplay(n)}</div><div class="navo-note-tags">${p?`<span>▣ ${esc(p.name)}</span>`:''}${t?`<span>☑ ${esc(t.name)}</span>`:''}${!p&&!t?'<span>Ohne Zuordnung</span>':''}${pmNoteParticipantsMarkup(n)}</div><div class="navo-note-actions"><button class="btn small" type="button" data-note-pdf="${esc(n.id)}">🖨 PDF erstellen</button><button class="btn small secondary" type="button" data-note-edit="${esc(n.id)}">Bearbeiten</button><button class="btn small" type="button" data-note-ack="${esc(n.id)}" title="Notiz quittieren und archivieren">✓ Quittieren</button><button class="btn small secondary" type="button" data-note-archive="${esc(n.id)}">📦 Ins Archiv</button><button class="btn small danger" type="button" data-note-delete="${esc(n.id)}">Löschen</button>${p?`<button class="btn small secondary" type="button" data-note-goto="projects">Zum Projekt →</button>`:''}${t?`<button class="btn small secondary" type="button" data-note-goto="tasks">Zu den Aufgaben →</button>`:''}</div></div></details>`}).join('')||'<div class="navo-notes-empty">Keine aktiven Notizen vorhanden. Archivierte Notizen findest du im Reiter «Archiv». Über «+ Notiz erfassen» kannst du eine neue Notiz anlegen.</div>'}</div></section>`;
+ <div class="navo-notes-exportbar"><span>${filtered.length} ${filtered.length===1?'Notiz':'Notizen'} in dieser Ansicht</span><button type="button" class="btn small secondary" data-notes-pdf-list="1" ${filtered.length?'':'disabled'}>🖨 Ansicht als PDF</button></div><div class="navo-notes-list">${filtered.map(n=>{const {p,t}=navoNoteSafeLink(n);return `<details class="navo-note-card"><summary><span class="navo-note-title"><b>${esc(n.title)}</b><small>${esc(n.content.slice(0,140))}</small></span><span class="navo-note-date">${n.due?`Fällig: ${esc(pmNoteDueLabel(n))} · `:``}${esc(navoNoteDate(n.updatedAt))}</span><span class="navo-note-caret">⌄</span></summary><div class="navo-note-details"><div class="navo-note-content pm-note-formatted">${pmNoteDisplay(n)}</div><div class="navo-note-tags">${p?`<span>▣ ${esc(p.name)}</span>`:''}${t?`<span>☑ ${esc(t.name)}</span>`:''}${!p&&!t?'<span>Ohne Zuordnung</span>':''}${pmNoteParticipantsMarkup(n)}</div>${pmNoteLinkedTasksMarkup(n)}<div class="navo-note-actions"><button class="btn small" type="button" data-note-pdf="${esc(n.id)}">🖨 PDF erstellen</button><button class="btn small secondary pm71-protocol-btn" type="button" data-pm-protocol-pdf="${esc(n.id)}" title="Sitzungsprotokoll mit verknüpften Pendenzen drucken">▤ Sitzungsprotokoll PDF</button><button class="btn small pm-note-to-task" type="button" data-pm-note-to-task="${esc(n.id)}" title="Markierten Notiztext als Aufgabe übernehmen">＋ Pendenz → Aufgabe</button><button class="btn small secondary" type="button" data-note-edit="${esc(n.id)}">Bearbeiten</button><button class="btn small" type="button" data-note-ack="${esc(n.id)}" title="Notiz quittieren und archivieren">✓ Quittieren</button><button class="btn small secondary" type="button" data-note-archive="${esc(n.id)}">📦 Ins Archiv</button><button class="btn small danger" type="button" data-note-delete="${esc(n.id)}">Löschen</button>${p?`<button class="btn small secondary" type="button" data-note-goto="projects">Zum Projekt →</button>`:''}${t?`<button class="btn small secondary" type="button" data-note-goto="tasks">Zu den Aufgaben →</button>`:''}</div></div></details>`}).join('')||'<div class="navo-notes-empty">Keine aktiven Notizen vorhanden. Archivierte Notizen findest du im Reiter «Archiv». Über «+ Notiz erfassen» kannst du eine neue Notiz anlegen.</div>'}</div></section>`;
 }
 /* Druckfertige PDF-Ausgabe für einzelne oder gefilterte Notizen.
    Verwendet ausschliesslich lokal gespeicherte Daten und den Browserdruck. */
@@ -3741,6 +4439,37 @@ function pmPrintableNotes(){
   return true;
  }).sort((a,b)=>(b.updatedAt||'').localeCompare(a.updatedAt||''));
 }
+/* Design Refresh 7.1: Druckbares Sitzungsprotokoll aus bestehender Notiz und ihren Aufgaben.
+   Es werden keine Daten gespeichert oder verändert. */
+function pm71ProtocolPrint(noteId){
+ if(!navoAuthCanView('notes')){navoAuthForbidden();return}
+ const note=(navoNotesData||[]).find(n=>String(n.id)===String(noteId));
+ if(!note){alert('Die Notiz wurde nicht gefunden.');return}
+ const taskAccess=navoAuthCanView('tasks');
+ const linked=taskAccess?pmNoteLinkedTasks(note):[];
+ const {p}=navoNoteSafeLink(note);
+ const participants=pmNoteParticipantNames(note);
+ const date=new Date().toLocaleString('de-CH',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+ const counts=linked.reduce((a,t)=>{a[pmNoteTaskStatus(t)==='Erledigt'?'done':'open']++;return a},{open:0,done:0});
+ const rows=linked.map((t,i)=>{
+  const ownerIds=Array.isArray(t.owners)?t.owners:Array.isArray(t.assignees)?t.assignees:[];
+  const owner=ownerIds.length?ownerIds.map(member).join(', '):t.owner?member(t.owner):t.memberId?member(t.memberId):'Nicht zugewiesen';
+  const status=pmNoteTaskStatus(t);
+  return `<tr><td>${i+1}</td><td>${esc(t.name||t.title||'Unbenannte Aufgabe')}</td><td>${esc(owner)}</td><td>${esc(t.due?formatSwissDate(t.due):'–')}</td><td>${esc(status)}</td></tr>`;
+ }).join('');
+ const project=p?.name||'Ohne Projektzuordnung';
+ const text=pmNoteDisplay(note)||'<p>Keine Notiz erfasst.</p>';
+ const title=esc(note.title||'Sitzungsprotokoll');
+ const html=`<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} – Sitzungsprotokoll</title><style>
+ *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;color:#163340;background:#edf3f5;margin:0;font-size:12px;line-height:1.5}.bar{background:#173747;color:white;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px}.bar button{background:#0c817c;border:0;color:white;border-radius:7px;padding:11px 15px;font-weight:bold;cursor:pointer}.paper{background:white;max-width:210mm;margin:22px auto;padding:20mm 17mm;min-height:297mm;box-shadow:0 7px 35px #09233325}.brand{font-weight:800;color:#0c736d;letter-spacing:.08em;font-size:11px}.head{border-bottom:3px solid #13a59d;padding-bottom:14px;margin-bottom:18px}.head h1{font-size:23px;margin:9px 0 2px;overflow-wrap:anywhere}.muted{color:#607582}.meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#eef5f5;padding:13px;border-radius:8px;margin:14px 0 22px}.meta b{display:block;color:#254656}.part{margin:22px 0}.part h2{font-size:15px;color:#0b6f70;border-bottom:1px solid #c7dddd;padding-bottom:6px}.content{overflow-wrap:anywhere;line-height:1.65;white-space:normal}.content img{max-width:100%}.content li{margin-bottom:4px}.content input{accent-color:#0c817c}table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:10px}th,td{padding:8px 6px;border:1px solid #ccdadd;vertical-align:top;text-align:left;overflow-wrap:anywhere}th{background:#dceeed;color:#174651}th:first-child{width:6%}th:nth-child(2){width:37%}th:nth-child(3){width:25%}th:nth-child(4){width:16%}th:nth-child(5){width:16%}tr{break-inside:avoid}.stats{font-size:11px;color:#486b70;margin-bottom:10px}.note{font-size:10px;color:#667983}.foot{margin-top:24px;border-top:1px solid #cbdadb;padding-top:10px;color:#667983;font-size:10px}@page{size:A4;margin:16mm}@media print{body{background:white}.bar{display:none}.paper{margin:0;padding:0;max-width:none;min-height:0;box-shadow:none}html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}@media(max-width:600px){.paper{margin:0;padding:14px;min-height:0}.meta{grid-template-columns:1fr}}
+ </style></head><body><div class="bar"><strong>Sitzungsprotokoll – Druckansicht</strong><button type="button" onclick="window.print()">Drucken / Als PDF speichern</button></div><main class="paper"><header class="head"><div class="brand">PM MANAGER · SITZUNGSPROTOKOLL</div><h1>${title}</h1><span class="muted">Erstellt für den Ausdruck am ${esc(date)}</span></header><div class="meta"><div><b>Projekt</b>${esc(project)}</div><div><b>Notiz erstellt</b>${esc(navoNoteDate(note.createdAt))}</div><div><b>Teilnehmende intern</b>${esc(participants.internal.join(', ')||'–')}</div><div><b>Externe Kontakte</b>${esc(participants.external.join(', ')||'–')}</div><div><b>Letzte Bearbeitung</b>${esc(navoNoteDate(note.updatedAt))}</div><div><b>Fälligkeit der Notiz</b>${esc(note.due?formatSwissDate(note.due):'–')}</div></div><section class="part"><h2>Protokoll / Besprochene Themen</h2><div class="content">${text}</div></section><section class="part"><h2>Pendenzen und Verantwortlichkeiten</h2>${!taskAccess?'<p class="note">Keine Aufgabenberechtigung: Pendenzen können nicht angezeigt werden.</p>':`<p class="stats">${linked.length} verknüpfte Pendenzen · ${counts.open} offen · ${counts.done} erledigt</p>${linked.length?`<table><thead><tr><th>Nr.</th><th>Pendenz</th><th>Verantwortlich</th><th>Fällig</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<p class="note">Keine über die Notiz-ID verknüpften Aufgaben vorhanden.</p>'}`}</section><footer class="foot">Stand: ${esc(date)} · Die Statusangaben entsprechen dem Speicherstand zum Zeitpunkt des Drucks. Kein Ersatz für eine formelle Freigabe oder Unterschrift.</footer></main></body></html>`;
+ const win=window.open('','_blank');if(!win){alert('Bitte Pop-ups erlauben, um das Sitzungsprotokoll zu drucken.');return}
+ win.document.open();win.document.write(html);win.document.close();win.focus();
+}
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-protocol-pdf]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();pm71ProtocolPrint(btn.dataset.pmProtocolPdf);
+},true);
 function pmNotesPdfPrint(noteIds,collection=false){
  const notes=noteIds.map(noteId=>navoNotesData.find(n=>n.id===noteId)).filter(Boolean);
  if(!notes.length){alert('Keine Notizen für den PDF-Export vorhanden.');return}
@@ -3773,6 +4502,25 @@ document.addEventListener('submit',e=>{
  note.acknowledgedAt=stamp;note.acknowledgedBy=navoBriefName();
  note.archivedAt=stamp;note.archivedBy=note.acknowledgedBy;
  navoNotesSave();document.getElementById('modalRoot').innerHTML='';render();
+},true);
+/* Design Refresh 6.7: markierten Notizpunkt in bestehendes Aufgabenformular übernehmen.
+   Kein automatisches Speichern, keine Änderung am Notizinhalt. */
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-note-to-task]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+ const note=navoNotesData.find(n=>String(n.id)===String(btn.dataset.pmNoteToTask));
+ if(!note||note.archivedAt){alert('Diese Notiz ist nicht mehr aktiv.');return}
+ const content=btn.closest('.navo-note-details')?.querySelector('.navo-note-content');
+ const selection=window.getSelection();let selected='';
+ if(selection&&selection.rangeCount&&content&&content.contains(selection.getRangeAt(0).commonAncestorContainer))selected=selection.toString().trim();
+ const title=prompt('Welchen Pendenzpunkt möchtest du als Aufgabe übernehmen?\nTipp: Text in der Notiz zuerst markieren, dann auf «Pendenz → Aufgabe» klicken.',selected||'');
+ if(title===null)return;
+ const clean=title.replace(/\s+/g,' ').trim();
+ if(!clean){alert('Bitte eine Aufgabenbezeichnung angeben.');return}
+ const noteLink='Übernommen aus Notiz: '+(note.title||'Ohne Titel')+' (Notiz-ID: '+note.id+')';
+ const prefill={name:clean.slice(0,180),description:noteLink,projectId:note.projectId||'',due:note.due||'',pmOrigin:'eigen',status:'Offen'};
+ modal('task',null,null,prefill);
 },true);
 document.addEventListener('click',e=>{
  const pdf=e.target.closest('[data-note-pdf]');if(pdf){e.preventDefault();pmNotesPdfPrint([pdf.dataset.notePdf]);return}
@@ -3869,6 +4617,37 @@ function pmBackupLast(){try{return JSON.parse(localStorage.getItem(PM_BACKUP_MET
 function pmBackupAgeDays(){const last=pmBackupLast();if(!last?.at)return Infinity;return (Date.now()-Date.parse(last.at))/86400000}
 function pmBackupBanner(){const days=pmBackupAgeDays();if(days<7)return '';return `<div class="pm-backup-hint" role="status">⚠ ${Number.isFinite(days)?'Dein letzter Backup-Download wurde vor '+Math.floor(days)+' Tagen gestartet.':'Für diesen Browser ist noch kein Backup-Download vermerkt.'} <button class="btn small secondary" type="button" data-backup-go>Jetzt sichern →</button></div>`}
 function pmBackupInfo(){const last=pmBackupLast();return last?.at?'Letzter Backup-Download gestartet: '+pmBackupDate(last.at):'Noch kein Backup-Download vermerkt.'}
+const PM_UPDATE_CHECKLIST_KEY='pm-manager-update-checklist-v1';
+const PM_UPDATE_CHECKS=[
+ ['backup','Aktuelle Datensicherung heruntergeladen und Datei auf dem Computer kontrolliert'],
+ ['backupTest','Backup-Datei mit «Datei prüfen» und dem Wiederherstellungstest kontrolliert'],
+ ['health','Systemcheck ohne kritische Fehler durchgeführt'],
+ ['html','Neue HTML-Version zuerst lokal mit Testdaten geprüft'],
+ ['features','Wichtige Funktionen (Projekte, Aufgaben, Notizen, Kalender, Zeiterfassung, PDFs) getestet'],
+ ['github','Neue index.html im richtigen GitHub-Repository veröffentlicht'],
+ ['reload','Online-Version neu geladen und neue Funktionen überprüft'],
+ ['data','Online-Daten nach dem Update stichprobenweise kontrolliert']
+];
+function pmUpdateChecklistState(){try{return JSON.parse(localStorage.getItem(PM_UPDATE_CHECKLIST_KEY)||'{}')}catch{return {}}}
+function pmUpdateChecklistHtml(){
+ const record=pmUpdateChecklistState(),checked=PM_UPDATE_CHECKS.filter(([key])=>record[key]).length;
+ return `<section class="pm-backup-card pm-update-checklist"><div class="pm-update-check-head"><h3>☑ Backup- & Update-Checkliste</h3><strong>${checked} / ${PM_UPDATE_CHECKS.length} erledigt</strong></div><p>Vor und nach jedem GitHub-Update abhaken. Die Häkchen sind persönliche Bestätigungen und kein automatischer Funktionstest. Sie werden nur in diesem Browser gespeichert.</p><div class="pm-update-check-rows">${PM_UPDATE_CHECKS.map(([key,label],i)=>`<label class="pm-update-check-row"><input type="checkbox" data-pm-update-check="${key}" ${record[key]?'checked':''}><span><b>${i+1}.</b> ${esc(label)}</span></label>`).join('')}</div><div class="pm-update-check-actions"><button type="button" class="btn small secondary" data-pm-update-reset>Checkliste für nächstes Update zurücksetzen</button><span class="pm-update-check-status">${checked===PM_UPDATE_CHECKS.length?'Alle Punkte bestätigt.':'Noch '+(PM_UPDATE_CHECKS.length-checked)+' Schritt(e) offen.'}</span></div><p><b>Wichtig:</b> Backup-Dateien nie ins öffentliche GitHub-Repository hochladen. Die Checkliste ersetzt keine echte Wiederherstellungsprobe in einem getrennten Browserprofil.</p></section>`;
+}
+document.addEventListener('change',e=>{
+ const box=e.target.closest('[data-pm-update-check]');if(!box)return;
+ const key=box.dataset.pmUpdateCheck;
+ if(!PM_UPDATE_CHECKS.some(([k])=>k===key))return;
+ const record=pmUpdateChecklistState();record[key]=box.checked;
+ localStorage.setItem(PM_UPDATE_CHECKLIST_KEY,JSON.stringify(record));
+ const container=document.querySelector('.pm-update-checklist');
+ if(container)container.outerHTML=pmUpdateChecklistHtml();
+},true);
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-update-reset]');if(!btn)return;
+ if(!confirm('Alle Häkchen für das nächste Update zurücksetzen? Deine Projekte und Backups bleiben unverändert.'))return;
+ localStorage.removeItem(PM_UPDATE_CHECKLIST_KEY);
+ const container=document.querySelector('.pm-update-checklist');if(container)container.outerHTML=pmUpdateChecklistHtml();
+},true);
 function pmBackupPage(){
  if(navoAuthUser?.role!=='admin')return '<div class="card">Nur Administratoren dürfen Sicherungen verwalten.</div>';
  const tasks=(state.tasks||[]).length,projects=(state.projects||[]).length,notes=Array.isArray(navoNotesData)?navoNotesData.length:0;
@@ -3876,14 +4655,50 @@ function pmBackupPage(){
  <div class="pm-backup-intro"><div class="pm-backup-logo">⇩</div><div><h2>Datensicherung & Wiederherstellung</h2><p>Sichere deinen gesamten lokalen Arbeitsstand als Datei auf deinem Computer. Das Backup umfasst Projekte, Aufgaben, Termine, Benutzerkonten, Notizen und die gespeicherten Fachunterlagen des Wissensassistenten.</p></div></div>
  <div class="pm-backup-metrics"><div class="pm-backup-metric"><small>Projekte</small><strong>${projects}</strong></div><div class="pm-backup-metric"><small>Aufgaben</small><strong>${tasks}</strong></div><div class="pm-backup-metric"><small>Notizen</small><strong>${notes}</strong></div></div>
  ${pmBackupBanner()}
+ ${pmUpdateChecklistHtml()}
+ <section class="pm-backup-card pm-health-panel"><h3>✓ Systemcheck (nur lesend)</h3><p>Prüft Projekt- und Aufgabenverknüpfungen, doppelte Kennungen, Dokumentenablage und den verfügbaren Browser-Speicher. Es werden keine Daten verändert.</p><button class="btn secondary" type="button" data-pm-health-check>Systemcheck starten</button><div id="pm-health-results" class="pm-health-results" role="status" aria-live="polite">Noch nicht geprüft.</div></section>
  <div class="pm-backup-grid">
  <section class="pm-backup-card"><h3>⬇ Sicherung erstellen</h3><p>Alle lokalen App-Daten sowie die Fachunterlagen werden in einer JSON-Sicherungsdatei zusammengefasst. Bewahre diese Datei an einem geschützten Ort auf.</p><button class="btn" type="button" data-backup-export>Backup herunterladen</button><div class="pm-backup-status" id="pm-backup-export-status">${esc(pmBackupInfo())}</div></section>
- <section class="pm-backup-card"><h3>↺ Backup prüfen und wiederherstellen</h3><p>Wähle eine zuvor erstellte PM-Manager-Sicherung. Die Datei wird zuerst auf Format, Pflichtdaten und Integrität geprüft. Danach kannst du die Wiederherstellung bestätigen.</p><input class="pm-backup-file" id="pm-backup-file" type="file" accept=".json,application/json"><div id="pm-backup-preview" class="pm-backup-preview" hidden></div><div class="pm-backup-actions"><button class="btn secondary" type="button" data-backup-check>Datei prüfen</button><button class="btn danger" type="button" data-backup-restore disabled>Geprüftes Backup wiederherstellen</button></div><div class="pm-backup-status" id="pm-backup-import-status">Noch keine Sicherung ausgewählt.</div></section>
+ <section class="pm-backup-card"><h3>↺ Backup prüfen und wiederherstellen</h3><p>Wähle eine zuvor erstellte PM-Manager-Sicherung. Die Datei wird zuerst auf Format, Pflichtdaten und Integrität geprüft. Danach kannst du die Wiederherstellung bestätigen.</p><input class="pm-backup-file" id="pm-backup-file" type="file" accept=".json,application/json"><div id="pm-backup-preview" class="pm-backup-preview" hidden></div><div class="pm-backup-actions"><button class="btn secondary" type="button" data-backup-check>Datei prüfen</button><button class="btn secondary" type="button" data-backup-rehearse disabled>Wiederherstellung testen (ohne Import)</button><button class="btn danger" type="button" data-backup-restore disabled>Geprüftes Backup wiederherstellen</button></div><div class="pm-backup-status" id="pm-backup-import-status">Noch keine Sicherung ausgewählt.</div><pre class="pm-backup-preview" id="pm-backup-rehearsal" hidden style="white-space:pre-wrap;max-height:360px;overflow:auto"></pre></section>
  </div>
  <div class="pm-backup-hint"><b>Wichtige Hinweise:</b> Bei einer Wiederherstellung werden die lokalen Daten dieser App im aktuellen Browser ersetzt. Dazu gehören auch die Benutzerkonten. Sichere deshalb zuerst den jetzigen Stand. Die Backup-Datei kann vertrauliche Informationen und Passwort-Hashes enthalten – nicht ungeschützt per E-Mail versenden. Ein ausgelöster Download bestätigt noch nicht, dass die Datei tatsächlich auf einem sicheren Datenträger abgelegt wurde.</div>
  </div>`;
 }
 function pmBackupStatus(which,msg,tone=''){const el=document.getElementById(which==='export'?'pm-backup-export-status':'pm-backup-import-status');if(el){el.className='pm-backup-status '+tone;el.textContent=msg}}
+async function pmRunHealthCheck(){
+ const target=document.getElementById('pm-health-results');if(!target)return;
+ target.textContent='Prüfung läuft …';
+ const issues=[],details=[];
+ const collections=[['Projekte',state.projects],['Aufgaben',state.tasks],['Mitarbeiter',state.members],['Termine',state.meetings],['Zeitbuchungen',state.timeEntries],['Entscheide',state.pendingRecords]];
+ for(const [name,records] of collections){
+  if(!Array.isArray(records)){issues.push(name+': Datenliste fehlt.');continue}
+  const ids=new Set();let duplicates=0;
+  for(const r of records){if(!r||typeof r.id!=='string'||!r.id){issues.push(name+': Eintrag ohne gültige ID.');continue}if(ids.has(r.id))duplicates++;ids.add(r.id)}
+  if(duplicates)issues.push(name+': '+duplicates+' doppelte Kennung(en).');
+  details.push(name+': '+records.length);
+ }
+ const projects=new Set((state.projects||[]).map(x=>x.id));
+ const tasks=new Set((state.tasks||[]).map(x=>x.id));
+ let missingProjects=0,missingDependencies=0,missingTimeTasks=0;
+ for(const x of [...(state.tasks||[]),...(state.timeEntries||[]),...(state.pendingRecords||[]),...(state.meetings||[])])if(x?.projectId&&!projects.has(x.projectId))missingProjects++;
+ for(const t of state.tasks||[])if(t?.pmBlockedBy&&!tasks.has(t.pmBlockedBy))missingDependencies++;
+ for(const e of state.timeEntries||[])if(e?.taskId&&!tasks.has(e.taskId))missingTimeTasks++;
+ if(missingProjects)issues.push(missingProjects+' Einträge verweisen auf nicht mehr vorhandene Projekte.');
+ if(missingDependencies)issues.push(missingDependencies+' Aufgaben haben eine nicht mehr vorhandene Voraussetzung.');
+ if(missingTimeTasks)issues.push(missingTimeTasks+' Zeitbuchungen verweisen auf nicht mehr vorhandene Aufgaben.');
+ try{
+  const docs=await pmBackupGetDocs();details.push('Dokumente: '+docs.length);
+  const docIds=new Set(docs.map(d=>d.id));const missing=(state.pendingRecords||[]).filter(r=>r.signedDocId&&!docIds.has(r.signedDocId)).length;
+  if(missing)issues.push(missing+' signierte Freigabe-PDF(s) fehlen im Dokumentenspeicher.');
+ }catch(err){issues.push('Dokumentenspeicher konnte nicht gelesen werden: '+err.message)}
+ try{
+  if(navigator.storage?.estimate){const q=await navigator.storage.estimate();
+   if(q.quota){const pct=Math.round(100*(q.usage||0)/q.quota);details.push('Browser-Speicher: ca. '+pct+' % belegt');if(pct>=85)issues.push('Wenig freier Browser-Speicher (ca. '+pct+' % belegt).')}}
+ }catch(err){details.push('Speicherbelegung nicht verfügbar.')} 
+ const lines=[issues.length?'⚠ '+issues.length+' Hinweis(e) gefunden. Bitte vor einem Update prüfen.':'✓ Keine Auffälligkeiten in den geprüften Verknüpfungen.',...details, ...issues.map(x=>'⚠ '+x),'Dieser Check ist keine vollständige Daten- oder Wiederherstellungsprüfung. Bitte weiterhin Backups exportieren und mit Testdaten prüfen.'];
+ target.textContent=lines.join('\n');target.classList.toggle('has-issues',!!issues.length);
+}
+document.addEventListener('click',e=>{const btn=e.target.closest('[data-pm-health-check]');if(!btn)return;e.preventDefault();pmRunHealthCheck()},true);
 function pmBackupPayload(){
  const local={};for(const key of PM_BACKUP_KEYS){const value=localStorage.getItem(key);if(value!==null)local[key]=value}
  if(typeof state!=='undefined')local[KEY]=JSON.stringify(state);
@@ -3923,7 +4738,7 @@ function pmBackupVerifyShape(p){
  return {projects:proj.projects.length,tasks:proj.tasks.length,notes:JSON.parse(p.local[NAVO_NOTES_KEY]||'[]').length,accounts:accounts.length,docs:p.docs.length};
 }
 async function pmBackupCheck(){
- pmBackupPending=null;const restore=document.querySelector('[data-backup-restore]');if(restore)restore.disabled=true;
+ pmBackupPending=null;const restore=document.querySelector('[data-backup-restore]');if(restore)restore.disabled=true;const rehearse=document.querySelector('[data-backup-rehearse]');if(rehearse)rehearse.disabled=true;const report=document.getElementById('pm-backup-rehearsal');if(report)report.hidden=true;
  const f=document.getElementById('pm-backup-file')?.files?.[0],preview=document.getElementById('pm-backup-preview');if(preview)preview.hidden=true;
  if(!f)return pmBackupStatus('import','Bitte zuerst eine Sicherungsdatei auswählen.','warn');
  if(f.size>80*1024*1024)return pmBackupStatus('import','Datei zu gross (max. 80 MB). Bitte wende dich für sehr grosse Datensicherungen an die Administration.','bad');
@@ -3933,9 +4748,56 @@ async function pmBackupCheck(){
   if(p.sha256){const digest=await pmBackupHash(pmBackupStableData(p.local,p.docs));if(!digest)throw new Error('Die SHA-256-Prüfung ist in diesem Browserkontext nicht verfügbar. Bitte die App über einen sicheren Ursprung öffnen.');if(digest!==p.sha256)throw new Error('Prüfsumme stimmt nicht überein: Datei möglicherweise beschädigt oder verändert.')}else{pmBackupStatus('import','Diese Sicherung enthält keine Prüfsumme und kann nicht vollständig auf Integrität geprüft werden.','warn');return}
   pmBackupPending={file:f,payload:p,counts};
   if(preview){preview.hidden=false;preview.innerHTML=`<strong>✓ Datei geprüft</strong>\nErstellt am: ${esc(pmBackupDate(p.createdAt))}\nProjekte: ${counts.projects} · Aufgaben: ${counts.tasks} · Notizen: ${counts.notes}\nBenutzerkonten: ${counts.accounts} · Fachunterlagen: ${counts.docs}\nPrüfsumme: korrekt`}
-  if(restore)restore.disabled=false;
+  if(restore)restore.disabled=false;const rehearse=document.querySelector('[data-backup-rehearse]');if(rehearse)rehearse.disabled=false;
   pmBackupStatus('import','Sicherungsdatei ist strukturell gültig und die Prüfsumme stimmt. Die Wiederherstellung ersetzt die aktuellen lokalen Daten.','good');
  }catch(e){pmBackupStatus('import','Prüfung fehlgeschlagen: '+e.message,'bad')}
+}
+// Nur lesender Probelauf: prueft die aus dem Backup rekonstruierbaren
+// Datensaetze und Referenzen. Beruehrt weder localStorage noch IndexedDB.
+async function pmBackupRehearse(){
+ const target=document.getElementById('pm-backup-rehearsal');
+ if(!target)return;
+ target.hidden=false;target.textContent='Wiederherstellungstest läuft …';
+ if(!pmBackupPending){target.textContent='Bitte zuerst mit «Datei prüfen» die Sicherung verifizieren.';return}
+ const {payload:p,file}=pmBackupPending;
+ if(document.getElementById('pm-backup-file')?.files?.[0]!==file){target.textContent='Die ausgewählte Datei hat sich geändert. Bitte erneut prüfen.';return}
+ try{
+  const counts=pmBackupVerifyShape(p),digest=await pmBackupHash(pmBackupStableData(p.local,p.docs));
+  if(!p.sha256||digest!==p.sha256)throw new Error('SHA-256-Prüfsumme stimmt nicht mehr.');
+  // Nachstellen der JSON-Rueckkonvertierung in eigenstaendige Speicherobjekte.
+  const copy=JSON.parse(JSON.stringify(p));
+  const local={};for(const [key,value] of Object.entries(copy.local))local[key]=JSON.parse(value);
+  const data=local[KEY],notes=local[NAVO_NOTES_KEY]||[];
+  const errors=[],warnings=[],lines=[];
+  const groups=[['Projekte',data.projects],['Aufgaben',data.tasks],['Mitarbeiter',data.members],['Termine',data.meetings],['Zeiterfassung',data.timeEntries],['Entscheide',data.pendingRecords]];
+  for(const [name,arr] of groups){
+   if(!Array.isArray(arr)){warnings.push(name+': Liste nicht vorhanden.');continue}
+   const ids=new Set();let duplicates=0,empty=0;
+   for(const x of arr){if(!x||typeof x.id!=='string'||!x.id){empty++;continue}if(ids.has(x.id))duplicates++;ids.add(x.id)}
+   lines.push(name+': '+arr.length);
+   if(duplicates||empty)errors.push(name+': '+duplicates+' doppelte und '+empty+' fehlende Kennungen.');
+  }
+  lines.push('Notizen: '+notes.length,'Benutzerkonten: '+counts.accounts,'Dokumente: '+copy.docs.length);
+  const projects=new Set((data.projects||[]).map(x=>x.id)),tasks=new Set((data.tasks||[]).map(x=>x.id));
+  let missingProjects=0,missingDeps=0,missingTimeTasks=0,missingDocs=0,invalidChunks=0;
+  for(const x of [...(data.tasks||[]),...(data.timeEntries||[]),...(data.pendingRecords||[]),...(data.meetings||[])])if(x?.projectId&&!projects.has(x.projectId))missingProjects++;
+  for(const x of data.tasks||[])if(x?.pmBlockedBy&&!tasks.has(x.pmBlockedBy))missingDeps++;
+  for(const x of data.timeEntries||[])if(x?.taskId&&!tasks.has(x.taskId))missingTimeTasks++;
+  const docs=new Set(copy.docs.map(x=>x.id));for(const x of data.pendingRecords||[])if(x?.signedDocId&&!docs.has(x.signedDocId))missingDocs++;
+  for(const doc of copy.docs)if(!Array.isArray(doc.chunks)||doc.chunks.some(c=>typeof c!=='string'&&!Array.isArray(c)&&!(c&&typeof c==='object')))invalidChunks++;
+  if(missingProjects)warnings.push(missingProjects+' Verknüpfungen zu nicht vorhandenen Projekten.');
+  if(missingDeps)warnings.push(missingDeps+' Abhängigkeiten zu nicht vorhandenen Aufgaben.');
+  if(missingTimeTasks)warnings.push(missingTimeTasks+' Zeitbuchungen mit fehlender Aufgabe.');
+  if(missingDocs)warnings.push(missingDocs+' Freigaben mit fehlendem signiertem Dokument.');
+  if(invalidChunks)errors.push(invalidChunks+' Dokumente mit unlesbarer Chunk-Struktur.');
+  const linesTop=['WIEDERHERSTELLUNGSTEST – OHNE DATENÄNDERUNG','Sicherungsdatum: '+pmBackupDate(p.createdAt),'Integrität (SHA-256): korrekt','',...lines,''];
+  if(errors.length)linesTop.push('KRITISCHE BEFUNDE:',...errors.map(x=>'✖ '+x),'');
+  if(warnings.length)linesTop.push('HINWEISE:',...warnings.map(x=>'⚠ '+x),'');
+  if(!errors.length&&!warnings.length)linesTop.push('✓ Die geprüften Datensätze und Verknüpfungen sind plausibel.','');
+  linesTop.push('Es wurden keine Daten im Browser verändert.','Hinweis: Dieser Probelauf ersetzt keinen echten Wiederherstellungstest in einem getrennten Browserprofil. Speicherkapazität, einzelne Dateiinhalte und die Anmeldung nach einem echten Import werden dabei nicht vollständig geprüft.');
+  target.textContent=linesTop.join('\n');
+  pmBackupStatus('import',errors.length?'Probelauf zeigt kritische Befunde. Bitte Backup prüfen.':warnings.length?'Probelauf beendet: Hinweise prüfen.':'Probelauf erfolgreich: keine Auffälligkeiten in den geprüften Daten.',''+(errors.length?'bad':warnings.length?'warn':'good'));
+ }catch(err){target.textContent='Wiederherstellungstest fehlgeschlagen: '+err.message;pmBackupStatus('import','Probelauf fehlgeschlagen.','bad')}
 }
 async function pmBackupRestore(){
  if(pmBackupBusy||navoAuthUser?.role!=='admin'||!pmBackupPending)return;
@@ -3968,9 +4830,10 @@ document.addEventListener('click',async e=>{
  if(e.target.closest('[data-backup-go]')){e.preventDefault();go('backup');return}
  if(e.target.closest('[data-backup-export]')){e.preventDefault();await pmBackupExport();return}
  if(e.target.closest('[data-backup-check]')){e.preventDefault();await pmBackupCheck();return}
+ if(e.target.closest('[data-backup-rehearse]')){e.preventDefault();await pmBackupRehearse();return}
  if(e.target.closest('[data-backup-restore]')){e.preventDefault();await pmBackupRestore();return}
 },true);
-document.addEventListener('change',e=>{if(e.target.id==='pm-backup-file'){pmBackupPending=null;const restore=document.querySelector('[data-backup-restore]');if(restore)restore.disabled=true;const preview=document.getElementById('pm-backup-preview');if(preview)preview.hidden=true;pmBackupStatus('import','Datei ausgewählt. Bitte «Datei prüfen» anklicken.')}},true);
+document.addEventListener('change',e=>{if(e.target.id==='pm-backup-file'){pmBackupPending=null;const restore=document.querySelector('[data-backup-restore]');if(restore)restore.disabled=true;const rehearse=document.querySelector('[data-backup-rehearse]');if(rehearse)rehearse.disabled=true;const report=document.getElementById('pm-backup-rehearsal');if(report)report.hidden=true;const preview=document.getElementById('pm-backup-preview');if(preview)preview.hidden=true;pmBackupStatus('import','Datei ausgewählt. Bitte «Datei prüfen» anklicken.')}},true);
 
 
 /* Zentrales Pendenzen- und Entscheidungsregister. Unter state gespeichert und damit im Backup enthalten. */
@@ -4167,7 +5030,7 @@ function pmHistoryPage(){
 document.addEventListener('input',e=>{if(e.target?.id!=='pm-history-search')return;pmHistoryFilters.search=e.target.value;const focus=e.target.selectionStart;const content=document.getElementById('content');if(page!=='history'||!content)return;content.innerHTML=pmHistoryPage();const el=document.getElementById('pm-history-search');if(el){el.focus();el.setSelectionRange(focus,focus)}});
 document.addEventListener('change',e=>{const values={'pm-history-area':'area','pm-history-project':'project','pm-history-action':'action'};const prop=values[e.target?.id];if(!prop||page!=='history')return;pmHistoryFilters[prop]=e.target.value;document.getElementById('content').innerHTML=pmHistoryPage()});
 
-function render(){if(!navoAuthReady||!navoAuthUser)return;if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();$('#content').prepend(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild)$('#content').prepend(banner.firstElementChild)}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
+function render(){if(!navoAuthReady||!navoAuthUser)return;if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();$('#content').prepend(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild)$('#content').prepend(banner.firstElementChild)}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
 const stat=(label,val,info)=>`<div class="card stat"><span>${label}</span><strong>${val}</strong><span>${info}</span></div>`;
 
 function navoTopChip(label,value,tone=''){
@@ -4540,16 +5403,21 @@ function navoExecutiveDashboard(){
  ].sort((a,b)=>(a.start||'99:99').localeCompare(b.start||'99:99'));
  const upcomingEventCount=navoDashboardUpcomingEventsCount();
  const eventRows=(canCalendar||canMeetings||canProjects)?navoDashboardUpcomingEvents():'<p class="navo-exec-empty">Keine freigegebenen Termine.</p>';
+ const waitingTasks=canTasks?openTasks.filter(t=>t.status==='Warte auf Rückmeldung').sort((a,b)=>(a.pmFollowUp||'9999').localeCompare(b.pmFollowUp||'9999')):[];
+ const waitingRows=waitingTasks.slice(0,5).map(t=>`<button class="pm-dash-wait-row" type="button" data-day-action="task" data-day-id="${esc(t.id)}"><span><b>${esc(t.name||'Aufgabe')}</b><small>${esc(t.projectId?proj(t.projectId):'Ohne Projekt')} · ${t.pmFollowUp?'Wiedervorlage '+esc(formatSwissDate(t.pmFollowUp)):'Wiedervorlage fehlt'}</small></span><span class="pm-dash-wait-arrow">→</span></button>`).join('');
  const hasUrgency=dayAlertCount>0;
  return `<div class="navo-exec-home pm-daycenter">
    <section class="pm-day-hero" aria-label="Persönliche Tageszentrale"><div class="pm-day-hero-top"><div><div class="pm-day-eyebrow">MEIN ARBEITSTAG <span aria-hidden="true">·</span> ${esc(dayDate)}</div><h2>${hasUrgency?'Heute im Fokus':'Gut vorbereitet in den Tag'}</h2><p>${hasUrgency?`${dayAlertCount} ${dayAlertCount===1?'Punkt benötigt':'Punkte benötigen'} deine Aufmerksamkeit.`:'Alle dringenden Aufgaben, Quittierungen und Projektfristen sind im grünen Bereich.'}</p></div><div class="pm-day-hero-check ${hasUrgency?'attention':'clear'}" aria-label="${dayAlertCount} offene Punkte"><strong>${dayAlertCount}</strong><small>Handlungsbedarf</small></div></div>
    <div class="pm-day-metrics"><button type="button" class="pm-day-metric ${actionableTasks.length?'urgent':''}" data-page="tasks" ${canTasks?'':'disabled'}><span class="pm-day-metric-symbol">☑</span><span><strong>${canTasks?actionableTasks.length:'–'}</strong><small>Fällige Aufgaben</small></span></button><button type="button" class="pm-day-metric ${pendingAck.length?'warning':''}" data-page="calendar" ${canCalendar?'':'disabled'}><span class="pm-day-metric-symbol">◷</span><span><strong>${canCalendar?pendingAck.length:'–'}</strong><small>Quittierung offen</small></span></button><button type="button" class="pm-day-metric" data-page="calendar" ${canCalendar?'':'disabled'}><span class="pm-day-metric-symbol">▦</span><span><strong>${canCalendar||canMeetings?timeline.length:'–'}</strong><small>Heutige Termine</small></span></button><button type="button" class="pm-day-metric ${dueProjects.length?'warning':''}" data-page="projects" ${canProjects?'':'disabled'}><span class="pm-day-metric-symbol">▣</span><span><strong>${canProjects?dueProjects.length:'–'}</strong><small>Projektfristen</small></span></button></div></section>
-   ${navoAuthCanView('pending')?pmPendingDashboardWidget():''}
+   <section class="card pm-dash-waiting"><div class="navo-exec-sectionhead"><div><h3>Warte auf Rückmeldung <span class="pm-dash-wait-count">${waitingTasks.length}</span></h3><p>Offene Antworten und Freigaben im Blick behalten</p></div>${canTasks?'<button class="btn small secondary" data-page="tasks">Aufgaben →</button>':''}</div>${waitingRows||'<p class="muted sub">Keine Aufgaben warten aktuell auf eine Rückmeldung.</p>'}${waitingTasks.length>5?`<p class="muted sub">${waitingTasks.length-5} weitere Aufgaben über den Aufgabenbereich einsehen.</p>`:''}</section>
    <div class="pm-day-topgrid"><section class="card pm-day-focus" aria-label="Jetzt erledigen"><div class="navo-exec-sectionhead"><div><h3>Jetzt erledigen</h3><p>Fällige Notizen, Aufgaben, vergangene Termine und Projektfristen</p></div>${canTasks?'<button class="btn small secondary" data-page="tasks">Aufgaben →</button>':''}</div><div class="pm-day-action-list">${dayActionHtml||'<div class="pm-day-allclear"><span aria-hidden="true">✓</span><div><b>Alles Wichtige erledigt</b><small>Aktuell keine fälligen Notizen, Aufgaben, Projektfristen oder offenen Terminquittierungen.</small></div></div>'}${dayActionRows.length>7?`<p class="pm-day-more">${dayActionRows.length-7} weitere offene Punkte – über die jeweiligen Reiter erreichbar.</p>`:''}</div></section>
 </div>
-   <div class="navo-exec-main navo-exec-main-organized"><section class="card navo-exec-focus"><div class="navo-exec-sectionhead"><div><h3>Aktuelle Projekte</h3><p>Geplante, laufende und pausierte Projekte</p></div>${canProjects?'<button class="btn small secondary" data-page="projects">Projekte verwalten →</button>':''}</div><div class="navo-exec-project-list">${canProjects?projectProgressRows:'<p class="navo-exec-empty">Keine Projektberechtigung.</p>'}</div></section>
-   <div class="navo-exec-right-column"><section class="card navo-exec-schedule"><div class="navo-exec-sectionhead"><div><h3>Die nächsten 7 Tage</h3><p>Termine, Meetings und Projektfristen</p></div>${canCalendar?'<button class="btn small secondary" data-page="calendar">Kalender →</button>':''}</div><div class="navo-exec-events">${eventRows}</div></section>${navoDashboardTeamWindow()}</div></div>
+   <details class="pm-dash-more"><summary>Weitere Übersichten · Projekte, Pendenzen und Auswertungen <span aria-hidden="true">▾</span></summary><div class="pm-dash-more-body">
+   ${navoAuthCanView('pending')?pmPendingDashboardWidget():''}
+   <section class="card navo-exec-focus"><div class="navo-exec-sectionhead"><div><h3>Aktuelle Projekte</h3><p>Geplante, laufende und pausierte Projekte</p></div>${canProjects?'<button class="btn small secondary" data-page="projects">Projekte verwalten →</button>':''}</div><div class="navo-exec-project-list">${canProjects?projectProgressRows:'<p class="navo-exec-empty">Keine Projektberechtigung.</p>'}</div></section>
+   ${navoDashboardTeamWindow()}
    ${canTasks?`<section class="card navo-exec-tasks"><div class="navo-exec-sectionhead"><div><h3>Offene Aufgaben nach Fälligkeit</h3><p>Dringende Aufgaben zuerst</p></div><button class="btn small secondary" data-page="tasks">Alle Aufgaben →</button></div><div class="navo-exec-taskgrid">${taskRows}</div></section>`:''}
+   </div></details>
  </div>`;
 }
 
@@ -5047,6 +5915,8 @@ function navoTaskArchiveSection(projectFilter=''){
 
 
 let pmWeekOffset=0;
+let pmWeekCompact=true;
+let pmWeekSelectedDate='';
 function pmWeekISO(d){return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
 function pmWeekDate(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return null;const [y,m,d]=s.split('-').map(Number);const date=new Date(y,m-1,d);return pmWeekISO(date)===s?date:null}
 function pmPlanMinutes(value){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(value||''))return null;return Number(value.slice(0,2))*60+Number(value.slice(3))}
@@ -5093,6 +5963,105 @@ function pmMoveSuggestions(dates, tasks, dailyLimit){
  }
  return suggestions;
 }
+function pmWeekCombinedLoad(tasks,appointments){
+ const taskHours=tasks.reduce((n,t)=>n+(Number(t.pmEstimateHours)>0?Math.min(1000,Number(t.pmEstimateHours)):0),0);
+ const eventIntervals=appointments.map(a=>[pmPlanMinutes(a.start),pmPlanMinutes(a.end)]).filter(([a,b])=>a!==null&&b!==null&&b>a);
+ const timedEventHours=eventIntervals.reduce((n,[a,b])=>n+(b-a)/60,0);
+ const taskIntervals=tasks.map(t=>{const a=pmPlanMinutes(t.pmPlanStart),h=Number(t.pmEstimateHours);return a!==null&&h>0?[a,Math.min(1440,a+Math.round(h*60))]:null}).filter(x=>x&&x[1]>x[0]);
+ // Treat all timed blocks as occupied intervals, not additive durations.
+ const intervals=[...eventIntervals,...taskIntervals].sort((a,b)=>a[0]-b[0]);
+ let combinedTimedMinutes=0,end=-1;
+ for(const [a,b] of intervals){combinedTimedMinutes+=Math.max(0,b-Math.max(a,end));end=Math.max(end,b)}
+ const tasksWithStart=taskIntervals.reduce((n,[a,b])=>n+(b-a)/60,0);
+ const tasksWithoutStart=Math.max(0,taskHours-tasksWithStart);
+ const combined=combinedTimedMinutes/60+tasksWithoutStart;
+ return {taskHours,eventHours:timedEventHours,combined,free:8.24-combined,unknownEvents:appointments.length-eventIntervals.length};
+}
+function pmDayTimeAxis(agenda,date){
+ const min=420,max=1140,pxPerMinute=.85;
+ const items=agenda.map(a=>{
+  const st=pmPlanMinutes(a.start),en=pmPlanMinutes(a.end);
+  if(st===null||en===null||en<=st||en<=min||st>=max)return null;
+  return {...a,from:Math.max(min,st),to:Math.min(max,en)};
+ }).filter(Boolean).sort((a,b)=>a.from-b.from||b.to-a.to);
+ // Allocate overlapping appointments to separate horizontal lanes.
+ const clusters=[];let cluster=[],clusterEnd=-1;
+ for(const it of items){if(cluster.length&&it.from>=clusterEnd){clusters.push(cluster);cluster=[];clusterEnd=-1}cluster.push(it);clusterEnd=Math.max(clusterEnd,it.to)}
+ if(cluster.length)clusters.push(cluster);
+ for(const group of clusters){const laneEnds=[];for(const it of group){let lane=laneEnds.findIndex(end=>end<=it.from);if(lane<0){lane=laneEnds.length;laneEnds.push(it.to)}else laneEnds[lane]=it.to;it.lane=lane}for(const it of group)it.laneCount=laneEnds.length}
+ const ticks=Array.from({length:13},(_,i)=>{const t=7+i;return `<div class="pm-axis-tick" style="top:${(t-7)*60*pxPerMinute}px"><span>${String(t).padStart(2,'0')}:00</span></div>`}).join('');
+ const blocks=items.map(it=>{
+  const top=(it.from-min)*pxPerMinute, height=Math.max(18,(it.to-it.from)*pxPerMinute-3);
+  const width=100/it.laneCount;
+  const label=esc(it.title),time=esc(it.start)+'–'+esc(it.end);
+  const act=it.kind==='task'?`data-action="edit" data-kind="task" data-id="${esc(it.id)}"`:`data-action="pm-jump-to-calendar-event" data-type="${esc(it.kind)}" data-id="${esc(it.id)}" data-date="${date}" data-start="${esc(it.start)}"`;
+  return `<button type="button" class="pm-axis-block ${it.kind==='task'?'is-task':'is-event'}" style="top:${top}px;height:${height}px;left:calc(${it.lane*width}% + 3px);width:calc(${width}% - 6px)" ${it.kind==='task'?`draggable="true" data-pm-drag-task="${esc(it.id)}"`: ''} ${act} title="${label} · ${time}"><strong>${label}</strong><span>${time}</span></button>`;
+ }).join('');
+ const untimed=agenda.filter(a=>pmPlanMinutes(a.start)===null||pmPlanMinutes(a.end)===null||pmPlanMinutes(a.end)<=pmPlanMinutes(a.start)||pmPlanMinutes(a.end)<=min||pmPlanMinutes(a.start)>=max);
+ return `<section class="pm-day-timeaxis"><div class="pm-day-timeaxis-head"><strong>🕖 Tageszeitachse · 07:00–19:00 Uhr</strong><small>${items.length} Zeitblock${items.length===1?'':'e'} · Berührende / überlappende Blöcke nebeneinander</small></div><div class="pm-axis-viewport"><div class="pm-axis-hours">${ticks}</div><div class="pm-axis-canvas" data-pm-axis-drop-date="${date}" style="height:${(max-min)*pxPerMinute}px">${blocks}</div></div>${untimed.length?`<small class="pm-axis-note">${untimed.length} Eintrag${untimed.length===1?'':'e'} ohne vollständige Uhrzeit oder ausserhalb von 07–19 Uhr: siehe Tagesagenda oben.</small>`:''}<div class="pm-day-agenda-legend"><span><i class="task"></i> Aufgaben</span><span><i class="calendar"></i> Termine und Sitzungen</span></div></section>`;
+}
+
+// Design Refresh 7.3: Drag & Drop for tasks in the week summary and daily time grid.
+let pmWeekDraggedTaskId='';
+function pmWeekTimeString(minutes){return String(Math.floor(minutes/60)).padStart(2,'0')+':'+String(minutes%60).padStart(2,'0')}
+function pmWeekDropTask(taskId,date,proposedStart){
+ if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+ const t=state.tasks.find(x=>x.id===taskId);
+ if(!t||t.status==='Erledigt'||!pmWeekDate(date)){alert('Diese Aufgabe kann nicht verschoben werden.');return}
+ const previousDay=t.pmPlanDate||'',previousStart=t.pmPlanStart||'';
+ const start=proposedStart===null?previousStart:String(proposedStart||'');
+ const effort=Number(t.pmEstimateHours)||0;
+ if(start&&pmPlanMinutes(start)===null){alert('Ungültige Startzeit.');return}
+ if(start&&effort>0&&pmPlanMinutes(start)+Math.round(effort*60)>1440){alert('Die Aufgabe würde über Mitternacht hinausgehen.');return}
+ const conflicts=[];
+ const newStart=pmPlanMinutes(start),newEnd=newStart===null||effort<=0?null:newStart+Math.round(effort*60);
+ const check=(label,begin,end)=>{const a=pmPlanMinutes(begin),b=pmPlanMinutes(end);if(newEnd!==null&&a!==null&&b!==null&&a<newEnd&&b>newStart)conflicts.push(label)};
+ if(start&&effort>0){
+  state.tasks.filter(x=>x.id!==t.id&&x.pmPlanDate===date&&x.status!=='Erledigt').forEach(x=>check('Aufgabe: '+x.name,x.pmPlanStart,pmPlanEnd(x)));
+  state.meetings.filter(m=>m.date===date&&m.status!=='Abgesagt').forEach(m=>check('Sitzung: '+m.title,m.start,m.end));
+  state.calendarNotes.filter(n=>n.date===date&&!n.ackStatus).forEach(n=>check('Termin: '+n.title,n.start,n.end));
+  const lunch=pmPlanLunch(date),lstart=pmPlanMinutes(pmLunchStart(date));
+  if(lunch>0&&lstart!==null&&newStart<lstart+lunch&&newEnd>lstart)conflicts.push('Mittagspause');
+ }
+ if(conflicts.length){
+  const alternative=effort>0?pmFindAvailableStart(date,effort,t.id):null;
+  const msg='Die gewünschte Planung überschneidet sich mit:\n• '+conflicts.slice(0,6).join('\n• ')+(conflicts.length>6?'\n• weitere Einträge':'')+'\n\n'+(alternative?'OK: Freien Zeitpunkt '+alternative+' Uhr verwenden.\nAbbrechen: Keine Änderung.':'Kein freier Alternativtermin zwischen 07:00 und 19:00 Uhr gefunden. Die Aufgabe bleibt unverändert.');
+  if(!alternative){alert(msg);return}
+  if(!confirm(msg))return;
+  t.pmPlanDate=date;t.pmPlanStart=alternative;
+ }else{
+  if(date===previousDay&&start===previousStart)return;
+  if(!confirm('«'+t.name+'» auf '+formatSwissDate(date)+(start?' um '+start+' Uhr':'')+' verschieben?'))return;
+  t.pmPlanDate=date;t.pmPlanStart=start;
+ }
+ save();pmWeekSelectedDate=date;render();
+}
+document.addEventListener('dragstart',e=>{
+ const node=e.target.closest('[data-pm-drag-task]');if(!node)return;
+ pmWeekDraggedTaskId=node.dataset.pmDragTask;
+ if(e.dataTransfer){e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain','pm-week-task:'+pmWeekDraggedTaskId)}
+ node.classList.add('pm-week-dragging');
+});
+document.addEventListener('dragend',e=>{pmWeekDraggedTaskId='';document.querySelectorAll('.pm-week-drop-hover,.pm-week-dragging').forEach(x=>x.classList.remove('pm-week-drop-hover','pm-week-dragging'))});
+document.addEventListener('dragover',e=>{
+ const target=e.target.closest('[data-pm-week-drop-date],[data-pm-axis-drop-date]');if(!target||!pmWeekDraggedTaskId)return;
+ e.preventDefault();if(e.dataTransfer)e.dataTransfer.dropEffect='move';
+ document.querySelectorAll('.pm-week-drop-hover').forEach(x=>{if(x!==target)x.classList.remove('pm-week-drop-hover')});target.classList.add('pm-week-drop-hover');
+});
+document.addEventListener('drop',e=>{
+ const target=e.target.closest('[data-pm-week-drop-date],[data-pm-axis-drop-date]');if(!target||!pmWeekDraggedTaskId)return;
+ e.preventDefault();e.stopPropagation();target.classList.remove('pm-week-drop-hover');
+ const id=pmWeekDraggedTaskId;pmWeekDraggedTaskId='';
+ const date=target.dataset.pmAxisDropDate||target.dataset.pmWeekDropDate;
+ let time=null;
+ if(target.hasAttribute('data-pm-axis-drop-date')){
+  const bounds=target.getBoundingClientRect();
+  const top=Math.max(0,Math.min(bounds.height,e.clientY-bounds.top));
+  const min=420+Math.round(top/.85/15)*15;
+  time=pmWeekTimeString(Math.min(1125,Math.max(420,min)));
+ }
+ pmWeekDropTask(id,date,time);
+});
 function pmWeeklyPanel(){
  const now=new Date(),mon=new Date(now.getFullYear(),now.getMonth(),now.getDate());mon.setDate(mon.getDate()-(mon.getDay()+6)%7+pmWeekOffset*7);
  const dates=Array.from({length:5},(_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);return pmWeekISO(d)});
@@ -5104,12 +6073,26 @@ function pmWeeklyPanel(){
  const movingSuggestions=pmMoveSuggestions(dates,planned,dayLimit);
  const num=t=>{const v=Number(t.pmEstimateHours);return Number.isFinite(v)&&v>0?Math.min(1000,v):0};
  const weekday=dates.map((date,i)=>{const list=planned.filter(t=>t.pmPlanDate===date),total=list.reduce((n,t)=>n+num(t),0),rest=dayLimit-total;
+  const appointments=[
+   ...state.meetings.filter(m=>m.date===date&&m.status!=='Abgesagt').map(m=>({kind:'meeting',id:m.id,title:m.title||'Sitzung',start:m.start||'',end:m.end||'',description:'Sitzung',projectId:m.projectId||''})),
+   ...state.calendarNotes.filter(n=>n.date===date&&!n.ackStatus).map(n=>({kind:'note',id:n.id,title:n.title||'Termin',start:n.start||'',end:n.end||'',description:'Kalendertermin',projectId:n.projectId||''}))
+  ].sort((a,b)=>(a.start||'99:99').localeCompare(b.start||'99:99'));
+  const timedMinutes=appointments.reduce((sum,a)=>{const from=pmPlanMinutes(a.start),to=pmPlanMinutes(a.end);return sum+(from!==null&&to!==null&&to>from?to-from:0)},0);
+  const load=pmWeekCombinedLoad(list,appointments);
+  const appointmentsHTML=`<div class="pm-week-appointments"><div class="pm-week-appointments-head"><b>📅 Termine & Sitzungen (${appointments.length})</b><small>${timedMinutes?`${(timedMinutes/60).toLocaleString('de-CH',{maximumFractionDigits:2})} h mit Zeitangaben · `:''}separat von Aufgabenstunden</small></div>${appointments.map(a=>`<div class="pm-week-appointment"><span class="pm-week-appointment-dot"></span><div><strong>${esc(a.title)}</strong><small>${esc(a.description)}${a.start?' · '+esc(a.start):''}${a.end?'–'+esc(a.end):''}${a.projectId?' · '+esc(proj(a.projectId)):''}</small></div><button type="button" class="btn small secondary" data-action="pm-jump-to-calendar-event" data-type="${a.kind}" data-id="${esc(a.id)}" data-date="${date}" data-start="${esc(a.start)}">Kalender</button></div>`).join('')||'<small class="muted">Keine Kalendertermine oder Sitzungen erfasst.</small>'}</div>`;
+  const agenda=[
+   ...list.map(t=>({kind:'task',id:t.id,title:t.name||'Aufgabe',start:t.pmPlanStart||'',end:pmPlanEnd(t),sub:'Aufgabe · '+num(t).toLocaleString('de-CH',{maximumFractionDigits:2})+' h geplant',project:t.projectId||''})),
+   ...appointments.map(a=>({kind:a.kind,id:a.id,title:a.title,start:a.start,end:a.end,sub:a.description,project:a.projectId||''}))
+  ].sort((a,b)=>((a.start?'0'+a.start:'1') .localeCompare(b.start?'0'+b.start:'1'))||String(a.title).localeCompare(String(b.title),'de-CH'));
+  const agendaHTML=`<section class="pm-day-agenda"><div class="pm-day-agenda-heading"><strong>🕘 Tagesagenda</strong><small>${agenda.length} Eintrag${agenda.length===1?'':'e'} · Aufgaben & Termine gemeinsam</small></div>${agenda.map(a=>`<div class="pm-day-agenda-item" ${a.kind==='task'?`draggable="true" data-pm-drag-task="${esc(a.id)}"`: ''}><div class="pm-day-agenda-time">${a.start?esc(a.start)+(a.end?'<br><small>bis '+esc(a.end)+'</small>':''):'Ohne<br>Uhrzeit'}</div><span class="pm-day-agenda-marker ${a.kind==='task'?'task':'calendar'}"></span><div class="pm-day-agenda-info"><strong>${esc(a.title)}</strong><small>${esc(a.sub)}${a.project?' · '+esc(proj(a.project)):''}</small></div>${a.kind==='task'?`<button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(a.id)}">Öffnen</button>`:`<button class="btn small secondary" data-action="pm-jump-to-calendar-event" data-type="${a.kind}" data-id="${esc(a.id)}" data-date="${date}" data-start="${esc(a.start)}">Kalender</button>`}</div>`).join('')||'<p class="muted sub">Für diesen Tag sind noch keine Aufgaben oder Termine geplant.</p>'}<div class="pm-day-agenda-legend"><span><i class="task"></i> Aufgabe</span><span><i class="calendar"></i> Termin / Sitzung</span></div></section>`;
   const booked=pmTimeActualForDate(date);const conflicts=pmDayConflicts(date);const warning=conflicts.length?`<div class="pm-conflict-warning"><b>⚠ ${conflicts.length} Zeitüberschneidung(en)</b>${conflicts.map(x=>`<small>${esc(x.a.label)} ↔ ${esc(x.b.label)}</small>`).join('')}</div>`:'';const currentDate=new Date().toLocaleDateString('sv-SE');const nextDate=new Date();nextDate.setDate(nextDate.getDate()+1);const tomorrowDate=nextDate.toLocaleDateString('sv-SE');const isToday=date===currentDate;const isPast=date<currentDate;const isTomorrow=date===tomorrowDate;
-  return `<div class="pm-weekday ${isToday?'pm-week-today ':isTomorrow?'pm-week-tomorrow ':isPast?'pm-week-past ':''}${total>dayLimit+0.001?'pm-week-over':''}"><h4>${['Mo','Di','Mi','Do','Fr'][i]} · ${esc(formatSwissDate(date))}</h4><span class="pm-week-hours"><b>${total.toLocaleString('de-CH',{maximumFractionDigits:2})} / ${dayLimit.toLocaleString('de-CH',{minimumFractionDigits:2})} h</b><br>${rest>=0?'Noch frei: '+rest.toLocaleString('de-CH',{maximumFractionDigits:2})+' h':'Überplant: '+(-rest).toLocaleString('de-CH',{maximumFractionDigits:2})+' h'}<br><span class="pm-actual-day">Tatsächlich gebucht: ${booked.toLocaleString('de-CH',{maximumFractionDigits:2})} h · Differenz: ${(booked-total>=0?'+':'')+(booked-total).toLocaleString('de-CH',{maximumFractionDigits:2})} h</span></span><div class="pm-week-lunch">Mittagspause ab <input type="time" data-pm-lunch-start-date="${date}" aria-label="Pausenbeginn ${date}" value="${pmLunchStart(date)}" style="width:105px"> · Dauer: <select aria-label="Mittagspause ${date}" data-pm-lunch-date="${date}">${[0,30,45,60].map(n=>`<option value="${n}" ${pmPlanLunch(date)===n?'selected':''}>${n} Min.</option>`).join('')}</select></div>${warning}${total>dayLimit+0.001?`<div class="pm-day-overload"><strong>⚠ ${hours(total-dayLimit)} über der täglichen Planungskapazität</strong>${movingSuggestions[date]?`<div class="pm-move-suggestion"><span>Vorschlag: «${esc(movingSuggestions[date].task.name)}» auf ${esc(formatSwissDate(movingSuggestions[date].to))} verschieben${movingSuggestions[date].start?' · ab '+esc(movingSuggestions[date].start):''}.</span><button type="button" class="btn small secondary" data-pm-move-task="${esc(movingSuggestions[date].task.id)}" data-pm-move-from="${date}" data-pm-move-to="${movingSuggestions[date].to}" data-pm-move-start="${esc(movingSuggestions[date].start||'')}">Vorschlag übernehmen</button></div>`:'<small>Diese Woche wurde kein passender freier Tag vor der Fälligkeit gefunden. Bitte manuell prüfen.</small>'}</div>`:''}${list.map(t=>`<div class="pm-week-task"><b>${esc(t.name)}</b>${pmTaskDependencyLabel(t)}<small>${t.pmPlanStart?esc(t.pmPlanStart)+'–'+esc(pmPlanEnd(t)||'Ende offen')+' · ':''}${num(t)} h geplant · ${pmTimeTaskActual(t.id).toLocaleString('de-CH',{maximumFractionDigits:2})} h gebucht (gesamt)${t.due?' · Fällig '+esc(formatSwissDate(t.due)):''}</small><button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(t.id)}">Öffnen</button><button class="btn small secondary" data-action="pm-jump-to-calendar-event" data-type="task" data-id="${esc(t.id)}" data-date="${date}">Im Kalender anzeigen</button></div>`).join('')||'<small class="muted">Noch keine Aufgaben eingeplant.</small>'}</div>`}).join('');
+  const selected=(pmWeekSelectedDate||((new Date()).toLocaleDateString('sv-SE')))===date;
+  const daySummary=`<button type="button" class="pm-week-summary" data-pm-week-select="${date}" data-pm-week-drop-date="${date}" aria-expanded="${selected?'true':'false'}"><span class="pm-week-summary-day">${['Mo','Di','Mi','Do','Fr'][i]} <small>${esc(formatSwissDate(date))}</small></span><span class="pm-week-summary-usage">${load.combined.toLocaleString('de-CH',{maximumFractionDigits:2})} / 8,24 h</span><span class="pm-week-summary-track"><i style="width:${Math.min(100,Math.max(0,load.combined/dayLimit*100))}%"></i></span><span class="pm-week-summary-count">${list.length} Aufgaben · ${appointments.length} Termine</span><span class="pm-week-summary-free ${load.free<0?'over':''}">${load.free<0?'⚠ '+(-load.free).toLocaleString('de-CH',{maximumFractionDigits:2})+' h überlastet':load.free.toLocaleString('de-CH',{maximumFractionDigits:2})+' h frei'}</span><span class="pm-week-summary-chevron">${selected?'▾':'›'} Details</span></button>`;
+  return `<div data-pm-day="${date}" class="pm-weekday ${selected?'pm-week-selected ':''}${isToday?'pm-week-today ':isTomorrow?'pm-week-tomorrow ':isPast?'pm-week-past ':''}${load.combined>dayLimit+0.001?'pm-week-over':''}">${daySummary}<div class="pm-week-detail-content"><h4>${['Mo','Di','Mi','Do','Fr'][i]} · ${esc(formatSwissDate(date))}</h4>${agendaHTML}${pmDayTimeAxis(agenda,date)}<div class="pm-week-load"><div class="pm-week-load-title"><b>Gemeinsame Tagesauslastung</b><strong>${load.combined.toLocaleString('de-CH',{maximumFractionDigits:2})} / ${dayLimit.toLocaleString('de-CH',{minimumFractionDigits:2})} h</strong></div><div class="pm-week-load-track"><span style="width:${Math.min(100,Math.max(0,load.combined/dayLimit*100))}%" class="${load.combined>dayLimit+.001?'is-over':''}"></span></div><div class="pm-week-load-breakdown"><span>Aufgaben: <b>${load.taskHours.toLocaleString('de-CH',{maximumFractionDigits:2})} h</b></span><span>Termine: <b>${load.eventHours.toLocaleString('de-CH',{maximumFractionDigits:2})} h</b></span></div><strong class="pm-week-load-remaining ${load.free<0?'is-over':''}">${load.free>=0?'Noch verfügbar: '+load.free.toLocaleString('de-CH',{maximumFractionDigits:2})+' h':'Überlastung: '+(-load.free).toLocaleString('de-CH',{maximumFractionDigits:2})+' h'}</strong>${load.unknownEvents?`<small>${load.unknownEvents} Termin(e) ohne berechenbare Dauer nicht eingerechnet</small>`:''}<small>Zeitlich überlappende Blöcke zählen nur einmal. Aufgaben ohne Startzeit werden zusätzlich berücksichtigt.</small></div><span class="pm-week-hours"><span class="pm-actual-day">Tatsächlich gebucht: ${booked.toLocaleString('de-CH',{maximumFractionDigits:2})} h · Abweichung zu Aufgabenplanung: ${(booked-total>=0?'+':'')+(booked-total).toLocaleString('de-CH',{maximumFractionDigits:2})} h</span></span><div class="pm-week-lunch">Mittagspause ab <input type="time" data-pm-lunch-start-date="${date}" aria-label="Pausenbeginn ${date}" value="${pmLunchStart(date)}" style="width:105px"> · Dauer: <select aria-label="Mittagspause ${date}" data-pm-lunch-date="${date}">${[0,30,45,60].map(n=>`<option value="${n}" ${pmPlanLunch(date)===n?'selected':''}>${n} Min.</option>`).join('')}</select></div>${warning}${total>dayLimit+0.001?`<div class="pm-day-overload"><strong>⚠ ${hours(total-dayLimit)} über der täglichen Planungskapazität</strong>${movingSuggestions[date]?`<div class="pm-move-suggestion"><span>Vorschlag: «${esc(movingSuggestions[date].task.name)}» auf ${esc(formatSwissDate(movingSuggestions[date].to))} verschieben${movingSuggestions[date].start?' · ab '+esc(movingSuggestions[date].start):''}.</span><button type="button" class="btn small secondary" data-pm-move-task="${esc(movingSuggestions[date].task.id)}" data-pm-move-from="${date}" data-pm-move-to="${movingSuggestions[date].to}" data-pm-move-start="${esc(movingSuggestions[date].start||'')}">Vorschlag übernehmen</button></div>`:'<small>Diese Woche wurde kein passender freier Tag vor der Fälligkeit gefunden. Bitte manuell prüfen.</small>'}</div>`:''}${list.map(t=>`<div class="pm-week-task"><b>${esc(t.name)}</b>${pmTaskDependencyLabel(t)}<small>${t.pmPlanStart?esc(t.pmPlanStart)+'–'+esc(pmPlanEnd(t)||'Ende offen')+' · ':''}${num(t)} h geplant · ${pmTimeTaskActual(t.id).toLocaleString('de-CH',{maximumFractionDigits:2})} h gebucht (gesamt)${t.due?' · Fällig '+esc(formatSwissDate(t.due)):''}</small><button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(t.id)}">Öffnen</button><button class="btn small secondary" data-action="pm-jump-to-calendar-event" data-type="task" data-id="${esc(t.id)}" data-date="${date}">Im Kalender anzeigen</button></div>`).join('')||'<small class="muted">Noch keine Aufgaben eingeplant.</small>'}${appointmentsHTML}</div></div>`}).join('');
  const total=planned.reduce((n,t)=>n+num(t),0);
  const taskOptions=open.slice().sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).map(t=>`<option value="${esc(t.id)}">${esc(t.name.slice(0,75))}${t.pmPlanDate?' · '+esc(formatSwissDate(t.pmPlanDate)):''}</option>`).join('');
- return `<section class="pm-weekplan"><div class="pm-week-head"><div><h3 style="margin:0">📆 Meine Wochenplanung</h3><p class="muted sub">Arbeit bewusst einplanen – unabhängig vom Fälligkeitsdatum</p></div><div class="pm-week-nav"><button type="button" class="btn secondary small" data-pm-week-shift="-1">← Vorherige</button><b>${esc(formatSwissDate(dates[0]))} – ${esc(formatSwissDate(dates[4]))}</b><button type="button" class="btn secondary small" data-pm-week-shift="1">Nächste →</button><button type="button" class="btn secondary small" data-pm-week-shift="0">Diese Woche</button><button type="button" class="btn small" data-pm-week-report="1">▤ Wochenrapport PDF</button></div></div>
- <div class="pm-weekdays">${weekday}</div><div class="pm-dependency-summary"><strong>⛔ Offene Abhängigkeiten: ${state.tasks.filter(pmTaskBlocked).length}</strong>${state.tasks.filter(pmTaskBlocked).slice(0,5).map(t=>`<div>${esc(t.name)} — wartet auf ${esc(pmTaskPrerequisite(t)?.name||'gelöschte Voraussetzung')}</div>`).join('')||'<small>Keine blockierten Aufgaben.</small>'}</div>${(()=>{const actual=state.timeEntries.filter(e=>e.date>=dates[0]&&e.date<=dates[4]&&timeCategory(e)==='Arbeit').reduce((n,e)=>n+Number(e.duration||0),0),linked=state.timeEntries.filter(e=>e.date>=dates[0]&&e.date<=dates[4]&&timeCategory(e)==='Arbeit'&&e.taskId).reduce((n,e)=>n+Number(e.duration||0),0);return `<div class="pm-week-actual-summary"><strong>Wochenvergleich</strong><span>Geplante Aufgaben: ${hours(total)}</span><span>Tatsächlich gearbeitet: ${hours(actual)}</span><span>Davon Aufgaben zugeordnet: ${hours(linked)}</span><span>Ohne Aufgabenbezug: ${hours(actual-linked)}</span><span>Abweichung Gesamtarbeit zur Planung: ${hours(Math.abs(actual-total))} ${actual>=total?'mehr':'weniger'} gearbeitet</span></div>`})()}<b>Geplant: ${total.toLocaleString('de-CH',{maximumFractionDigits:2})} von 41,2 h</b> · <span class="muted sub">${planned.length} Aufgabe(n) eingeplant · ${unplanned.length} noch ohne Arbeitstag</span>
+ return `<section class="pm-weekplan ${pmWeekCompact?'pm-week-compact':'pm-week-expanded'}"><div class="pm-week-head"><div><h3 style="margin:0">📆 Meine Wochenplanung</h3><p class="muted sub">Aufgaben planen und Kalendertermine sowie Sitzungen pro Tag im Blick behalten</p></div><div class="pm-week-nav"><button type="button" class="btn secondary small" data-pm-week-shift="-1">← Vorherige</button><b>${esc(formatSwissDate(dates[0]))} – ${esc(formatSwissDate(dates[4]))}</b><button type="button" class="btn secondary small" data-pm-week-shift="1">Nächste →</button><button type="button" class="btn secondary small" data-pm-week-shift="0">Diese Woche</button><button type="button" class="btn small" data-pm-week-report="1">▤ Wochenrapport PDF</button></div></div>
+ <p class="pm-week-dnd-help">↔ Aufgaben in einen anderen Wochentag ziehen oder auf der Tageszeitachse bei einer neuen Uhrzeit ablegen. Bestehende Termine werden auf Kollisionen geprüft.</p><div class="pm-week-display-control"><span>${pmWeekCompact?'Kompakte Woche · Tagesdetails durch Klick öffnen':'Alle Tagesdetails eingeblendet'}</span><button type="button" class="btn secondary small" data-pm-week-toggle>${pmWeekCompact?'Alle Tage ausführlich':'Kompakte Ansicht'}</button></div><div class="pm-weekdays">${weekday}</div><div class="pm-dependency-summary"><strong>⛔ Offene Abhängigkeiten: ${state.tasks.filter(pmTaskBlocked).length}</strong>${state.tasks.filter(pmTaskBlocked).slice(0,5).map(t=>`<div>${esc(t.name)} — wartet auf ${esc(pmTaskPrerequisite(t)?.name||'gelöschte Voraussetzung')}</div>`).join('')||'<small>Keine blockierten Aufgaben.</small>'}</div>${(()=>{const actual=state.timeEntries.filter(e=>e.date>=dates[0]&&e.date<=dates[4]&&timeCategory(e)==='Arbeit').reduce((n,e)=>n+Number(e.duration||0),0),linked=state.timeEntries.filter(e=>e.date>=dates[0]&&e.date<=dates[4]&&timeCategory(e)==='Arbeit'&&e.taskId).reduce((n,e)=>n+Number(e.duration||0),0);return `<div class="pm-week-actual-summary"><strong>Wochenvergleich</strong><span>Geplante Aufgaben: ${hours(total)}</span><span>Tatsächlich gearbeitet: ${hours(actual)}</span><span>Davon Aufgaben zugeordnet: ${hours(linked)}</span><span>Ohne Aufgabenbezug: ${hours(actual-linked)}</span><span>Abweichung Gesamtarbeit zur Planung: ${hours(Math.abs(actual-total))} ${actual>=total?'mehr':'weniger'} gearbeitet</span></div>`})()}<b>Geplant: ${total.toLocaleString('de-CH',{maximumFractionDigits:2})} von 41,2 h</b> · <span class="muted sub">${planned.length} Aufgabe(n) eingeplant · ${unplanned.length} noch ohne Arbeitstag</span>
  <div class="pm-week-planner"><form id="pmWeekPlanForm"><div class="pm-work-fields"><div class="field"><label>Aufgabe auswählen</label><select name="taskId" required>${taskOptions||'<option value="">Keine offenen Aufgaben</option>'}</select></div><div class="field"><label>Geplanter Arbeitstag</label><input type="date" name="planDate" value="${dates[0]}" required></div><div class="field"><label>Startzeit (optional)</label><input type="time" name="planStart"></div><div class="field"><label>Geschätzter Aufwand in Stunden</label><input type="number" name="estimate" min="0.25" max="1000" step="0.25" value="1" required></div><div class="field"><button type="button" class="btn secondary" data-pm-find-slot>Freies Zeitfenster finden</button></div><div class="field"><button class="btn" type="submit" ${open.length?'':'disabled'}>In Woche einplanen</button></div></div><p id="pmSlotResult" class="muted sub" role="status"></p></form><p class="pm-week-note">Auch Aufgaben, die erst später fällig sind, können früher eingeplant werden. Zur Umplanung dieselbe Aufgabe erneut auswählen. Bestehende Planungen lassen sich im Aufgabenformular ändern. Geplante Aufgaben erscheinen im Terminkalender nur mit Startzeit und Dauer als Zeitblock; ohne Startzeit bleiben sie in der Wochenplanung. Mit «Im Kalender anzeigen» direkt zum Tag springen. Zeitüberschneidungen mit anderen Aufgaben, Sitzungen und Terminen werden markiert (nicht blockiert). Der Beginn und die Dauer der Mittagspause sind pro Tag einstellbar. «Freies Zeitfenster finden» schlägt zwischen 07:00 und 19:00 Uhr eine konfliktfreie Startzeit vor (keine automatische Buchung). Aufgaben ohne Startzeit sind nicht auf Überschneidungen prüfbar. Mittagspausen werden nicht als Arbeitszeit gebucht. Geplante Stunden sind Schätzungen. Tatsächliche Stunden werden ausschliesslich aus Zeitbuchungen übernommen; die Differenz ist keine Überzeitberechnung. Aufgabenwerte «gebucht (gesamt)» beziehen sich auf alle Buchungsdaten. Die tägliche Sollzeit beträgt Mo–Fr jeweils 8,24 Stunden.</p></div></section>`;
 }
 document.addEventListener('change',e=>{
@@ -5189,6 +6172,12 @@ function pmWeeklyReportPDF(){
  w.document.open();w.document.write(html);w.document.close();w.focus();
 }
 document.addEventListener('click',e=>{if(e.target.closest('[data-pm-week-report]'))pmWeeklyReportPDF()});
+document.addEventListener('click',e=>{
+ const toggle=e.target.closest('[data-pm-week-toggle]');
+ if(toggle){pmWeekCompact=!pmWeekCompact;render();return}
+ const day=e.target.closest('[data-pm-week-select]');
+ if(day){const date=day.dataset.pmWeekSelect;pmWeekSelectedDate=pmWeekSelectedDate===date?'':date;pmWeekCompact=true;render();return}
+});
 document.addEventListener('click',e=>{const btn=e.target.closest('[data-pm-week-shift]');if(!btn)return;pmWeekOffset=btn.dataset.pmWeekShift==='0'?0:pmWeekOffset+Number(btn.dataset.pmWeekShift);render()});
 document.addEventListener('submit',e=>{
  if(e.target.id!=='pmWeekPlanForm')return;
@@ -5224,7 +6213,7 @@ function pmWorkspacePanel(){
  }).join(''):`<p class="muted sub">${empty}</p>`;
  return `<section class="card pm-workspace pm-workspace-stage3"><div class="section-head"><div><h2>Mein Arbeitsplatz</h2><p class="muted sub">Persönliche Arbeitssteuerung · Stand ${esc(formatSwissDate(today))} · Hinweise beim Öffnen der App</p></div></div>
  <form id="pmQuickTaskForm" class="pm-work-capture"><div class="field"><label>Aufgabe schnell erfassen *</label><input name="name" required maxlength="300" placeholder="Was ist zu erledigen?"></div><div class="pm-work-fields"><div class="field"><label>Herkunft</label><select name="pmOrigin"><option value="extern">Von anderer Person</option><option value="eigen">Selbst erkannt</option></select></div><div class="field"><label>Auftraggeber (optional)</label><input name="pmRequester" placeholder="Name / Kontakt"></div><div class="field"><label>Aufgabe fällig am (optional)</label><input type="date" name="due"><small class="muted">Bestimmt «Heute / Morgen fällig»</small></div><div class="field"><label>Projekt (optional)</label><select name="projectId">${opt(taskProjectOpts(),'')}</select></div><div class="field"><label>Priorität</label><select name="priority"><option>Mittel</option><option>Hoch</option><option>Niedrig</option></select></div><div class="field"><label>Bearbeitungsstatus</label><select name="status"><option value="Offen">Offen / noch einplanen</option><option value="Warte auf Rückmeldung">Warte auf Rückmeldung</option></select></div><div class="field"><label>Geplanter Arbeitstag (optional)</label><input name="pmPlanDate" type="date"></div><div class="field"><label>Geplante Startzeit (optional)</label><input name="pmPlanStart" type="time"></div><div class="field"><label>Geschätzter Aufwand (Stunden)</label><input name="pmEstimateHours" type="number" min="0.25" step="0.25" placeholder="z. B. 2"></div><div class="field" data-pm-followup-field hidden><label>Rückmeldung nachfassen am</label><input name="pmFollowUp" type="date"><small class="muted">Nur wenn du auf eine andere Person wartest</small></div></div><button class="btn" type="submit">+ Auftrag sofort erfassen</button><p class="muted sub">Ohne Fälligkeitsdatum erscheint ein Auftrag unter «Eingang / noch einplanen».</p></form>
- ${pmWeeklyPanel()}
+
  <div class="pm-work-metrics"><div><strong>${daily.length}</strong><small>Heute fällig</small></div><div><strong>${overdue.length}</strong><small>Überfällig</small></div><div><strong>${followUps.length}</strong><small>Nachfassen</small></div><div><strong>${inbox.length}</strong><small>Noch einplanen</small></div></div>
  ${(overdue.length||followUps.length)?`<div class="pm-stage3-alert" role="status"><b>Handlungsbedarf:</b> ${overdue.length} überfällige Aufgabe(n), ${followUps.length} fällige Wiedervorlage(n). Öffne die betroffenen Aufgaben und kläre den nächsten Schritt.</div>`:''}
  <details open><summary><b>🔔 Jetzt handeln (${unique([...overdue,...daily,...followUps]).length})</b></summary>${renderList([...overdue,...daily,...followUps],'Aktuell kein dringender Handlungsbedarf.')}</details>
@@ -5250,6 +6239,89 @@ document.addEventListener('submit',e=>{
  const task={id:id(),name,description:'',projectId:String(f.get('projectId')||''),owner:'',due:String(f.get('due')||''),start:'',priority:String(f.get('priority')||'Mittel'),status:String(f.get('status')||'Offen'),pmOrigin:String(f.get('pmOrigin')||'eigen'),pmRequester:String(f.get('pmRequester')||'').trim(),pmFollowUp:String(f.get('status'))==='Warte auf Rückmeldung'?String(f.get('pmFollowUp')||''):'',pmPlanDate:String(f.get('pmPlanDate')||''),pmPlanStart:String(f.get('pmPlanStart')||''),pmEstimateHours:Number(f.get('pmEstimateHours'))||0};
  state.tasks.push(task);save();render();
 },true);
+// Design Refresh 2.0: Planner-like task board and right-side task preview.
+let pmTaskDisplayMode='board';
+const PM_BOARD_COLUMNS=[
+ ['Offen','Eingang / Offen'],['Geplant','Geplant'],['In Arbeit','In Bearbeitung'],
+ ['Warte auf Rückmeldung','Warte auf Rückmeldung'],['Zur Kontrolle','Zur Kontrolle']
+];
+function pmBoardFilterTasks(){
+ return state.tasks.filter(t=>t.status!=='Erledigt' && (!filter || (filter==='__unlinked__'?!t.projectId||!state.projects.some(p=>p.id===t.projectId):t.projectId===filter)));
+}
+// Design Refresh 4.0: Planner-style checklists live on each task and use the existing app save() flow.
+function pm4Checklist(task){return Array.isArray(task?.pmChecklist)?task.pmChecklist.filter(x=>x&&typeof x==='object'):[]}
+function pm4Progress(task){const items=pm4Checklist(task);return {total:items.length,done:items.filter(x=>x.done===true).length}}
+function pm4CardProgress(task){const p=pm4Progress(task);return p.total?`<div class="pm4-card-progress" title="${p.done} von ${p.total} Schritten erledigt"><span>☑ ${p.done}/${p.total}</span><span class="pm4-mini-track"><i style="width:${Math.round(100*p.done/p.total)}%"></i></span></div>`:''}
+function pm4ChecklistHtml(task){
+ const items=pm4Checklist(task),p=pm4Progress(task),editable=navoAuthCanEdit('tasks');
+ return `<section class="pm4-checklist" aria-label="Checkliste zur Aufgabe"><header><div><h3>☑ Arbeitsschritte</h3><small>${p.done} von ${p.total} erledigt</small></div><span class="pm4-progress-percent">${p.total?Math.round(100*p.done/p.total):0}%</span></header><div class="pm4-progress-track" role="progressbar" aria-valuenow="${p.total?Math.round(100*p.done/p.total):0}" aria-valuemin="0" aria-valuemax="100" aria-label="Fortschritt der Arbeitsschritte"><span style="width:${p.total?Math.round(100*p.done/p.total):0}%"></span></div><div class="pm4-checklist-items">${items.map(item=>`<label class="pm4-checklist-row ${item.done?'pm4-done':''}"><input type="checkbox" data-pm4-check="${esc(String(item.id||''))}" ${item.done?'checked':''} ${editable?'':'disabled'}><span>${esc(String(item.text||''))}</span>${editable?`<button type="button" data-pm4-remove="${esc(String(item.id||''))}" title="Arbeitsschritt entfernen" aria-label="Arbeitsschritt entfernen">×</button>`:''}</label>`).join('')||'<p class="pm4-empty">Noch keine Arbeitsschritte erfasst.</p>'}</div>${editable?`<form class="pm4-add-form" data-pm4-add="${esc(task.id)}"><input name="step" maxlength="250" required placeholder="Neuen Arbeitsschritt eingeben …" aria-label="Neuer Arbeitsschritt"><button type="submit" class="btn small">+ Hinzufügen</button></form>`:''}<p class="pm4-hint">Das Abhaken einzelner Schritte schliesst die gesamte Aufgabe nicht automatisch ab.</p></section>`;
+}
+function pm4UpdateTask(task,update){if(!task||!navoAuthCanEdit('tasks')){navoAuthForbidden();return}if(!Array.isArray(task.pmChecklist))task.pmChecklist=[];update(task.pmChecklist);save();pm2ShowTask(task.id);const card=document.querySelector(`.pm2-taskcard[data-pm2-task="${CSS.escape(task.id)}"]`);if(card){const old=card.querySelector('.pm4-card-progress');const html=pm4CardProgress(task);if(old)old.remove();if(html)card.insertAdjacentHTML('beforeend',html)}}
+document.addEventListener('submit',e=>{const form=e.target.closest('form[data-pm4-add]');if(!form)return;e.preventDefault();e.stopImmediatePropagation();const t=state.tasks.find(x=>x.id===form.dataset.pm4Add);const value=String(new FormData(form).get('step')||'').trim();if(!value)return;pm4UpdateTask(t,items=>items.push({id:id(),text:value.slice(0,250),done:false}));},true);
+document.addEventListener('change',e=>{const box=e.target.closest('input[data-pm4-check]');if(!box)return;const taskId=document.querySelector('.pm2-drawer')?.dataset.pm4Task;const t=state.tasks.find(x=>x.id===taskId);pm4UpdateTask(t,items=>{const item=items.find(x=>String(x.id)===box.dataset.pm4Check);if(item)item.done=box.checked});},true);
+document.addEventListener('click',e=>{const btn=e.target.closest('button[data-pm4-remove]');if(!btn)return;const taskId=document.querySelector('.pm2-drawer')?.dataset.pm4Task;const t=state.tasks.find(x=>x.id===taskId);pm4UpdateTask(t,items=>{const i=items.findIndex(x=>String(x.id)===btn.dataset.pm4Remove);if(i>=0)items.splice(i,1)});},true);
+function pmTaskBoardHtml(){
+ const all=pmBoardFilterTasks();
+ const columns=PM_BOARD_COLUMNS.map(([status,label])=>{
+ const items=all.filter(t=>(PM_BOARD_COLUMNS.some(([key])=>key===t.status)?t.status:'Offen')===status).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+ return `<section class="pm2-column" data-pm2-column="${esc(status)}" aria-label="${esc(label)}"><header class="pm2-column-header"><h3>${esc(label)}</h3><span class="pm2-count">${items.length}</span></header><div class="pm2-card-stack">${items.map(t=>{
+ const priority=t.priority||'Mittel',due=t.due?formatSwissDate(t.due):'Ohne Fälligkeit';
+ return `<article class="pm2-taskcard" data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}"><div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small>${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
+ return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
+}
+function pm2ShowTask(id){
+ const t=state.tasks.find(x=>x.id===id);if(!t||!navoAuthCanView('tasks'))return;
+ let root=document.getElementById('pm2DrawerRoot');if(!root){root=document.createElement('div');root.id='pm2DrawerRoot';document.body.appendChild(root)}
+ root.innerHTML=`<div class="pm2-drawer-backdrop" data-pm2-close="1"></div><aside class="pm2-drawer" data-pm4-task="${esc(t.id)}" role="dialog" aria-modal="true" aria-label="Aufgabendetails"><div class="pm2-drawer-head"><span>Aufgabendetails</span><button type="button" data-pm2-close="1" aria-label="Schliessen">✕</button></div><div class="pm2-drawer-body"><span class="pm2-drawer-status">${esc(t.status||'Offen')}</span><h2>${esc(t.name)}</h2><p>${esc(t.description||'Keine Beschreibung hinterlegt.')}</p><dl><dt>Projekt</dt><dd>${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</dd><dt>Priorität</dt><dd>${esc(t.priority||'Mittel')}</dd><dt>Fälligkeit</dt><dd>${esc(t.due?formatSwissDate(t.due):'Nicht festgelegt')}</dd><dt>Geplanter Arbeitstag</dt><dd>${esc(t.pmPlanDate?formatSwissDate(t.pmPlanDate):'Nicht geplant')}</dd><dt>Auftraggeber</dt><dd>${esc(t.pmRequester||'–')}</dd><dt>Wiedervorlage</dt><dd>${esc(t.pmFollowUp?formatSwissDate(t.pmFollowUp):'–')}</dd></dl>${pm4ChecklistHtml(t)}</div><div class="pm2-drawer-footer"><div class="pm2-drawer-footer-left"><button class="btn secondary" type="button" data-pm2-close="1">Schliessen</button></div>${navoAuthCanEdit('tasks')?`<div class="pm2-drawer-footer-right"><button class="btn" type="button" data-pm2-edit="${esc(t.id)}">Bearbeiten</button><button class="btn pm5-drawer-done" type="button" data-pm5-task-done="${esc(t.id)}">✓ Quittieren</button><button class="btn danger" type="button" data-pm5-task-delete="${esc(t.id)}">Löschen</button></div>`:''}</div></aside>`;
+ root.querySelector('.pm2-drawer-head button')?.focus();
+}
+function pm2CloseDrawer(){const root=document.getElementById('pm2DrawerRoot');if(root)root.innerHTML=''}
+document.addEventListener('click',e=>{
+ const done=e.target.closest('[data-pm5-task-done]');
+ if(done){
+  e.preventDefault();e.stopImmediatePropagation();
+  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+  const task=state.tasks.find(x=>x.id===done.dataset.pm5TaskDone);
+  if(!task||task.status==='Erledigt')return;
+  if(!confirm('Aufgabe «'+(task.name||'Aufgabe')+'» jetzt als erledigt quittieren und ins Archiv verschieben?'))return;
+  task.status='Erledigt';task.completedAt=new Date().toLocaleDateString('sv-SE');
+  pm2CloseDrawer();save();render();return;
+ }
+ const del=e.target.closest('[data-pm5-task-delete]');
+ if(del){
+  e.preventDefault();e.stopImmediatePropagation();
+  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+  const task=state.tasks.find(x=>x.id===del.dataset.pm5TaskDelete);
+  if(!task)return;
+  // Reuse the established task deletion mechanism, including its confirmation.
+  pm2CloseDrawer();
+  const button=document.createElement('button');
+  button.type='button';button.dataset.action='delete';button.dataset.kind='task';button.dataset.id=task.id;
+  button.style.display='none';document.body.append(button);
+  button.click();button.remove();return;
+ }
+},true);
+document.addEventListener('click',e=>{
+ const switcher=e.target.closest('[data-pm2-view]');if(switcher){pmTaskDisplayMode=switcher.dataset.pm2View;render();return}
+ const close=e.target.closest('[data-pm2-close]');if(close){pm2CloseDrawer();return}
+ const edit=e.target.closest('[data-pm2-edit]');if(edit){const t=state.tasks.find(x=>x.id===edit.dataset.pm2Edit);pm2CloseDrawer();if(t)modal('task',t);return}
+ const open=e.target.closest('[data-pm2-detail]')||e.target.closest('.pm2-taskcard');if(open){const id=open.dataset.pm2Detail||open.dataset.pm2Task;if(id)pm2ShowTask(id)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')pm2CloseDrawer();if((e.key==='Enter'||e.key===' ')&&e.target.matches('.pm2-taskcard')){e.preventDefault();pm2ShowTask(e.target.dataset.pm2Task)}});
+document.addEventListener('dragstart',e=>{const card=e.target.closest('.pm2-taskcard');if(!card||!navoAuthCanEdit('tasks'))return;e.dataTransfer.setData('text/plain',card.dataset.pm2Task);e.dataTransfer.effectAllowed='move';card.classList.add('pm2-dragging')});
+document.addEventListener('dragend',e=>{e.target.closest('.pm2-taskcard')?.classList.remove('pm2-dragging');document.querySelectorAll('.pm2-drop-over').forEach(el=>el.classList.remove('pm2-drop-over'))});
+document.addEventListener('dragover',e=>{const col=e.target.closest('[data-pm2-column]');if(col){e.preventDefault();e.dataTransfer.dropEffect='move';col.classList.add('pm2-drop-over')}});
+document.addEventListener('dragleave',e=>{const col=e.target.closest('[data-pm2-column]');if(col&&!col.contains(e.relatedTarget))col.classList.remove('pm2-drop-over')});
+document.addEventListener('drop',e=>{
+ const col=e.target.closest('[data-pm2-column]');if(!col)return;e.preventDefault();
+ document.querySelectorAll('.pm2-drop-over').forEach(x=>x.classList.remove('pm2-drop-over'));
+ if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+ const task=state.tasks.find(t=>t.id===e.dataTransfer.getData('text/plain'));
+ const status=col.dataset.pm2Column;if(!task||!PM_BOARD_COLUMNS.some(([s])=>s===status)||task.status==='Erledigt'||task.status===status)return;
+ task.status=status;
+ if(status!=='Warte auf Rückmeldung')task.pmFollowUp='';
+ save();render();
+});
 function tasks(){
  const today=new Date().toLocaleDateString('sv-SE');
  const projectMatches=(task)=>state.projects.some(p=>p.id===task.projectId);
@@ -5264,12 +6336,13 @@ function tasks(){
  const projectList=selectableProjects.filter(p=>state.tasks.some(t=>t.projectId===p.id&&t.status!=='Erledigt'));
  const hasProjectView=filter!=='__unlinked__';
  const hasStandaloneView=!filter||filter==='__unlinked__';
- return `${pmWorkspacePanel()}<div class="section-head"><div><h2>Aufgaben</h2><p class="muted sub">Offene Projektaufgaben und eigenständige Aufgaben klar getrennt · erledigte Aufgaben liegen im Archiv</p></div></div>
- <div class="navo-task-viewbar"><label for="taskFilter">Ansicht filtern</label><select id="taskFilter"><option value="">Alle Aufgaben</option><option value="__unlinked__" ${filter==='__unlinked__'?'selected':''}>Nur Einzelaufgaben</option>${opt(pOpts(),filter)}</select></div>
- <div class="navo-task-split ${hasProjectView&&hasStandaloneView?'':'navo-task-split-single'}">
+ return `<div class="section-head"><div><h2>Aufgaben</h2><p class="muted sub">Offene Projektaufgaben und eigenständige Aufgaben klar getrennt · erledigte Aufgaben liegen im Archiv</p></div></div>
+ <div class="navo-task-viewbar pm2-viewbar"><div class="pm2-segment" role="group" aria-label="Aufgabenansicht"><button type="button" data-pm2-view="board" class="${pmTaskDisplayMode==='board'?'is-active':''}">▦ Board</button><button type="button" data-pm2-view="list" class="${pmTaskDisplayMode==='list'?'is-active':''}">☷ Liste</button></div><label for="taskFilter">Ansicht filtern</label><select id="taskFilter"><option value="">Alle Aufgaben</option><option value="__unlinked__" ${filter==='__unlinked__'?'selected':''}>Nur Einzelaufgaben</option>${opt(pOpts(),filter)}</select></div>
+ ${pmTaskDisplayMode==='board'?pmTaskBoardHtml():`<div class="navo-task-split ${hasProjectView&&hasStandaloneView?'':'navo-task-split-single'}">
  ${hasProjectView?`<section class="navo-task-area"><div class="navo-task-portfolio">${projectList.length?projectList.map(taskProjectCard).join(''):`<div class="card empty">${filter&&filter!=='__unlinked__'?'Für dieses Projekt gibt es aktuell keine offenen Aufgaben.':'Aktuell gibt es keine Projekte mit offenen Aufgaben.'}</div>`}</div></section>`:''}
  ${hasStandaloneView?`<section class="navo-task-area navo-task-solo"><div class="navo-standalone-list">${unlinkedOpen.length?unlinkedOpen.map(navoStandaloneTaskCard).join(''):'<div class="navo-task-solo-empty"><b>Keine offenen Einzelaufgaben vorhanden</b><span>Erledigte Einzelaufgaben findest du im Archiv. Für eine neue Aufgabe das Projektfeld leer lassen.</span><button type="button" class="btn small secondary" data-action="new" data-kind="task">+ Einzelaufgabe erfassen</button></div>'}</div></section>`:''}
- </div>`;
+ </div>`}
+ <details class="pm7-task-workspace"><summary>▸ Persönliche Aufgabenübersicht &amp; Schnellerfassung</summary>${pmWorkspacePanel()}</details>`;
 }
 
 /* Ablauffristen: vergangene Meetings brauchen eine explizite Quittierung. */
@@ -5639,6 +6712,44 @@ function pmOpenLargeCalendarDay(date){
  const scroll=root.querySelector('.pm-large-day-scroll');
  if(scroll)scroll.scrollTop=7*60*.48;
 }
+let pmCalendarDrawerData=null;
+function pmCalendarDrawerOpen(type,id){
+ const source=type==='meeting'?state.meetings:type==='note'?state.calendarNotes:type==='task'?state.tasks:type==='project'?state.projects:type==='savednote'?pmActiveNotes():[];
+ const record=source.find(item=>String(item.id)===String(id));
+ if(!record)return;
+ pmCalendarDrawerData={type,id};
+ const date=record.date||record.pmPlanDate||record.due||record.end||'';
+ const beginning=record.start||record.pmPlanStart||record.dueTime||'';
+ const ending=record.end&&type!=='project'?record.end:(type==='task'?pmPlanEnd(record):'');
+ const title=record.title||record.name||'Eintrag';
+ const project=record.projectId?proj(record.projectId):'';
+ const desc=record.description||record.agenda||record.text||record.detail||'';
+ const status=record.status||'';
+ const wrap=document.getElementById('pm-calendar-drawer-root')||document.createElement('div');
+ wrap.id='pm-calendar-drawer-root';
+ wrap.innerHTML=`<div class="pm-cal-drawer-backdrop" data-pm-cal-dismiss></div><aside class="pm-cal-drawer" role="dialog" aria-modal="true" aria-label="Kalenderdetails"><div class="pm-cal-drawer-top"><span class="pm-cal-drawer-kicker">${esc(calendarTypes[type]?.label||'Kalendereintrag')}</span><button class="pm-cal-drawer-close" aria-label="Schliessen" data-pm-cal-dismiss>✕</button></div><h2>${esc(title)}</h2><div class="pm-cal-drawer-meta"><div><span>Datum</span><b>${esc(date?formatSwissDate(date):'Nicht festgelegt')}</b></div><div><span>Uhrzeit</span><b>${esc(beginning?(beginning+(ending?' – '+ending:'')):'Ohne Uhrzeit')}</b></div>${project?`<div><span>Projekt</span><b>${esc(project)}</b></div>`:''}${status?`<div><span>Status</span><b>${esc(status)}</b></div>`:''}</div>${desc?`<div class="pm-cal-drawer-desc"><span>Beschreibung</span><p>${esc(String(desc)).replace(/\n/g,'<br>')}</p></div>`:''}<div class="pm-cal-drawer-bottom"><button class="btn secondary" data-pm-cal-dismiss>Schliessen</button><button class="btn" data-pm-cal-edit>Eintrag bearbeiten →</button></div></aside>`;
+ if(!wrap.parentElement)document.body.appendChild(wrap);
+ const close=wrap.querySelector('[data-pm-cal-dismiss]');if(close)close.focus();
+}
+function pmCalendarDrawerClose(){const node=document.getElementById('pm-calendar-drawer-root');if(node)node.remove();pmCalendarDrawerData=null;}
+document.addEventListener('click',event=>{
+ const nav=event.target.closest('.navo-new-calendar [data-action="cal-week-prev"],.navo-new-calendar [data-action="cal-week-next"],.navo-new-calendar [data-action="cal-week-today"]');
+ if(!nav)return;
+ event.preventDefault();event.stopImmediatePropagation();
+ const action=nav.dataset.action;
+ if(action==='cal-week-today'){navoWeekOffset=0;navoSelectedCalendarDay='';month=new Date().getMonth();year=new Date().getFullYear();}
+ else{navoWeekOffset+=action==='cal-week-next'?1:-1;const d=calendarDateAdd(calendarWeekStart(),navoWeekOffset*7);month=d.getMonth();year=d.getFullYear();}
+ render();
+},true);
+document.addEventListener('click',event=>{
+ const dismiss=event.target.closest('[data-pm-cal-dismiss]');
+ if(dismiss){event.preventDefault();event.stopImmediatePropagation();pmCalendarDrawerClose();return;}
+ const edit=event.target.closest('[data-pm-cal-edit]');
+ if(edit&&pmCalendarDrawerData){event.preventDefault();event.stopImmediatePropagation();const {type,id}=pmCalendarDrawerData;pmCalendarDrawerClose();const btn=document.createElement('button');btn.dataset.action='cal-event';btn.dataset.type=type;btn.dataset.id=id;document.body.appendChild(btn);btn.click();btn.remove();return;}
+ const target=event.target.closest('.navo-new-calendar [data-action="cal-event"]');
+ if(target){event.preventDefault();event.stopImmediatePropagation();pmCalendarDrawerOpen(target.dataset.type,target.dataset.id);}
+},true);
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.getElementById('pm-calendar-drawer-root'))pmCalendarDrawerClose();},true);
 function calendar(){
  const today=new Date().toLocaleDateString('sv-SE');
  const selectedDay=navoSelectedCalendarDay||today;
@@ -5683,7 +6794,7 @@ function calendar(){
  const selectedDayAgenda=`<section class="card navo-side-day-agenda"><div class="navo-new-panel-head"><div><strong>Tagesansicht</strong><small>${esc(selectedDateTitle)}</small></div><button type="button" class="btn secondary small" data-action="cal-day-today">Heute</button></div><div class="navo-side-day-tools"><span>${selectedEntries.length} ${selectedEntries.length===1?'Eintrag':'Einträge'}</span><button type="button" class="btn small" data-action="cal-day-create" data-date="${selectedDay}">Termin erfassen</button></div><div class="navo-side-day-entries">${selectedEntries.length?`${selectedTimed.map(dayListItem).join('')}${selectedAllDay.length?`<div class="navo-side-day-group">Ohne Uhrzeit / ganztägig</div>${selectedAllDay.map(dayListItem).join('')}`:''}`:'<div class="navo-side-day-empty">Für diesen Tag sind keine Termine eingetragen.<br>Über «+ Termin» kannst du direkt einen neuen Eintrag erstellen.</div>'}</div></section>`;
  const upcoming=calendarUpcoming(9).map(ev=>`<button type="button" class="navo-new-next-item" data-action="cal-event" data-type="${ev.type}" data-id="${esc(ev.id)}"><span class="navo-new-next-dot" style="background:${calendarColor(ev.type,ev.id)}"></span><span><b>${esc(ev.title)}</b><small>${esc(formatSwissDate(ev.date))}${ev.start?' · '+esc(ev.start):''} · ${esc(calendarTypes[ev.type].label)}</small>${ev.memberId?navoMemberBadge(ev.memberId):''}</span></button>`).join('')||'<p class="navo-new-muted">Keine weiteren Einträge geplant.</p>';
  const legend=Object.entries(calendarTypes).filter(([type])=>type!=='task').map(([type,meta])=>`<label class="cal-legend-item"><input type="color" data-cal-color="${type}" value="${calendarColor(type,'')}" title="Farbe für ${esc(meta.label)} wählen"><span>${esc(meta.label)}</span></label>`).join('');
- return `<div class="navo-new-calendar">${pmCalendarPendingPanel()}<div class="section-head"><div><h2>Terminkalender</h2><p class="muted sub">Diese Woche im Fokus: Termine mit Uhrzeit und aktuellem Zeitstrahl. Eintrag anklicken zum Bearbeiten.</p></div><div class="navo-cal-header-actions pm-cal-single-row" aria-label="Farben und neuen Termin erfassen"><div class="cal-legend" aria-label="Kategorien und Farben">${legend}</div><button class="btn" data-action="cal-new-note">Termin erfassen</button></div></div><div class="navo-weekend-bar"><span>Arbeitswoche · Montag bis Freitag <small>07:00–17:00 Uhr farblich hervorgehoben</small></span><button type="button" class="btn small secondary" data-action="cal-weekend-toggle" aria-expanded="${navoWeekendExpanded}">${navoWeekendExpanded?"Wochenende ausblenden ▲":"Samstag & Sonntag anzeigen ▼"}</button></div><div class="navo-new-layout"><div class="navo-new-week ${navoWeekendExpanded?"navo-with-weekend":"navo-workweek-only"}">${dayPanels}</div><aside class="navo-new-sidebar"><section class="card navo-new-mini-panel"><div class="navo-new-panel-head"><div><strong>Monatsübersicht <span class="pm-mini-current-week">Aktuell: KW ${currentKW}</span></strong><small>${esc(monthFirst.toLocaleDateString('de-CH',{month:'long',year:'numeric'}))}</small></div><div class="row"><button class="btn small secondary" data-action="prevmonth" aria-label="Vorheriger Monat">←</button><button class="btn small secondary" data-action="nextmonth" aria-label="Nächster Monat">→</button></div></div><div class="navo-new-mini-grid">${miniHeads}${miniDays}</div><p class="navo-new-hint">KW anklicken: Wochenansicht öffnen. Tag anklicken: Tagesagenda anzeigen.</p></section>${selectedDayAgenda}</aside></div></div>`;
+ return `<div class="navo-new-calendar">${pmCalendarPendingPanel()}<div class="section-head"><div><span class="pm-calendar-eyebrow">MEINE ZEITPLANUNG</span><h2>Terminkalender</h2><p class="muted sub">Wochenansicht mit Zeitachse · Termin anklicken für Details.</p></div><div class="navo-cal-header-actions pm-cal-single-row" aria-label="Farben und neuen Termin erfassen"><div class="cal-legend" aria-label="Kategorien und Farben">${legend}</div><button class="btn" data-action="cal-new-note">Termin erfassen</button></div></div><div class="pm-cal-toolbar"><div class="pm-cal-week-switch"><button type="button" class="btn secondary small" data-action="cal-week-prev" aria-label="Vorherige Woche">‹</button><button type="button" class="btn secondary small" data-action="cal-week-today">Heute</button><button type="button" class="btn secondary small" data-action="cal-week-next" aria-label="Nächste Woche">›</button></div><div class="pm-cal-week-label"><strong>${esc(weekDates[0].toLocaleDateString('de-CH',{day:'2-digit',month:'long'}))} – ${esc(weekDates[6].toLocaleDateString('de-CH',{day:'2-digit',month:'long',year:'numeric'}))}</strong><small>Kalenderwoche ${pmIsoCalendarWeek(weekDates[0])}</small></div><span class="pm-cal-view-pill">▦ Woche</span></div><div class="navo-weekend-bar"><span>Arbeitswoche · Montag bis Freitag <small>07:00–17:00 Uhr farblich hervorgehoben</small></span><button type="button" class="btn small secondary" data-action="cal-weekend-toggle" aria-expanded="${navoWeekendExpanded}">${navoWeekendExpanded?"Wochenende ausblenden ▲":"Samstag & Sonntag anzeigen ▼"}</button></div><div class="navo-new-layout"><div class="navo-new-week ${navoWeekendExpanded?"navo-with-weekend":"navo-workweek-only"}">${dayPanels}</div><aside class="navo-new-sidebar"><section class="card navo-new-mini-panel"><div class="navo-new-panel-head"><div><strong>Monatsübersicht <span class="pm-mini-current-week">Aktuell: KW ${currentKW}</span></strong><small>${esc(monthFirst.toLocaleDateString('de-CH',{month:'long',year:'numeric'}))}</small></div><div class="row"><button class="btn small secondary" data-action="prevmonth" aria-label="Vorheriger Monat">←</button><button class="btn small secondary" data-action="nextmonth" aria-label="Nächster Monat">→</button></div></div><div class="navo-new-mini-grid">${miniHeads}${miniDays}</div><p class="navo-new-hint">KW anklicken: Wochenansicht öffnen. Tag anklicken: Tagesagenda anzeigen.</p></section>${selectedDayAgenda}</aside></div></div><details class="pm7-calendar-weekplan" id="pmWeeklyPlanning"><summary>▸ Meine Wochenplanung · Aufgaben &amp; Termine</summary>${pmWeeklyPanel()}</details>`;
 }
 
 // A calendar appointment is not "carried out" merely because the time elapsed.
@@ -7330,4 +8441,37 @@ document.addEventListener('click',function(e){
  makeReport(b.dataset.pmProjectReport);
 },true);
 })();
-</script></body></html>
+</script>
+<script id="pm-sidebar-collapse-script">
+(function(){
+ const key='pm-manager-sidebar-collapsed-v1';
+ const button=document.getElementById('pmSidebarToggle');
+ if(!button)return;
+ let collapsed=false;
+ try{collapsed=localStorage.getItem(key)==='1'}catch(err){}
+ function sync(){
+  document.body.classList.toggle('pm-sidebar-collapsed',collapsed);
+  button.setAttribute('aria-expanded',String(!collapsed));
+  button.setAttribute('aria-label',collapsed?'Seitenleiste ausklappen':'Seitenleiste einklappen');
+  button.title=collapsed?'Seitenleiste ausklappen':'Seitenleiste einklappen';
+  button.textContent=collapsed?'›':'‹';
+  document.querySelectorAll('#nav button[data-page]').forEach(el=>{
+   const label=el.querySelector('.pm-nav-label')?.textContent?.trim();
+   if(label){el.title=label;el.setAttribute('aria-label',label)}
+  });
+  const search=document.querySelector('#nav [data-pm-global-open]');
+  if(search){search.title='Überall suchen (Strg + K)';search.setAttribute('aria-label','Überall suchen')}
+ }
+ button.addEventListener('click',()=>{collapsed=!collapsed;try{localStorage.setItem(key,collapsed?'1':'0')}catch(err){}sync()});
+ const nav=document.getElementById('nav');
+ if(nav){new MutationObserver(()=>{
+   nav.querySelectorAll('button[data-page]').forEach(el=>{
+    const label=el.querySelector('.pm-nav-label')?.textContent?.trim();
+    if(label){el.title=label;el.setAttribute('aria-label',label)}
+   });
+   const search=nav.querySelector('[data-pm-global-open]');if(search){search.title='Überall suchen (Strg + K)';search.setAttribute('aria-label','Überall suchen')}
+ }).observe(nav,{childList:true,subtree:false})}
+ sync();
+})();
+</script>
+</body></html>
