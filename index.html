@@ -55,6 +55,35 @@
 .meeting-modal-large #meet_minutes{min-height:260px}
 .meeting-modal-large #meetingForm .modal-actions{position:sticky;bottom:-1px;z-index:4;padding:14px 0;background:#18253a;border-top:1px solid #405474}
 @media(max-width:760px){.meeting-modal-large{width:calc(100vw - 16px);max-height:96vh}.meeting-modal-large .meeting-notes-grid{grid-template-columns:1fr}.meeting-modal-large .meeting-notes-full{grid-column:1}.meeting-modal-large #meet_minutes{min-height:210px}}
+
+/* Einheitliche Aktionsbuttons in der Kopfzeile */
+.main > .top.navo-top-unified .top-actions > button,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction {
+  box-sizing:border-box!important;
+  flex:0 0 156px!important;
+  width:156px!important;
+  min-width:156px!important;
+  max-width:156px!important;
+}
+.main > .top.navo-top-unified .top-actions > button,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button {
+  width:100%!important;
+  text-align:center!important;
+}
+.main > .top.navo-top-unified .top-actions #pagePrimaryAction {
+  display:flex!important;
+  align-items:stretch!important;
+}
+@media(max-width:650px){
+  .main > .top.navo-top-unified .top-actions > button,
+  .main > .top.navo-top-unified .top-actions > #pagePrimaryAction {
+    flex:0 0 148px!important;
+    width:148px!important;
+    min-width:148px!important;
+    max-width:148px!important;
+  }
+}
+
 </style><style>
 .risk-analysis{margin:14px 0;padding:15px;border:1px solid rgba(140,160,185,.32);border-radius:12px}.risk-analysis h3{margin:0 0 8px}.risk-matrix-wrap{max-width:540px;margin:14px auto 20px}.risk-matrix-heading{font-size:12px;text-align:center;margin-bottom:5px;opacity:.85}.risk-matrix-grid{display:grid;grid-template-columns:28px repeat(5,minmax(0,1fr));gap:4px}.risk-axis{text-align:center;align-self:center;font-size:12px;opacity:.85}.risk-cell{min-height:55px;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:3px;flex-wrap:wrap;padding:3px}.risk-high{background:rgba(239,68,68,.24);color:#ff8f8f}.risk-mid{background:rgba(234,179,8,.24);color:#f4d368}.risk-low{background:rgba(34,197,94,.22);color:#82e0a6}.risk-dot{display:inline-flex;justify-content:center;align-items:center;width:24px;height:24px;border-radius:50%;background:#20324c;color:#fff!important;text-decoration:none;font-weight:700;border:1px solid #e0e8f7;font-size:12px}.risk-dot:hover{transform:scale(1.12)}.risk-key{border-radius:5px;padding:2px 6px;white-space:nowrap}.risk-matrix-foot{text-align:center;font-size:12px;margin-top:8px}.project-risks{margin:14px 0}.project-risks summary{cursor:pointer;font-weight:600}.project-risks .risk-analysis{padding:10px}.project-risks .risk-cell{min-height:34px}.project-risks .risk-dot{width:20px;height:20px;font-size:11px}
 </style>
@@ -3656,6 +3685,142 @@ body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
     max-width:116px!important;
     height:59px!important;
   }
+}
+</style>
+<style id="pm90-calendar-multi-staff-contrast">
+/* Fix: fieldset/legend was offset by global form styles; use a normal content section. */
+#calendarNoteForm .pm-calendar-member-field {
+  display:block !important;
+  position:relative !important;
+  box-sizing:border-box !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:15px 0 !important;
+  padding:15px !important;
+  border:1px solid #4d798c !important;
+  border-radius:12px !important;
+  background:#223c50 !important;
+  color:#ecf7fa !important;
+  overflow:visible !important;
+}
+#calendarNoteForm .pm-calendar-member-heading {
+  display:block !important;
+  position:static !important;
+  margin:0 0 8px !important;
+  padding:0 !important;
+  background:transparent !important;
+  color:#f5fdff !important;
+  font-size:14px !important;
+  line-height:1.4 !important;
+  font-weight:750 !important;
+}
+#calendarNoteForm .pm-calendar-member-field p {
+  display:block !important;
+  margin:0 0 12px !important;
+  color:#c0dce5 !important;
+  font-size:12px !important;
+  line-height:1.5 !important;
+}
+#calendarNoteForm .pm-calendar-member-grid {
+  display:grid !important;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,175px),1fr)) !important;
+  gap:9px !important;
+  width:100% !important;
+}
+#calendarNoteForm .pm-calendar-member-choice {
+  display:flex !important;
+  align-items:center !important;
+  gap:9px !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+  padding:10px 11px !important;
+  margin:0 !important;
+  border:1px solid #587d8e !important;
+  border-radius:9px !important;
+  background:#315267 !important;
+  color:#eff9fc !important;
+  font-size:12px !important;
+  line-height:1.4 !important;
+  cursor:pointer;
+}
+#calendarNoteForm .pm-calendar-member-choice:has(input:checked) {
+  background:#164c56 !important;
+  border-color:#54d5c5 !important;
+  box-shadow:inset 0 0 0 1px #54d5c555 !important;
+}
+#calendarNoteForm .pm-calendar-member-choice input[type=checkbox] {
+  appearance:auto !important;
+  width:18px !important;
+  height:18px !important;
+  flex:0 0 18px !important;
+  min-width:18px !important;
+  margin:0 !important;
+  accent-color:#21aa9f !important;
+}
+#calendarNoteForm .pm-calendar-member-choice .pm-calendar-member-dot {flex:0 0 11px !important;}
+#calendarNoteForm .pm-calendar-member-choice span:last-child {min-width:0;overflow-wrap:anywhere;}
+@media(max-width:540px) {
+ #calendarNoteForm .pm-calendar-member-field {padding:12px !important;}
+ #calendarNoteForm .pm-calendar-member-grid {grid-template-columns:1fr !important;}
+}
+</style><style id="pm91-header-unified-final">
+/* Einheitliches Kopfleisten-Raster – übersteuert veraltete individuelle Breiten. */
+.main > .top.navo-top-unified {align-items:center!important;gap:12px!important}
+.main > .top.navo-top-unified > .top-main {min-width:0!important;align-items:center!important;gap:12px!important}
+.main > .top.navo-top-unified .top-chips {
+  display:flex!important;align-items:center!important;gap:8px!important;
+  min-width:0!important;max-width:100%!important;
+  overflow-x:auto!important;overflow-y:hidden!important;
+  scrollbar-width:thin!important;scroll-snap-type:x proximity;
+}
+.main > .top.navo-top-unified .top-chips > .top-chip,
+.main > .top.navo-top-tasks .top-chips > .top-chip,
+.main > .top.navo-top-projects .top-chips > .top-chip {
+  box-sizing:border-box!important;
+  flex:0 0 124px!important;width:124px!important;
+  min-width:124px!important;max-width:124px!important;
+  height:54px!important;min-height:54px!important;max-height:54px!important;
+  padding:8px 11px!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  justify-content:center!important;gap:4px!important;overflow:hidden!important;
+  border-radius:10px!important;scroll-snap-align:start;
+}
+.main > .top.navo-top-unified .top-chip small {
+  display:block!important;min-width:0!important;max-width:100%!important;
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
+  overflow-wrap:break-word!important;line-height:1.12!important;font-size:10px!important;
+}
+.main > .top.navo-top-unified .top-chip strong,
+.main > .top.navo-top-projects .top-chip:last-child strong {
+  font-size:16px!important;font-weight:800!important;line-height:1.12!important;
+  display:block!important;white-space:nowrap!important;overflow:visible!important;
+  text-overflow:clip!important;max-width:100%!important;
+}
+.main > .top.navo-top-unified .top-actions {
+  display:flex!important;align-items:center!important;gap:8px!important;
+  flex-wrap:nowrap!important;min-width:0!important;
+}
+.main > .top.navo-top-unified .top-actions > button,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button {
+  box-sizing:border-box!important;display:inline-flex!important;
+  align-items:center!important;justify-content:center!important;
+  height:54px!important;min-height:54px!important;max-height:54px!important;
+  border-radius:10px!important;padding:0 15px!important;
+  font-size:12px!important;font-weight:750!important;line-height:1.2!important;
+  white-space:nowrap!important;
+}
+.main > .top.navo-top-unified .top-actions #pagePrimaryAction {display:flex;align-items:stretch!important}
+/* Kleine Fenster: Kennzahlen horizontal verschieben, Buttons darunter statt zusammendrücken. */
+@media(max-width:1300px){
+ .main > .top.navo-top-unified{flex-wrap:wrap!important}
+ .main > .top.navo-top-unified > .top-main{flex:1 1 100%!important;flex-wrap:wrap!important}
+ .main > .top.navo-top-unified .top-chips{flex:1 1 100%!important;justify-content:flex-start!important}
+ .main > .top.navo-top-unified .top-actions{margin-left:0!important;flex-wrap:wrap!important}
+}
+@media(max-width:650px){
+ .main > .top.navo-top-unified .top-chips > .top-chip{flex-basis:116px!important;width:116px!important;min-width:116px!important;max-width:116px!important;height:54px!important;min-height:54px!important;max-height:54px!important}
+ .main > .top.navo-top-unified .top-actions > button,
+ .main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button{height:46px!important;min-height:46px!important;max-height:46px!important;padding:0 11px!important}
 }
 </style>
 </head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
@@ -7443,7 +7608,7 @@ function pmCalendarEmployeePicker(entry){
  const stored=Array.isArray(entry?.memberIds)?entry.memberIds:[entry?.memberId].filter(Boolean);
  const selected=[...new Set(stored.map(String))];
  const names=(state.members||[]).map(m=>`<label class="pm-calendar-member-choice"><input type="checkbox" name="calendarMemberIds" value="${esc(m.id)}" ${selected.includes(String(m.id))?'checked':''}><span class="pm-calendar-member-dot" style="background:${navoMemberColor(m.id)}"></span><span>${esc(m.name)}</span></label>`).join('');
- return `<fieldset class="pm-calendar-member-field"><legend>Zuständige Mitarbeitende / Farbe</legend><p>Mehrere Mitarbeitende auswählen. Die erste ausgewählte Person bestimmt bei Terminen ohne Projektzuordnung die Kalenderfarbe.</p><div class="pm-calendar-member-grid">${names||'<span>Keine Mitarbeitenden erfasst.</span>'}</div></fieldset>`;
+ return `<section class="pm-calendar-member-field" role="group" aria-labelledby="pm-calendar-member-heading"><div id="pm-calendar-member-heading" class="pm-calendar-member-heading">Zuständige Mitarbeitende / Farbe</div><p>Mehrere Mitarbeitende auswählen. Die erste ausgewählte Person bestimmt bei Terminen ohne Projektzuordnung die Kalenderfarbe.</p><div class="pm-calendar-member-grid">${names||'<span>Keine Mitarbeitenden erfasst.</span>'}</div></section>`;
 }
 function pmCalendarMemberIds(record){
  const ids=Array.isArray(record?.memberIds)&&record.memberIds.length?record.memberIds:[record?.memberId].filter(Boolean);
