@@ -3559,6 +3559,42 @@ body.pm-project-fullview-open{overflow:hidden}
 .pm85-chip{padding:3px 8px;background:#315c77;border-radius:99px;color:#e7f6fb}.pm85-chip.late{background:#633945;color:#ffe0e4}.pm85-chip.done{background:#1a5b4c;color:#a5eed7}
 .pm85-task-row .btn{flex-shrink:0;font-size:12px}.pm85-empty{font-size:12px;color:#c9e0e6;padding:14px 0}
 @media(max-width:620px){.pm85-project-tasks{padding:12px}.pm85-task-row{flex-wrap:wrap}.pm85-task-row .btn{margin-left:auto}}
+</style><style id="pm86-project-dates-style">
+.pm86-project-dates{background:#23485b;border:1px solid #477584;border-radius:15px;padding:18px 20px;margin:0 0 18px;color:#ecf8fa}
+.pm86-date-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.pm86-date-head h3{font-size:19px;color:#fff;margin:0}.pm86-date-head p{font-size:12px;color:#bdd7e0;margin:5px 0 0}
+.pm86-date-row{display:flex;align-items:center;gap:15px;padding:12px 13px;background:#2b5063;border:1px solid #507789;border-radius:11px;margin:7px 0}
+.pm86-date-row.late{border-left:3px solid #f3a1a5}.pm86-date-cell{min-width:95px;display:grid;gap:4px}.pm86-date-cell strong{font-size:13px;color:#fff}.pm86-date-cell small{font-size:11px;color:#a9d4e0}
+.pm86-date-info{display:grid;gap:5px;min-width:0;flex:1}.pm86-date-info strong{font-size:13px;color:#f5fbfd;overflow-wrap:anywhere}.pm86-date-info small{font-size:11px;color:#ffced3}.pm86-date-type{font-size:10px;font-weight:700;color:#8be4d8;text-transform:uppercase;letter-spacing:.04em}
+.pm86-date-row .btn{flex-shrink:0}.pm86-date-hint,.pm86-date-empty{font-size:11px;color:#c1d9e1;line-height:1.55}
+@media(max-width:600px){.pm86-project-dates{padding:12px}.pm86-date-row{gap:10px;flex-wrap:wrap}.pm86-date-row .btn{margin-left:auto}.pm86-date-cell{min-width:80px}}
+</style><style id="pm87-project-colors-and-quarter-hours">
+/* Einheitliche Projektfarbe in allen Board-Spalten. Kontrastreiche, helle Karten. */
+.pm2-taskcard.pm-project-coded,
+body.pm-fluent-light .pm2-taskcard.pm-project-coded,
+body:not(.pm-light) .pm2-taskcard.pm-project-coded{
+ background:var(--pm-project-tint)!important;color:#173246!important;
+ border-color:var(--pm-project-border)!important;border-left:6px solid var(--pm-project-accent)!important;
+ box-shadow:0 3px 12px rgba(5,24,39,.15)!important;
+}
+.pm2-taskcard.pm-project-coded strong{color:#142e45!important}
+.pm2-taskcard.pm-project-coded small,
+.pm2-taskcard.pm-project-coded .pm2-priority,
+.pm2-taskcard.pm-project-coded footer{color:#40566d!important}
+.pm2-taskcard.pm-project-coded footer{border-top:1px solid rgba(48,75,98,.16)!important}
+.pm2-taskcard.pm-project-coded .pm-project-card-name{display:inline-flex;align-items:center;gap:7px;font-weight:750;color:#173246!important}
+.pm2-taskcard.pm-project-coded .pm-project-card-name:before{content:'';width:8px;height:8px;border-radius:3px;background:var(--pm-project-accent);flex-shrink:0}
+.pm2-taskcard.pm-project-coded:hover,.pm2-taskcard.pm-project-coded:focus-visible{outline:2px solid var(--pm-project-accent);outline-offset:1px}
+.pm9-project-legend{display:flex;align-items:center;gap:8px 10px;flex-wrap:wrap;margin:1px 0 12px;font-size:12px;color:#d8eef1}
+.pm9-project-legend>strong{font-size:12px}
+.pm9-project-legend>span{display:inline-flex;gap:7px;align-items:center;background:#e9f3f5;color:#203d4c;border:1px solid #b9d1d6;padding:5px 9px;border-radius:99px;font-weight:650;max-width:260px;overflow-wrap:anywhere}
+.pm9-project-legend i{display:inline-block;width:12px;height:12px;flex-shrink:0;border-radius:3px;background:var(--pm-project-accent)}
+.pm-quarter-hour-field input{width:100%;max-width:100%;box-sizing:border-box}
+.pm-quarter-hour-field .pm-quarter-presets{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 7px}
+.pm-quarter-presets button{padding:7px 11px;border:1px solid #72aebb;border-radius:8px;background:#e6f3f4;color:#184b5b;font-size:12px;line-height:1.2;font-weight:700;cursor:pointer}
+.pm-quarter-presets button:hover,.pm-quarter-presets button:focus-visible{border-color:#0a8c8d;background:#c9e8e8;outline:2px solid #74c9c8;outline-offset:1px}
+.pm-quarter-hour-field>small{display:block;font-size:11px;line-height:1.45;color:#aecbd7}
+body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
 </style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -5897,6 +5933,37 @@ document.addEventListener('click',e=>{
  if(open&&navoAuthCanView('tasks'))pm2ShowTask(open.dataset.pm85TaskOpen);
 });
 document.addEventListener('input',e=>{if(e.target.matches('#pm-project-fullview [data-pm85-search]'))pm85UpdateTasks(e.target.closest('.pm85-project-tasks'))});
+function pm86ProjectDates(p){
+ const rows=[];
+ if(navoAuthCanView('meetings'))for(const m of (state.meetings||[]))if(m.projectId===p.id&&m.date&&m.status!=='Abgesagt')rows.push({date:m.date,time:m.start||'',title:m.title||'Projektmeeting',type:'Sitzung',id:m.id,kind:'meeting'});
+ if(navoAuthCanView('calendar'))for(const n of (state.calendarNotes||[]))if(n.projectId===p.id&&n.date&&!n.ackStatus)rows.push({date:n.date,time:n.start||'',title:n.title||'Kalendertermin',type:'Termin',id:n.id,kind:'note'});
+ if(navoAuthCanView('tasks'))for(const t of (state.tasks||[]))if(t.projectId===p.id&&t.due&&!pm85TaskDone(t)){
+  const milestone=/meilenstein|milestone|abnahme|freigabe|phase\s*\d+:/i.test(t.name||'');
+  rows.push({date:t.due,time:'',title:t.name||'Aufgabenfrist',type:milestone?'Meilenstein / Freigabe':'Aufgabenfrist',id:t.id,kind:'task'});
+ }
+ if(p.end)rows.push({date:p.end,time:'',title:'Geplantes Projektende',type:'Projekttermin',kind:'project'});
+ return rows.sort((a,b)=>(a.date+'T'+a.time).localeCompare(b.date+'T'+b.time));
+}
+function pm86ProjectDatesPanel(p){
+ const today=new Date().toLocaleDateString('sv-SE');
+ const entries=pm86ProjectDates(p);
+ const overdue=entries.filter(e=>e.date<today),future=entries.filter(e=>e.date>=today);
+ const shown=[...overdue.slice(-3),...future.slice(0,9)].sort((a,b)=>(a.date+'T'+a.time).localeCompare(b.date+'T'+b.time));
+ const visible=shown.map(e=>{const late=e.date<today;const kind=e.kind==='task'?'Aufgabe':e.kind==='meeting'?'Sitzung':e.kind==='note'?'Termin':'';
+  return `<div class="pm86-date-row ${late?'late':''}"><div class="pm86-date-cell"><strong>${esc(formatSwissDate(e.date))}</strong>${e.time?`<small>${esc(e.time)} Uhr</small>`:''}</div><div class="pm86-date-info"><span class="pm86-date-type">${esc(e.type)}</span><strong>${esc(e.title)}</strong>${late?'<small>Termin überschritten</small>':''}</div>${e.id&&kind?`<button type="button" class="btn small secondary" data-pm86-open="${esc(e.kind)}" data-pm86-id="${esc(e.id)}">Öffnen</button>`:''}</div>`;
+ }).join('');
+ return `<section class="pm86-project-dates" aria-label="Projekttermine und Meilensteine"><div class="pm86-date-head"><div><h3>Projekttermine & Meilensteine</h3><p>${future.length} kommende · ${overdue.length} vergangene offene Fristen</p></div><button class="btn small secondary" type="button" data-pm86-calendar="1">Terminkalender</button></div><div class="pm86-date-list">${visible||'<p class="pm86-date-empty">Keine Projekttermine oder offenen Aufgabenfristen eingetragen.</p>'}</div>${entries.length>shown.length?`<p class="pm86-date-hint">Es werden die nächsten neun Termine und bis zu drei verstrichene Fristen angezeigt. Weitere Termine findest du im Kalender.</p>`:''}<p class="pm86-date-hint">Meilensteine werden anhand von Bezeichnungen wie «Meilenstein», «Abnahme» oder «Freigabe» erkannt. Es werden keine Termine automatisch hinzugefügt.</p></section>`;
+}
+document.addEventListener('click',event=>{
+ const calendar=event.target.closest('#pm-project-fullview [data-pm86-calendar]');
+ if(calendar){pmProjectFullViewClose();go('calendar');return}
+ const button=event.target.closest('#pm-project-fullview [data-pm86-open]');
+ if(!button)return;
+ const type=button.dataset.pm86Open,id=button.dataset.pm86Id;
+ if(type==='task'&&navoAuthCanView('tasks'))pm2ShowTask(id);
+ else if(type==='meeting'&&navoAuthCanView('meetings')){const m=state.meetings.find(x=>x.id===id);if(m)meetingModal(m)}
+ else if(type==='note'&&navoAuthCanView('calendar'))calendarEventModal('note',id);
+});
 function pmProjectFullViewClose(){
  const root=document.getElementById('pm-project-fullview');
  if(root)root.remove();
@@ -5916,6 +5983,7 @@ function pmProjectFullViewOpen(id){
  clone.querySelectorAll('details').forEach(d=>d.open=true);
  root.querySelector('.pm-project-fullview-slot').insertAdjacentHTML('beforebegin',pmProjectQuickSummary(project));
  root.querySelector('.pm-project-fullview-slot').insertAdjacentHTML('beforebegin',pm85ProjectTaskPanel(project));
+ root.querySelector('.pm-project-fullview-slot').insertAdjacentHTML('beforebegin',pm86ProjectDatesPanel(project));
  root.querySelector('.pm-project-fullview-slot').appendChild(clone);
  const navigation=root.querySelector('.pm-project-fullview-nav');
  const sections=[...clone.querySelectorAll('details.navo-pboard-nested')];
@@ -6416,7 +6484,7 @@ document.addEventListener('submit',e=>{
  e.preventDefault();e.stopImmediatePropagation();
  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
  const f=new FormData(e.target),task=state.tasks.find(t=>t.id===String(f.get('taskId'))),date=String(f.get('planDate')||''),estimate=Number(f.get('estimate'));
- if(!task||task.status==='Erledigt'||!pmWeekDate(date)||!Number.isFinite(estimate)||estimate<=0||estimate>1000){alert('Bitte Aufgabe, Arbeitstag und einen gültigen Zeitaufwand auswählen.');return}
+ if(!task||task.status==='Erledigt'||!pmWeekDate(date)||!pmQuarterHourValid(estimate)){alert('Bitte Aufgabe, Arbeitstag und einen gültigen Zeitaufwand auswählen.');return}
  const start=String(f.get('planStart')||'');if(start&&pmPlanMinutes(start)===null){alert('Ungültige Startzeit.');return}if(start&&pmPlanMinutes(start)+Math.round(estimate*60)>1440){alert('Die Planung überschreitet Mitternacht.');return}task.pmPlanDate=date;task.pmEstimateHours=estimate;task.pmPlanStart=start;save();render();
 },true);
 
@@ -6444,7 +6512,7 @@ function pmWorkspacePanel(){
   return `<div class="pm-work-row pm-stage3-row"><div><span class="pm-stage3-warning">${esc(warn)}</span><b>${esc(t.name)}</b><small>${esc(t.pmRequester?('Auftrag: '+t.pmRequester):t.pmOrigin==='extern'?'Fremdauftrag':'Eigene Aufgabe')} · ${esc(t.projectId?proj(t.projectId):'Ohne Projekt')}${due?' · Fällig '+esc(due):''}${reminder&&t.status==='Warte auf Rückmeldung'?' · Wiedervorlage '+esc(reminder):''}</small></div><button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(t.id)}">Öffnen</button></div>`;
  }).join(''):`<p class="muted sub">${empty}</p>`;
  return `<section class="card pm-workspace pm-workspace-stage3"><div class="section-head"><div><h2>Mein Arbeitsplatz</h2><p class="muted sub">Persönliche Arbeitssteuerung · Stand ${esc(formatSwissDate(today))} · Hinweise beim Öffnen der App</p></div></div>
- <form id="pmQuickTaskForm" class="pm-work-capture"><div class="field"><label>Aufgabe schnell erfassen *</label><input name="name" required maxlength="300" placeholder="Was ist zu erledigen?"></div><div class="pm-work-fields"><div class="field"><label>Herkunft</label><select name="pmOrigin"><option value="extern">Von anderer Person</option><option value="eigen">Selbst erkannt</option></select></div><div class="field"><label>Auftraggeber (optional)</label><input name="pmRequester" placeholder="Name / Kontakt"></div><div class="field"><label>Aufgabe fällig am (optional)</label><input type="date" name="due"><small class="muted">Bestimmt «Heute / Morgen fällig»</small></div><div class="field"><label>Projekt (optional)</label><select name="projectId">${opt(taskProjectOpts(),'')}</select></div><div class="field"><label>Priorität</label><select name="priority"><option>Mittel</option><option>Hoch</option><option>Niedrig</option></select></div><div class="field"><label>Bearbeitungsstatus</label><select name="status"><option value="Offen">Offen / noch einplanen</option><option value="Warte auf Rückmeldung">Warte auf Rückmeldung</option></select></div><div class="field"><label>Geplanter Arbeitstag (optional)</label><input name="pmPlanDate" type="date"></div><div class="field"><label>Geplante Startzeit (optional)</label><input name="pmPlanStart" type="time"></div><div class="field"><label>Geschätzter Aufwand (Stunden)</label><input name="pmEstimateHours" type="number" min="0.25" step="0.25" placeholder="z. B. 2"></div><div class="field" data-pm-followup-field hidden><label>Rückmeldung nachfassen am</label><input name="pmFollowUp" type="date"><small class="muted">Nur wenn du auf eine andere Person wartest</small></div></div><button class="btn" type="submit">+ Auftrag sofort erfassen</button><p class="muted sub">Ohne Fälligkeitsdatum erscheint ein Auftrag unter «Eingang / noch einplanen».</p></form>
+ <form id="pmQuickTaskForm" class="pm-work-capture"><div class="field"><label>Aufgabe schnell erfassen *</label><input name="name" required maxlength="300" placeholder="Was ist zu erledigen?"></div><div class="pm-work-fields"><div class="field"><label>Herkunft</label><select name="pmOrigin"><option value="extern">Von anderer Person</option><option value="eigen">Selbst erkannt</option></select></div><div class="field"><label>Auftraggeber (optional)</label><input name="pmRequester" placeholder="Name / Kontakt"></div><div class="field"><label>Aufgabe fällig am (optional)</label><input type="date" name="due"><small class="muted">Bestimmt «Heute / Morgen fällig»</small></div><div class="field"><label>Projekt (optional)</label><select name="projectId">${opt(taskProjectOpts(),'')}</select></div><div class="field"><label>Priorität</label><select name="priority"><option>Mittel</option><option>Hoch</option><option>Niedrig</option></select></div><div class="field"><label>Bearbeitungsstatus</label><select name="status"><option value="Offen">Offen / noch einplanen</option><option value="Warte auf Rückmeldung">Warte auf Rückmeldung</option></select></div><div class="field"><label>Geplanter Arbeitstag (optional)</label><input name="pmPlanDate" type="date"></div><div class="field"><label>Geplante Startzeit (optional)</label><input name="pmPlanStart" type="time"></div><div class="field pm-quarter-hour-field"><label>Geschätzter Aufwand (15-Min.-Schritte)</label><input name="pmEstimateHours" type="number" min="0.25" step="0.25" inputmode="decimal" placeholder="z. B. 0.25 für 15 Min."><div class="pm-quarter-presets">${[[0.25,'15 Min.'],[0.5,'30 Min.'],[0.75,'45 Min.'],[1,'1 Std.']].map(([num,label])=>`<button type="button" data-pm-quarter="${num}">${label}</button>`).join('')}</div></div><div class="field" data-pm-followup-field hidden><label>Rückmeldung nachfassen am</label><input name="pmFollowUp" type="date"><small class="muted">Nur wenn du auf eine andere Person wartest</small></div></div><button class="btn" type="submit">+ Auftrag sofort erfassen</button><p class="muted sub">Ohne Fälligkeitsdatum erscheint ein Auftrag unter «Eingang / noch einplanen».</p></form>
 
  <div class="pm-work-metrics"><div><strong>${daily.length}</strong><small>Heute fällig</small></div><div><strong>${overdue.length}</strong><small>Überfällig</small></div><div><strong>${followUps.length}</strong><small>Nachfassen</small></div><div><strong>${inbox.length}</strong><small>Noch einplanen</small></div></div>
  ${(overdue.length||followUps.length)?`<div class="pm-stage3-alert" role="status"><b>Handlungsbedarf:</b> ${overdue.length} überfällige Aufgabe(n), ${followUps.length} fällige Wiedervorlage(n). Öffne die betroffenen Aufgaben und kläre den nächsten Schritt.</div>`:''}
@@ -6468,6 +6536,8 @@ document.addEventListener('submit',e=>{
  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
  const f=new FormData(e.target),name=String(f.get('name')||'').trim();
  if(!name)return;
+ const rawEstimate=String(f.get('pmEstimateHours')||'').trim();
+ if(rawEstimate&&!pmQuarterHourValid(Number(rawEstimate))){alert('Bitte 15-Minuten-Schritte wählen: 0,25 h / 0,50 h / 0,75 h / 1 h usw.');return}
  const task={id:id(),name,description:'',projectId:String(f.get('projectId')||''),owner:'',due:String(f.get('due')||''),start:'',priority:String(f.get('priority')||'Mittel'),status:String(f.get('status')||'Offen'),pmOrigin:String(f.get('pmOrigin')||'eigen'),pmRequester:String(f.get('pmRequester')||'').trim(),pmFollowUp:String(f.get('status'))==='Warte auf Rückmeldung'?String(f.get('pmFollowUp')||''):'',pmPlanDate:String(f.get('pmPlanDate')||''),pmPlanStart:String(f.get('pmPlanStart')||''),pmEstimateHours:Number(f.get('pmEstimateHours'))||0};
  state.tasks.push(task);save();render();
 },true);
@@ -6501,20 +6571,58 @@ function pm4UpdateTask(task,update){if(!task||!navoAuthCanEdit('tasks')){navoAut
 document.addEventListener('submit',e=>{const form=e.target.closest('form[data-pm4-add]');if(!form)return;e.preventDefault();e.stopImmediatePropagation();const t=state.tasks.find(x=>x.id===form.dataset.pm4Add);const value=String(new FormData(form).get('step')||'').trim();if(!value)return;pm4UpdateTask(t,items=>items.push({id:id(),text:value.slice(0,250),done:false}));},true);
 document.addEventListener('change',e=>{const box=e.target.closest('input[data-pm4-check]');if(!box)return;const taskId=document.querySelector('.pm2-drawer')?.dataset.pm4Task;const t=state.tasks.find(x=>x.id===taskId);pm4UpdateTask(t,items=>{const item=items.find(x=>String(x.id)===box.dataset.pm4Check);if(item)item.done=box.checked});},true);
 document.addEventListener('click',e=>{const btn=e.target.closest('button[data-pm4-remove]');if(!btn)return;const taskId=document.querySelector('.pm2-drawer')?.dataset.pm4Task;const t=state.tasks.find(x=>x.id===taskId);pm4UpdateTask(t,items=>{const i=items.findIndex(x=>String(x.id)===btn.dataset.pm4Remove);if(i>=0)items.splice(i,1)});},true);
+// Stufe 8.7: stabile Projektfarben, ohne Änderungen an gespeicherten Projekten.
+const PM_PROJECT_CARD_COLORS=[
+ ['#0a7985','#e5f7f8','#75c9d0'],['#5964b8','#ededff','#a6aff1'],
+ ['#98601a','#fff4df','#e0b878'],['#977045','#fcf0e4','#d8b58b'],
+ ['#207e54','#e4f6e9','#8ccfa5'],['#9b527f','#fae9f4','#dba8cd'],
+ ['#356fae','#e8f2ff','#95bce8'],['#a04f4d','#fff0ef','#e1a6a0'],
+ ['#66761e','#f3f6df','#c4cd87'],['#6c597f','#f2eafa','#b5a5cf'],
+ ['#286e73','#e5f4f2','#91c7c6'],['#a35427','#fff0e5','#e6b08d']
+];
+function pmProjectCardColors(projectId){
+ if(!projectId)return null;
+ const knownIds=[...new Set((state.projects||[]).map(p=>String(p.id||'')).filter(Boolean))].sort();
+ const index=knownIds.indexOf(String(projectId));
+ if(index>=0)return PM_PROJECT_CARD_COLORS[index%PM_PROJECT_CARD_COLORS.length];
+ let hash=2166136261;
+ for(const char of String(projectId)){hash^=char.charCodeAt(0);hash=Math.imul(hash,16777619)}
+ return PM_PROJECT_CARD_COLORS[(hash>>>0)%PM_PROJECT_CARD_COLORS.length];
+}
+function pmProjectCardStyle(projectId){
+ const colors=pmProjectCardColors(projectId);
+ return colors?` style="--pm-project-accent:${colors[0]};--pm-project-tint:${colors[1]};--pm-project-border:${colors[2]}"`:'';
+}
+function pmQuarterHourValid(value){return Number.isFinite(value)&&value>=0.25&&value<=1000&&Math.abs(value*4-Math.round(value*4))<0.000001}
+function pmQuarterHourInput(value){
+ return `<div class="field pm-quarter-hour-field"><label for="f_pmEstimateHours">Aufwand geschätzt (Stunden)</label><input id="f_pmEstimateHours" name="pmEstimateHours" type="number" inputmode="decimal" min="0.25" step="0.25" placeholder="z. B. 0.25 für 15 Min." value="${esc(value??'')}"><div class="pm-quarter-presets" aria-label="Aufwand schnell wählen">${[[0.25,'15 Min.'],[0.5,'30 Min.'],[0.75,'45 Min.'],[1,'1 Std.'],[2,'2 Std.']].map(([num,label])=>`<button type="button" data-pm-quarter="${num}" aria-label="${label} geschätzter Aufwand">${label}</button>`).join('')}</div><small>In 15-Minuten-Schritten: 15 Min. = 0,25 h · 30 Min. = 0,50 h · 45 Min. = 0,75 h. Leer lassen, wenn noch unbekannt.</small></div>`;
+}
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm-quarter]');if(!btn)return;
+ const input=btn.closest('.pm-quarter-hour-field')?.querySelector('input[name="pmEstimateHours"]')
+   ||btn.closest('form')?.querySelector('[name="pmEstimateHours"]');
+ if(input){input.value=btn.dataset.pmQuarter;input.dispatchEvent(new Event('input',{bubbles:true}));input.focus()}
+});
 function pmTaskBoardHtml(){
  const all=pmBoardFilterTasks();
  const columns=PM_BOARD_COLUMNS.map(([status,label])=>{
  const items=all.filter(t=>(PM_BOARD_COLUMNS.some(([key])=>key===t.status)?t.status:'Offen')===status).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
  return `<section class="pm2-column" data-pm2-column="${esc(status)}" aria-label="${esc(label)}"><header class="pm2-column-header"><h3>${esc(label)}</h3><span class="pm2-count">${items.length}</span></header><div class="pm2-card-stack">${items.map(t=>{
  const priority=t.priority||'Mittel',due=t.due?formatSwissDate(t.due):'Ohne Fälligkeit';
- return `<article class="pm2-taskcard" data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}"><div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small>${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
- return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm7-board-filters" role="search" aria-label="Aufgaben im Planner-Board filtern"><label><span>Aufgabe suchen</span><input type="search" id="pm7BoardSearch" placeholder="Titel, Beschreibung, Auftraggeber …" value="${esc(pmBoardSearch)}" autocomplete="off"></label><label><span>Priorität</span><select id="pm7BoardPriority"><option value="">Alle</option>${['Hoch','Mittel','Niedrig'].map(v=>`<option value="${v}" ${pmBoardPriority===v?'selected':''}>${v}</option>`).join('')}</select></label><label><span>Fälligkeit</span><select id="pm7BoardDue"><option value="all" ${pmBoardDue==='all'?'selected':''}>Alle</option><option value="overdue" ${pmBoardDue==='overdue'?'selected':''}>Überfällig</option><option value="today" ${pmBoardDue==='today'?'selected':''}>Heute</option><option value="week" ${pmBoardDue==='week'?'selected':''}>Nächste 7 Tage</option><option value="none" ${pmBoardDue==='none'?'selected':''}>Ohne Fälligkeit</option></select></label><button type="button" class="btn small secondary" data-pm7-reset>Zurücksetzen</button></div><div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
+ return `<article class="pm2-taskcard${t.projectId?' pm-project-coded':''}" ${pmProjectCardStyle(t.projectId)} data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}"><div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small class="pm-project-card-name">${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
+ const projectIds=[...new Set(all.map(t=>t.projectId).filter(Boolean))];
+ const projectLegend=projectIds.length?`<div class="pm9-project-legend" aria-label="Projektfarben"><strong>Projektfarben:</strong>${projectIds.map(pid=>`<span ${pmProjectCardStyle(pid)}><i aria-hidden="true"></i>${esc(proj(pid))}</span>`).join('')}</div>`:'';
+ return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm7-board-filters" role="search" aria-label="Aufgaben im Planner-Board filtern"><label><span>Aufgabe suchen</span><input type="search" id="pm7BoardSearch" placeholder="Titel, Beschreibung, Auftraggeber …" value="${esc(pmBoardSearch)}" autocomplete="off"></label><label><span>Priorität</span><select id="pm7BoardPriority"><option value="">Alle</option>${['Hoch','Mittel','Niedrig'].map(v=>`<option value="${v}" ${pmBoardPriority===v?'selected':''}>${v}</option>`).join('')}</select></label><label><span>Fälligkeit</span><select id="pm7BoardDue"><option value="all" ${pmBoardDue==='all'?'selected':''}>Alle</option><option value="overdue" ${pmBoardDue==='overdue'?'selected':''}>Überfällig</option><option value="today" ${pmBoardDue==='today'?'selected':''}>Heute</option><option value="week" ${pmBoardDue==='week'?'selected':''}>Nächste 7 Tage</option><option value="none" ${pmBoardDue==='none'?'selected':''}>Ohne Fälligkeit</option></select></label><button type="button" class="btn small secondary" data-pm7-reset>Zurücksetzen</button></div>${projectLegend}<div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
 }
 function pm7UpdateBoard(){
  const current=document.querySelector('.pm2-board');if(!current)return;
  const template=document.createElement('div');template.innerHTML=pmTaskBoardHtml();
  const replacement=template.querySelector('.pm2-board');
  if(replacement)current.replaceWith(replacement);
+ const oldLegend=document.querySelector('.pm9-project-legend'),newLegend=template.querySelector('.pm9-project-legend');
+ if(oldLegend&&newLegend)oldLegend.replaceWith(newLegend);
+ else if(oldLegend)oldLegend.remove();
+ else if(newLegend)document.querySelector('.pm2-board')?.before(newLegend);
 }
 document.addEventListener('input',e=>{if(e.target?.id!=='pm7BoardSearch')return;pmBoardSearch=e.target.value;pm7UpdateBoard();});
 document.addEventListener('change',e=>{
@@ -7809,7 +7917,7 @@ function wireTime24(form){
 function formatSwissDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value||''))return value||'–';const [y,m,d]=value.split('-');return d+'.'+m+'.'+y;}
 function modal(kind,record,prefillDate,prefill={}){let editing=!!record,r=record||{...prefill},body='';if(kind==='expense'&&prefillDate&&!record)r={memberId:prefillDate};if(kind==='time'&&prefillDate)r={...r,date:prefillDate};if(kind==='project')body=field('Projektname','name','text',r.name,true)+select('Fachbereich','sector',sectors.map(s=>[s,s]),r.sector||'Allgemein')+`<div class="field"><label>Beschreibung</label><textarea name="description">${esc(r.description||'')}</textarea></div>`+select('Projektphase','status',[['Planung','Geplant'],['In Arbeit','Laufend'],['On Hold','On Hold'],['Abgeschlossen','Fertig']],navoProjectCompleted(r)||r.status==='Abgeschlossen'?'Abgeschlossen':r.status==='Planung'||!r.status?'Planung':['On Hold','Pausiert'].includes(r.status)?'On Hold':'In Arbeit')+`<div class="formgrid">${field('Budget (CHF)','budget','number',r.budget||0)}${field('Startdatum','start','date',r.start||'')}${field('Enddatum','end','date',r.end||'')}</div>`+`<div class="navo-project-edit-people"><h3>Projektbeteiligte</h3><p class="muted sub">Wähle alle Mitarbeitenden aus, die an diesem Projekt beteiligt sind.</p><div class="navo-project-edit-members">${state.members.length?state.members.map(m=>`<label class="navo-project-employee-choice"><input type="checkbox" name="projectMemberIds" value="${esc(m.id)}" ${(Array.isArray(r.memberIds)&&r.memberIds.includes(m.id))?'checked':''}><span>${esc(m.name)}</span></label>`).join(''):'<span class="muted sub">Noch keine Mitarbeitenden angelegt.</span>'}</div><div class="navo-project-edit-guests"><div class="navo-guest-list-title"><b>Gäste und externe Beteiligte</b><button type="button" class="btn small secondary" data-add-project-guest>+ Gast hinzufügen</button></div><p class="muted sub">Kontaktdaten je Person erfassen. Es werden keine automatischen Einladungen versendet.</p><div id="navoGuestRows" class="navo-guest-edit-list">${navoGuestObjects(r).map(navoGuestFormRow).join('')}</div></div></div>`;
 if(kind==='project')body+=`<fieldset class="pm-role-fields"><legend>Meine Beteiligung am Projekt</legend><p class="muted sub">Erfasse nur deinen eigenen Verantwortungsbereich. Angaben zum Gesamtprojekt sind optional.</p>${select('Meine Rolle','pmProjectRole',[['eigen','Ich führe dieses Projekt'],['teilprojekt','Ich verantworte einen Teilbereich'],['mitarbeit','Ich arbeite im Projekt mit']],r.pmProjectRole||'mitarbeit')}<div class="formgrid">${field('Gesamtprojektleiter / Ansprechperson','pmOverallLead','text',r.pmOverallLead||'')}${field('Mein Verantwortungsbereich','pmMyScope','text',r.pmMyScope||'')}</div><div class="field"><label>Meine Leistungen / Aufgaben im Projekt</label><textarea name="pmMyDeliverables" placeholder="Was muss ich persönlich liefern oder koordinieren?">${esc(r.pmMyDeliverables||'')}</textarea></div><div class="formgrid">${field('Schnittstellen / Zusammenarbeit','pmInterfaces','text',r.pmInterfaces||'')}${field('Abhängigkeiten / benötigte Freigaben','pmDependencies','text',r.pmDependencies||'')}</div><p class="muted sub">Budget und Gesamttermine dürfen leer bzw. unbekannt bleiben, wenn du nicht für das Gesamtprojekt verantwortlich bist.</p></fieldset>`;
-if(kind==='task')body=field('Aufgabe','name','text',r.name,true)+`<div class="field"><label>Erklärung zur Aufgabe (optional)</label><textarea name="description" placeholder="Was ist zu tun und wann gilt die Aufgabe als erledigt?">${esc(r.description||'')}</textarea></div>`+select('Projektzuordnung (optional)','projectId',taskProjectOpts(),r.projectId??'')+select('Zuständig','owner',mOpts(),r.owner||'')+`<div class="formgrid">${select('Herkunft','pmOrigin',[['extern','Auftrag von anderer Person'],['eigen','Selbst erkannte Aufgabe']],r.pmOrigin||'eigen')}${field('Auftraggeber / Kontakt','pmRequester','text',r.pmRequester||'')}${field('Wiedervorlage','pmFollowUp','date',r.pmFollowUp||'')}</div><div class="formgrid">${field('Startdatum','start','date',r.start||'')}${field('Fällig am','due','date',r.due||'')}${field('Geplanter Arbeitstag','pmPlanDate','date',r.pmPlanDate||'')}${field('Geplante Startzeit','pmPlanStart','time',r.pmPlanStart||'')}${field('Aufwand geschätzt (Stunden)','pmEstimateHours','number',r.pmEstimateHours||'')}${select('Priorität','priority',['Niedrig','Mittel','Hoch'].map(s=>[s,s]),r.priority||'Mittel')}${select('Status','status',taskStatuses.map(s=>[s,s]),r.status||'Offen')}</div>`+`<div class="field pm-dependency-field"><label>Voraussetzung (andere Aufgabe muss zuerst erledigt sein)</label><select name="pmBlockedBy"><option value="">Keine Voraussetzung</option>${state.tasks.filter(t=>t.id!==r.id).map(t=>`<option value="${esc(t.id)}" ${t.id===r.pmBlockedBy?'selected':''}>${esc(t.name)}${t.status==='Erledigt'?' ✓':''}</option>`).join('')}</select><small class="muted">Nur eine direkte Voraussetzung pro Aufgabe. Blockierte Aufgaben werden markiert.</small></div>`+navoGuestPicker(r);
+if(kind==='task')body=field('Aufgabe','name','text',r.name,true)+`<div class="field"><label>Erklärung zur Aufgabe (optional)</label><textarea name="description" placeholder="Was ist zu tun und wann gilt die Aufgabe als erledigt?">${esc(r.description||'')}</textarea></div>`+select('Projektzuordnung (optional)','projectId',taskProjectOpts(),r.projectId??'')+select('Zuständig','owner',mOpts(),r.owner||'')+`<div class="formgrid">${select('Herkunft','pmOrigin',[['extern','Auftrag von anderer Person'],['eigen','Selbst erkannte Aufgabe']],r.pmOrigin||'eigen')}${field('Auftraggeber / Kontakt','pmRequester','text',r.pmRequester||'')}${field('Wiedervorlage','pmFollowUp','date',r.pmFollowUp||'')}</div><div class="formgrid">${field('Startdatum','start','date',r.start||'')}${field('Fällig am','due','date',r.due||'')}${field('Geplanter Arbeitstag','pmPlanDate','date',r.pmPlanDate||'')}${field('Geplante Startzeit','pmPlanStart','time',r.pmPlanStart||'')}${pmQuarterHourInput(r.pmEstimateHours||'')}${select('Priorität','priority',['Niedrig','Mittel','Hoch'].map(s=>[s,s]),r.priority||'Mittel')}${select('Status','status',taskStatuses.map(s=>[s,s]),r.status||'Offen')}</div>`+`<div class="field pm-dependency-field"><label>Voraussetzung (andere Aufgabe muss zuerst erledigt sein)</label><select name="pmBlockedBy"><option value="">Keine Voraussetzung</option>${state.tasks.filter(t=>t.id!==r.id).map(t=>`<option value="${esc(t.id)}" ${t.id===r.pmBlockedBy?'selected':''}>${esc(t.name)}${t.status==='Erledigt'?' ✓':''}</option>`).join('')}</select><small class="muted">Nur eine direkte Voraussetzung pro Aufgabe. Blockierte Aufgaben werden markiert.</small></div>`+navoGuestPicker(r);
 if(kind==='expense')body=select('Mitarbeiter (optional)','memberId',mOpts(),r.memberId||'')+select('Spesenart','expenseType',expenseTypes.map(t=>[t,t]),r.expenseType||'Allgemeine Ausgabe')+field('Beschreibung / Zweck','name','text',r.name||'',true)+select('Projekt (optional)','projectId',[['','Ohne Projekt'],...pOpts()],r.projectId||'')+`<div class="formgrid">${field('Betrag (CHF)','amount','number',r.amount??'',true)}${field('Datum','date','date',r.date||new Date().toISOString().slice(0,10),true)}</div>`+`<div class="field"><label for="expenseNote">Belegnummer / Bemerkung (optional)</label><textarea id="expenseNote" name="note" placeholder="z. B. Quittung Nr. 42 oder Fahrt zum Kunden">${esc(r.note||'')}</textarea></div>`;
 if(kind==='member')body=field('Name','name','text',r.name,true)+field('Rolle','role','text',r.role,true)+field('E-Mail','email','email',r.email||'')+`<div class="field navo-staff-color-field"><label for="staffColor">Mitarbeiterfarbe</label><div class="navo-staff-color-chooser"><input id="staffColor" name="color" type="color" value="${esc(r.color||(r.id?navoMemberColor(r.id):navoStaffPalette[state.members.length%navoStaffPalette.length]))}"><span>Diese Farbe kennzeichnet zugewiesene Aufgaben und Termine in den Übersichten.</span></div></div>`;
 if(kind==='time')body=select('Mitarbeiter','memberId',state.members.map(m=>[m.id,m.name]),r.memberId||state.members[0]?.id)+select('Eintragsart','category',[['Arbeit','Arbeitszeit'],['Ferien','Ferien'],['Kompensation','Kompensation / Frei'],['Krank','Krankheit']],r.category||'Arbeit')+`<div class="time-project-field">${select('Projekt (nur bei Arbeitszeit)','projectId',[['','Ohne Projekt'],...pOpts()],r.projectId||'')}</div>`+`<div class="time-task-field">${select('Zugehörige Aufgabe (optional)','taskId',pmTimeTaskOptions(r.projectId||'',r.taskId||''),r.taskId||'')}</div>`+field('Datum','date','date',r.date||new Date().toLocaleDateString('sv-SE'),true)+field('Tätigkeit / Bemerkung','description','text',r.description||'',false)+`<div class="time-work-fields"><div class="formgrid">${time24Field('Arbeitsbeginn (optional)','start',r.start||'')}${time24Field('Arbeitsende (optional)','end',r.end||'')}${`<div class="field pm-no-break-field"><label class="pm-no-break-label"><input type="checkbox" name="noBreak" value="1" ${!r.lunchStart&&!r.lunchEnd&&!(Number(r.breakMinutes)>0)?'checked':''}> Ohne Pause (z. B. 07:00–10:00 Uhr)</label></div>`}${time24Field('Mittagspause von','lunchStart',r.lunchStart||'')}${time24Field('Mittagspause bis','lunchEnd',r.lunchEnd||'')}${field('Pausendauer in Minuten (wenn keine Pausenuhrzeiten)','breakMinutes','number',r.breakMinutes??0)}${field('Stunden (alternativ zu Beginn/Ende)','duration','number',r.duration??'',false)}</div><p id="navo-time-duration-preview" class="notice" aria-live="polite"></p>${field('Stundensatz (CHF, optional)','rate','number',r.rate??0)}</div><p id="navo-absence-note" class="notice" hidden>Auch Ferien, Kompensation und Krankheit kannst du mit Beginn und Ende erfassen, beispielsweise 08:00 bis 12:00. Falls du keine Uhrzeit auswählst, gib die Abwesenheitsstunden direkt ein (z. B. 8 oder 4). Abwesenheiten zählen nicht als geleistete Arbeitszeit.</p>`;
@@ -7865,6 +7973,12 @@ if(kind==='time'&&!state.members.length){alert('Bitte zuerst ein Teammitglied er
   if((editing&&pmTaskWouldCycle(obj.id,prerequisiteId))||prerequisiteId===obj.id){alert('Diese Verknüpfung würde eine gegenseitige Abhängigkeit erzeugen. Bitte eine andere Aufgabe auswählen.');return}
   if(obj.status==='Erledigt'&&state.tasks.find(x=>x.id===prerequisiteId)?.status!=='Erledigt'){alert('Die Voraussetzung ist noch nicht erledigt. Bitte zuerst diese abschliessen oder die Abhängigkeit entfernen.');return}
  }
+ }if(kind==='task'){
+ const raw=String(f.get('pmEstimateHours')||'').trim();
+ if(raw){const amount=Number(raw),legacy=editing&&Math.abs(amount-Number(r.pmEstimateHours||0))<0.000001;
+  if(!pmQuarterHourValid(amount)&&!legacy){alert('Bitte den geschätzten Aufwand in 15-Minuten-Schritten eingeben (mindestens 0,25 Stunden = 15 Minuten).');return}
+  obj.pmEstimateHours=amount;
+ }else obj.pmEstimateHours=0;
  }if(kind==='task'){const contactList=navoReadEntryGuests(e.currentTarget);if(contactList===null)return;obj.guestContacts=contactList;['guestName','guestKind','guestCompany','guestPhone','guestMobile','guestEmail'].forEach(key=>delete obj[key]);}if(kind==='project'){
  obj.memberIds=[...new Set(f.getAll('projectMemberIds').map(x=>String(x)).filter(x=>state.members.some(m=>m.id===x)))];
  obj.projectGuests=[...e.currentTarget.querySelectorAll('[data-guest-row]')].map(row=>({
