@@ -3595,7 +3595,70 @@ body:not(.pm-light) .pm2-taskcard.pm-project-coded{
 .pm-quarter-presets button:hover,.pm-quarter-presets button:focus-visible{border-color:#0a8c8d;background:#c9e8e8;outline:2px solid #74c9c8;outline-offset:1px}
 .pm-quarter-hour-field>small{display:block;font-size:11px;line-height:1.45;color:#aecbd7}
 body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
-</style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
+</style><style id="pm-calendar-multi-staff-style">
+.pm-calendar-member-field{border:1px solid #b7cfdb;border-radius:11px;padding:13px 14px;margin:14px 0;min-width:0;background:#f0f8fa;color:#1d4053}
+.pm-calendar-member-field legend{font-weight:750;font-size:13px;padding:0 6px;color:#173b50}
+.pm-calendar-member-field p{font-size:12px;margin:0 0 11px;color:#476a7a;line-height:1.5}
+.pm-calendar-member-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:8px}
+.pm-calendar-member-choice{display:flex;align-items:center;gap:9px;padding:10px 11px;border:1px solid #c5d9e1;border-radius:9px;background:#fff;color:#153649;font-size:13px;cursor:pointer;line-height:1.3}
+.pm-calendar-member-choice:has(input:checked){background:#ddf3f1;border-color:#178d88;box-shadow:0 0 0 1px #178d8820}
+.pm-calendar-member-choice input{width:17px;height:17px;flex:0 0 auto;margin:0;accent-color:#087e80}
+.pm-calendar-member-dot{width:11px;height:11px;flex:0 0 auto;border-radius:50%}
+.pm-calendar-member-badges{display:flex;flex-wrap:wrap;gap:5px;min-width:0}
+@media(max-width:540px){.pm-calendar-member-grid{grid-template-columns:1fr}}
+</style>
+<style id="pm89-uniform-project-kpis">
+/* Alle Projekt-Kennzahlen bewusst gleich gross; Labels und Datum vollständig lesbar. */
+.main>.top.navo-top-projects .top-chips {
+  align-items:stretch!important;
+  gap:8px!important;
+  scrollbar-width:thin;
+}
+.main>.top.navo-top-projects .top-chip {
+  flex:0 0 126px!important;
+  width:126px!important;
+  min-width:126px!important;
+  max-width:126px!important;
+  height:59px!important;
+  min-height:59px!important;
+  padding:8px 11px!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.main>.top.navo-top-projects .top-chip small {
+  display:block!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:break-word!important;
+  line-height:1.2!important;
+  max-width:100%!important;
+  font-size:10px!important;
+}
+.main>.top.navo-top-projects .top-chip strong {
+  display:block!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  max-width:100%!important;
+  font-size:16px!important;
+  line-height:1.15!important;
+  font-variant-numeric:tabular-nums;
+}
+.main>.top.navo-top-projects .top-chip:last-child strong{
+  font-size:13px!important;
+}
+@media(max-width:650px){
+  .main>.top.navo-top-projects .top-chip {
+    flex:0 0 116px!important;
+    width:116px!important;
+    min-width:116px!important;
+    max-width:116px!important;
+    height:59px!important;
+  }
+}
+</style>
+</head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
  const key='pm-manager-fluent-theme-v1';
@@ -5278,6 +5341,7 @@ function navoRenderPageTop(which){
  actionHost.innerHTML=info.action||'';
  top.classList.add('navo-top-unified');
  top.classList.toggle('navo-top-tasks',which==='tasks');
+ top.classList.toggle('navo-top-projects',which==='projects');
  if(which==='tasks'){
   top.classList.add('navo-top-tasks');
  }else{
@@ -6898,7 +6962,7 @@ function calendarColor(type,eventId){const custom=state.calendarEventColors[type
 function calendarEvents(date){return [
 ...state.projects.filter(p=>p.end===date).map(p=>({type:'project',id:p.id,title:p.name,detail:'Projektende',start:'',end:''})),
 ...state.meetings.filter(m=>m.date===date&&m.status!=='Abgesagt').map(m=>({type:'meeting',id:m.id,title:m.title,detail:'Sitzung · '+proj(m.projectId),memberId:m.memberId||'',location:m.location||'',guests:m.attendees||'',start:m.start||'',end:m.end||''})),
-...state.calendarNotes.filter(n=>n.date===date&&!n.ackStatus).map(n=>({type:'note',id:n.id,title:n.title,detail:n.text||'Notiz',memberId:n.memberId||'',location:n.location||'',guests:n.guests||'',start:n.start||'',end:n.end||''})),
+...state.calendarNotes.filter(n=>n.date===date&&!n.ackStatus).map(n=>({type:'note',id:n.id,title:n.title,detail:n.text||'Notiz',memberId:n.memberId||'',memberIds:pmCalendarMemberIds(n),location:n.location||'',guests:n.guests||'',start:n.start||'',end:n.end||''})),
 ...pmActiveNotes().filter(n=>n.due===date).map(n=>({type:'savednote',id:n.id,title:n.title,detail:n.content||'Notiz',projectId:n.projectId||'',start:n.dueTime||'',end:''})),
 ...state.tasks.filter(t=>t.pmPlanDate===date&&t.status!=='Erledigt'&&pmPlanMinutes(t.pmPlanStart)!==null&&pmPlanEnd(t)).map(t=>({type:'task',id:t.id,title:'Aufgabe: '+t.name,detail:'Geplante Aufgabe · '+(t.pmEstimateHours||'0')+' h · '+(t.projectId?proj(t.projectId):'Ohne Projekt'),projectId:t.projectId||'',start:t.pmPlanStart||'',end:pmPlanEnd(t)})),
 ];}
@@ -7148,7 +7212,8 @@ function calendar(){
  const dayListItem=ev=>{
    const record=ev.type==='meeting'?state.meetings.find(m=>m.id===ev.id):ev.type==='note'?state.calendarNotes.find(n=>n.id===ev.id):ev.type==='project'?state.projects.find(p=>p.id===ev.id):null;
    const guests=record?navoGuestsForEntry(record):[];
-   const responsibility=ev.memberId?`<div class="navo-side-detail-row"><span>Verantwortlich</span>${navoMemberBadge(ev.memberId)}</div>`:'';
+   const responsibleIds=record&&ev.type==='note'?pmCalendarMemberIds(record):ev.memberId?[ev.memberId]:[];
+   const responsibility=responsibleIds.length?`<div class="navo-side-detail-row"><span>Zuständig</span><div class="pm-calendar-member-badges">${responsibleIds.map(mid=>navoMemberBadge(mid)).join('')}</div></div>`:'';
    const projectId=record?.projectId||'';
    const project=projectId?`<div class="navo-side-detail-row"><span>Projekt</span><b>${esc(proj(projectId))}</b></div>`:'';
    const location=ev.location?`<div class="navo-side-detail-row"><span>Standort</span><b>${pmClickableLinks(ev.location)}</b></div>`:'';
@@ -7374,17 +7439,29 @@ function pmRepeatCountUpdate(){
  if(!until){out.textContent='Bitte ein Enddatum für die Serie wählen.';return}
  out.textContent=dates.length?`${dates.length} Termine werden einzeln erstellt und können einzeln quittiert werden.`:'Ungültiger Zeitraum oder keine Termine im Zeitraum.';
 }
+function pmCalendarEmployeePicker(entry){
+ const stored=Array.isArray(entry?.memberIds)?entry.memberIds:[entry?.memberId].filter(Boolean);
+ const selected=[...new Set(stored.map(String))];
+ const names=(state.members||[]).map(m=>`<label class="pm-calendar-member-choice"><input type="checkbox" name="calendarMemberIds" value="${esc(m.id)}" ${selected.includes(String(m.id))?'checked':''}><span class="pm-calendar-member-dot" style="background:${navoMemberColor(m.id)}"></span><span>${esc(m.name)}</span></label>`).join('');
+ return `<fieldset class="pm-calendar-member-field"><legend>Zuständige Mitarbeitende / Farbe</legend><p>Mehrere Mitarbeitende auswählen. Die erste ausgewählte Person bestimmt bei Terminen ohne Projektzuordnung die Kalenderfarbe.</p><div class="pm-calendar-member-grid">${names||'<span>Keine Mitarbeitenden erfasst.</span>'}</div></fieldset>`;
+}
+function pmCalendarMemberIds(record){
+ const ids=Array.isArray(record?.memberIds)&&record.memberIds.length?record.memberIds:[record?.memberId].filter(Boolean);
+ return [...new Set(ids.map(String))].filter(id=>state.members.some(m=>String(m.id)===id));
+}
 function calendarNoteModal(note=null,prefill='',prefillTime=''){
  const n=note||{};
  const times=`<div class="formgrid">${field('Beginn (optional)','start','time',n.start||prefillTime||'')}${field('Ende (optional)','end','time',n.end||'')}</div>`;
  const repeatFields=!note?`<section class="pm-repeat-box"><div class="pm-repeat-heading"><strong>↻ Wiederkehrender Termin</strong><span>Optional</span></div><div class="formgrid"><div class="field"><label for="pm-repeat-select">Wiederholung</label><select id="pm-repeat-select" name="repeat"><option value="none">Keine Wiederholung</option><option value="daily">Täglich</option><option value="weekly">Jede Woche</option><option value="biweekly">Alle 2 Wochen</option><option value="monthly">Jeden Monat</option></select></div><div class="field" id="pm-repeat-end-wrap" hidden><label for="pm-repeat-until">Wiederholen bis einschliesslich *</label><input id="pm-repeat-until" name="repeatUntil" type="date" value=""></div></div><p class="pm-repeat-preview" id="pm-repeat-preview">Einmaliger Termin.</p><p class="pm-repeat-hint">Jede Durchführung wird separat gespeichert und quittiert. Bei monatlichen Serien am 29.–31. entfallen Monate ohne diesen Kalendertag.</p></section>`:n.seriesId?`<div class="pm-repeat-existing"><strong>↻ Bestandteil einer Terminserie</strong><span>Änderungen und Quittierungen betreffen nur diesen Termin.</span></div>`:'';
- $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal" role="dialog" aria-modal="true" aria-label="Termin oder Notiz"><h2>${note?'Termin / Notiz bearbeiten':'Neuer Termin / neue Notiz'}</h2><form id="calendarNoteForm"><div class="field"><label>Titel *</label><input required name="title" value="${esc(n.title||'')}"></div>${field('Datum','date','date',n.date||prefill||new Date().toLocaleDateString('sv-SE'),true)}${times}<div class="field"><label>Notiz / Beschreibung</label><textarea name="text" rows="5">${esc(n.text||'')}</textarea></div>${select('Projekt (optional)','projectId',[['','Ohne Projekt'],...pOpts()],n.projectId||'')}${select('Zuständiger Mitarbeiter / Farbe','memberId',mOpts(),n.memberId||'')}${field('Standort / Adresse / Videolink','location','text',n.location||'')}${navoGuestPicker(n)}${repeatFields}<div class="modal-actions">${note?`<button type="button" class="btn danger pm-calendar-delete-btn" data-action="cal-delete-note" data-id="${esc(note.id)}" aria-label="Diesen Termin löschen">🗑 Termin löschen</button>`:''}${note?.seriesId?`<button type="button" class="btn secondary" data-repeat-delete-future="${esc(note.id)}" title="Alle Termine dieser Serie ab diesem Datum entfernen">Serie ab hier löschen</button>`:''}${note&&!note.ackStatus&&pmAppointmentPassed(note)?`<button type="button" class="btn pm-ack-primary" data-pm-ack-open="${esc(note.id)}">✓ Termin quittieren</button>`:''}${note&&note.ackStatus?`<button type="button" class="btn secondary" data-pm-ack-open="${esc(note.id)}">Quittierung ansehen</button>`:''}<button type="button" class="btn secondary" data-action="close">Abbrechen</button><button type="submit" class="btn">Speichern</button></div></form></div></div>`;
+ $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal" role="dialog" aria-modal="true" aria-label="Termin oder Notiz"><h2>${note?'Termin / Notiz bearbeiten':'Neuer Termin / neue Notiz'}</h2><form id="calendarNoteForm"><div class="field"><label>Titel *</label><input required name="title" value="${esc(n.title||'')}"></div>${field('Datum','date','date',n.date||prefill||new Date().toLocaleDateString('sv-SE'),true)}${times}<div class="field"><label>Notiz / Beschreibung</label><textarea name="text" rows="5">${esc(n.text||'')}</textarea></div>${select('Projekt (optional)','projectId',[['','Ohne Projekt'],...pOpts()],n.projectId||'')}${pmCalendarEmployeePicker(n)}${field('Standort / Adresse / Videolink','location','text',n.location||'')}${navoGuestPicker(n)}${repeatFields}<div class="modal-actions">${note?`<button type="button" class="btn danger pm-calendar-delete-btn" data-action="cal-delete-note" data-id="${esc(note.id)}" aria-label="Diesen Termin löschen">🗑 Termin löschen</button>`:''}${note?.seriesId?`<button type="button" class="btn secondary" data-repeat-delete-future="${esc(note.id)}" title="Alle Termine dieser Serie ab diesem Datum entfernen">Serie ab hier löschen</button>`:''}${note&&!note.ackStatus&&pmAppointmentPassed(note)?`<button type="button" class="btn pm-ack-primary" data-pm-ack-open="${esc(note.id)}">✓ Termin quittieren</button>`:''}${note&&note.ackStatus?`<button type="button" class="btn secondary" data-pm-ack-open="${esc(note.id)}">Quittierung ansehen</button>`:''}<button type="button" class="btn secondary" data-action="close">Abbrechen</button><button type="submit" class="btn">Speichern</button></div></form></div></div>`;
  const form=document.getElementById('calendarNoteForm');
  if(!note){form.elements.repeat?.addEventListener('change',pmRepeatCountUpdate);form.elements.date?.addEventListener('change',pmRepeatCountUpdate);form.elements.repeatUntil?.addEventListener('change',pmRepeatCountUpdate);pmRepeatCountUpdate()}
  form.addEventListener('submit',e=>{
   e.preventDefault();
   if(!navoAuthCanEdit('calendar')){navoAuthForbidden();return}
-  const f=new FormData(e.currentTarget),data={title:String(f.get('title')||'').trim(),date:String(f.get('date')||''),start:String(f.get('start')||''),end:String(f.get('end')||''),text:String(f.get('text')||'').trim(),projectId:String(f.get('projectId')||''),memberId:String(f.get('memberId')||''),location:String(f.get('location')||'').trim(),guests:String(f.get('guests')||'').trim()};
+  const f=new FormData(e.currentTarget),data={title:String(f.get('title')||'').trim(),date:String(f.get('date')||''),start:String(f.get('start')||''),end:String(f.get('end')||''),text:String(f.get('text')||'').trim(),projectId:String(f.get('projectId')||''),memberId:'',memberIds:[],location:String(f.get('location')||'').trim(),guests:String(f.get('guests')||'').trim()};
+  data.memberIds=[...new Set(f.getAll('calendarMemberIds').map(String))].filter(mid=>state.members.some(m=>String(m.id)===mid));
+  data.memberId=data.memberIds[0]||'';
   const guestContacts=navoReadEntryGuests(e.currentTarget);if(guestContacts===null)return;
   data.guestContacts=guestContacts;data.guests=guestContacts.map(g=>g.name).join('\n');
   if(!data.title||!data.date)return;
