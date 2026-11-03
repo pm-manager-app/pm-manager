@@ -84,6 +84,69 @@
   }
 }
 
+
+/* Kräftigere Umrandungen im grünen Design */
+.main > .top.navo-top-unified .top-chips .top-chip,
+.main > .top.navo-top-unified .top-actions > button,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button,
+.pm7-board-filters,
+.pm7-board-filters input,
+.pm7-board-filters select,
+.pm7-board-filters .btn,
+.pm2-column,
+.pm2-taskcard,
+.pm2-empty,
+.pm-dashboard-week-details,
+.pm-dashboard-rest,
+.pm-weekplan,
+.pm-weekday,
+.card,
+.item,
+.day,
+.modal,
+.notice,
+.navo-pboard-lane,
+.navo-pboard-project,
+.navo-pboard-openbtn,
+.navo-note-card,
+.navo-linked-notes,
+.navo-linked-note,
+.navo3d-stat,
+.navo3d-chart-panel,
+.navo3d-board,
+.navo3d-lane,
+.navo-calc-head,
+.navo-calc-display,
+.navo-calc-key,
+.navo-calc-history-entry,
+.navo-calc-help,
+.navo-calc-result,
+.navo-nin-hero,
+.navo-nin-stat,
+.navo-nin-pane,
+.navo-nin-result,
+.field input,
+.field select,
+.field textarea,
+.toolbar input,
+.toolbar select {
+  border-width: 2px !important;
+}
+
+.nav button.active::before{
+  width:4px!important;
+}
+
+.pm-weekday.pm-week-today,
+.pm-dashboard-week-details,
+.pm-dashboard-rest,
+.pm7-board-filters,
+.main > .top.navo-top-unified .top-actions > button,
+.main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button {
+  box-shadow:0 0 0 1px rgba(74,201,190,.18), 0 10px 24px rgba(5,15,35,.12);
+}
+
 </style><style>
 .risk-analysis{margin:14px 0;padding:15px;border:1px solid rgba(140,160,185,.32);border-radius:12px}.risk-analysis h3{margin:0 0 8px}.risk-matrix-wrap{max-width:540px;margin:14px auto 20px}.risk-matrix-heading{font-size:12px;text-align:center;margin-bottom:5px;opacity:.85}.risk-matrix-grid{display:grid;grid-template-columns:28px repeat(5,minmax(0,1fr));gap:4px}.risk-axis{text-align:center;align-self:center;font-size:12px;opacity:.85}.risk-cell{min-height:55px;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:3px;flex-wrap:wrap;padding:3px}.risk-high{background:rgba(239,68,68,.24);color:#ff8f8f}.risk-mid{background:rgba(234,179,8,.24);color:#f4d368}.risk-low{background:rgba(34,197,94,.22);color:#82e0a6}.risk-dot{display:inline-flex;justify-content:center;align-items:center;width:24px;height:24px;border-radius:50%;background:#20324c;color:#fff!important;text-decoration:none;font-weight:700;border:1px solid #e0e8f7;font-size:12px}.risk-dot:hover{transform:scale(1.12)}.risk-key{border-radius:5px;padding:2px 6px;white-space:nowrap}.risk-matrix-foot{text-align:center;font-size:12px;margin-top:8px}.project-risks{margin:14px 0}.project-risks summary{cursor:pointer;font-weight:600}.project-risks .risk-analysis{padding:10px}.project-risks .risk-cell{min-height:34px}.project-risks .risk-dot{width:20px;height:20px;font-size:11px}
 </style>
@@ -3823,6 +3886,29 @@ body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
  .main > .top.navo-top-unified .top-actions > #pagePrimaryAction > button{height:46px!important;min-height:46px!important;max-height:46px!important;padding:0 11px!important}
 }
 </style>
+
+<style id="pm10-planner-bulk-style">
+.pm10-bulk-switch{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.pm10-bulk-switch>span{color:#bad4db;font-size:12px}
+.pm10-bulk-switch .btn{border:2px solid #2ba9a2!important;background:#194a51!important;color:#ecfffd!important}
+.pm10-bulk-tools{margin:12px 0 17px;padding:14px 16px;background:#193e4d;border:2px solid #3eaca8;border-radius:14px;color:#f0fafa}
+.pm10-bulk-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:12px}
+.pm10-bulk-top strong{font-size:14px}
+.pm10-bulk-top strong span{display:inline-block;margin-left:8px;padding:4px 9px;border-radius:99px;background:#0c797a;font-size:11px}
+.pm10-bulk-top>div{display:flex;gap:7px;flex-wrap:wrap}
+.pm10-bulk-top .btn{padding:7px 10px!important;background:#294f60!important;border:1px solid #5b8a96!important}
+.pm10-bulk-fields{display:grid;grid-template-columns:repeat(3,minmax(120px,1fr)) auto;align-items:end;gap:10px}
+.pm10-bulk-fields label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:650;color:#d4edef;min-width:0}
+.pm10-bulk-fields select,.pm10-bulk-fields input{min-width:0;width:100%;height:41px;border-radius:9px;border:2px solid #658d99;background:#102d3e;color:#f0fbfb;padding:7px 10px;font-size:13px}
+.pm10-bulk-fields .pm10-apply{height:41px;white-space:nowrap;border:2px solid #5cddd1;background:#0e8b89;color:white}
+.pm10-bulk-tools>p{font-size:11px;line-height:1.5;color:#b9dadd;margin:10px 0 0}
+.pm10-card-selector{display:flex;gap:7px;align-items:center;justify-content:flex-start;padding:6px 8px;border-radius:7px;border:2px solid #56818b;background:#fff!important;color:#1f4251!important;cursor:pointer;font-size:11px;font-weight:750;width:max-content;max-width:100%}
+.pm10-card-selector input{width:16px;height:16px;accent-color:#0d8c85;pointer-events:none}
+.pm2-taskcard.pm10-selected{outline:3px solid #0c9a96!important;outline-offset:2px;box-shadow:0 0 0 3px rgba(14,173,158,.16)!important}
+.pm2-taskcard.pm10-selected .pm10-card-selector{background:#daf6f2!important;border-color:#0a948e}
+@media(max-width:900px){.pm10-bulk-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.pm10-bulk-fields .pm10-apply{align-self:end}}
+@media(max-width:520px){.pm10-bulk-fields{grid-template-columns:1fr}.pm10-bulk-fields .pm10-apply{width:100%}}
+</style>
 </head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -5395,7 +5481,7 @@ function pmHistoryPage(){
 document.addEventListener('input',e=>{if(e.target?.id!=='pm-history-search')return;pmHistoryFilters.search=e.target.value;const focus=e.target.selectionStart;const content=document.getElementById('content');if(page!=='history'||!content)return;content.innerHTML=pmHistoryPage();const el=document.getElementById('pm-history-search');if(el){el.focus();el.setSelectionRange(focus,focus)}});
 document.addEventListener('change',e=>{const values={'pm-history-area':'area','pm-history-project':'project','pm-history-action':'action'};const prop=values[e.target?.id];if(!prop||page!=='history')return;pmHistoryFilters[prop]=e.target.value;document.getElementById('content').innerHTML=pmHistoryPage()});
 
-function render(){if(!navoAuthReady||!navoAuthUser)return;if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(work);else $('#content').append(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild){const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(banner.firstElementChild);else $('#content').append(banner.firstElementChild)}}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
+function render(){if(!navoAuthReady||!navoAuthUser)return;pm11UpdateScheduledTasks();if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(work);else $('#content').append(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild){const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(banner.firstElementChild);else $('#content').append(banner.firstElementChild)}}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
 const stat=(label,val,info)=>`<div class="card stat"><span>${label}</span><strong>${val}</strong><span>${info}</span></div>`;
 
 function navoTopChip(label,value,tone=''){
@@ -6832,22 +6918,133 @@ document.addEventListener('click',e=>{
    ||btn.closest('form')?.querySelector('[name="pmEstimateHours"]');
  if(input){input.value=btn.dataset.pmQuarter;input.dispatchEvent(new Event('input',{bubbles:true}));input.focus()}
 });
+
+// Design Refresh 10.0 – sichere Mehrfachbearbeitung im Planner-Board.
+let pm10BulkMode=false;
+const pm10SelectedTaskIds=new Set();
+function pm10BulkToolbar(){
+ if(!navoAuthCanEdit('tasks'))return '';
+ const selected=pm10SelectedTaskIds.size;
+ if(!pm10BulkMode)return '<div class="pm10-bulk-switch"><button type="button" class="btn small secondary" data-pm10-toggle>☑ Mehrere Aufgaben auswählen</button><span>Priorität, Status oder Arbeitstag gemeinsam ändern</span></div>';
+ return `<section class="pm10-bulk-tools" aria-label="Mehrere Aufgaben bearbeiten">
+ <div class="pm10-bulk-top"><strong>☑ Mehrfachbearbeitung <span id="pm10SelectionCount">${selected} ausgewählt</span></strong><div><button type="button" class="btn small secondary" data-pm10-select-visible>Alle sichtbaren</button><button type="button" class="btn small secondary" data-pm10-clear>Auswahl aufheben</button><button type="button" class="btn small secondary" data-pm10-toggle>Beenden</button></div></div>
+ <div class="pm10-bulk-fields">
+  <label>Priorität ändern<select id="pm10BulkPriority"><option value="">Unverändert</option><option value="Hoch">Hoch</option><option value="Mittel">Mittel</option><option value="Niedrig">Niedrig</option></select></label>
+  <label>Status ändern<select id="pm10BulkStatus"><option value="">Unverändert</option><option value="Offen">Offen</option><option value="Geplant">Geplant</option><option value="In Arbeit">In Bearbeitung</option><option value="Zur Kontrolle">Zur Kontrolle</option></select></label>
+  <label>Geplanter Arbeitstag<input id="pm10BulkDate" type="date" aria-label="Neuer Arbeitstag"></label>
+  <button type="button" class="btn pm10-apply" data-pm10-apply ${selected?'':'disabled'}>Änderungen anwenden</button>
+ </div><p>Nur ausgewählte Aufgaben werden geändert. Quittieren, Archivieren und Löschen erfolgen weiterhin einzeln. Vor dem Speichern erscheint eine Bestätigung.</p>
+ </section>`;
+}
+function pm10SyncToolbar(){
+ const counter=document.querySelector('#pm10SelectionCount');
+ if(counter)counter.textContent=pm10SelectedTaskIds.size+' ausgewählt';
+ const action=document.querySelector('[data-pm10-apply]');
+ if(action)action.disabled=pm10SelectedTaskIds.size===0;
+ document.querySelectorAll('.pm2-taskcard[data-pm2-task]').forEach(card=>{
+  const active=pm10SelectedTaskIds.has(card.dataset.pm2Task);
+  card.classList.toggle('pm10-selected',active);
+  card.querySelector('[data-pm10-select]')?.setAttribute('aria-pressed',String(active));
+  const box=card.querySelector('input[data-pm10-checkbox]');if(box)box.checked=active;
+ });
+}
+document.addEventListener('click',e=>{
+ const toggle=e.target.closest('[data-pm10-toggle]');
+ if(toggle){
+  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+  e.preventDefault();e.stopImmediatePropagation();
+  pm10BulkMode=!pm10BulkMode;pm10SelectedTaskIds.clear();render();return;
+ }
+ const select=e.target.closest('[data-pm10-select]');
+ if(select){
+  e.preventDefault();e.stopImmediatePropagation();
+  const id=select.dataset.pm10Select;
+  if(!pm10BulkMode||!navoAuthCanEdit('tasks'))return;
+  if(pm10SelectedTaskIds.has(id))pm10SelectedTaskIds.delete(id);
+  else pm10SelectedTaskIds.add(id);
+  pm10SyncToolbar();return;
+ }
+ if(e.target.closest('[data-pm10-clear]')){
+  pm10SelectedTaskIds.clear();pm10SyncToolbar();return;
+ }
+ if(e.target.closest('[data-pm10-select-visible]')){
+  if(!navoAuthCanEdit('tasks'))return;
+  pmBoardFilterTasks().forEach(t=>pm10SelectedTaskIds.add(t.id));
+  pm10SyncToolbar();return;
+ }
+ if(e.target.closest('[data-pm10-apply]')){
+  e.preventDefault();
+  if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+  const allowed=pmBoardFilterTasks().filter(t=>pm10SelectedTaskIds.has(t.id)&&t.status!=='Erledigt');
+  if(!allowed.length){alert('Bitte zuerst mindestens eine sichtbare Aufgabe auswählen.');return}
+  const priority=document.getElementById('pm10BulkPriority')?.value||'';
+  const status=document.getElementById('pm10BulkStatus')?.value||'';
+  const date=document.getElementById('pm10BulkDate')?.value||'';
+  if(!priority&&!status&&!date){alert('Bitte wähle eine Änderung aus.');return}
+  if(priority&&!['Hoch','Mittel','Niedrig'].includes(priority))return;
+  if(status&&!['Offen','Geplant','In Arbeit','Zur Kontrolle'].includes(status))return;
+  if(date&&!/^\d{4}-\d{2}-\d{2}$/.test(date))return;
+  const changes=[priority?'Priorität: '+priority:'',status?'Status: '+status:'',date?'Arbeitstag: '+formatSwissDate(date):''].filter(Boolean).join('\n');
+  if(!confirm(allowed.length+' Aufgaben gemeinsam ändern?\n\n'+changes+'\n\nBestehende Daten der nicht ausgewählten Aufgaben bleiben unverändert.'))return;
+  allowed.forEach(t=>{
+   if(priority)t.priority=priority;
+   if(status){t.status=status;if(status!=='Warte auf Rückmeldung')t.pmFollowUp=''}
+   if(date)t.pmPlanDate=date;
+  });
+  pm10SelectedTaskIds.clear();pm10BulkMode=false;save();render();return;
+ }
+},true);
+
+// Design Refresh 10.1 – geplanter Aufgabenstart nach lokalem Zeitpunkt.
+function pm11ScheduledStart(t){
+ if(t?.status!=='Geplant'||!/^\d{4}-\d{2}-\d{2}$/.test(String(t.pmPlanDate||''))||!/^([01]\d|2[0-3]):[0-5]\d$/.test(String(t.pmPlanStart||'')))return null;
+ const start=new Date(t.pmPlanDate+'T'+t.pmPlanStart+':00');
+ return Number.isFinite(start.getTime())?start:null;
+}
+function pm11UpdateScheduledTasks(now=new Date()){
+ if(!navoAuthReady||!navoAuthUser||!navoAuthCanEdit('tasks'))return 0;
+ let count=0;
+ for(const t of state.tasks||[]){
+  const start=pm11ScheduledStart(t);
+  if(!start||start>now||pmTaskBlocked(t))continue;
+  t.status='In Arbeit';
+  t.pmAutoStartedAt=now.toISOString();
+  count++;
+ }
+ if(count)save();
+ return count;
+}
+// Wird regelmässig im aktiven Browser geprüft. Ohne geöffnete App läuft kein Hintergrunddienst.
+setInterval(()=>{
+ if(!navoAuthReady||!navoAuthUser)return;
+ const changed=pm11UpdateScheduledTasks();
+ if(changed&&page==='tasks'&&!document.querySelector('.modal-bg, .pm2-drawer'))render();
+},20000);
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState!=='visible'||!navoAuthReady||!navoAuthUser)return;
+ const changed=pm11UpdateScheduledTasks();
+ if(changed&&page==='tasks'&&!document.querySelector('.modal-bg, .pm2-drawer'))render();
+});
+
 function pmTaskBoardHtml(){
  const all=pmBoardFilterTasks();
  const columns=PM_BOARD_COLUMNS.map(([status,label])=>{
  const items=all.filter(t=>(PM_BOARD_COLUMNS.some(([key])=>key===t.status)?t.status:'Offen')===status).sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
  return `<section class="pm2-column" data-pm2-column="${esc(status)}" aria-label="${esc(label)}"><header class="pm2-column-header"><h3>${esc(label)}</h3><span class="pm2-count">${items.length}</span></header><div class="pm2-card-stack">${items.map(t=>{
  const priority=t.priority||'Mittel',due=t.due?formatSwissDate(t.due):'Ohne Fälligkeit';
- return `<article class="pm2-taskcard${t.projectId?' pm-project-coded':''}" ${pmProjectCardStyle(t.projectId)} data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}"><div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small class="pm-project-card-name">${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
+ return `<article class="pm2-taskcard${t.projectId?' pm-project-coded':''}" ${pmProjectCardStyle(t.projectId)} data-pm2-task="${esc(t.id)}" draggable="${navoAuthCanEdit('tasks')?'true':'false'}" tabindex="0" role="button" aria-label="Details: ${esc(t.name)}">${pm10BulkMode&&navoAuthCanEdit('tasks')?`<button class="pm10-card-selector" type="button" data-pm10-select="${esc(t.id)}" aria-label="Aufgabe ${esc(t.name)} auswählen" aria-pressed="${pm10SelectedTaskIds.has(t.id)?'true':'false'}"><input type="checkbox" data-pm10-checkbox="${esc(t.id)}" tabindex="-1" aria-hidden="true" ${pm10SelectedTaskIds.has(t.id)?'checked':''}> Auswählen</button>`:''}<div class="pm2-card-top"><span class="pm2-dot ${priority==='Hoch'?'pm2-red':priority==='Niedrig'?'pm2-green':'pm2-blue'}"></span><span class="pm2-priority">${esc(priority)}</span></div><strong>${esc(t.name)}</strong><small class="pm-project-card-name">${esc(t.projectId?proj(t.projectId):'Einzelauftrag')}</small><footer><span>▣ ${esc(due)}</span><button type="button" class="pm2-card-open" data-pm2-detail="${esc(t.id)}" aria-label="Aufgabendetails öffnen">↗</button></footer>${pm4CardProgress(t)}</article>`}).join('')||'<div class="pm2-empty">Aufgaben hierher ziehen</div>'}</div></section>`}).join('');
  const projectIds=[...new Set(all.map(t=>t.projectId).filter(Boolean))];
  const projectLegend=projectIds.length?`<div class="pm9-project-legend" aria-label="Projektfarben"><strong>Projektfarben:</strong>${projectIds.map(pid=>`<span ${pmProjectCardStyle(pid)}><i aria-hidden="true"></i>${esc(proj(pid))}</span>`).join('')}</div>`:'';
- return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken.</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div><div class="pm7-board-filters" role="search" aria-label="Aufgaben im Planner-Board filtern"><label><span>Aufgabe suchen</span><input type="search" id="pm7BoardSearch" placeholder="Titel, Beschreibung, Auftraggeber …" value="${esc(pmBoardSearch)}" autocomplete="off"></label><label><span>Priorität</span><select id="pm7BoardPriority"><option value="">Alle</option>${['Hoch','Mittel','Niedrig'].map(v=>`<option value="${v}" ${pmBoardPriority===v?'selected':''}>${v}</option>`).join('')}</select></label><label><span>Fälligkeit</span><select id="pm7BoardDue"><option value="all" ${pmBoardDue==='all'?'selected':''}>Alle</option><option value="overdue" ${pmBoardDue==='overdue'?'selected':''}>Überfällig</option><option value="today" ${pmBoardDue==='today'?'selected':''}>Heute</option><option value="week" ${pmBoardDue==='week'?'selected':''}>Nächste 7 Tage</option><option value="none" ${pmBoardDue==='none'?'selected':''}>Ohne Fälligkeit</option></select></label><button type="button" class="btn small secondary" data-pm7-reset>Zurücksetzen</button></div>${projectLegend}<div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
+ return `<div class="pm2-board-intro"><div><strong>Planner-Board</strong><p>Aufgaben zwischen Spalten ziehen oder für Details anklicken. Geplante Aufgaben mit Startzeit wechseln bei Erreichen der Uhrzeit automatisch zu «In Bearbeitung» (ausser bei offenen Abhängigkeiten).</p></div><button type="button" class="btn" data-action="new" data-kind="task">+ Aufgabe</button></div>${pm10BulkToolbar()}<div class="pm7-board-filters" role="search" aria-label="Aufgaben im Planner-Board filtern"><label><span>Aufgabe suchen</span><input type="search" id="pm7BoardSearch" placeholder="Titel, Beschreibung, Auftraggeber …" value="${esc(pmBoardSearch)}" autocomplete="off"></label><label><span>Priorität</span><select id="pm7BoardPriority"><option value="">Alle</option>${['Hoch','Mittel','Niedrig'].map(v=>`<option value="${v}" ${pmBoardPriority===v?'selected':''}>${v}</option>`).join('')}</select></label><label><span>Fälligkeit</span><select id="pm7BoardDue"><option value="all" ${pmBoardDue==='all'?'selected':''}>Alle</option><option value="overdue" ${pmBoardDue==='overdue'?'selected':''}>Überfällig</option><option value="today" ${pmBoardDue==='today'?'selected':''}>Heute</option><option value="week" ${pmBoardDue==='week'?'selected':''}>Nächste 7 Tage</option><option value="none" ${pmBoardDue==='none'?'selected':''}>Ohne Fälligkeit</option></select></label><button type="button" class="btn small secondary" data-pm7-reset>Zurücksetzen</button></div>${projectLegend}<div class="pm2-board" aria-label="Aufgaben nach Status">${columns}</div><p class="pm2-board-footnote">Abgeschlossene Aufgaben bleiben im Archiv. Um eine Aufgabe abzuschliessen, nutze weiterhin die bestehende Bearbeitung und Quittierung.</p>`;
 }
 function pm7UpdateBoard(){
  const current=document.querySelector('.pm2-board');if(!current)return;
  const template=document.createElement('div');template.innerHTML=pmTaskBoardHtml();
  const replacement=template.querySelector('.pm2-board');
+ const visibleIds=new Set(pmBoardFilterTasks().map(t=>t.id));
+ for(const id of pm10SelectedTaskIds)if(!visibleIds.has(id))pm10SelectedTaskIds.delete(id);
  if(replacement)current.replaceWith(replacement);
+ pm10SyncToolbar();
  const oldLegend=document.querySelector('.pm9-project-legend'),newLegend=template.querySelector('.pm9-project-legend');
  if(oldLegend&&newLegend)oldLegend.replaceWith(newLegend);
  else if(oldLegend)oldLegend.remove();
