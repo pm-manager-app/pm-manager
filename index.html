@@ -3951,6 +3951,58 @@ body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
 .pm105-drawer-timer>small{font-size:11px;color:#365e6a;line-height:1.45}
 .pm105-archive-clock{display:block;margin-top:5px!important;color:#8ddfcb!important;font-weight:750}
 @media(max-width:520px){.pm105-clock{white-space:normal}}
+</style>
+<style id="pm11-dispatch-table-style">
+.pm11-open{border:2px solid #45b7ad!important;background:#155b61!important}
+.pm11-backdrop{z-index:23000!important;padding:12px!important}
+.pm11-dialog{width:min(1470px,99vw)!important;max-width:none!important;max-height:97vh!important;overflow-y:auto!important;background:#183548!important;border:2px solid #62aaa8!important;color:#edf9fa!important;padding:18px 20px!important}
+.pm11-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:17px;border-bottom:1px solid #4d7584;padding-bottom:13px}
+.pm11-head span{color:#6bd8cd;font-size:11px;letter-spacing:1px;font-weight:800}.pm11-head h2{margin:5px 0;font-size:22px;color:#fff}.pm11-head p{margin:4px 0;color:#bfdadd;font-size:12px}
+.pm11-toolbar{display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.pm11-toolbar label,.pm11-notes{display:grid;gap:6px;color:#d0e7ed;font-size:12px;font-weight:700}
+.pm11-toolbar input,.pm11-toolbar select,.pm11-notes textarea{background:#0b2738!important;border:2px solid #618c98!important;color:#fff!important;border-radius:9px;padding:10px;width:100%;min-width:0;font-size:13px}
+.pm11-rowtoolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0}
+.pm11-rowtoolbar>div:first-child{display:flex;gap:10px;align-items:center}.pm11-rowtoolbar strong{font-size:15px}.pm11-rowtoolbar span{font-size:11px;color:#a9d2d8}
+.pm11-addtools{display:flex;flex-wrap:wrap;gap:7px;align-items:center}.pm11-addtools select{background:#102d3d;color:#fff;border:2px solid #5a8492;border-radius:8px;padding:8px 10px;max-width:340px;min-width:140px;flex:1}
+.pm11-table-scroll{overflow-x:auto;border:2px solid #547d89;border-radius:12px;background:#193b4d}
+.pm11-table{border-collapse:collapse;width:100%;min-width:1100px;table-layout:fixed}
+.pm11-table th{background:#285569;color:#eafaf9;font-size:11px;text-align:left;padding:11px 8px;border-bottom:2px solid #698e9b}
+.pm11-table td{padding:8px;border-bottom:1px solid #486d7d;vertical-align:top}
+.pm11-table th:nth-child(1){width:35px}.pm11-table th:nth-child(2){width:22%}.pm11-table th:nth-child(3){width:18%}.pm11-table th:nth-child(4){width:13%}.pm11-table th:nth-child(5){width:17%}.pm11-table th:nth-child(6){width:13%}.pm11-table th:nth-child(7){width:14%}.pm11-table th:nth-child(8){width:42px}
+.pm11-table textarea,.pm11-table input,.pm11-table select{min-width:0;width:100%;background:#0e2b3c!important;color:#f3fbfc!important;border:2px solid #587f8e!important;border-radius:8px;padding:8px;font-size:12px}
+.pm11-table textarea{min-height:66px!important;resize:vertical}.pm11-table input[type=date],.pm11-table input[type=time]{color-scheme:dark}.pm11-table td select{margin-bottom:6px}.pm11-num{color:#9edfd9;font-weight:800}
+.pm11-timepair{display:grid;grid-template-columns:1fr 1fr;gap:5px}.pm11-timepair label{display:grid;gap:3px;font-size:10px;color:#c9dde2}
+.pm11-empty{padding:18px;color:#bed4db;font-size:12px}.pm11-notes{margin-top:15px}.pm11-footer{border-top:1px solid #547d89;padding-top:15px;margin-top:15px;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.pm11-footer p{font-size:11px;color:#bdd4dc;line-height:1.5;margin:0;max-width:620px}.pm11-footer>div{display:flex;gap:8px;flex-wrap:wrap}.pm11-pdf{background:#087f7a!important;border:2px solid #6de7d2!important}
+@media(max-width:1100px){.pm11-toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.pm11-dialog{padding:12px!important}.pm11-head{flex-wrap:wrap}.pm11-toolbar{grid-template-columns:1fr}.pm11-footer>div .btn{flex:1}}
+</style>
+<style id="pm112-simple-dispatch-style">
+.pm11-dialog{width:min(1120px,97vw)!important;max-height:95vh!important}
+.pm112-toolbar{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;margin-bottom:12px}
+.pm112-toolbar label,.pm112-doc-fields label{display:grid;gap:6px;font-size:12px;font-weight:750;color:#d5e9ec}
+.pm112-toolbar input,.pm112-toolbar select,.pm112-doc-fields input,.pm112-doc-fields textarea{width:100%;min-width:0;background:#0c2c3e!important;color:#effbfc!important;border:2px solid #5c8b98!important;border-radius:10px;padding:10px;font-size:13px}
+.pm112-doc-extra{margin:0 0 12px;padding:10px 12px;border-radius:11px;border:1px solid #426b79;background:#204355}
+.pm112-doc-extra summary,.pm112-details summary{cursor:pointer;color:#a2e7e0;font-size:12px;font-weight:750;list-style:none}
+.pm112-doc-extra summary::-webkit-details-marker,.pm112-details summary::-webkit-details-marker{display:none}
+.pm112-doc-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.pm112-doc-note{grid-column:1/-1}
+.pm11-rowtoolbar{align-items:center!important}.pm11-addtools select{max-width:240px!important}
+.pm112-add{border:2px solid #70dfd5!important;background:#0a8986!important;color:#fff!important}
+.pm112-list{display:grid;gap:12px;margin-top:10px}
+.pm112-item{background:#224859;border:2px solid #5a8592;border-radius:13px;padding:13px 15px;color:#f0f9fb}
+.pm112-item-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.pm112-item-header strong{font-size:14px}.pm112-number{display:inline-grid;place-items:center;background:#0b8582;border-radius:50%;width:23px;height:23px;margin-right:6px;font-size:12px}
+.pm112-remove{background:#663a45;border:1px solid #ba6874;color:#fff;border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700}
+.pm112-main-fields{display:grid;grid-template-columns:2fr 1.35fr 1fr 1fr;gap:10px;align-items:start}
+.pm112-main-fields label,.pm112-extra-fields label{display:flex;flex-direction:column;gap:6px;min-width:0;color:#d6edf1;font-weight:700;font-size:12px}
+.pm112-main-fields textarea,.pm112-main-fields input,.pm112-extra-fields input{width:100%;min-width:0;min-height:43px;background:#0c2c3e!important;color:#f7fcfd!important;border:2px solid #618d9b!important;border-radius:9px;padding:9px;font-size:13px}
+.pm112-main-fields textarea{resize:vertical;min-height:50px!important}
+.pm112-main-fields input[type=date],.pm112-extra-fields input[type=time]{color-scheme:dark}
+.pm112-details{margin-top:11px;padding:9px 11px;border:1px solid #4c7282;border-radius:9px;background:#1b3c4d}
+.pm112-extra-fields{margin-top:11px;display:grid;grid-template-columns:130px 130px minmax(150px,1fr);gap:10px}
+.pm11-empty[hidden]{display:none!important}
+@media(max-width:980px){.pm112-main-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.pm112-extra-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.pm112-remark{grid-column:1/-1}}
+@media(max-width:580px){.pm112-toolbar,.pm112-doc-fields,.pm112-main-fields,.pm112-extra-fields{grid-template-columns:1fr}.pm112-doc-note,.pm112-remark{grid-column:auto}.pm112-item{padding:11px}.pm11-addtools{width:100%}.pm11-addtools select{max-width:none!important}}
 </style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -5329,6 +5381,125 @@ document.addEventListener('click',async e=>{
 document.addEventListener('change',e=>{if(e.target.id==='pm-backup-file'){pmBackupPending=null;const restore=document.querySelector('[data-backup-restore]');if(restore)restore.disabled=true;const rehearse=document.querySelector('[data-backup-rehearse]');if(rehearse)rehearse.disabled=true;const report=document.getElementById('pm-backup-rehearsal');if(report)report.hidden=true;const preview=document.getElementById('pm-backup-preview');if(preview)preview.hidden=true;pmBackupStatus('import','Datei ausgewählt. Bitte «Datei prüfen» anklicken.')}},true);
 
 
+
+/* Pendenztabelle fuer die externe Koordination (Design Refresh 11.0).
+   Separater Entwurf im bestehenden lokalen State, kein Eingriff in Aufgaben oder Register. */
+function pm11Draft(){
+ if(!state.pmDispatchDraft||typeof state.pmDispatchDraft!=='object'||!Array.isArray(state.pmDispatchDraft.rows)){
+  state.pmDispatchDraft={title:'Pendenzen- und Einsatzplan',projectId:'',recipient:'',reference:'',notes:'',rows:[]};
+ }
+ return state.pmDispatchDraft;
+}
+function pm11NewRow(src=null,kind=''){
+ const person=src?.ownerId?state.members.find(m=>m.id===src.ownerId)?.name||'':src?.owner||'';
+ return {id:id(),sourceId:src?.id||'',sourceKind:kind,work:src?.name||src?.title||'',owner:person,
+   day:src?.pmPlanDate||'',start:src?.pmPlanStart||src?.pmStart||'',end:src?.pmPlanEnd||'',due:src?.due||'',status:src?.status||'Offen',remark:''};
+}
+function pm11SafeDate(v){return /^\d{4}-\d{2}-\d{2}$/.test(v||'')?formatSwissDate(v):'–'}
+function pm11Options(items,value){return items.map(([v,n])=>`<option value="${esc(v)}" ${v===value?'selected':''}>${esc(n)}</option>`).join('')}
+function pm11RowUI(row,n){
+ const canEdit=navoAuthCanEdit('pending');const disabled=canEdit?'':'disabled';
+ const extra=!!(row.start||row.end||row.remark);
+ return `<article class="pm112-item" data-pm11-row="${esc(row.id)}">
+ <div class="pm112-item-header"><strong><span class="pm112-number">${n+1}</span> Pendenz ${n+1}</strong>${canEdit?`<button type="button" class="pm112-remove" data-pm11-remove="${esc(row.id)}" title="Pendenz entfernen" aria-label="Pendenz ${n+1} entfernen">✕ Entfernen</button>`:''}</div>
+ <div class="pm112-main-fields">
+ <label class="pm112-work">Welche Arbeit?<textarea aria-label="Arbeit ${n+1}" data-pm11-field="work" ${disabled} rows="2" placeholder="z. B. Kabelplan prüfen">${esc(row.work)}</textarea></label>
+ <label>Wer erledigt sie?<input type="text" data-pm11-field="owner" list="pm112-member-suggestions" value="${esc(row.owner)}" ${disabled} placeholder="Name eingeben oder wählen" aria-label="Verantwortlich ${n+1}"></label>
+ <label>Wann ausführen?<input type="date" aria-label="Ausführungstag ${n+1}" data-pm11-field="day" value="${esc(row.day)}" ${disabled}></label>
+ <label>Bis wann erledigen?<input type="date" aria-label="Frist ${n+1}" data-pm11-field="due" value="${esc(row.due)}" ${disabled}></label>
+ </div>
+ <details class="pm112-details" ${extra?'open':''}><summary>＋ Uhrzeit oder Bemerkung ${extra?'(erfasst)':'(optional)'}</summary><div class="pm112-extra-fields"><label>Von<input type="time" data-pm11-field="start" aria-label="Beginn ${n+1}" value="${esc(row.start)}" ${disabled}></label><label>Bis<input type="time" data-pm11-field="end" aria-label="Ende ${n+1}" value="${esc(row.end)}" ${disabled}></label><label class="pm112-remark">Bemerkung<input data-pm11-field="remark" value="${esc(row.remark)}" ${disabled} placeholder="Optionaler Hinweis" aria-label="Bemerkung ${n+1}"></label></div></details>
+ </article>`;
+}
+function pm11Dialog(){
+ if(!navoAuthCanView('pending'))return;
+ const d=pm11Draft();const edit=navoAuthCanEdit('pending');
+ const tasks=(state.tasks||[]).filter(t=>!['Erledigt','Abgeschlossen','Archiviert'].includes(t.status))
+  .sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+ const pend=(state.pendingRecords||[]).filter(r=>r.type==='Pendenz'&&!pmPendingClosed(r))
+  .sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999'));
+ const choices=[['','Vorhandenen Eintrag auswählen …'],...tasks.map(t=>['task:'+t.id,'Aufgabe · '+t.name]),...pend.map(r=>['pending:'+r.id,'Pendenz · '+r.title])];
+ document.getElementById('modalRoot').innerHTML=`<div class="modal-bg pm11-backdrop"><div class="modal pm11-dialog" role="dialog" aria-modal="true" aria-label="Pendenztabelle für E-Mail-PDF">
+ <div class="pm11-head"><div><span>PROJEKTKOORDINATION</span><h2>Pendenztabelle zum Versenden</h2><p>Wer erledigt welche Arbeit, zu welcher Zeit und bis wann?</p></div><button class="btn secondary" type="button" data-pm11-close aria-label="Tabelle schliessen">✕ Schliessen</button></div>
+ <div class="pm112-toolbar"><label>Projekt<select data-pm11-meta="projectId" ${edit?'':'disabled'}>${pm11Options([['','Projektübergreifend'],...state.projects.map(p=>[p.id,p.name])],d.projectId||'')}</select></label><label>Tabellentitel<input data-pm11-meta="title" value="${esc(d.title||'')}" ${edit?'':'disabled'} placeholder="Pendenzen- und Einsatzplan"></label></div>
+ <details class="pm112-doc-extra" ${(d.recipient||d.reference||d.notes)?'open':''}><summary>＋ Angaben für den PDF-Versand (optional)</summary><div class="pm112-doc-fields"><label>Empfänger / Verteiler<input data-pm11-meta="recipient" value="${esc(d.recipient||'')}" placeholder="Firma oder Personen" ${edit?'':'disabled'}></label><label>Referenz / Sitzung<input data-pm11-meta="reference" value="${esc(d.reference||'')}" placeholder="z. B. Baustellensitzung" ${edit?'':'disabled'}></label><label class="pm112-doc-note">Hinweise / Vereinbarungen<textarea data-pm11-meta="notes" rows="2" placeholder="Optionaler Text für den Versand" ${edit?'':'disabled'}>${esc(d.notes||'')}</textarea></label></div></details>
+ <div class="pm11-rowtoolbar"><div><strong>Deine Pendenzen</strong><span id="pm11-rowcount">${d.rows.length} Einträge</span></div>${edit?`<div class="pm11-addtools"><button type="button" class="btn pm112-add" data-pm11-add>＋ Pendenz hinzufügen</button><select id="pm11-import-select" aria-label="Bestehende Aufgabe oder Pendenz auswählen">${pm11Options(choices,'')}</select><button type="button" class="btn secondary" data-pm11-import>Übernehmen</button></div>`:''}</div>
+ <datalist id="pm112-member-suggestions">${state.members.map(m=>`<option value="${esc(m.name)}"></option>`).join('')}</datalist>
+ <div class="pm112-list" id="pm11-table-body">${d.rows.map(pm11RowUI).join('')}</div><p class="pm11-empty" id="pm11-empty" ${d.rows.length?'hidden':''}>Noch keine Pendenzen. Klicke auf «Pendenz hinzufügen» und erfasse Arbeit, Person, Ausführungstag und Frist.</p>
+
+ <div class="pm11-footer"><p>Der Entwurf wird lokal gespeichert. PDF erstellen öffnet die Druckansicht; dort «Als PDF speichern» wählen. Es wird keine E-Mail verschickt und keine Aufgabe automatisch geändert.</p><div>${edit?'<button type="button" class="btn secondary" data-pm11-reset>Neue Tabelle</button><button type="button" class="btn secondary" data-pm11-save>Entwurf speichern</button>':''}<button type="button" class="btn pm11-pdf" data-pm11-print>▤ Als PDF ausgeben</button></div></div>
+ </div></div>`;
+ document.querySelector('.pm11-dialog [data-pm11-meta="projectId"]')?.focus();
+}
+function pm11SyncInputs(){
+ const d=pm11Draft();const root=document.querySelector('.pm11-dialog');if(!root)return;
+ root.querySelectorAll('[data-pm11-meta]').forEach(el=>{const key=el.dataset.pm11Meta;if(['title','projectId','recipient','reference','notes'].includes(key))d[key]=el.value});
+ root.querySelectorAll('[data-pm11-row]').forEach(tr=>{
+  const r=d.rows.find(x=>x.id===tr.dataset.pm11Row);if(!r)return;
+  tr.querySelectorAll('[data-pm11-field]').forEach(el=>{const key=el.dataset.pm11Field;if(['work','owner','day','start','end','due','remark'].includes(key))r[key]=el.value});
+ });
+}
+function pm11RefreshRows(){
+ const d=pm11Draft(),body=document.getElementById('pm11-table-body');if(!body)return;
+ body.innerHTML=d.rows.map(pm11RowUI).join('');
+ document.querySelector('#pm11-rowcount').textContent=d.rows.length+' Einträge';
+ const empty=document.getElementById('pm11-empty');if(empty)empty.hidden=d.rows.length!==0;
+}
+function pm11Save(){pm11SyncInputs();save()}
+function pm11Print(){
+ pm11SyncInputs();const d=pm11Draft();const rows=d.rows.filter(x=>String(x.work||'').trim());
+ if(!rows.length){alert('Bitte mindestens eine Arbeit in der Pendenztabelle eintragen.');return}
+ for(const r of rows){
+  if(!r.owner){alert('Bitte für jede Arbeit eine verantwortliche Person auswählen.');return}
+  if(!r.day||!r.due){alert('Bitte bei jeder Arbeit den Ausführungstag und die Frist ausfüllen. Uhrzeiten sind optional.');return}
+  if((r.start&&!r.end)||(!r.start&&r.end)){alert('Bei «'+r.work+'» bitte entweder beide Uhrzeiten angeben oder beide leer lassen.');return}
+  if(r.start&&r.end&&r.start>=r.end){alert('Bei «'+r.work+'» muss das Ende nach dem Beginn liegen.');return}
+  if(r.due<r.day){if(!confirm('Bei «'+r.work+'» liegt die Frist vor dem Ausführungstag. Trotzdem als PDF ausgeben?'))return}
+ }
+ const w=window.open('','_blank');if(!w){alert('Bitte Pop-ups für die Druckansicht erlauben.');return}
+ const safe=v=>esc(String(v||''));
+ const project=d.projectId?proj(d.projectId):'Projektübergreifend';
+ const when=new Date().toLocaleDateString('de-CH');
+ const body=rows.map((r,i)=>`<tr><td>${i+1}</td><td><b>${safe(r.work)}</b>${r.remark?`<small>${safe(r.remark)}</small>`:''}</td><td>${safe(r.owner)}</td><td>${pm11SafeDate(r.day)}${r.start&&r.end?`<small>${safe(r.start)}–${safe(r.end)} Uhr</small>`:''}</td><td class="due">${pm11SafeDate(r.due)}</td><td>${safe(r.status||'Offen')}</td></tr>`).join('');
+ const doc=`<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><title>${safe(d.title||'Pendenztabelle')}</title><style>
+ @page{size:A4 landscape;margin:13mm}*{box-sizing:border-box}body{font:11px/1.42 Arial,Helvetica,sans-serif;color:#173245;background:#f1f4f5;margin:0}
+ .printbar{background:#173c4a;color:white;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px}.printbar button{background:#0c8c86;border:0;border-radius:7px;padding:10px 15px;color:#fff;font-weight:bold;cursor:pointer}
+ .paper{background:white;max-width:295mm;margin:18px auto;padding:17mm;box-shadow:0 8px 32px #18374822}
+ .kicker{color:#087f79;font-size:10px;letter-spacing:1.5px;font-weight:bold}h1{font-size:24px;margin:4px 0 14px;color:#163948}
+ .meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;margin-bottom:20px;border-top:3px solid #0d8985;padding-top:13px}.meta p{margin:0;padding:3px 0}.meta b{color:#294a57}
+ table{border-collapse:collapse;width:100%;table-layout:fixed}thead{display:table-header-group}th{background:#174455;color:white;text-align:left;font-size:10px;padding:9px 8px;border:1px solid #174455}td{padding:10px 8px;border:1px solid #c9d8db;vertical-align:top;white-space:pre-wrap;overflow-wrap:anywhere}tr:nth-child(even) td{background:#edf5f4}tr{break-inside:avoid}td small{display:block;color:#627a83;margin-top:5px}td.due{font-weight:bold;color:#075f5c}
+ th:nth-child(1){width:4%}th:nth-child(2){width:34%}th:nth-child(3){width:18%}th:nth-child(4){width:17%}th:nth-child(5){width:14%}th:nth-child(6){width:13%}
+ .remarks{margin-top:18px;padding:12px;background:#eef5f5;border-left:4px solid #0d8985;white-space:pre-wrap}.end{margin-top:20px;color:#71838b;font-size:9px}
+ @media print{body{background:white}.printbar{display:none}.paper{margin:0;padding:0;max-width:none;box-shadow:none}thead{display:table-header-group}tr{break-inside:avoid}}
+ </style></head><body><div class="printbar"><strong>Pendenztabelle – Druckansicht</strong><button onclick="window.print()">Drucken / Als PDF speichern</button></div><main class="paper"><div class="kicker">PM MANAGER · ARBEITSAUFTRÄGE / PENDENZEN</div><h1>${safe(d.title||'Pendenzen- und Einsatzplan')}</h1><div class="meta"><p><b>Projekt:</b> ${safe(project)}</p><p><b>Erstellt am:</b> ${safe(when)}</p><p><b>Empfänger / Verteiler:</b> ${safe(d.recipient||'–')}</p><p><b>Referenz:</b> ${safe(d.reference||'–')}</p></div>
+ <table><thead><tr><th>Nr.</th><th>Arbeit / Auftrag</th><th>Verantwortlich</th><th>Ausführung / Uhrzeit</th><th>Frist bis</th><th>Status</th></tr></thead><tbody>${body}</tbody></table>${d.notes?`<div class="remarks"><b>Hinweise / Vereinbarungen</b><div>${safe(d.notes)}</div></div>`:''}<p class="end">Erstellt mit PM Manager · Angaben vor dem Versand prüfen. Keine automatische Benachrichtigung oder Auftragserteilung.</p></main></body></html>`;
+ w.document.open();w.document.write(doc);w.document.close();
+}
+document.addEventListener('click',e=>{
+ const btn=e.target.closest('[data-pm11-open],[data-pm11-close],[data-pm11-add],[data-pm11-import],[data-pm11-remove],[data-pm11-save],[data-pm11-reset],[data-pm11-print]');if(!btn)return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(btn.hasAttribute('data-pm11-open')){pm11Dialog();return}
+ if(btn.hasAttribute('data-pm11-close')){if(navoAuthCanEdit('pending'))pm11Save();document.getElementById('modalRoot').innerHTML='';return}
+ if(btn.hasAttribute('data-pm11-print')){pm11Print();if(navoAuthCanEdit('pending'))pm11Save();return}
+ if(!navoAuthCanEdit('pending')){navoAuthForbidden();return}
+ pm11SyncInputs();const d=pm11Draft();
+ if(btn.hasAttribute('data-pm11-add')){d.rows.push(pm11NewRow());pm11RefreshRows();save();document.querySelector('.pm112-item:last-child [data-pm11-field="work"]')?.focus();return}
+ if(btn.hasAttribute('data-pm11-import')){
+  const sel=document.getElementById('pm11-import-select')?.value||'';if(!sel){alert('Bitte einen Eintrag zur Übernahme auswählen.');return}
+  const [kind,itemId]=sel.split(':');const src=kind==='task'?state.tasks.find(t=>t.id===itemId):kind==='pending'?state.pendingRecords.find(r=>r.id===itemId):null;
+  if(!src)return;
+  if(d.rows.some(r=>r.sourceId===itemId&&r.sourceKind===kind)){alert('Dieser Eintrag wurde bereits in die Tabelle übernommen.');return}
+  d.rows.push(pm11NewRow(src,kind));pm11RefreshRows();save();return;
+ }
+ if(btn.hasAttribute('data-pm11-remove')){if(!confirm('Diese Zeile aus dem Tabellenentwurf entfernen? Der ursprüngliche Auftrag bleibt erhalten.'))return;d.rows=d.rows.filter(r=>r.id!==btn.dataset.pm11Remove);pm11RefreshRows();save();return}
+ if(btn.hasAttribute('data-pm11-save')){save();alert('Pendenztabelle lokal gespeichert.');return}
+ if(btn.hasAttribute('data-pm11-reset')){if(!confirm('Eine neue leere Pendenztabelle beginnen? Der bisherige Entwurf wird überschrieben.'))return;state.pmDispatchDraft={title:'Pendenzen- und Einsatzplan',projectId:'',recipient:'',reference:'',notes:'',rows:[]};save();pm11Dialog()}
+},true);
+document.addEventListener('change',e=>{
+ const inp=e.target.closest('.pm11-dialog [data-pm11-field],.pm11-dialog [data-pm11-meta],.pm11-dialog [data-pm11-owner-custom]');if(!inp||!navoAuthCanEdit('pending'))return;
+ pm11Save();
+},true);
+
 /* Zentrales Pendenzen- und Entscheidungsregister. Unter state gespeichert und damit im Backup enthalten. */
 let pmPendingFilter={search:'',status:'open',kind:'all',project:'all'};
 const pmPendingClosed=r=>['Erledigt','Entschieden','Verworfen'].includes(r.status);
@@ -5361,7 +5532,7 @@ function pmPendingPage(){
  const filtered=all.filter(r=>(pmPendingFilter.kind==='all'||r.type===pmPendingFilter.kind)&&(pmPendingFilter.project==='all'||(r.projectId||'')===pmPendingFilter.project)&&(pmPendingFilter.status==='all'||(pmPendingFilter.status==='open'?!pmPendingClosed(r):pmPendingFilter.status==='closed'?pmPendingClosed(r):pmPendingDue(r)))&&(!search||[r.title,r.description,r.owner,proj(r.projectId),state.meetings.find(m=>m.id===r.meetingId)?.title].join(' ').toLocaleLowerCase('de-CH').includes(search)))
   .sort((a,b)=>Number(pmPendingClosed(a))-Number(pmPendingClosed(b))||(a.due||'9999-99-99').localeCompare(b.due||'9999-99-99')||(b.createdAt||'').localeCompare(a.createdAt||''));
  const allowed=navoAuthCanEdit('pending');
- return `<div class="pm-pend-page"><div class="pm-pend-intro"><div><h2>Pendenzen & Entscheidungsmanagement</h2><p>Massnahmen, Beschlüsse und Freigaben – mit Verantwortlichen, Terminen und Meetingbezug.</p></div><div class="row">${allowed?'<button class="btn secondary" type="button" data-pm-pending="new" data-kind="Entscheid">+ Entscheid</button><button class="btn" type="button" data-pm-pending="new" data-kind="Pendenz">+ Pendenz erfassen</button>':''}</div></div>
+ return `<div class="pm-pend-page"><div class="pm-pend-intro"><div><h2>Pendenzen & Entscheidungsmanagement</h2><p>Massnahmen, Beschlüsse und Freigaben – mit Verantwortlichen, Terminen und Meetingbezug.</p></div><div class="row"><button class="btn secondary pm11-open" type="button" data-pm11-open>▤ Pendenztabelle / PDF</button>${allowed?'<button class="btn secondary" type="button" data-pm-pending="new" data-kind="Entscheid">+ Entscheid</button><button class="btn" type="button" data-pm-pending="new" data-kind="Pendenz">+ Pendenz erfassen</button>':''}</div></div>
  <div class="pm-pend-kpis"><div class="pm-pend-kpi"><small>Offene Pendenzen</small><strong>${open.filter(r=>r.type==='Pendenz').length}</strong></div><div class="pm-pend-kpi red"><small>Überfällige Einträge</small><strong>${late.length}</strong></div><div class="pm-pend-kpi violet"><small>Entscheide zur Freigabe</small><strong>${all.filter(r=>r.type==='Entscheid'&&r.status==='Zur Freigabe').length}</strong></div><div class="pm-pend-kpi green"><small>Abgeschlossen / entschieden</small><strong>${all.filter(pmPendingClosed).length}</strong></div></div>
  <div class="pm-pend-controls"><input id="pm-pend-search" type="search" value="${esc(pmPendingFilter.search)}" placeholder="Titel, Verantwortliche, Projekt suchen …" aria-label="Pendenzen durchsuchen"><select id="pm-pend-status" aria-label="Statusfilter">${[['open','Offen / aktiv'],['late','Überfällig'],['closed','Abgeschlossen'],['all','Alle Status']].map(([v,n])=>`<option value="${v}" ${pmPendingFilter.status===v?'selected':''}>${n}</option>`).join('')}</select><select id="pm-pend-kind" aria-label="Artfilter">${[['all','Pendenzen & Entscheide'],['Pendenz','Nur Pendenzen'],['Entscheid','Nur Entscheide']].map(([v,n])=>`<option value="${v}" ${pmPendingFilter.kind===v?'selected':''}>${n}</option>`).join('')}</select><select id="pm-pend-project" aria-label="Projektfilter"><option value="all">Alle Projekte</option><option value="" ${pmPendingFilter.project===''?'selected':''}>Ohne Projekt</option>${state.projects.map(p=>`<option value="${esc(p.id)}" ${pmPendingFilter.project===p.id?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div>
  <div class="pm-pend-list">${filtered.map(r=>{
