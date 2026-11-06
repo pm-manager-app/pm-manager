@@ -4039,12 +4039,947 @@ body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
 .pm-time-detail-time{font-size:13px!important;font-weight:750!important;color:#d4fffa!important}
 .pm-time-detail-undated{font-size:12px!important;color:#bcd1d9!important}
 @media(max-width:650px){.pm-time-folder-entry{display:flex!important;flex-direction:column!important;align-items:stretch!important}}
-</style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
+</style><style id="pm116-outlook-week-layout">
+/* Outlook-inspirierter Wochenplan: ein gemeinsamer Scrollbereich, eine Zeitskala. */
+.navo-new-calendar .navo-new-week{display:block!important;min-width:0!important;overflow:visible!important}
+.pm116-outlook{min-width:0;background:#152c40;border:2px solid #43697a;border-radius:14px;overflow:hidden}
+.pm116-scroll-x{overflow-x:auto;max-width:100%;scrollbar-color:#567f90 #152c40}
+.pm116-content{min-width:770px}
+.pm116-outlook:has(.pm116-dayhead:nth-child(8)) .pm116-content{min-width:970px}
+.pm116-header,.pm116-allday,.pm116-grid{display:grid;grid-template-columns:56px repeat(var(--pm116-count), minmax(0,1fr))}
+.pm116-axis-label,.pm116-allday-title{display:flex;justify-content:center;align-items:center;font-size:10px;color:#a6c4cf;border-right:1px solid #426378;background:#193449}
+.pm116-dayhead{display:flex;align-items:center;justify-content:center;gap:6px;min-height:65px;padding:10px 4px;background:#1c3a50;border-right:1px solid #426378;color:#d5e6ec;font-size:12px}
+.pm116-dayhead strong{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;font-size:19px;color:#eaf6f7}
+.pm116-dayhead small{font-size:10px;color:#a9c8d1}
+.pm116-dayhead.today{background:#215563}.pm116-dayhead.today strong{background:#0eaaa4;color:white}
+.pm116-allday{border-top:1px solid #426378;border-bottom:2px solid #507687;min-height:38px}
+.pm116-allday-cell{min-width:0;border-right:1px solid #426378;padding:4px 5px;display:grid;align-content:start;gap:4px;background:#172e41}
+.pm116-allday-cell.today{background:#1b414f}
+.pm116-allday-cell .navo-new-event{max-width:100%;width:100%}
+.pm116-untimed{font-size:10px;color:#a9d4da;min-width:0}
+.pm116-untimed>summary{cursor:pointer;padding:4px 0;list-style:none}.pm116-untimed>summary::before{content:'▸ ';color:#80dcd4}
+.pm116-untimed[open]>summary::before{content:'▾ '}
+.navo-new-calendar .pm116-shared-scroll{height:min(66vh,640px)!important;min-height:380px;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;border:none!important;border-radius:0!important;margin:0!important;scrollbar-color:#628898 #122638!important}
+.pm116-grid{position:relative;min-height:691.2px;align-items:start;background:#172c40}
+.pm116-axis{height:691.2px;position:relative;border-right:1px solid #416577;background:#152c40;box-sizing:border-box}
+.pm116-axis-hour{position:absolute;right:7px;transform:translateY(-45%);font-size:10px;color:#a9c9d4;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pm116-axis-hour:first-child{transform:none;top:3px!important}
+.pm116-daytrack{height:691.2px!important;min-height:691.2px!important;position:relative!important;border-right:1px solid #3c6173;background:#172e43;overflow:visible!important}
+.pm116-daytrack.current{background:#193c4e}
+.navo-new-calendar .pm116-daytrack{border-radius:0!important;box-shadow:none!important;margin:0!important;padding:0!important;overflow:hidden!important}
+.navo-new-calendar .pm116-hour-rail{margin:0!important;width:100%!important;border-left:none!important;box-sizing:border-box!important;background:repeating-linear-gradient(to bottom,transparent 0,transparent 14px,rgba(153,189,210,.07) 14px,rgba(153,189,210,.07) 14.4px,transparent 14.4px,transparent 28.8px,rgba(137,180,207,.24) 28.8px,rgba(137,180,207,.24) 29px)!important}
+.navo-new-calendar .pm116-hour-rail .navo-day-rail-tick small{display:none!important}
+.navo-new-calendar .pm116-hour-rail .navo-day-rail-tick{left:0!important;width:100%!important}
+.navo-new-calendar .pm116-hour-rail .navo-rail-working-hours{background:rgba(52,122,158,.12)}
+.navo-new-calendar .pm116-hour-rail .navo-day-now-line{left:0!important}
+.navo-new-calendar .pm116-hour-rail .navo-day-now-line::before{left:0!important}
+.navo-new-calendar .pm116-hour-rail .navo-hour-slot{left:0!important;right:0!important}
+.navo-new-calendar .pm116-hour-rail .navo-day-rail-event{left:6px!important;width:calc(100% - 12px)!important}
+.pm116-scroll-x:focus-within{outline:2px solid #6bd7cf;outline-offset:-2px}
+@media(max-width:900px){.pm116-content{min-width:720px}.pm116-outlook:has(.pm116-dayhead:nth-child(8)) .pm116-content{min-width:950px}}
+</style><style id="pm-full-premium-design-system-v1">
+/* PM Manager · Premium Petrol: gemeinsames Design-Fundament (nur dunkle Ansicht).
+   Konsistente Fenstergrössen: 760px Formulare, 1080px Arbeitsdialoge,
+   540px Seitendetails. Vollbild-/Gantt-Dialoge bleiben bewusst gross. */
+:root{--pm-premium-bg:#071d28;--pm-premium-side:#072330;--pm-premium-panel:#0d3040;--pm-premium-panel-2:#123849;--pm-premium-outline:#3b8191;--pm-premium-outline-bright:#38c9c3;--pm-premium-text:#f0fbfc;--pm-premium-sub:#b0cfd8;--pm-premium-radius:15px;--pm-premium-shadow:0 12px 30px rgba(1,13,22,.22)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light){background:var(--pm-premium-bg)!important;color:var(--pm-premium-text)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .app{background:linear-gradient(155deg,#081f2c 0%,#092d38 50%,#081d2b 100%);min-height:100vh}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .app>.side{width:256px;flex-basis:256px;background:linear-gradient(180deg,#092a36,#071f30 60%,#071a28)!important;border-right:2px solid rgba(83,181,193,.38)!important;padding:20px 12px 16px;box-shadow:8px 0 35px rgba(0,12,19,.26)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main{max-width:none!important;width:100%;margin:0!important;min-width:0;padding:24px clamp(16px,2.2vw,34px) 55px!important}
+/* Sidebar, Brand, Navigation */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-pm-brand{min-height:66px;border-bottom:1px solid rgba(89,191,194,.23);padding:7px 9px 17px!important;margin-bottom:14px;gap:11px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-brand-badge{background:linear-gradient(145deg,#16c6b7,#16849b)!important;border:2px solid #69ded5!important;color:#fff!important;box-shadow:0 6px 18px rgba(10,193,181,.22);border-radius:13px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-brand-title{color:#f5ffff!important;font-size:17px!important;letter-spacing:-.01em}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-brand-kicker{color:#85c8d0!important;letter-spacing:.17em}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-sidebar-toggle{border:1.5px solid #3f8190!important;background:#173d4e!important;color:#dffaf9!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-sidebar-account{margin-bottom:11px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #nav{gap:5px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #nav button[data-page]{min-height:47px;border:1.5px solid transparent!important;border-radius:12px!important;transition:border-color .15s,background .15s,box-shadow .15s}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #nav button[data-page]:hover{background:#164657!important;border-color:#376e7d!important;transform:none!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #nav button[data-page].active{background:linear-gradient(90deg,#0c555d,#113a4e)!important;border-color:#2ec2bd!important;box-shadow:inset 4px 0 0 #49e0d4,0 8px 17px rgba(2,18,29,.25)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #nav button[data-page].active::before{background:#51e5d7!important;width:3px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-nav-section-title{color:#84becb!important;font-size:10px;letter-spacing:.13em}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-side-foot{color:#8caeba!important}
+/* Premium Kopfzeile auf allen Reitern, Kennzahlen und gleich grosse Aktionen */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top{background:linear-gradient(110deg,#0c3645,#0e2b3d)!important;border:2px solid #2e7080!important;border-radius:18px;padding:18px 20px!important;box-shadow:var(--pm-premium-shadow);gap:14px!important;margin-bottom:20px!important;align-items:center}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top h1{font-size:clamp(23px,2vw,29px)!important;color:#f7ffff!important;font-weight:850}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top #subtitle{color:#afcdd6!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top.navo-top-unified .top-chips>.top-chip{height:56px!important;min-height:56px!important;max-height:56px!important;background:#112c43!important;border:2px solid #38667e!important;border-radius:11px!important;box-shadow:0 3px 10px #061b2833!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top.navo-top-unified .top-chips>.top-chip small{color:#bed6df!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top.navo-top-unified .top-actions>button,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top.navo-top-unified .top-actions>#pagePrimaryAction>button{height:56px!important;min-height:56px!important;max-height:56px!important;border:2px solid #3d8a96!important;border-radius:11px!important;box-shadow:0 3px 9px rgba(0,17,22,.24)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top .pm-global-quick-button{background:#17465a!important;color:#f4fcff!important;border-color:#4f8a9b!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top #pmThemeToggle{background:#174557!important;color:#eaffff!important;border-color:#48aab1!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top #pagePrimaryAction>.btn{background:linear-gradient(140deg,#11998f,#0e787f)!important;color:#fff!important;border-color:#41c8be!important}
+/* Globale Panels, Abschnitte und klare Ränder */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content>.card,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content>.section,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .card:not(.pm2-taskcard),
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-card,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-weekplan,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-details{border-width:2px!important;border-color:#3d7888!important;border-radius:var(--pm-premium-radius)!important;box-shadow:0 7px 22px rgba(0,15,24,.14)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .card:not(.pm2-taskcard){background:linear-gradient(145deg,#123447,#0d2a3b)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .section-head h2{font-weight:820;color:#f4feff}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .item{border:2px solid #386c7b!important;border-radius:12px;background:#103243}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content details>summary{accent-color:#5be1d3}
+/* Einheitliche Buttons und Inputs ohne Spezialdialoge zu beschädigen */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .btn{border-radius:10px;border:1.5px solid #4f91a0}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .btn:not(.secondary):not(.danger){background:#108b89;color:#fff;border-color:#44c1bb}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .btn.secondary{background:#224c5e;color:#e9faff;border-color:#598998}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]),
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content select,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content textarea{border-width:2px!important;border-radius:10px;min-height:39px}
+/* Board-Spalten, bestehende Projektfarben werden nicht überschrieben. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column{background:#143447!important;border:2px solid #447889!important;border-radius:15px!important;box-shadow:0 8px 20px rgba(0,10,20,.14)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column.pm2-drop-over{border-color:#4ee5d7!important;background:#1b4d59!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard{border-width:2px!important;border-radius:12px!important}
+/* Kalender im Premium Look mit gemeinsamen Spalten */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-cal-toolbar,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-weekend-bar{border:2px solid #3c8290!important;border-radius:15px!important;background:linear-gradient(105deg,#104454,#0c3042)!important;box-shadow:var(--pm-premium-shadow)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm116-outlook{border:2px solid #4c99a2!important;border-radius:17px!important;box-shadow:0 14px 30px rgba(0,12,22,.27)!important;background:#102d3f!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm116-dayhead{background:linear-gradient(180deg,#17445b,#15354a)!important;border-right:1px solid #387483!important;color:#f3fdff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm116-dayhead.today{background:linear-gradient(160deg,#0b807f,#164b5b)!important;box-shadow:inset 0 3px #50e7d5,inset 0 -2px #36a8a6}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm116-daytrack.current{background:#10505a!important;box-shadow:inset 2px 0 #32bdba,inset -2px 0 #32bdba}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-new-sidebar>.card{border:2px solid #438695!important;border-radius:16px!important;box-shadow:var(--pm-premium-shadow)}
+/* Fensterstandards: gleiche Breite je Fenstertyp, gleiche Ränder, konsistente Abstände. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);padding:16px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg>.modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview):not(.pm11-table-window):not(.pm-pending-table-modal):not(.pm2-fullscreen):not(.pm-note-expanded){box-sizing:border-box;width:min(760px,calc(100vw - 32px))!important;max-width:760px!important;max-height:calc(100dvh - 35px)!important;overflow-y:auto;border:2px solid #65b8bc!important;border-radius:18px!important;box-shadow:0 24px 72px rgba(0,13,22,.62)!important;padding:24px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg>.modal:has(.pm11-table),
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg>.modal:has(.pm-pending-table),
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg>.modal:has(.navo-access-matrix){width:min(1120px,calc(100vw - 32px))!important;max-width:1120px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm2-drawer{width:min(540px,100vw)!important;border-left:2px solid #58abb5!important;box-shadow:-18px 0 55px rgba(0,15,30,.35)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm2-drawer-head{padding:20px 24px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm2-drawer-body{padding:23px 24px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm2-drawer-footer{padding:15px 20px!important;border-top-width:2px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal h2{letter-spacing:-.02em}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:12px}
+/* Einheitliche Focus-Zustände */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) :where(button,input,textarea,select,summary):focus-visible{outline:3px solid #67e0d7!important;outline-offset:2px!important}
+/* Breite Fenster bleiben Arbeitsfläche, nicht zu kleinen Formdialogen schrumpfen. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-project-fullview,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-gantt-window{border:2px solid #59afb7!important;border-radius:19px!important}
+@media(max-width:1050px){body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top{padding:16px!important}body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .app>.side{width:216px;flex-basis:216px}}
+@media(max-width:650px){body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .app>.side{display:none!important}body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main{padding:12px 12px 86px!important}body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .main>.top{padding:13px!important;border-radius:13px!important}body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .modal-bg>.modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview){padding:16px!important}body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm2-drawer-body{padding:18px!important}}
+@media(prefers-reduced-motion:reduce){body .pm-sidebar-toggle,body #nav button{transition:none!important}}
+</style><style id="pm-full-premium-design-system-v2">
+/* FULL DESIGN REFRESH 2.0 – Dashboard, Planner und Projekt-Cockpit.
+   Bewahrt alle bestehenden JS-Aktionen, Projektfarben, Aufklappbereiche
+   und die Fenstergroessen des globalen Designsystems 1.0. */
+:root{
+ --pm-v2-ink:#f0fbfd;
+ --pm-v2-muted:#b9d8e0;
+ --pm-v2-panel:#0b2c3c;
+ --pm-v2-panel-soft:#113849;
+ --pm-v2-line:#448b98;
+ --pm-v2-glow:#50ded3;
+ --pm-v2-shadow:0 14px 28px rgba(0,13,22,.22),inset 0 1px 0 rgba(186,245,245,.045);
+}
+/* Dashboard-Hauptstruktur: Wochenplanung zuerst, Folgeinformationen klappbar. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content>.pm-dashboard-week-wrap{margin-bottom:18px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-details{
+ border:2px solid #428d99!important;
+ border-radius:18px!important;
+ background:linear-gradient(145deg,#10394b,#0a2c3c)!important;
+ box-shadow:var(--pm-v2-shadow)!important;
+ overflow:hidden!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-title{
+ padding:18px 22px!important;
+ border-bottom:1px solid rgba(101,191,197,.38)!important;
+ background:linear-gradient(115deg,#124d5b,#0b3243)!important;
+ color:#f4ffff!important;
+ font-size:18px!important;
+ line-height:1.4!important;
+ letter-spacing:-.01em;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-hint{color:#a5d3dc!important;font-size:12px!important;font-weight:550!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-content{padding:15px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-content .pm-weekplan{
+ margin:0!important;border:2px solid #367e8b!important;
+ background:linear-gradient(155deg,#102f40,#0b2a39)!important;
+ border-radius:15px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest{
+ margin:16px 0 24px!important;
+ border:2px solid #397e8c!important;
+ border-radius:17px!important;
+ background:#0e3242!important;
+ box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest>summary{
+ min-height:61px!important;padding:16px 21px!important;
+ background:linear-gradient(105deg,#164755,#0c3041)!important;
+ color:#effcfd!important;font-weight:800!important;
+ transition:background .15s ease;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest>summary:hover{background:linear-gradient(105deg,#1b5360,#133c4b)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest[open]>summary{border-bottom:1px solid #3b7e8a!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest-body{padding:14px 16px!important}
+/* Inneres Dashboard: premium Tageszentrale, Kennzahlen und Arbeitslisten. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero{
+ border:2px solid #4b9fa6!important;
+ border-radius:19px!important;
+ background:radial-gradient(ellipse at 94% 5%,rgba(42,172,161,.18),transparent 41%),linear-gradient(120deg,#104556,#0d3042 73%,#0a2939)!important;
+ padding:23px 25px!important;
+ box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero h2{color:#f3ffff!important;letter-spacing:-.035em!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero p,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero .pm-day-eyebrow{color:#b2d8df!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero-check{
+ border:2px solid #458c98!important;border-radius:13px!important;
+ background:#153d4f!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero-check.clear{border-color:#41bc9b!important;background:#103e42!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero-check.attention{border-color:#d3a65c!important;background:#4b392c!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metrics{gap:11px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric{
+ min-height:78px!important;border:2px solid #427b8a!important;
+ border-radius:13px!important;background:rgba(7,35,49,.73)!important;
+ box-shadow:inset 0 1px rgba(255,255,255,.035)!important;
+ padding:12px 13px!important;transition:background .17s ease,border-color .17s ease,transform .17s ease!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric:hover:not(:disabled){background:#154d58!important;border-color:#54d6c9!important;transform:translateY(-2px)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric-symbol{
+ background:#164d5b!important;border:1.5px solid #397e8d!important;
+ color:#8becdf!important;border-radius:10px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric strong{color:#f3feff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric small{color:#afd2de!important;font-size:11px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-topgrid>.card,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-waiting,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-topgrid .pm-day-focus,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-exec-home .navo-exec-focus,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-exec-home .navo-exec-tasks{
+ background:linear-gradient(145deg,#113848,#0d2e3d)!important;
+ border:2px solid #428694!important;
+ border-radius:16px!important;box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-exec-sectionhead h3{color:#f1fcfd!important;font-weight:820!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-exec-sectionhead p{color:#bad3df!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-wait-row{
+ background:#123b4b!important;border:1.5px solid #3b7888!important;
+ border-radius:10px!important;transition:border-color .16s,background .16s;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-wait-row:hover{background:#185365!important;border-color:#4fd4c8!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-more{
+ border:2px solid #417f8e!important;background:#103343!important;
+ border-radius:15px!important;overflow:hidden!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-more>summary{background:linear-gradient(105deg,#16485a,#103547)!important;color:#edfafa!important;min-height:51px!important;align-items:center!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dash-more[open]>summary{border-bottom:1px solid #3f7e89!important}
+/* Planner: hochwertiger Werkzeugkopf und konsistente Board-Flächen. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board-intro{
+ margin:14px 0 15px!important;padding:17px 19px!important;
+ border:2px solid #428b97!important;border-radius:16px!important;
+ background:linear-gradient(110deg,#104453,#0b3042)!important;
+ box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board-intro strong{font-size:19px!important;letter-spacing:-.02em;color:#f3ffff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board-intro p{color:#bbdce3!important;line-height:1.5!important;max-width:105ch}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board-intro>.btn{min-height:39px!important;padding:8px 14px!important;border:2px solid #52d3cb!important;background:linear-gradient(135deg,#109b97,#0d777f)!important;color:white!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters{
+ border:2px solid #4b8a98!important;border-radius:15px!important;
+ background:linear-gradient(135deg,#123f51,#0b2f41)!important;
+ padding:16px!important;gap:12px!important;box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters label{color:#d0e7eb!important;font-size:12px!important;gap:7px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters input,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters select{
+ min-height:44px!important;height:44px!important;background:#0a2537!important;
+ color:#f4ffff!important;border:2px solid #527f94!important;border-radius:10px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters input:focus,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters select:focus{border-color:#57d9cc!important;outline:2px solid rgba(84,218,204,.28)!important;outline-offset:1px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters .btn{height:44px!important;min-height:44px!important;border:2px solid #6ca7b0!important;border-radius:10px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board{column-gap:13px!important;row-gap:13px!important;padding-top:5px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column{
+ min-height:265px!important;padding:13px!important;
+ background:linear-gradient(150deg,#153b4c,#0e3040)!important;
+ border:2px solid #448693!important;border-radius:16px!important;
+ box-shadow:var(--pm-v2-shadow)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column.pm2-drop-over{background:#135b60!important;border-color:#51ead8!important;box-shadow:0 0 0 3px rgba(65,223,207,.2)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column-header{margin-bottom:14px!important;min-height:28px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-column-header h3{color:#eefbfc!important;font-size:13px!important;font-weight:850!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-count{background:#25576a!important;color:#eafcfc!important;border:1px solid #588f9b!important;padding:4px 9px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-empty{background:rgba(4,27,39,.22)!important;border:1.5px dashed #537b8e!important;color:#b8d4df!important;min-height:80px;display:grid;place-items:center}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard{
+ border-radius:13px!important;border-width:2px!important;
+ box-shadow:0 6px 16px rgba(1,17,30,.12)!important;
+ transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard:hover,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard:focus-visible{transform:translateY(-2px);box-shadow:0 11px 22px rgba(1,17,30,.2)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard strong{font-weight:820!important;line-height:1.45!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-card-open{background:#d5f1f0!important;border:1px solid #93cac8!important;color:#0a5c64!important;min-height:25px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm9-project-legend{padding:9px 0!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm10-bulk-switch{margin:15px 0!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm10-bulk-tools{border-color:#4ab8b2!important;background:linear-gradient(135deg,#164b58,#0d3546)!important;box-shadow:var(--pm-v2-shadow)!important}
+/* Projekt-Cockpit – Ampelkarten mit deutlicher Hierarchie, Kartenfarben beibehalten. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit{
+ background:linear-gradient(135deg,#104052,#0a2b3b)!important;
+ border:2px solid #468e9a!important;border-radius:18px!important;
+ padding:21px!important;box-shadow:var(--pm-v2-shadow)!important;margin-bottom:20px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-head{margin-bottom:12px!important;gap:15px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-head h2{font-size:21px!important;letter-spacing:-.025em!important;font-weight:850!important;color:#f4ffff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-head p,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-help{color:#b9d9e1!important;line-height:1.55!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-counts{gap:8px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-counts span{background:#214c5d!important;border:1px solid #5b8c96!important;border-radius:9px!important;padding:8px 12px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-grid{grid-template-columns:repeat(auto-fill,minmax(265px,1fr))!important;gap:13px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card{
+ padding:17px!important;gap:13px!important;min-height:173px;
+ background:linear-gradient(150deg,#1a4857,#153b4c)!important;
+ border:2px solid #478593!important;border-radius:14px!important;
+ box-shadow:0 7px 17px rgba(1,20,29,.18)!important;
+ transition:transform .17s ease,box-shadow .17s ease,border-color .17s ease!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card:hover{transform:translateY(-3px);border-color:#70b4bc!important;box-shadow:0 13px 25px rgba(1,16,27,.28)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card.red{border-left:5px solid #ef8a8b!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card.amber{border-left:5px solid #f5c66c!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card.green{border-left:5px solid #51d3ad!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card-head strong{color:#f7ffff!important;font-size:13px!important;line-height:1.4!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-light{box-shadow:0 0 0 4px rgba(60,200,169,.1),0 0 12px rgba(65,214,170,.18)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card.red .pm-cockpit-light{box-shadow:0 0 0 4px rgba(230,104,103,.14)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card.amber .pm-cockpit-light{box-shadow:0 0 0 4px rgba(239,186,94,.14)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-tone{color:#c7e4e7!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-metrics{gap:10px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-metrics span{color:#cbdee3!important;line-height:1.3!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-metrics b{font-size:18px!important;color:#fff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card .btn{min-height:34px!important;background:#0e6771!important;border:1.5px solid #3dbbb6!important;border-radius:9px!important;font-weight:750!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-project-details-collapse{border:2px solid #438a96!important;border-radius:16px!important;background:linear-gradient(145deg,#103a4b,#0d3040)!important;box-shadow:var(--pm-v2-shadow)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-project-details-collapse>summary{background:linear-gradient(120deg,#164c5a,#0e3547)!important;min-height:61px!important;color:#f2fcfd!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-project-details-collapse[open]>summary{border-bottom:1px solid #4a8b98!important}
+/* Gleichmässiges Verhalten bei kleineren Displays */
+@media(max-width:900px){
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-content{padding:10px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-grid{grid-template-columns:repeat(auto-fill,minmax(235px,1fr))!important}
+}
+@media(max-width:650px){
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-week-title{padding:14px 15px!important;font-size:16px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-dashboard-rest-body{padding:10px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-hero{padding:17px 15px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric{min-height:70px!important;padding:10px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-board-intro{padding:13px!important;align-items:flex-start!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm7-board-filters{padding:11px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit{padding:13px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-grid{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-cockpit-card,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm2-taskcard,body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-day-metric{transition:none!important;transform:none!important}
+}
+</style>
+<style id="pm-full-premium-design-system-v3">
+/* Full Design Refresh 3.0: Zeiterfassung, Pendenzen & Entscheide, Notizen.
+   Reines Design: keine Änderung von Datenfeldern oder Ereignisbehandlung.
+   Keine pauschale Veränderung von Statusfarben oder PDF-Druckansichten. */
+@media screen {
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light){
+ --pm3-card:#103747;--pm3-card2:#143c4e;--pm3-line:#478e9a;
+ --pm3-line-soft:#366f7e;--pm3-accent:#47d1c6;--pm3-txt:#effcff;--pm3-sub:#b7d5de;
+}
+/* Zeiterfassung: ruhige Informationshierarchie, gleichmaessige Akkordeons. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-area{margin:18px 0 21px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-grid{gap:13px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-primary,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-mini{
+ min-height:118px;padding:19px 20px;border:2px solid var(--pm3-line)!important;border-radius:16px;
+ background:linear-gradient(140deg,#154658,#0d3041)!important;
+ box-shadow:0 10px 24px #00141d3b,inset 0 1px #b8eeec12!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-primary.positive{border-color:#47a995!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-primary.negative{border-color:#bc7773!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-primary>span,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-mini>span{color:#c7e5ea!important;font-size:12px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-primary>strong,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-mini>strong{color:#f7ffff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-accordion,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-account-details,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-list>.pm-archive-folder{
+ border:2px solid var(--pm3-line)!important;border-radius:16px!important;
+ background:#0c2e40!important;box-shadow:0 8px 22px #00152130!important;overflow:hidden!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-accordion>summary,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-account-details>summary{
+ min-height:57px;padding:15px 19px!important;background:linear-gradient(100deg,#164557,#0e3345)!important;
+ color:var(--pm3-txt)!important;font-weight:750!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-accordion>summary:hover,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-account-details>summary:hover{background:linear-gradient(100deg,#1a5361,#123c4a)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-accordion-content{border-top:2px solid var(--pm3-line-soft)!important;padding:15px 18px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-entry{
+ padding:16px 18px!important;gap:13px!important;border-bottom:1px solid #387081!important;
+ background:linear-gradient(100deg,#113648,#102e40)!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-entry:nth-of-type(even){background:#123b4d!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-main>b{font-size:14px!important;color:#f3ffff!important;line-height:1.4}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-main>span{color:var(--pm3-sub)!important;line-height:1.55}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-detail-row{
+ display:flex!important;align-items:center!important;padding:9px 12px!important;
+ background:#103f50!important;border:2px solid #4c9299!important;border-radius:10px!important;
+ box-shadow:inset 3px 0 #49d1c8!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-detail-time{color:#d6fff9!important;font-weight:780!important;font-size:13px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-actions .btn{min-height:36px!important}
+/* Pendenzen und Entscheide: Ampelstatus erhalten, Information klarer trennen. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-page{gap:17px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-intro{
+ border:2px solid #4d9ba3!important;border-radius:18px!important;
+ padding:21px 23px!important;background:linear-gradient(110deg,#154859,#0c2f40)!important;
+ box-shadow:0 11px 27px #00152138!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-intro h2{color:#f2ffff!important;font-size:21px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-intro p{color:var(--pm3-sub)!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-kpis{gap:12px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-kpi{
+ border:2px solid var(--pm3-line)!important;border-radius:14px!important;min-height:92px;
+ background:linear-gradient(140deg,#143d50,#0d2f40)!important;padding:16px!important;
+ box-shadow:0 8px 22px #00142130!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-kpi small{color:#bddce4!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-kpi strong{font-variant-numeric:tabular-nums!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-controls{gap:11px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-controls input,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-controls select{min-height:43px!important;border:2px solid #528d9b!important;background:#0c2a3c!important;color:#f0fcfe!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card{
+ padding:17px 20px!important;border:2px solid #4a8a98!important;border-left:5px solid #4bbaa9!important;
+ border-radius:15px!important;background:linear-gradient(115deg,#113a4b,#0d2d40)!important;
+ box-shadow:0 7px 19px #00131e29!important;gap:12px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card.decision{border-left-color:#bb9fec!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card.late{border-left-color:#f38e91!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card.closed{border-left-color:#53c9a3!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card h3{color:#f4ffff!important;font-size:16px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-card p,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-meta{color:#b9d7df!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-pill{border-width:1.5px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-empty{
+ padding:28px!important;border:2px dashed #4a8290!important;border-radius:15px!important;background:#102f40!important;
+}
+/* Notizen: ruhige Ablage mit wiedererkennbaren Premium-Karten. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-metrics{gap:12px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-metrics>.card{
+ border:2px solid var(--pm3-line)!important;border-radius:15px!important;
+ background:linear-gradient(120deg,#164556,#0d3041)!important;padding:18px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-metrics strong{color:#f2ffff!important;font-variant-numeric:tabular-nums}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-metrics small{color:#bcd8e0!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-browser{
+ border:2px solid #418895!important;border-radius:17px!important;
+ padding:20px!important;background:linear-gradient(140deg,#103748,#0b2a3a)!important;
+ box-shadow:0 9px 25px #0015212b!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-list{gap:12px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-card{
+ border:2px solid #438591!important;border-radius:14px!important;
+ background:linear-gradient(115deg,#153b4c,#0c2e40)!important;
+ box-shadow:0 6px 16px #0014212e!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-card>summary{padding:17px 18px!important;min-height:63px}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-card>summary:hover{background:#184756!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-card[open]{border-color:#60ccc5!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-title b{color:#f3ffff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-title small,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-date{color:#bbd6df!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-details{border-top:2px solid #437e8d!important;padding:18px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-note-tags span{background:#164857!important;border:1px solid #5aa3a7!important;color:#deffff!important}
+/* Einheitliche Formulargestaltung nur fuer die hier bearbeiteten Module. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-pend-modal,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal{
+ border:2px solid #5aafb5!important;border-radius:18px!important;
+ box-shadow:0 22px 70px #00121f99!important;background:#102f40!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-pend-modal h2,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal h2{color:#f4ffff!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-pend-modal :where(input:not([type=checkbox]):not([type=radio]),select,textarea),
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal :where(input:not([type=checkbox]):not([type=radio]):not([type=color]),select,textarea){
+ border:2px solid #548c99!important;border-radius:10px!important;background:#0b2839!important;color:#f3fdff!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-editor-wrap{
+ border:2px solid #578f9e!important;border-radius:13px!important;background:#0b2739!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-template-picker,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-quicksections{
+ border:1.5px solid #477e8d!important;background:#163f52!important;padding:12px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-rich-toolbar{
+ background:#143b4e!important;border-bottom:2px solid #4b8696!important;padding:11px!important;gap:7px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-rich-toolbar button{
+ background:#22566a!important;color:#ecfcff!important;border:1.5px solid #5e9ba8!important;border-radius:8px!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-rich-toolbar button:hover{background:#2e6878!important;border-color:#7ee2d9!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-rich-input{
+ background:#0b283b!important;color:#f1fcff!important;line-height:1.7!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal .pm-note-rich-input:focus{box-shadow:inset 0 0 0 2px #53c9c1!important}
+/* Pendenztabelle: gleiche Premium-Fenstergroessen, Karten und Abstaende. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm11-dialog{
+ border:2px solid #60afb6!important;border-radius:19px!important;
+ background:linear-gradient(145deg,#123b4d,#0a293b)!important;
+ box-shadow:0 26px 72px #001522a8!important;
+}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm112-item{border:2px solid #578f9a!important;background:#173d4f!important;border-radius:14px!important;box-shadow:0 5px 14px #00162628!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm112-item-header{padding-bottom:8px;border-bottom:1px solid #4a7a88!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm112-doc-extra,
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm112-details{border:2px solid #4b8695!important;background:#143a4b!important;border-radius:11px!important}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm11-footer{border-top:2px solid #4c8b97!important}
+@media(max-width:1020px){
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:650px){
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-time-balance-grid,
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-kpis,
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-pend-controls,
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .navo-notes-toolbar{grid-template-columns:1fr!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .pm-time-folder-entry{padding:12px!important}
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .pm-pend-modal,
+ body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) .navo-note-modal{max-width:calc(100vw - 20px)!important}
+}
+}
+</style>
+<style id="pm117-aligned-calendar-columns">
+/* Header, all-day and scrollable hour grid share identical column boundaries. */
+.pm116-outlook .pm116-header,
+.pm116-outlook .pm116-allday{
+  width:calc(100% - var(--pm117-scrollbar-width, 0px))!important;
+  box-sizing:border-box!important;
+}
+.pm116-outlook .pm116-grid{width:100%!important;box-sizing:border-box!important}
+.pm116-outlook .pm116-dayhead,
+.pm116-outlook .pm116-allday-cell,
+.pm116-outlook .pm116-daytrack{min-width:0!important;box-sizing:border-box!important}
+</style>
+<style id="pm-light-note-soft-petrol-v1">
+/* NUR im hellen Modus: warmes Graublau mit einer ruhigeren Petrol-Schreibfläche.
+   Der dunkle Modus und alle Formular-/Notiz-Funktionen bleiben unverändert. */
+body.pm-fluent-light .modal-bg > .navo-note-modal{
+  background:#dce9ed!important;
+  color:#193a49!important;
+  border:2px solid #86adb9!important;
+  border-radius:18px!important;
+  box-shadow:0 26px 75px rgba(10,34,50,.33)!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-modal-heading{
+  border-bottom:1px solid #b6cdd3;
+  padding-bottom:13px;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-modal-heading h2{
+  color:#153b4a!important;
+  letter-spacing:-.025em;
+}
+body.pm-fluent-light .navo-note-modal #pmNoteExpand{
+  background:#c9dee4!important;
+  color:#1b4757!important;
+  border:1.5px solid #8db3be!important;
+}
+body.pm-fluent-light .navo-note-modal #navoNotesForm > .field > label,
+body.pm-fluent-light .navo-note-modal .formgrid .field > label,
+body.pm-fluent-light .navo-note-modal #navoNotesForm > .field > small{
+  color:#345969!important;
+}
+body.pm-fluent-light .navo-note-modal .field input:not([type=checkbox]):not([type=radio]):not([type=color]),
+body.pm-fluent-light .navo-note-modal .field textarea,
+body.pm-fluent-light .navo-note-modal .field select,
+body.pm-fluent-light .navo-note-modal :is(#pmNoteTemplatePreset,#pmNoteSectionPreset){
+  background:#edf4f5!important;
+  border:1.5px solid #9bbbc4!important;
+  color:#173f51!important;
+  border-radius:10px!important;
+  box-shadow:inset 0 1px 1px rgba(38,82,103,.035)!important;
+  color-scheme:light!important;
+}
+body.pm-fluent-light .navo-note-modal .field input::placeholder,
+body.pm-fluent-light .navo-note-modal .field textarea::placeholder{
+  color:#6b8792!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-editor-wrap{
+  background:#204456!important;
+  border:2px solid #6d9cab!important;
+  border-radius:13px!important;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(26,72,91,.12)!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-template-picker,
+body.pm-fluent-light .navo-note-modal .pm-note-quicksections{
+  background:#d0e1e6!important;
+  border:0!important;
+  border-bottom:1px solid #aac6cd!important;
+  border-radius:0!important;
+  padding:11px 13px!important;
+  margin:0!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-template-picker label,
+body.pm-fluent-light .navo-note-modal .pm-note-quicksections label{
+  color:#224c5c!important;
+  font-weight:750!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-quicksections .btn,
+body.pm-fluent-light .navo-note-modal #pmNoteCustomSection{
+  background:#bcd8dd!important;
+  color:#184756!important;
+  border:1px solid #8fb7bf!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-toolbar{
+  background:#285266!important;
+  border-top:0!important;
+  border-bottom:2px solid #4b8694!important;
+  padding:10px 12px!important;
+  gap:7px!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-toolbar button{
+  background:#396478!important;
+  border:1px solid #719baa!important;
+  color:#f1fafb!important;
+  border-radius:8px!important;
+  min-height:33px;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-toolbar button:hover{
+  background:#47798a!important;
+  border-color:#a0d8d7!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-toolbar label{
+  background:#325b70!important;
+  border:1px solid #719baa!important;
+  color:#e9f7fa!important;
+  border-radius:8px;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-input{
+  background:#183848!important;
+  color:#f0fbfc!important;
+  font-size:14px;
+  line-height:1.72!important;
+  caret-color:#a5eee4!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-input:empty:before{
+  color:#a8c7d0!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-input h3{
+  color:#c3fcf4!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-input a{
+  color:#a7e8ff!important;
+}
+body.pm-fluent-light .navo-note-modal .pm-note-rich-input:focus{
+  box-shadow:inset 0 0 0 2px #58c9bd!important;
+}
+body.pm-fluent-light .navo-note-modal .field input:focus,
+body.pm-fluent-light .navo-note-modal .field select:focus,
+body.pm-fluent-light .navo-note-modal :is(#pmNoteTemplatePreset,#pmNoteSectionPreset):focus{
+  outline:2px solid #288f95!important;
+  outline-offset:1px!important;
+}
+body.pm-fluent-light .navo-note-modal .modal-actions{
+  border-top:1px solid #b5cdd4!important;
+  padding-top:15px;
+}
+body.pm-fluent-light .navo-note-modal .modal-actions .btn:not(.secondary){
+  background:#148b8b!important;
+  color:#fff!important;
+  border:1px solid #087176!important;
+}
+body.pm-fluent-light .navo-note-modal .modal-actions .btn.secondary{
+  background:#c7dfe4!important;
+  color:#214b5b!important;
+  border:1px solid #8db9c1!important;
+}
+@media(max-width:650px){
+ body.pm-fluent-light .navo-note-modal .pm-note-template-picker,
+ body.pm-fluent-light .navo-note-modal .pm-note-quicksections{padding:9px!important}
+ body.pm-fluent-light .navo-note-modal .pm-note-rich-toolbar{padding:8px!important}
+}
+</style>
+
+<style id="pm-full-refresh-4-premium-modules">
+/* Premium Petrol – consistent module surfaces. Preserve functionality and data. */
+#content[data-navopm-page="meetings"],
+#content[data-navopm-page="team"],
+#content[data-navopm-page="archive"],
+#content[data-navopm-page="docs"] {
+  --pm4-panel:#143847;--pm4-panel2:#1d4657;--pm4-inset:#102e3e;
+  --pm4-edge:#478894;--pm4-edge-active:#4fd3c8;--pm4-ink:#f1fafb;--pm4-muted:#b7d5dc;
+  color:var(--pm4-ink);
+}
+/* Page-level spacing is uniform without constraining wide data tables. */
+#content[data-navopm-page="meetings"] .section-head,
+#content[data-navopm-page="team"] .section-head,
+#content[data-navopm-page="archive"] .pm-archive-intro,
+#content[data-navopm-page="docs"] .pm-doc-head {
+  margin-bottom:16px;
+}
+#content[data-navopm-page="meetings"] .card,
+#content[data-navopm-page="team"] .pm-team-card,
+#content[data-navopm-page="archive"] .pm-archive-content,
+#content[data-navopm-page="docs"] .pm-doc-storage {
+  background:linear-gradient(150deg,var(--pm4-panel2),var(--pm4-panel) 85%)!important;
+  border:2px solid var(--pm4-edge)!important;
+  border-radius:17px!important;
+  box-shadow:0 13px 30px rgba(1,13,21,.16),inset 0 1px 0 rgba(197,255,252,.07)!important;
+  color:var(--pm4-ink);
+}
+#content[data-navopm-page="meetings"] .navo-staff-meeting {
+  border-left:4px solid var(--pm4-edge-active)!important;
+  padding:18px!important;
+  transition:border-color .18s,box-shadow .18s,transform .18s;
+}
+#content[data-navopm-page="meetings"] .navo-staff-meeting:hover,
+#content[data-navopm-page="team"] .pm-team-card:hover,
+#content[data-navopm-page="archive"] .pm-archive-row:hover,
+#content[data-navopm-page="docs"] .pm-doc-row:hover {
+  border-color:var(--pm4-edge-active)!important;
+  box-shadow:0 8px 26px rgba(16,130,133,.13)!important;
+}
+#content[data-navopm-page="meetings"] .navo-staff-meeting h3 {color:#f8fdfd!important;font-size:16px!important;line-height:1.35!important}
+#content[data-navopm-page="meetings"] .navo-staff-meeting p.muted,
+#content[data-navopm-page="meetings"] .navo-staff-meeting .sub {color:var(--pm4-muted)!important;line-height:1.5}
+#content[data-navopm-page="meetings"] .navo-staff-meeting .tag {
+  border:1px solid #558d98!important;border-radius:999px!important;
+  background:#235364!important;color:#d9f7f5!important;padding:5px 10px!important;
+}
+#content[data-navopm-page="meetings"] .navo-staff-meeting .btn,
+#content[data-navopm-page="team"] .pm-team-card .btn,
+#content[data-navopm-page="archive"] .pm-archive-actions .btn,
+#content[data-navopm-page="archive"] .pm-archive-note-actions .btn,
+#content[data-navopm-page="docs"] .pm-doc-row-actions .btn {
+  min-height:36px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:10px!important;padding:8px 12px!important;
+  font-size:12px!important;white-space:normal;line-height:1.25;
+}
+#content[data-navopm-page="meetings"] .navo-staff-meeting .btn.secondary,
+#content[data-navopm-page="team"] .pm-team-card .btn.secondary,
+#content[data-navopm-page="archive"] .pm-archive-actions .btn.secondary,
+#content[data-navopm-page="docs"] .pm-doc-row-actions .btn.secondary {
+  background:#264e60!important;border:1px solid #659dab!important;color:#efffff!important;
+}
+/* Mitarbeiter: aligned identity cards and accessible consistent action areas. */
+#content[data-navopm-page="team"] .pm-team-grid{gap:16px;align-items:start}
+#content[data-navopm-page="team"] .pm-team-summary{min-height:108px;padding:19px!important;gap:14px}
+#content[data-navopm-page="team"] .pm-team-details{border-top:2px solid #477e8b!important;padding:0 18px 18px}
+#content[data-navopm-page="team"] .pm-team-stat,
+#content[data-navopm-page="team"] .pm-team-panel,
+#content[data-navopm-page="team"] .pm-team-item,
+#content[data-navopm-page="team"] .pm-team-pill {
+  border:1.5px solid #497b89!important;background:var(--pm4-inset)!important;
+  border-radius:12px!important;
+}
+#content[data-navopm-page="team"] .pm-team-stat{min-width:86px;padding:11px 12px!important}
+#content[data-navopm-page="team"] .pm-team-openbtn{
+  min-height:40px;border:2px solid #6aa4ae!important;background:#245464!important;
+  color:#f1fcfc!important;border-radius:11px!important;
+}
+#content[data-navopm-page="team"] .pm-team-panel h4{color:#ebffff!important}
+#content[data-navopm-page="team"] .pm-team-person-info small,
+#content[data-navopm-page="team"] .pm-team-item small{color:var(--pm4-muted)!important}
+/* Archiv: grouping and controls – preserve tab and delete semantics. */
+#content[data-navopm-page="archive"] .pm-archive-toolbar,
+#content[data-navopm-page="archive"] .pm-archive-tabs {gap:10px}
+#content[data-navopm-page="archive"] .pm-archive-tab{
+  background:#20495a!important;border:2px solid #528d98!important;
+  border-radius:11px!important;color:#e9f8fa!important;min-height:43px;
+}
+#content[data-navopm-page="archive"] .pm-archive-tab.active{
+  border-color:#5de0d2!important;background:#0a797b!important;color:#fff!important;
+  box-shadow:0 0 0 2px rgba(80,224,214,.12);
+}
+#content[data-navopm-page="archive"] .pm-archive-row {
+  background:var(--pm4-inset)!important;border:1.5px solid #4b8491!important;
+  border-radius:13px!important;padding:15px!important;margin-bottom:9px;
+}
+#content[data-navopm-page="archive"] .pm-archive-row-main b{color:#f3fbfb!important;font-size:14px}
+#content[data-navopm-page="archive"] .pm-archive-row-main small{color:var(--pm4-muted)!important}
+#content[data-navopm-page="archive"] .pm-archive-search input{
+  background:#102c3d!important;border:2px solid #5993a0!important;color:#f5ffff!important;
+  border-radius:10px!important;min-height:41px;
+}
+/* Documents: readable rows, matching KPI tiles and responsive actions. */
+#content[data-navopm-page="docs"] .pm-doc-counters{gap:12px}
+#content[data-navopm-page="docs"] .pm-doc-counters>div{
+  background:linear-gradient(160deg,#204a5b,#163747)!important;
+  border:2px solid #4d8996!important;border-radius:13px!important;
+  min-height:83px;padding:14px!important;
+}
+#content[data-navopm-page="docs"] .pm-doc-row{
+  background:var(--pm4-inset)!important;border:1.5px solid #528795!important;
+  border-radius:13px!important;padding:14px!important;
+  gap:13px;
+}
+#content[data-navopm-page="docs"] .pm-doc-info{min-width:0;overflow-wrap:anywhere}
+#content[data-navopm-page="docs"] .pm-doc-info strong{font-size:14px;color:#f5fdfd!important}
+#content[data-navopm-page="docs"] .pm-doc-info small,
+#content[data-navopm-page="docs"] .pm-doc-sharetext{color:var(--pm4-muted)!important;line-height:1.5}
+#content[data-navopm-page="docs"] .pm-doc-icon{
+  border:1.5px solid #60b5b4!important;background:#245767!important;color:#d9fffb!important;
+}
+#content[data-navopm-page="docs"] .pm-doc-filters select,
+#content[data-navopm-page="docs"] .pm-doc-filters input{
+  min-height:42px;background:#102d3d!important;border:2px solid #5993a0!important;
+  color:#f3ffff!important;border-radius:10px!important;
+}
+#content[data-navopm-page="docs"] .pm-doc-row-actions {display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* Keep specialized modal sizes from Full Design 1.0, normalize modal controls for these four modules. */
+#content[data-navopm-page="meetings"] .section-head .btn,
+#content[data-navopm-page="team"] .section-head .btn,
+#content[data-navopm-page="docs"] .pm-doc-head .btn{
+  border:2px solid #54c7bc!important;border-radius:11px!important;min-height:42px;
+}
+@media(max-width:850px){
+ #content[data-navopm-page="team"] .pm-team-summary{grid-template-columns:minmax(0,1fr)!important}
+ #content[data-navopm-page="team"] .pm-team-stats{justify-content:flex-start!important}
+ #content[data-navopm-page="docs"] .pm-doc-counters{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+ #content[data-navopm-page="meetings"] .navo-staff-meeting{padding:13px!important}
+ #content[data-navopm-page="team"] .pm-team-detail-grid{grid-template-columns:1fr!important}
+ #content[data-navopm-page="docs"] .pm-doc-row-actions{width:100%}
+ #content[data-navopm-page="docs"] .pm-doc-row-actions .btn{flex:1 1 120px}
+}
+/* Light mode: soft blue-grey shells rather than white blocks; dark note editor stays untouched. */
+body.pm-fluent-light #content[data-navopm-page="meetings"],
+body.pm-fluent-light #content[data-navopm-page="team"],
+body.pm-fluent-light #content[data-navopm-page="archive"],
+body.pm-fluent-light #content[data-navopm-page="docs"]{
+  --pm4-panel:#d7e6ec;--pm4-panel2:#ecf4f6;--pm4-inset:#e4eff2;
+  --pm4-edge:#98bdc6;--pm4-edge-active:#1a948f;--pm4-ink:#193a4c;--pm4-muted:#4f7080;
+}
+body.pm-fluent-light #content[data-navopm-page="meetings"] .navo-staff-meeting h3,
+body.pm-fluent-light #content[data-navopm-page="team"] .pm-team-panel h4,
+body.pm-fluent-light #content[data-navopm-page="archive"] .pm-archive-row-main b,
+body.pm-fluent-light #content[data-navopm-page="docs"] .pm-doc-info strong{color:#193a4c!important}
+body.pm-fluent-light #content[data-navopm-page="meetings"] .navo-staff-meeting .tag,
+body.pm-fluent-light #content[data-navopm-page="archive"] .pm-archive-tab{
+ background:#d8ecf0!important;color:#1e5363!important;border-color:#89b9c5!important;
+}
+body.pm-fluent-light #content[data-navopm-page="archive"] .pm-archive-tab.active{background:#087c80!important;color:#fff!important}
+body.pm-fluent-light #content[data-navopm-page="team"] .pm-team-stat,
+body.pm-fluent-light #content[data-navopm-page="team"] .pm-team-panel,
+body.pm-fluent-light #content[data-navopm-page="team"] .pm-team-item,
+body.pm-fluent-light #content[data-navopm-page="team"] .pm-team-pill,
+body.pm-fluent-light #content[data-navopm-page="docs"] .pm-doc-row,
+body.pm-fluent-light #content[data-navopm-page="archive"] .pm-archive-row{
+ background:var(--pm4-inset)!important;border-color:#9dbdc5!important;color:#213b4b!important;
+}
+body.pm-fluent-light #content[data-navopm-page="docs"] .pm-doc-counters>div{
+ background:#e4eff2!important;border-color:#95bcc6!important;color:#193b4b!important;
+}
+body.pm-fluent-light #content[data-navopm-page="docs"] .pm-doc-filters input,
+body.pm-fluent-light #content[data-navopm-page="docs"] .pm-doc-filters select,
+body.pm-fluent-light #content[data-navopm-page="archive"] .pm-archive-search input{
+ background:#f4f8f9!important;color:#173d4e!important;border-color:#a1bdc5!important;
+}
+</style>
+<style id="pm-full-refresh-5-unified-ui">
+/* Full Design Refresh 5.0 – globaler visueller Feinschliff.
+   Reine CSS-Änderungen, keine Änderung an Nutzerdaten, Speichern oder Berechtigungen.
+   Der spezielle Rich-Text-Notizeditor sowie Kalender/Gantt/Vollbild werden geschont. */
+:root {
+ --pm5-control-height:44px;
+ --pm5-control-radius:11px;
+ --pm5-panel-radius:16px;
+ --pm5-dialog-radius:20px;
+ --pm5-card-gap:14px;
+ --pm5-form-gap:13px;
+}
+/* Gleichmässige Abschnittsüberschriften und Abstände über alle Module. */
+#content .section-head {gap:14px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+#content .section-head h2{line-height:1.3;letter-spacing:-.018em}
+#content .section-head p{line-height:1.5}
+#content .toolbar{gap:10px;align-items:center;flex-wrap:wrap}
+#content .card:not(.pm2-taskcard),
+#content .pm-archive-content,
+#content .pm-doc-storage {min-width:0;box-sizing:border-box}
+#content .grid{gap:var(--pm5-card-gap)}
+/* Buttons in regulären Seiteninhalten: saubere Höhe, Kontur und vertikale Ausrichtung. */
+#content button.btn:not(.small):not(.pm-note-rich-toolbar button),
+#content a.btn:not(.small) {
+ box-sizing:border-box;min-height:var(--pm5-control-height);
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ padding:10px 15px;border-radius:var(--pm5-control-radius);
+ line-height:1.2;white-space:normal;text-align:center;
+}
+#content .btn.small{min-height:34px;display:inline-flex;align-items:center;justify-content:center;gap:5px;border-radius:9px}
+#content .btn:disabled{opacity:.54}
+/* Formulare: gleiche Typografie und Feldhöhe. Umfangreiche Spezialoberflächen werden ausgenommen. */
+.modal-bg>.modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview):not(.pm11-table-window):not(.pm-pending-table-modal):not(.pm2-fullscreen),
+#modalRoot .modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview):not(.pm11-table-window):not(.pm-pending-table-modal):not(.pm2-fullscreen){
+ box-sizing:border-box;border-radius:var(--pm5-dialog-radius);
+ scrollbar-width:thin;overscroll-behavior:contain;
+}
+.modal-bg>.modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview):not(.pm11-table-window):not(.pm-pending-table-modal):not(.pm2-fullscreen):not(.pm-note-expanded){
+ width:min(760px,calc(100vw - 30px));max-width:760px;
+ max-height:calc(100dvh - 30px);overflow-y:auto;
+}
+/* Note Grossansicht, Pendenztabellen, Gantt und Projekt-Vollfenster bleiben ausdrücklich breit. */
+.modal-bg>.modal.pm-note-expanded{width:min(1520px,calc(100vw - 20px))!important;max-width:none!important}
+#modalRoot .modal h2{line-height:1.3;letter-spacing:-.018em}
+#modalRoot .modal .field{min-width:0;gap:7px;margin-bottom:var(--pm5-form-gap)}
+#modalRoot .modal .field>label{line-height:1.35;font-size:12px;font-weight:700}
+#modalRoot .modal .formgrid{gap:0 14px}
+/* Nur normale Formularsteuerelemente, keine Texteditor-Toolbar, Farbwähler oder Checkbox. */
+#modalRoot .modal :is(.field input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]), .field select, .field textarea){
+ box-sizing:border-box;min-width:0;min-height:var(--pm5-control-height);
+ border-radius:var(--pm5-control-radius);line-height:1.4;
+}
+#modalRoot .modal .field textarea{min-height:92px;resize:vertical}
+#modalRoot .modal .modal-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:flex-end;padding-top:15px;margin-top:15px;border-top:1px solid rgba(109,161,175,.26)}
+#modalRoot .modal .modal-actions .btn{min-height:42px;display:inline-flex;justify-content:center;align-items:center;border-radius:10px;padding:9px 14px}
+#modalRoot .modal .modal-actions .btn.small{min-height:34px}
+/* Gleiche Bedienelemente im Detail-Seitenfenster. */
+.pm2-drawer{box-sizing:border-box;width:min(540px,100vw)}
+.pm2-drawer-head{min-height:72px}
+.pm2-drawer-footer{gap:9px;align-items:center}
+.pm2-drawer-footer .btn{min-height:38px;border-radius:10px}
+/* Globale Suchleisten und normale Eingabefelder. Keine Umformatierung des Notiz-Rich-Text-Editors. */
+#content :is(.toolbar, .pm7-board-filters, .pm-doc-filters, .pm-archive-search) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),select){
+ box-sizing:border-box;min-height:42px;border-radius:10px;
+}
+#content :is(.table-wrap,.navo-table-wrap){border-radius:12px;scrollbar-width:thin;overflow-x:auto}
+#content table.data th,#content table.data td{line-height:1.4}
+/* Premium Petrol – dunkle Ansicht: etwas klarere Konturen und hochwertige Interaktionen. */
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content .section-head h2{color:#effdfd}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #modalRoot .modal:not(.navo-note-modal){background:linear-gradient(155deg,#173c4f,#102d40 95%);border:2px solid #4996a2;color:#ecfbfc;box-shadow:0 25px 80px rgba(0,12,20,.6)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #modalRoot .modal:not(.navo-note-modal) .field>label{color:#d2e8ee}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #modalRoot .modal:not(.navo-note-modal) .field :is(input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),select,textarea){background:#10293b;color:#f2ffff;border:2px solid #4a8696}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #modalRoot .modal:not(.navo-note-modal) .field :is(input,textarea)::placeholder{color:#9ebec7;opacity:1}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #modalRoot .modal:not(.navo-note-modal) .modal-actions{border-color:#3d7180}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) #content button.btn:not(.small):hover{filter:brightness(1.10);box-shadow:0 5px 16px rgba(1,15,23,.18)}
+body:not(.pm-fluent-light):not(.pm-light):not(.pm-refresh-light) :is(#content,#modalRoot) :is(input,select,textarea):focus-visible{outline:2px solid #56d9cb;outline-offset:2px}
+/* Light Mode: sanftes, bläulich-petrolfarbenes Formulardesign, kein grelles Weiss.
+   Insbesondere das geliebte Light-Notizdesign 3.2 nicht überschreiben. */
+body.pm-fluent-light #modalRoot .modal:not(.navo-note-modal):not(.pm-note-expanded){background:linear-gradient(160deg,#e7f0f2,#dce8ec);border:2px solid #90b8c1;color:#1e3c4c;box-shadow:0 20px 58px rgba(31,65,80,.20)}
+body.pm-fluent-light #modalRoot .modal:not(.navo-note-modal) .field>label{color:#33586b}
+body.pm-fluent-light #modalRoot .modal:not(.navo-note-modal) .field :is(input:not([type="checkbox"]):not([type="radio"]):not([type="color"]),select,textarea){background:#f2f7f8;border:1.5px solid #9ebbc5;color:#1b3c4d}
+body.pm-fluent-light #modalRoot .modal:not(.navo-note-modal) .field :is(input,textarea)::placeholder{color:#728e9a}
+body.pm-fluent-light #modalRoot .modal:not(.navo-note-modal) .modal-actions{border-top:1px solid #acc7cf}
+body.pm-fluent-light #content .section-head h2{color:#193b4d}
+body.pm-fluent-light #content :is(.toolbar,.pm7-board-filters,.pm-doc-filters,.pm-archive-search) :is(input:not([type="checkbox"]),select){border-color:#98b9c3;background:#edf4f5;color:#24495c}
+body.pm-fluent-light :is(#content,#modalRoot) :is(input,select,textarea):focus-visible{outline:2px solid #1a969c;outline-offset:2px}
+/* Kleine Screens: kontrollierte Abstände und voller Platz für den Inhalt. */
+@media(max-width:760px){
+ #modalRoot .modal .formgrid{grid-template-columns:1fr;gap:0}
+ #modalRoot .modal .modal-actions{justify-content:stretch}
+ #modalRoot .modal .modal-actions>.btn{flex:1 1 145px}
+ #content .section-head{align-items:flex-start}
+}
+@media(max-width:480px){
+ .modal-bg>.modal:not(.gantt-modal):not(.pm-gantt-window):not(.pm-project-fullview):not(.pm11-table-window):not(.pm-pending-table-modal){padding:15px!important}
+ #modalRoot .modal .modal-actions>.btn{flex:1 1 100%}
+}
+@media(prefers-reduced-motion:reduce){#content .btn{transition:none!important}}
+</style>
+</head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
  const key='pm-manager-fluent-theme-v1';
- let choice='light';
- try{choice=localStorage.getItem(key)||'light'}catch(e){}
+ // Einmalige Design-Migration: Premium-Petrol als neue Standardansicht.
+ // Aufgaben, Projekte und andere Nutzerdaten bleiben unberührt.
+ let choice='dark';
+ try{
+  const marker='pm-manager-premium-theme-initialized-v1';
+  if(!localStorage.getItem(marker)){
+   localStorage.setItem(marker,'1');
+   localStorage.setItem(key,'dark');
+   choice='dark';
+  }else choice=localStorage.getItem(key)||'dark';
+ }catch(e){}
  document.body.classList.toggle('pm-fluent-light',choice!=='dark');
  function sync(){const b=document.getElementById('pmThemeToggle');if(!b)return;b.textContent=document.body.classList.contains('pm-fluent-light')?'☾ Dunkles Design':'☀ Helles Design';b.setAttribute('aria-pressed',String(document.body.classList.contains('pm-fluent-light')))}
  sync();
@@ -7815,12 +8750,23 @@ document.addEventListener('click',ev=>{
  if(ev.target.closest('.navo-day-rail-event')){ev.preventDefault();ev.stopImmediatePropagation()}
 },true);
 
+function pm117SyncCalendarColumns(){
+ // Die Scrollleiste belegt im Stundenraster echte Breite. Tageskopf und
+ // ganztägige Zeile müssen denselben verfügbaren Platz verwenden.
+ document.querySelectorAll('.pm116-outlook').forEach(calendar=>{
+  const scroller=calendar.querySelector('.pm116-shared-scroll');
+  if(!scroller)return;
+  const scrollbar=Math.max(0,scroller.offsetWidth-scroller.clientWidth);
+  calendar.style.setProperty('--pm117-scrollbar-width',scrollbar+'px');
+ });
+}
 function navoSetupAgendaScroll(){
  const panes=Array.from(document.querySelectorAll('.navo-agenda-scroll-pane'));
  if(!panes.length)return;
+ pm117SyncCalendarColumns();
  // Alle Tage starten um 05:00 Uhr; ausserhalb bleibt 00:00–24:00 scrollbar.
  // Der Wert entspricht der Zeitskala mit 0,48 px pro Minute.
- const scrollY=5*60*0.48;
+ const scrollY=document.querySelector('.pm116-shared-scroll')?7*60*0.48:5*60*0.48;
  // Jeder Wochentag besitzt einen eigenen Scrollbereich.
  // Eine Scrollbewegung darf keine anderen Tagesspalten verschieben.
  panes.forEach(p=>{
@@ -7829,6 +8775,9 @@ function navoSetupAgendaScroll(){
  });
  navoUpdateNowLine();
 }
+window.addEventListener('resize',()=>{
+ if(document.querySelector('.pm116-outlook'))requestAnimationFrame(pm117SyncCalendarColumns);
+},{passive:true});
 function navoUpdateNowLine(){
  const now=new Date(),today=now.toLocaleDateString('sv-SE');
  const minute=now.getHours()*60+now.getMinutes();
@@ -7964,6 +8913,21 @@ document.addEventListener('click',event=>{
  if(target){event.preventDefault();event.stopImmediatePropagation();pmCalendarDrawerOpen(target.dataset.type,target.dataset.id);}
 },true);
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.getElementById('pm-calendar-drawer-root'))pmCalendarDrawerClose();},true);
+// 11.6: Gemeinsames Outlook-inspiriertes Wochenraster statt isolierter Tagesscroller.
+function pm116OutlookGrid(days,today,eventLink){
+ const visible=days.slice(0,navoWeekendExpanded?7:5);
+ const count=visible.length;
+ const data=visible.map(d=>{
+  const date=d.toLocaleDateString('sv-SE');
+  const events=calendarEvents(date).sort((a,b)=>(a.start||'').localeCompare(b.start||''));
+  return {date,d,timed:events.filter(e=>e.start),all:events.filter(e=>!e.start&&e.type!=='task'),tasks:events.filter(e=>!e.start&&e.type==='task')};
+ });
+ const headers=data.map(({d,date})=>`<div class="pm116-dayhead ${date===today?'today':''}"><span>${esc(d.toLocaleDateString('de-CH',{weekday:'short'}))}</span><strong>${d.getDate()}</strong><small>${esc(d.toLocaleDateString('de-CH',{month:'short'}))}</small></div>`).join('');
+ const allDay=data.map(({date,all,tasks})=>`<div class="pm116-allday-cell ${date===today?'today':''}">${all.map(ev=>eventLink(ev,true)).join('')}${tasks.length?`<details class="pm116-untimed"><summary>${tasks.length} Aufgabe${tasks.length!==1?'n':''} ohne Uhrzeit</summary>${tasks.map(ev=>eventLink(ev,true)).join('')}</details>`:''}</div>`).join('');
+ const axis=Array.from({length:25},(_,hour)=>`<span class="pm116-axis-hour" style="top:${hour*28.8}px">${String(hour).padStart(2,'0')}:00</span>`).join('');
+ const tracks=data.map(({date,timed})=>`<section class="navo-new-day pm116-daytrack ${date===today?'current':''}" data-pm116-date="${date}" aria-label="${esc(formatSwissDate(date))}"><div class="navo-day-rail pm116-hour-rail" data-day-rail="${date}" style="height:691.2px;--navo-hour-height:28.8px">${navoAgendaTimeRail(date,timed).replace(/^.*?<div class="navo-day-rail"[^>]*>/,'').replace(/<\/div>\s*$/,'')}</div></section>`).join('');
+ return `<div class="pm116-outlook" style="--pm116-count:${count}"><div class="pm116-scroll-x"><div class="pm116-content"><div class="pm116-header"><div class="pm116-axis-label">Zeit</div>${headers}</div><div class="pm116-allday"><div class="pm116-allday-title">Ganztägig</div>${allDay}</div><div class="navo-agenda-scroll-pane pm116-shared-scroll" aria-label="Wochenkalender mit gemeinsamer Zeitachse"><div class="pm116-grid"><div class="pm116-axis" aria-hidden="true">${axis}</div>${tracks}</div></div></div></div></div>`;
+}
 function calendar(){
  const today=new Date().toLocaleDateString('sv-SE');
  const selectedDay=navoSelectedCalendarDay||today;
@@ -7972,12 +8936,6 @@ function calendar(){
  const monthFirst=new Date(year,month,1,12);
  const monthStart=calendarDateAdd(monthFirst,-((monthFirst.getDay()+6)%7));
  const eventLink=(ev,compact=false)=>`<button type="button" class="navo-new-event navo-calendar-title-only ${compact?'small':''}" data-action="cal-event" data-type="${ev.type}" data-id="${esc(ev.id)}" style="--event-accent:${navoEventColor(ev.type,ev.id)}" title="${esc(ev.title)} · Klicken zum Bearbeiten"><span class="navo-new-event-title">${esc(ev.title)}${ev.type==='note'&&state.calendarNotes.find(n=>n.id===ev.id)?.seriesId?' ↻':''}</span></button>`;
- const dayPanels=weekDates.slice(0,navoWeekendExpanded?7:5).map(d=>{
-   const date=d.toLocaleDateString('sv-SE');
-   const events=calendarEvents(date).sort((a,b)=>(a.start||'').localeCompare(b.start||''));
-   const timed=events.filter(e=>e.start),all=events.filter(e=>!e.start&&e.type!=='task'),unscheduledTasks=events.filter(e=>!e.start&&e.type==='task');
-   return `<section class="navo-new-day ${date===today?'current':''}"><header class="navo-new-day-header"><div><span class="navo-new-day-name">${esc(d.toLocaleDateString('de-CH',{weekday:'long'}))}</span><strong class="navo-new-day-num">${esc(d.toLocaleDateString('de-CH',{day:'2-digit',month:'2-digit',year:'numeric'}))}</strong></div></header><div class="navo-new-day-scroll"><div class="navo-new-all-day">${all.length?'<span class="navo-new-subheading">Ganztägige Einträge</span>'+all.map(ev=>eventLink(ev)).join(''):''}${unscheduledTasks.length?`<div class="pm-calendar-unscheduled"><span class="navo-new-subheading">Aufgaben ohne Startzeit</span>${unscheduledTasks.map(ev=>eventLink(ev)).join('')}</div>`:''}</div><div class="navo-new-timed"><div class="navo-agenda-scroll-pane" aria-label="Vollständige Tagesansicht von 00 bis 24 Uhr">${navoAgendaTimeRail(date,timed)}</div></div></div><button class="navo-new-bottom-add" type="button" data-action="cal-day-create" data-date="${date}" >Termin erfassen</button></section>`;
- }).join('');
  const miniHeads='<span class="navo-new-mini-head pm-mini-kw-head">KW</span>'+['Mo','Di','Mi','Do','Fr','Sa','So'].map(x=>`<span class="navo-new-mini-head">${x}</span>`).join('');
  const currentKW=pmIsoCalendarWeek(new Date());
  const miniDays=Array.from({length:42},(_,i)=>{
@@ -8009,7 +8967,7 @@ function calendar(){
  const selectedDayAgenda=`<section class="card navo-side-day-agenda"><div class="navo-new-panel-head"><div><strong>Tagesansicht</strong><small>${esc(selectedDateTitle)}</small></div><button type="button" class="btn secondary small" data-action="cal-day-today">Heute</button></div><div class="navo-side-day-tools"><span>${selectedEntries.length} ${selectedEntries.length===1?'Eintrag':'Einträge'}</span><button type="button" class="btn small" data-action="cal-day-create" data-date="${selectedDay}">Termin erfassen</button></div><div class="navo-side-day-entries">${selectedEntries.length?`${selectedTimed.map(dayListItem).join('')}${selectedAllDay.length?`<div class="navo-side-day-group">Ohne Uhrzeit / ganztägig</div>${selectedAllDay.map(dayListItem).join('')}`:''}`:'<div class="navo-side-day-empty">Für diesen Tag sind keine Termine eingetragen.<br>Über «+ Termin» kannst du direkt einen neuen Eintrag erstellen.</div>'}</div></section>`;
  const upcoming=calendarUpcoming(9).map(ev=>`<button type="button" class="navo-new-next-item" data-action="cal-event" data-type="${ev.type}" data-id="${esc(ev.id)}"><span class="navo-new-next-dot" style="background:${calendarColor(ev.type,ev.id)}"></span><span><b>${esc(ev.title)}</b><small>${esc(formatSwissDate(ev.date))}${ev.start?' · '+esc(ev.start):''} · ${esc(calendarTypes[ev.type].label)}</small>${ev.memberId?navoMemberBadge(ev.memberId):''}</span></button>`).join('')||'<p class="navo-new-muted">Keine weiteren Einträge geplant.</p>';
  const legend=Object.entries(calendarTypes).filter(([type])=>type!=='task').map(([type,meta])=>`<label class="cal-legend-item"><input type="color" data-cal-color="${type}" value="${calendarColor(type,'')}" title="Farbe für ${esc(meta.label)} wählen"><span>${esc(meta.label)}</span></label>`).join('');
- return `<div class="navo-new-calendar">${pmCalendarPendingPanel()}<div class="section-head"><div><span class="pm-calendar-eyebrow">MEINE ZEITPLANUNG</span><h2>Terminkalender</h2><p class="muted sub">Wochenansicht mit Zeitachse · Termin anklicken für Details.</p></div><div class="navo-cal-header-actions pm-cal-single-row" aria-label="Farben und neuen Termin erfassen"><div class="cal-legend" aria-label="Kategorien und Farben">${legend}</div><button class="btn" data-action="cal-new-note">Termin erfassen</button></div></div><div class="pm-cal-toolbar"><div class="pm-cal-week-switch"><button type="button" class="btn secondary small" data-action="cal-week-prev" aria-label="Vorherige Woche">‹</button><button type="button" class="btn secondary small" data-action="cal-week-today">Heute</button><button type="button" class="btn secondary small" data-action="cal-week-next" aria-label="Nächste Woche">›</button></div><div class="pm-cal-week-label"><strong>${esc(weekDates[0].toLocaleDateString('de-CH',{day:'2-digit',month:'long'}))} – ${esc(weekDates[6].toLocaleDateString('de-CH',{day:'2-digit',month:'long',year:'numeric'}))}</strong><small>Kalenderwoche ${pmIsoCalendarWeek(weekDates[0])}</small></div><span class="pm-cal-view-pill">▦ Woche</span></div><div class="navo-weekend-bar"><span>Arbeitswoche · Montag bis Freitag <small>07:00–17:00 Uhr farblich hervorgehoben</small></span><button type="button" class="btn small secondary" data-action="cal-weekend-toggle" aria-expanded="${navoWeekendExpanded}">${navoWeekendExpanded?"Wochenende ausblenden ▲":"Samstag & Sonntag anzeigen ▼"}</button></div><div class="navo-new-layout"><div class="navo-new-week ${navoWeekendExpanded?"navo-with-weekend":"navo-workweek-only"}">${dayPanels}</div><aside class="navo-new-sidebar"><section class="card navo-new-mini-panel"><div class="navo-new-panel-head"><div><strong>Monatsübersicht <span class="pm-mini-current-week">Aktuell: KW ${currentKW}</span></strong><small>${esc(monthFirst.toLocaleDateString('de-CH',{month:'long',year:'numeric'}))}</small></div><div class="row"><button class="btn small secondary" data-action="prevmonth" aria-label="Vorheriger Monat">←</button><button class="btn small secondary" data-action="nextmonth" aria-label="Nächster Monat">→</button></div></div><div class="navo-new-mini-grid">${miniHeads}${miniDays}</div><p class="navo-new-hint">KW anklicken: Wochenansicht öffnen. Tag anklicken: Tagesagenda anzeigen.</p></section>${selectedDayAgenda}</aside></div></div><details class="pm7-calendar-weekplan" id="pmWeeklyPlanning"><summary>▸ Meine Wochenplanung · Aufgaben &amp; Termine</summary>${pmWeeklyPanel()}</details>`;
+ return `<div class="navo-new-calendar">${pmCalendarPendingPanel()}<div class="section-head"><div><span class="pm-calendar-eyebrow">MEINE ZEITPLANUNG</span><h2>Terminkalender</h2><p class="muted sub">Wochenansicht mit Zeitachse · Termin anklicken für Details.</p></div><div class="navo-cal-header-actions pm-cal-single-row" aria-label="Farben und neuen Termin erfassen"><div class="cal-legend" aria-label="Kategorien und Farben">${legend}</div><button class="btn" data-action="cal-new-note">Termin erfassen</button></div></div><div class="pm-cal-toolbar"><div class="pm-cal-week-switch"><button type="button" class="btn secondary small" data-action="cal-week-prev" aria-label="Vorherige Woche">‹</button><button type="button" class="btn secondary small" data-action="cal-week-today">Heute</button><button type="button" class="btn secondary small" data-action="cal-week-next" aria-label="Nächste Woche">›</button></div><div class="pm-cal-week-label"><strong>${esc(weekDates[0].toLocaleDateString('de-CH',{day:'2-digit',month:'long'}))} – ${esc(weekDates[6].toLocaleDateString('de-CH',{day:'2-digit',month:'long',year:'numeric'}))}</strong><small>Kalenderwoche ${pmIsoCalendarWeek(weekDates[0])}</small></div><span class="pm-cal-view-pill">▦ Woche</span></div><div class="navo-weekend-bar"><span>Arbeitswoche · Montag bis Freitag <small>07:00–17:00 Uhr farblich hervorgehoben</small></span><button type="button" class="btn small secondary" data-action="cal-weekend-toggle" aria-expanded="${navoWeekendExpanded}">${navoWeekendExpanded?"Wochenende ausblenden ▲":"Samstag & Sonntag anzeigen ▼"}</button></div><div class="navo-new-layout"><div class="navo-new-week ${navoWeekendExpanded?"navo-with-weekend":"navo-workweek-only"}">${pm116OutlookGrid(weekDates,today,eventLink)}</div><aside class="navo-new-sidebar"><section class="card navo-new-mini-panel"><div class="navo-new-panel-head"><div><strong>Monatsübersicht <span class="pm-mini-current-week">Aktuell: KW ${currentKW}</span></strong><small>${esc(monthFirst.toLocaleDateString('de-CH',{month:'long',year:'numeric'}))}</small></div><div class="row"><button class="btn small secondary" data-action="prevmonth" aria-label="Vorheriger Monat">←</button><button class="btn small secondary" data-action="nextmonth" aria-label="Nächster Monat">→</button></div></div><div class="navo-new-mini-grid">${miniHeads}${miniDays}</div><p class="navo-new-hint">KW anklicken: Wochenansicht öffnen. Tag anklicken: Tagesagenda anzeigen.</p></section>${selectedDayAgenda}</aside></div></div><details class="pm7-calendar-weekplan" id="pmWeeklyPlanning"><summary>▸ Meine Wochenplanung · Aufgaben &amp; Termine</summary>${pmWeeklyPanel()}</details>`;
 }
 
 // A calendar appointment is not "carried out" merely because the time elapsed.
