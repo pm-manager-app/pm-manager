@@ -4016,6 +4016,29 @@ body.pm-fluent-light .pm-quarter-hour-field>small{color:#b9d7de}
 .pm12-extras{margin:17px 0 0;border:2px solid #436d7a;background:#204351;border-radius:11px;padding:12px}.pm12-extras summary{font-weight:750;color:#96e8df;font-size:13px;cursor:pointer}.pm12-extras .pm12-form-grid{padding-top:15px}
 .pm12-editor-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;border-top:1px solid #4b7582;margin-top:19px;padding-top:15px}.pm12-submit{background:#078b85!important;border:2px solid #62ddcc!important}
 @media(max-width:620px){.pm12-row-data{grid-template-columns:1fr}.pm12-form-grid{grid-template-columns:1fr}.pm12-wide{grid-column:auto}.pm12-editor-head{flex-wrap:wrap}}
+</style><style id="pm113-calendar-remove-style">
+.pm-cal-drawer-bottom{justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap}
+.pm-cal-drawer-bottom>.btn{min-height:38px;font-size:12px;padding:9px 12px;white-space:nowrap}
+.pm-cal-drawer-bottom .pm113-remove{background:#542d39!important;color:#ffe5e7!important;border:2px solid #bd6576!important}
+.pm-cal-drawer-bottom .pm113-remove:hover{background:#713747!important}
+@media(max-width:520px){.pm-cal-drawer-bottom>.btn{flex:1 1 auto}}
+</style><style id="pm113-time-entry-times-visibility">
+.pm-time-folder-entry{grid-template-columns:minmax(0,1fr) auto auto;align-items:start}
+.pm-time-folder-main{min-width:0}
+.pm-time-detail-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 13px;margin-top:6px;padding:9px 11px;background:#21465a;border:1px solid #488c91;border-radius:9px;color:#e9fcfc;font-size:12px;line-height:1.4}
+.pm-time-detail-time{font-weight:700;color:#e6fbfa}
+.pm-time-detail-pause{color:#c3e8e9}
+.pm-time-detail-total{background:#0c696d;color:#fff;padding:4px 9px;border-radius:7px;font-size:12px;white-space:normal}
+.pm-time-detail-undated{color:#b4ccd5;font-style:italic}
+.pm-time-folder-values>b{font-weight:800;color:#92e9de;font-size:14px}
+@media(max-width:900px){.pm-time-folder-entry{grid-template-columns:1fr;gap:9px}.pm-time-folder-values{text-align:left}.pm-time-folder-actions{justify-content:flex-start}}
+</style><style id="pm115-simple-entry-times">
+.pm-time-folder-entry{grid-template-columns:minmax(0,1fr) auto!important}
+.pm-time-folder-main{min-width:0}
+.pm-time-detail-row{padding:7px 10px!important;margin-top:7px!important;background:#21465a!important;border:1px solid #488c91!important;border-radius:8px!important}
+.pm-time-detail-time{font-size:13px!important;font-weight:750!important;color:#d4fffa!important}
+.pm-time-detail-undated{font-size:12px!important;color:#bcd1d9!important}
+@media(max-width:650px){.pm-time-folder-entry{display:flex!important;flex-direction:column!important;align-items:stretch!important}}
 </style></head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -7877,6 +7900,30 @@ function pmOpenLargeCalendarDay(date){
  const scroll=root.querySelector('.pm-large-day-scroll');
  if(scroll)scroll.scrollTop=7*60*.48;
 }
+// Kalender 11.3: Typgerechtes Entfernen direkt aus dem Termindetail.
+function pm113CalendarRemove(type,eventId){
+ const editRight=type==='task'?'tasks':type==='meeting'?'meetings':'calendar';
+ if(!['task','meeting','note'].includes(type)||!navoAuthCanEdit(editRight))return;
+ const collection=type==='task'?state.tasks:type==='meeting'?state.meetings:state.calendarNotes;
+ const record=collection.find(x=>String(x.id)===String(eventId));
+ if(!record)return;
+ const title=record.name||record.title||'Ohne Titel';
+ const question=type==='task'
+  ?`Aufgabe «${title}» aus dem Kalender entfernen?\n\nNur die Tages- und Uhrzeitplanung wird gelöscht. Die Aufgabe bleibt im Planner-Board erhalten.`
+  :`${type==='meeting'?'Projektmeeting':'Termin'} «${title}» wirklich dauerhaft löschen?\n\nDer Eintrag wird aus dem Kalender entfernt.`;
+ if(!confirm(question))return;
+ if(type==='task'){
+  record.pmPlanDate='';record.pmPlanStart='';
+  // Eine nicht mehr terminierte Aufgabe darf im Board bestehen bleiben.
+ }else if(type==='meeting'){
+  state.meetings=state.meetings.filter(x=>String(x.id)!==String(eventId));
+ }else{
+  state.calendarNotes=state.calendarNotes.filter(x=>String(x.id)!==String(eventId));
+ }
+ delete state.calendarEventColors[type+':'+eventId];
+ pmCalendarDrawerClose();
+ save();render();
+}
 let pmCalendarDrawerData=null;
 function pmCalendarDrawerOpen(type,id){
  const source=type==='meeting'?state.meetings:type==='note'?state.calendarNotes:type==='task'?state.tasks:type==='project'?state.projects:type==='savednote'?pmActiveNotes():[];
@@ -7892,7 +7939,7 @@ function pmCalendarDrawerOpen(type,id){
  const status=record.status||'';
  const wrap=document.getElementById('pm-calendar-drawer-root')||document.createElement('div');
  wrap.id='pm-calendar-drawer-root';
- wrap.innerHTML=`<div class="pm-cal-drawer-backdrop" data-pm-cal-dismiss></div><aside class="pm-cal-drawer" role="dialog" aria-modal="true" aria-label="Kalenderdetails"><div class="pm-cal-drawer-top"><span class="pm-cal-drawer-kicker">${esc(calendarTypes[type]?.label||'Kalendereintrag')}</span><button class="pm-cal-drawer-close" aria-label="Schliessen" data-pm-cal-dismiss>✕</button></div><h2>${esc(title)}</h2><div class="pm-cal-drawer-meta"><div><span>Datum</span><b>${esc(date?formatSwissDate(date):'Nicht festgelegt')}</b></div><div><span>Uhrzeit</span><b>${esc(beginning?(beginning+(ending?' – '+ending:'')):'Ohne Uhrzeit')}</b></div>${project?`<div><span>Projekt</span><b>${esc(project)}</b></div>`:''}${status?`<div><span>Status</span><b>${esc(status)}</b></div>`:''}</div>${desc?`<div class="pm-cal-drawer-desc"><span>Beschreibung</span><p>${esc(String(desc)).replace(/\n/g,'<br>')}</p></div>`:''}<div class="pm-cal-drawer-bottom"><button class="btn secondary" data-pm-cal-dismiss>Schliessen</button><button class="btn" data-pm-cal-edit>Eintrag bearbeiten →</button></div></aside>`;
+ wrap.innerHTML=`<div class="pm-cal-drawer-backdrop" data-pm-cal-dismiss></div><aside class="pm-cal-drawer" role="dialog" aria-modal="true" aria-label="Kalenderdetails"><div class="pm-cal-drawer-top"><span class="pm-cal-drawer-kicker">${esc(calendarTypes[type]?.label||'Kalendereintrag')}</span><button class="pm-cal-drawer-close" aria-label="Schliessen" data-pm-cal-dismiss>✕</button></div><h2>${esc(title)}</h2><div class="pm-cal-drawer-meta"><div><span>Datum</span><b>${esc(date?formatSwissDate(date):'Nicht festgelegt')}</b></div><div><span>Uhrzeit</span><b>${esc(beginning?(beginning+(ending?' – '+ending:'')):'Ohne Uhrzeit')}</b></div>${project?`<div><span>Projekt</span><b>${esc(project)}</b></div>`:''}${status?`<div><span>Status</span><b>${esc(status)}</b></div>`:''}</div>${desc?`<div class="pm-cal-drawer-desc"><span>Beschreibung</span><p>${esc(String(desc)).replace(/\n/g,'<br>')}</p></div>`:''}<div class="pm-cal-drawer-bottom"><button class="btn secondary" data-pm-cal-dismiss>Schliessen</button>${['task','meeting','note'].includes(type)&&navoAuthCanEdit(type==='task'?'tasks':type==='meeting'?'meetings':'calendar')?`<button class="btn pm113-remove" data-pm113-calendar-remove title="${type==='task'?'Planung entfernen, Aufgabe behalten':'Eintrag dauerhaft löschen'}">${type==='task'?'Aus Kalender entfernen':'🗑 Termin löschen'}</button>`:''}<button class="btn" data-pm-cal-edit>Bearbeiten →</button></div></aside>`;
  if(!wrap.parentElement)document.body.appendChild(wrap);
  const close=wrap.querySelector('[data-pm-cal-dismiss]');if(close)close.focus();
 }
@@ -7909,6 +7956,8 @@ document.addEventListener('click',event=>{
 document.addEventListener('click',event=>{
  const dismiss=event.target.closest('[data-pm-cal-dismiss]');
  if(dismiss){event.preventDefault();event.stopImmediatePropagation();pmCalendarDrawerClose();return;}
+ const deletion=event.target.closest('[data-pm113-calendar-remove]');
+ if(deletion&&pmCalendarDrawerData){event.preventDefault();event.stopImmediatePropagation();pm113CalendarRemove(pmCalendarDrawerData.type,pmCalendarDrawerData.id);return;}
  const edit=event.target.closest('[data-pm-cal-edit]');
  if(edit&&pmCalendarDrawerData){event.preventDefault();event.stopImmediatePropagation();const {type,id}=pmCalendarDrawerData;pmCalendarDrawerClose();const btn=document.createElement('button');btn.dataset.action='cal-event';btn.dataset.type=type;btn.dataset.id=id;document.body.appendChild(btn);btn.click();btn.remove();return;}
  const target=event.target.closest('.navo-new-calendar [data-action="cal-event"]');
@@ -8284,7 +8333,7 @@ function timeCalendar(entries){
    const projectName=x.projectId?proj(x.projectId):'Ohne Projekt';
    const label=isWork?projectName:cat;
    const tooltip=`${label} · ${hours(x.duration)} · ${member(x.memberId)}${isWork&&navoTimePauseMinutes(x)?' · Mittagspause: '+navoTimePauseLabel(x):''}${x.description?' · '+x.description:''}`;
-   return `<button type="button" class="tc-entry ${isWork?'tc-project-entry':cat==='Ferien'?'tc-holiday':cat==='Krank'?'tc-sick':'tc-comp'}" ${isWork?`style="${navoTimeProjectStyle(x.projectId)}"`:''} title="${esc(tooltip)}" data-time-dblclick="${esc(x.id)}" aria-label="${esc(tooltip)} – doppelklicken zum Bearbeiten"><span class="tc-project-entry-main"><b>${esc(label)}</b><strong>${hours(x.duration)}</strong></span><span class="tc-project-entry-person">${esc(member(x.memberId))}${isWork&&navoTimePauseMinutes(x)?` · ☕ ${esc(navoTimePauseLabel(x))}`:''}</span></button>`;
+   return `<button type="button" class="tc-entry ${isWork?'tc-project-entry':cat==='Ferien'?'tc-holiday':cat==='Krank'?'tc-sick':'tc-comp'}" ${isWork?`style="${navoTimeProjectStyle(x.projectId)}"`:''} title="${esc(tooltip)}" data-time-dblclick="${esc(x.id)}" aria-label="${esc(tooltip)} – doppelklicken zum Bearbeiten"><span class="tc-project-entry-main"><b>${esc(label)}</b><strong>${hours(x.duration)}</strong></span><span class="tc-project-entry-person">${esc(member(x.memberId))}${x.start&&x.end?` · ${esc(x.start)}–${esc(x.end)} Uhr`:x.start?` · ab ${esc(x.start)} Uhr`:''}${isWork&&navoTimePauseMinutes(x)?` · ☕ ${esc(navoTimePauseLabel(x))}`:''}</span></button>`;
   }).join('');
   cells+=`<div class="tc-day ${dt===today?'tc-today':''}"><div class="tc-day-head"><b>${d}</b>${work?`<span>${hours(work)}</span>`:''}</div>${badges}<button class="tc-add" data-action="timeday" data-date="${dt}" title="Eintrag für ${formatSwissDate(dt)} erfassen">+</button></div>`;
  }
@@ -8340,6 +8389,17 @@ function navoTimeBalances(memberId,now){
  const cumulative=firstEntry?navoWorkdayTargetForMember(memberId,firstEntry,today):null;
  return {monthly,cumulative,firstEntry};
 }
+// Detaillierte Zeitangaben in der Buchungsliste, auch auf schmalen Bildschirmen.
+function pmTimeEntryVisibleHours(e){
+ // In der Eintragsliste nur die tatsächlich erfassten Uhrzeiten zeigen.
+ const start=navoMinutesOfDay(e.start),end=navoMinutesOfDay(e.end);
+ const hasStart=start!==null,hasEnd=end!==null;
+ const when=hasStart&&hasEnd?`◷ ${esc(e.start)}–${esc(e.end)} Uhr`:
+  hasStart?`◷ Beginn ${esc(e.start)} Uhr · Ende nicht erfasst`:
+  hasEnd?`◷ Ende ${esc(e.end)} Uhr · Beginn nicht erfasst`:
+  'Keine Uhrzeit erfasst';
+ return `<div class="pm-time-detail-row"><span class="${hasStart||hasEnd?'pm-time-detail-time':'pm-time-detail-undated'}">${when}</span></div>`;
+}
 function time(){
  const entries=timeEntriesFiltered(),now=new Date();
  const workEntries=entries.filter(x=>timeCategory(x)==='Arbeit');
@@ -8367,7 +8427,7 @@ function time(){
  <div class="grid navo-time-top-kpis">${stat('Arbeitsstunden',hours(total),'Nur Arbeitszeit · aktuelle Filter')}${stat('Arbeitskosten',fmt(cost),'Arbeitsstunden × Satz')}${stat('Abwesenheiten',absence.length,'Ferien · Kompensation · Krank')}${stat('Buchungen',entries.length,'Aktuelle Auswahl')}</div>
  <details class="card navo-time-accordion"><summary><span><b>Monatskalender · ${esc(monthName)}</b><small>Einträge, Ferien und Krankheit · Tagesansicht</small></span><span class="navo-time-expand">Anzeigen ▾</span></summary><div class="navo-time-accordion-content">${timeCalendar(entries)}</div></details>
  <div class="navo-time-panels">${group('projectId','Arbeitsstunden nach Projekt')}${group('memberId','Arbeitsstunden nach Mitarbeiter')}</div>
- <details class="card navo-time-accordion"><summary><span><b>Alle Zeit- und Abwesenheitseinträge</b><small>${entries.length} Buchungen · Bearbeiten und löschen</small></span><span class="navo-time-expand">Anzeigen ▾</span></summary><div class="navo-time-accordion-content"><div class="pm-time-folder-list">${entries.length?pmArchiveFolders(entries.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>({date:x.date,html:`<div class="pm-time-folder-entry"><div class="pm-time-folder-main"><b>${esc(formatSwissDate(x.date))} · ${esc(timeCategory(x))}</b><span>${esc(member(x.memberId))} · ${esc(x.projectId?proj(x.projectId):'Ohne Projekt')}</span><span>${esc(x.description||'–')}${x.taskId&&state.tasks.some(t=>t.id===x.taskId)?` · Aufgabe: ${esc(state.tasks.find(t=>t.id===x.taskId).name)}`:''}${timeCategory(x)==='Arbeit'&&navoTimePauseMinutes(x)?` · ☕ Mittagspause: ${esc(navoTimePauseLabel(x))}`:''}</span></div><div class="pm-time-folder-values"><b>${hours(x.duration)}</b><small>${timeCategory(x)==='Arbeit'?fmt(Number(x.duration)*Number(x.rate||0)):'–'}</small></div><div class="pm-time-folder-actions"><button class="btn small secondary" data-action="edit" data-kind="time" data-id="${esc(x.id)}">Bearbeiten</button> <button class="btn small danger" data-action="delete" data-kind="time" data-id="${esc(x.id)}">×</button></div></div>`}))):'<div class="empty">Noch keine Zeit- oder Abwesenheitseinträge.</div>'}</div></div></details>
+ <details class="card navo-time-accordion"><summary><span><b>Alle Zeit- und Abwesenheitseinträge</b><small>${entries.length} Buchungen · Bearbeiten und löschen</small></span><span class="navo-time-expand">Anzeigen ▾</span></summary><div class="navo-time-accordion-content"><div class="pm-time-folder-list">${entries.length?pmArchiveFolders(entries.slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(x=>({date:x.date,html:`<div class="pm-time-folder-entry"><div class="pm-time-folder-main"><b>${esc(formatSwissDate(x.date))} · ${esc(timeCategory(x))}</b><span>${esc(member(x.memberId))} · ${esc(x.projectId?proj(x.projectId):'Ohne Projekt')}</span><span>${esc(x.description||'–')}${x.taskId&&state.tasks.some(t=>t.id===x.taskId)?` · Aufgabe: ${esc(state.tasks.find(t=>t.id===x.taskId).name)}`:''}</span>${pmTimeEntryVisibleHours(x)}</div><div class="pm-time-folder-actions"><button class="btn small secondary" data-action="edit" data-kind="time" data-id="${esc(x.id)}">Bearbeiten</button> <button class="btn small danger" data-action="delete" data-kind="time" data-id="${esc(x.id)}">×</button></div></div>`}))):'<div class="empty">Noch keine Zeit- oder Abwesenheitseinträge.</div>'}</div></div></details>
  <p class="muted sub">Überzeit wird pro Mitarbeiter ermittelt. Die Filterung nach Projekten beeinflusst die Buchungsstatistik und den Kalender, nicht den persönlichen Überzeitsaldo, weil Arbeitsstunden auch ohne Projektzuordnung zum Stundenkonto gehören.</p>`;
 }
 let pmTimePDFSelectedDay='';
