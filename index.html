@@ -4970,6 +4970,60 @@ body.pm-fluent-light :is(#content,#modalRoot) :is(input,select,textarea):focus-v
 }
 @media(prefers-reduced-motion:reduce){#content .btn{transition:none!important}}
 </style>
+<style id="pm-compose-styles">
+.pm-compose-entry{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 15px;padding:19px 22px;border-radius:17px;border:2px solid #328e99;background:linear-gradient(115deg,#0c3547,#124959 58%,#0c3343);box-shadow:0 12px 26px rgba(0,24,37,.18);color:#e7f9fa}
+.pm-compose-eyebrow{font-size:10px;letter-spacing:.15em;color:#75dfd5;font-weight:850}
+.pm-compose-entry h3{margin:5px 0;font-size:19px;color:#fff}.pm-compose-entry p{margin:0;color:#bad4dc;font-size:13px;line-height:1.5}
+.pm-compose-launch{flex:0 0 auto;min-width:176px;min-height:44px!important}
+#pm-compose-dialog{width:min(1100px,calc(100vw - 32px))!important;max-width:1100px!important;max-height:calc(100vh - 30px)!important;overflow:auto!important;padding:0!important;border:2px solid #3296a2!important;box-shadow:0 18px 70px rgba(0,17,31,.55)!important;background:#0c2d3c!important;color:#e9f4f6!important;border-radius:17px!important}
+.pm-compose-head{padding:20px 24px;border-bottom:1px solid #347583;display:flex;justify-content:space-between;align-items:start;gap:16px;background:linear-gradient(110deg,#104455,#092937)}
+.pm-compose-head h2{margin:4px 0 6px;font-size:23px;color:#fff}.pm-compose-head p{color:#b7d2d8;margin:0;font-size:12px}
+.pm-compose-head .pm-compose-close{font-size:22px;line-height:1;min-width:40px}
+.pm-compose-body{display:grid;grid-template-columns:minmax(300px,1fr) minmax(320px,1.15fr);min-height:390px}
+.pm-compose-left{padding:19px 20px 24px;border-right:1px solid #346d79;min-width:0}
+.pm-compose-right{padding:19px 20px 24px;min-width:0;background:rgba(4,28,39,.24)}
+.pm-compose-field{display:grid;gap:5px;margin:0 0 14px}.pm-compose-field>label,.pm-compose-section-title{font-size:12px;color:#b8d7dd;font-weight:800}
+.pm-compose-field select,.pm-compose-field input{width:100%;box-sizing:border-box;height:42px;border-radius:10px;border:1.5px solid #3c8995;background:#163e50;color:#fff;padding:8px 12px;outline:none}
+.pm-compose-field :is(select,input):focus{border-color:#57e0da;box-shadow:0 0 0 3px rgba(65,211,200,.16)}
+.pm-compose-types{display:flex;flex-wrap:wrap;gap:7px;margin:9px 0 12px}
+.pm-compose-type{display:flex;align-items:center;gap:7px;padding:8px 9px;border:1px solid #326d79;border-radius:10px;background:#13394a;color:#d5ebee;font-size:12px;cursor:pointer}
+.pm-compose-type:has(input:checked){border-color:#38c5bc;background:#1c505d}.pm-compose-type input{accent-color:#35c9c0}
+.pm-compose-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 8px}
+.pm-compose-list{border:1px solid #346e7a;border-radius:12px;max-height:310px;overflow:auto;background:#0b2938}
+.pm-compose-item{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-bottom:1px solid rgba(108,169,181,.2);cursor:pointer;font-size:13px;color:#e4f3f5}
+.pm-compose-item:last-child{border-bottom:0}.pm-compose-item:hover{background:#164254}
+.pm-compose-item input{margin-top:3px;accent-color:#40c8bf;flex-shrink:0}
+.pm-compose-item span{min-width:0;overflow-wrap:anywhere}.pm-compose-item small{display:block;margin-top:3px;font-size:11px;color:#9fc2cc;line-height:1.4}
+.pm-compose-empty{padding:17px;color:#a4c2c9;font-size:13px;line-height:1.5}
+.pm-compose-preview{margin:11px 0;border:1px solid #3b7885;border-radius:12px;background:#113546;max-height:390px;overflow:auto;padding:17px 18px}
+.pm-compose-preview h3{margin:0 0 7px;font-size:18px;color:#fff}.pm-compose-preview .pm-compose-meta{color:#b5d1d8;font-size:12px;margin-bottom:12px}
+.pm-compose-preview h4{color:#6ee3d9;margin:17px 0 7px;border-bottom:1px solid #356d78;padding-bottom:6px;font-size:13px}
+.pm-compose-preview article{margin:8px 0;padding:9px 11px;border:1px solid #305968;border-radius:8px;background:rgba(7,29,41,.45)}
+.pm-compose-preview article strong{display:block;font-size:12px;overflow-wrap:anywhere}
+.pm-compose-preview article small{display:block;color:#b7d1d8;margin-top:5px;font-size:11px}
+.pm-compose-preview article p{font-size:12px;color:#d2e5e7;white-space:pre-wrap;overflow-wrap:anywhere;margin:7px 0 0;line-height:1.5}
+.pm-compose-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.pm-compose-counter{font-size:12px;color:#8adbd4;font-weight:700}
+body.pm-fluent-light #pm-compose-dialog{background:#e7f0f3!important;color:#1e4150!important;border-color:#60a6af!important}
+body.pm-fluent-light .pm-compose-head{background:#d7e8ec}body.pm-fluent-light .pm-compose-head h2,body.pm-fluent-light .pm-compose-preview h3{color:#1b4050}body.pm-fluent-light .pm-compose-head p{color:#537381}
+body.pm-fluent-light .pm-compose-left{border-color:#accbd1}body.pm-fluent-light .pm-compose-right{background:#dcebef}body.pm-fluent-light .pm-compose-field>label,body.pm-fluent-light .pm-compose-section-title{color:#325f6b}
+body.pm-fluent-light .pm-compose-field select,body.pm-fluent-light .pm-compose-field input{background:#f6fafb;color:#1a3946;border-color:#a0c1c9}
+body.pm-fluent-light .pm-compose-type{background:#edf5f6;color:#284856;border-color:#aec9cf}body.pm-fluent-light .pm-compose-type:has(input:checked){background:#d1ebea;border-color:#38aaa7}
+body.pm-fluent-light .pm-compose-list{background:#f2f7f8;border-color:#a5c7ce}body.pm-fluent-light .pm-compose-item{color:#234251;border-color:#d0e1e5}body.pm-fluent-light .pm-compose-item:hover{background:#dfedef}body.pm-fluent-light .pm-compose-item small,body.pm-fluent-light .pm-compose-empty{color:#557780}
+body.pm-fluent-light .pm-compose-preview{background:#f6fafb;border-color:#b5cfd4}body.pm-fluent-light .pm-compose-preview .pm-compose-meta{color:#668089}body.pm-fluent-light .pm-compose-preview h4{color:#197d82;border-color:#bcd5d9}body.pm-fluent-light .pm-compose-preview article{background:#eaf2f4;border-color:#cedee1}body.pm-fluent-light .pm-compose-preview article small{color:#5d7d86}body.pm-fluent-light .pm-compose-preview article p{color:#314e5a}body.pm-fluent-light .pm-compose-counter{color:#167d7a}
+body.pm-fluent-light .pm-compose-entry{background:linear-gradient(100deg,#d5e9ed,#e9f4f5);border-color:#77b4bb;color:#234858;box-shadow:none}body.pm-fluent-light .pm-compose-entry h3{color:#214655}body.pm-fluent-light .pm-compose-eyebrow{color:#167f81}body.pm-fluent-light .pm-compose-entry p{color:#557885}
+@media(max-width:770px){.pm-compose-body{grid-template-columns:1fr}.pm-compose-left{border-right:0;border-bottom:1px solid #346d79}.pm-compose-entry{padding:15px}.pm-compose-head{padding:15px}}
+</style>
+
+<style id="pm9-control-style">
+.pm9-wrap{display:grid;gap:15px;max-width:1480px;margin:0 auto}.pm9-hero,.pm9-card,.pm9-dialog{border:2px solid #397f89;border-radius:16px;background:linear-gradient(130deg,#103c4c,#0b2b3b);color:#e6f5f6;box-shadow:0 8px 22px rgba(0,13,20,.13)}
+.pm9-hero{padding:20px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.pm9-hero h2{margin:4px 0 7px;color:#f2ffff}.pm9-hero p{margin:0;color:#adccd1}.pm9-actions{display:flex;gap:9px;flex-wrap:wrap}.pm9-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.pm9-kpi{padding:13px;border:1px solid #3e7985;border-radius:12px;background:#123849}.pm9-kpi b{display:block;font-size:24px;color:#7ce4d8}.pm9-kpi small{font-size:12px;color:#b1cdd2}
+.pm9-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pm9-tools input,.pm9-tools select{min-height:39px;flex:1;min-width:140px;background:#143747;color:#effbfc;border:1px solid #4f8b97;border-radius:10px;padding:8px 10px}
+.pm9-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:13px}.pm9-card{padding:17px}.pm9-card h3{margin:0 0 9px;color:#f5ffff;font-size:17px}.pm9-card small{color:#afd0d4}.pm9-card .pm9-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0}.pm9-meter{height:8px;background:#244e5b;border-radius:99px;overflow:hidden}.pm9-meter i{display:block;height:100%;background:#45c7b9;border-radius:inherit}.pm9-chips{display:flex;gap:6px;flex-wrap:wrap}.pm9-chip{padding:4px 8px;border-radius:8px;border:1px solid #427d88;color:#b9d9dc;font-size:11px}.pm9-chip.issue{border-color:#b87470;color:#ffaba5}.pm9-row-actions{display:flex;justify-content:flex-end;gap:7px;flex-wrap:wrap;margin-top:14px}
+.pm9-dialog{width:min(1090px,calc(100vw - 32px));max-height:90vh;overflow-y:auto;margin:auto;padding:22px}.pm9-dialog h2{color:#f3ffff;margin:0}.pm9-dialog-head{display:flex;align-items:start;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:17px}.pm9-dialog-head p{margin:6px 0;color:#b3d1d7}.pm9-make-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}.pm9-box{background:rgba(2,22,32,.27);border:1px solid #447f8a;border-radius:12px;padding:14px;min-width:0}.pm9-box h3{margin:0 0 12px;color:#83e7dc}.pm9-field{display:grid;gap:5px;margin-bottom:12px}.pm9-field label{font-size:12px;font-weight:700;color:#c2e2e6}.pm9-field input,.pm9-field select,.pm9-field textarea,.pm9-item textarea{width:100%;min-width:0;box-sizing:border-box;min-height:38px;background:#103140;border:1px solid #578994;border-radius:9px;color:#f3fafb;padding:9px;outline-offset:2px}.pm9-choices{display:grid;gap:7px;max-height:270px;overflow:auto}.pm9-choice{display:flex;align-items:start;gap:9px;border:1px solid #3f7180;background:#123848;border-radius:9px;padding:9px;cursor:pointer;font-size:13px}.pm9-choice input{margin-top:3px;accent-color:#42c7bd}.pm9-choice small{display:block;color:#aac9d0;margin-top:3px}.pm9-item{padding:13px;margin:10px 0;border:1px solid #397683;border-radius:12px;background:#103341}.pm9-item strong{font-size:14px;display:block}.pm9-item small{display:block;color:#a9cdd0;margin-top:5px}.pm9-status-actions{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0}.pm9-status-actions button{border:1px solid #50828e;border-radius:9px;background:#173e4e;color:#dcebef;padding:7px 10px;cursor:pointer;font-size:12px}.pm9-status-actions button[aria-pressed="true"]{border-color:#5fe1ce;background:#1d6b73;color:#fff;box-shadow:0 0 0 1px #5fe1ce}.pm9-status-actions button[data-status="issue"][aria-pressed="true"]{background:#803e45;border-color:#ffaaa1}.pm9-item textarea{min-height:57px;resize:vertical}.pm9-bar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-top:17px}.pm9-blank{padding:25px;text-align:center;border:1px dashed #4b8390;border-radius:13px;color:#b6d5d8}
+body.pm-fluent-light .pm9-hero,body.pm-fluent-light .pm9-card,body.pm-fluent-light .pm9-dialog{background:#e1edf0;color:#1d4150;border-color:#75aeb7;box-shadow:0 5px 18px rgba(17,66,79,.08)}body.pm-fluent-light .pm9-hero h2,body.pm-fluent-light .pm9-card h3,body.pm-fluent-light .pm9-dialog h2{color:#1e4352}body.pm-fluent-light .pm9-hero p,body.pm-fluent-light .pm9-card small,body.pm-fluent-light .pm9-dialog-head p{color:#597984}body.pm-fluent-light .pm9-kpi,body.pm-fluent-light .pm9-box,body.pm-fluent-light .pm9-item{background:#eef5f6;border-color:#a5cbd0;color:#284753}body.pm-fluent-light .pm9-kpi b,body.pm-fluent-light .pm9-box h3{color:#177d81}body.pm-fluent-light .pm9-kpi small,body.pm-fluent-light .pm9-item small,body.pm-fluent-light .pm9-choice small{color:#5c7b83}body.pm-fluent-light .pm9-field label{color:#365c67}body.pm-fluent-light .pm9-field input,body.pm-fluent-light .pm9-field select,body.pm-fluent-light .pm9-field textarea,body.pm-fluent-light .pm9-item textarea,body.pm-fluent-light .pm9-tools input,body.pm-fluent-light .pm9-tools select{background:#f6fafb;border-color:#9bbfc7;color:#1c3e4b}body.pm-fluent-light .pm9-choice,body.pm-fluent-light .pm9-status-actions button{background:#e9f3f4;border-color:#adcbd1;color:#294d5c}body.pm-fluent-light .pm9-status-actions button[aria-pressed="true"]{background:#c3e9e7;border-color:#309f9f;color:#12585f}body.pm-fluent-light .pm9-status-actions button[data-status="issue"][aria-pressed="true"]{background:#f8d9d8;border-color:#c27670;color:#8a3d39}body.pm-fluent-light .pm9-chip{color:#416c76;border-color:#8db8bf}body.pm-fluent-light .pm9-blank{color:#567d85}
+@media(max-width:760px){.pm9-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.pm9-make-grid{grid-template-columns:1fr}.pm9-dialog{padding:15px}}
+</style>
 </head><body><div id="navo-login-overlay"></div><div class="app"><aside class="side"><div class="brand navo-pm-brand"><div class="pm-brand-badge" aria-hidden="true">PM</div><div class="pm-brand-text"><span class="pm-brand-kicker">Workspace</span><div class="pm-brand-title">PM Manager</div></div><button type="button" id="pmSidebarToggle" class="pm-sidebar-toggle" aria-label="Seitenleiste einklappen" aria-expanded="true" title="Seitenleiste einklappen">‹</button></div><div id="navo-sidebar-account" class="navo-sidebar-account" aria-live="polite"></div><nav class="nav" id="nav"></nav><p class="muted sub navo-side-foot">Lokale Demo · Daten bleiben in diesem Browser</p></aside><main class="main"><div class="top"><div class="top-main"><div class="top-heading-block"><h1 id="heading">Dashboard</h1><div class="muted sub" id="subtitle">Alle Projekte an einem Ort</div></div><div id="pageChips" class="top-chips" aria-live="polite"></div></div><div class="top-actions"><button type="button" id="pmThemeToggle" class="pm-theme-toggle" aria-label="Darstellung wechseln">☀ Helles Design</button><span class="pill">● Lokaler Prototyp</span><div id="pagePrimaryAction"></div></div></div><div id="content"></div></main></div><nav class="mobile-nav" id="mobileNav"></nav><div id="modalRoot"></div><script>
 // Design-Refresh: Darstellungswahl pro Browser (keine Änderung der PM-Daten).
 (function(){
@@ -4997,9 +5051,9 @@ body.pm-fluent-light :is(#content,#modalRoot) :is(input,select,textarea):focus-v
 })();
 
 'use strict';
-const KEY='projectpilot-v1';const modules=[['dashboard','⌂','Dashboard'],['projects','▣','Projekte'],['tasks','☑','Aufgaben'],['calendar','▦','Terminkalender'],['meetings','♧','Projektmeetings'],['finance','◈','Finanzen'],['time','◷','Zeiterfassung'],['team','♙','Mitarbeiter'],['calculator','▧','Rechner'],['notes','✎','Notizen'],['standards','⚡','Wissensassistent'],['ai','✦','KI-Assistent']];
+const KEY='projectpilot-v1';const modules=[['dashboard','⌂','Dashboard'],['projects','▣','Projekte'],['tasks','☑','Aufgaben'],['checklists','☑','Kontrollcenter'],['calendar','▦','Terminkalender'],['meetings','♧','Projektmeetings'],['finance','◈','Finanzen'],['time','◷','Zeiterfassung'],['team','♙','Mitarbeiter'],['calculator','▧','Rechner'],['notes','✎','Notizen'],['standards','⚡','Wissensassistent'],['ai','✦','KI-Assistent']];
 modules.splice(modules.findIndex(x=>x[0]==='calculator'),0,['docs','▤','Dokumente']);modules.splice(modules.findIndex(x=>x[0]==='notes')+1,0,['archive','▣','Archiv']);modules.push(['backup','⬇','Datensicherung']);modules.splice(modules.findIndex(x=>x[0]==='meetings')+1,0,['pending','☷','Pendenzen & Entscheide']);modules.splice(modules.findIndex(x=>x[0]==='backup'),0,['history','◴','Änderungsverlauf']);modules.push(['access','⚙','Berechtigungen']);const initial=()=>({projects:[{id:'p1',name:'Website Relaunch',sector:'IT & Software',description:'Neue Firmenwebsite',status:'In Arbeit',budget:18000,start:'2026-10-01',end:'2026-12-20'},{id:'p2',name:'Büroumbau',sector:'Bauwesen',description:'Umbau der Büroräume',status:'Planung',budget:65000,start:'2026-11-01',end:'2027-02-28'}],tasks:[{id:'t1',name:'Anforderungen abstimmen',projectId:'p1',owner:'m1',due:'2026-10-18',status:'In Arbeit',priority:'Hoch'},{id:'t2',name:'Entwurf freigeben',projectId:'p1',owner:'m2',due:'2026-10-25',status:'Offen',priority:'Mittel'},{id:'t3',name:'Bestandsaufnahme',projectId:'p2',owner:'m1',due:'2026-11-05',status:'Offen',priority:'Hoch'}],expenses:[{id:'e1',projectId:'p1',name:'Designleistungen',amount:2400,date:'2026-10-08'}],members:[{id:'m1',name:'Alex Muster',role:'Projektleitung',email:'alex@beispiel.ch'},{id:'m2',name:'Sam Beispiel',role:'Design',email:'sam@beispiel.ch'}],docs:[],chat:[],timeEntries:[],interviews:[]});
-let state;try{state=JSON.parse(localStorage.getItem(KEY))||initial()}catch{state=initial()}state.timeEntries=Array.isArray(state.timeEntries)?state.timeEntries:[];state.interviews=Array.isArray(state.interviews)?state.interviews:[];state.meetings=Array.isArray(state.meetings)?state.meetings:[];state.contacts=Array.isArray(state.contacts)?state.contacts:[];state.calendarNotes=Array.isArray(state.calendarNotes)?state.calendarNotes:[];state.pendingRecords=Array.isArray(state.pendingRecords)?state.pendingRecords:[];state.calendarColors=state.calendarColors&&typeof state.calendarColors==='object'?state.calendarColors:{};state.calendarEventColors=state.calendarEventColors&&typeof state.calendarEventColors==='object'?state.calendarEventColors:{};let timeProjectFilter='',timeMemberFilter='';let timeViewMonth=new Date().getMonth(),timeViewYear=new Date().getFullYear();let page='dashboard',filter='',month=new Date().getMonth(),year=new Date().getFullYear();
+let state;try{state=JSON.parse(localStorage.getItem(KEY))||initial()}catch{state=initial()}state.timeEntries=Array.isArray(state.timeEntries)?state.timeEntries:[];state.interviews=Array.isArray(state.interviews)?state.interviews:[];state.meetings=Array.isArray(state.meetings)?state.meetings:[];state.contacts=Array.isArray(state.contacts)?state.contacts:[];state.calendarNotes=Array.isArray(state.calendarNotes)?state.calendarNotes:[];state.pendingRecords=Array.isArray(state.pendingRecords)?state.pendingRecords:[];state.checklists=Array.isArray(state.checklists)?state.checklists:[];state.calendarColors=state.calendarColors&&typeof state.calendarColors==='object'?state.calendarColors:{};state.calendarEventColors=state.calendarEventColors&&typeof state.calendarEventColors==='object'?state.calendarEventColors:{};let timeProjectFilter='',timeMemberFilter='';let timeViewMonth=new Date().getMonth(),timeViewYear=new Date().getFullYear();let page='dashboard',filter='',month=new Date().getMonth(),year=new Date().getFullYear();
 const $=s=>document.querySelector(s),esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=n=>new Intl.NumberFormat('de-CH',{style:'currency',currency:'CHF',maximumFractionDigits:0}).format(Number(n)||0);const proj=id=>state.projects.find(x=>x.id===id)?.name||'Ohne Projekt';const navoStaffPalette=['#4da3ff','#f59e0b','#10b981','#ef6fa8','#a78bfa','#22c1c3','#e879f9','#f97316','#87be48','#f87171','#38bdf8','#eab308'];
 function navoMemberColor(id){
  const index=state.members.findIndex(m=>m.id===id);
@@ -5088,7 +5142,7 @@ function navoAuthDisplayName(user){const value=String(user||'').trim();return va
 function navoAuthLoad(){try{navoAuthAccounts=JSON.parse(localStorage.getItem(NAVO_AUTH_STORE)||'[]')}catch{navoAuthAccounts=[]};if(!Array.isArray(navoAuthAccounts))navoAuthAccounts=[]}
 function navoAuthPersist(){localStorage.setItem(NAVO_AUTH_STORE,JSON.stringify(navoAuthAccounts))}
 function navoAuthPermissions(){return modules.filter(x=>x[0]!=='access'&&x[0]!=='interview')}
-function navoAuthRight(key){if(!navoAuthUser)return 'none';if(navoAuthUser.role==='admin')return 'edit';if(navoAuthUser.role==='external')return key==='docs'?'view':'none';if(key==='access'||key==='backup')return 'none';if(key==='history'&&!navoAuthUser.rights?.history){return ['projects','tasks','calendar','meetings','notes','pending'].some(k=>(navoAuthUser.rights?.[k]||'none')!=='none')?'view':'none'}if(key==='interview')key='projects';if(key==='pending'&&!navoAuthUser.rights?.pending){const r=navoAuthUser.rights?.meetings||'none';return r;}if(key==='archive'&&!navoAuthUser.rights?.archive){const granted=['calendar','tasks','projects','notes'].some(k=>(navoAuthUser.rights?.[k]||'none')!=='none');return granted?'view':'none'}return navoAuthUser.rights?.[key]||'none'}
+function navoAuthRight(key){if(!navoAuthUser)return 'none';if(navoAuthUser.role==='admin')return 'edit';if(navoAuthUser.role==='external')return key==='docs'?'view':'none';if(key==='access'||key==='backup')return 'none';if(key==='checklists')return navoAuthUser.rights?.checklists||navoAuthUser.rights?.tasks||'none';if(key==='history'&&!navoAuthUser.rights?.history){return ['projects','tasks','calendar','meetings','notes','pending'].some(k=>(navoAuthUser.rights?.[k]||'none')!=='none')?'view':'none'}if(key==='interview')key='projects';if(key==='pending'&&!navoAuthUser.rights?.pending){const r=navoAuthUser.rights?.meetings||'none';return r;}if(key==='archive'&&!navoAuthUser.rights?.archive){const granted=['calendar','tasks','projects','notes'].some(k=>(navoAuthUser.rights?.[k]||'none')!=='none');return granted?'view':'none'}return navoAuthUser.rights?.[key]||'none'}
 function navoAuthCanView(key){return navoAuthRight(key)!=='none'}
 function navoAuthCanEdit(key){return navoAuthRight(key)==='edit'}
 function navoAuthForbidden(){alert('Für diese Aktion fehlen dir die Berechtigungen. Wende dich an die Administration.')}
@@ -6723,7 +6777,7 @@ function pmHistoryPage(){
 document.addEventListener('input',e=>{if(e.target?.id!=='pm-history-search')return;pmHistoryFilters.search=e.target.value;const focus=e.target.selectionStart;const content=document.getElementById('content');if(page!=='history'||!content)return;content.innerHTML=pmHistoryPage();const el=document.getElementById('pm-history-search');if(el){el.focus();el.setSelectionRange(focus,focus)}});
 document.addEventListener('change',e=>{const values={'pm-history-area':'area','pm-history-project':'project','pm-history-action':'action'};const prop=values[e.target?.id];if(!prop||page!=='history')return;pmHistoryFilters[prop]=e.target.value;document.getElementById('content').innerHTML=pmHistoryPage()});
 
-function render(){if(!navoAuthReady||!navoAuthUser)return;pm11UpdateScheduledTasks();pm105InitializeTimers();if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(work);else $('#content').append(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild){const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(banner.firstElementChild);else $('#content').append(banner.firstElementChild)}}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
+function render(){if(!navoAuthReady||!navoAuthUser)return;pm11UpdateScheduledTasks();pm105InitializeTimers();if(!navoAuthCanView(page)){const permitted=modules.find(x=>navoAuthCanView(x[0]));if(permitted)page=permitted[0];else{nav();$('#content').innerHTML='<div class="card" style="padding:25px"><h2>Keine Reiter freigeschaltet</h2><p>Die Administration muss dir zuerst Berechtigungen zuweisen.</p></div>';return}}nav();$('#heading').textContent=(page==='interview'?'Projekte':modules.find(x=>x[0]===page)?.[2]||'NavoPM');$('#subtitle').textContent=({dashboard:'Deine Projekte auf einen Blick',projects:'Projektportfolio und Fachmodule',tasks:'Aufgaben und Verantwortlichkeiten',calendar:'Termine und Meilensteine',meetings:'Projektmeetings planen, protokollieren und als PDF drucken',checklists:'Vorlagen, persönliche Listen und Projektkontrollen',pending:'Offene Pendenzen, Entscheide und Verantwortlichkeiten',finance:'Budgets und Ausgaben',time:'Stundenkonten, Projektzeiten und Arbeitskosten',team:'Mitarbeiter und Zuständigkeiten',contacts:'Externe Partner, Lieferanten und Firmen',docs:'Projektdateien und Unterlagen',calculator:'Rechnen für Büro und Baustelle',notes:'Notizen erfassen und Projekten oder Aufgaben zuordnen',archive:'Abgeschlossene Termine, Aufgaben, Projekte und archivierte Notizen',standards:'Elektro-NIN und Schweizer Normen – mit nachvollziehbaren Quellen',ai:'Dein regelbasierter Projektassistent',interview:'Projektumfang und Planung aus einem strukturierten Interview',backup:'Lokale Daten sicher exportieren, prüfen und wiederherstellen',history:'Wichtige Änderungen an Projekten und Einträgen nachvollziehen',access:'Lokale Benutzer- und Rechteverwaltung'})[page];navoRenderPageTop(page);if(navoAuthCanEdit('tasks')||navoAuthCanEdit('notes')||navoAuthCanEdit('pending')){const headerActions=document.querySelector('.top-actions');if(headerActions&&!headerActions.querySelector('[data-pm-quick-open]'))headerActions.insertAdjacentHTML('afterbegin','<button type="button" class="btn secondary pm-global-quick-button" data-pm-quick-open>+ Schnell erfassen</button>')}$('#content').dataset.navopmPage=page;$('#content').innerHTML=({dashboard,projects,tasks,calendar,meetings,pending:pmPendingPage,checklists:pm9ControlPage,finance,time,team,contacts,docs,calculator,notes,archive:pmArchivePage,standards,ai,interview,backup:pmBackupPage,history:pmHistoryPage,access:navoAuthPage})[page]();if(page!=='access')navoPageEnhance(page);pmEnhanceDisclosures(document.querySelector('#content'));if(page!=='access'&&!navoAuthCanEdit(page)){const notice=document.createElement('p');notice.className='navo-read-only-note';notice.textContent='Nur Leserechte für diesen Bereich. Änderungen sind gesperrt.';$('#content').prepend(notice)}if(page==='dashboard'){if(navoAuthCanView('tasks')){const work=document.createElement('div');work.innerHTML=pmWorkspacePanel();const quick=work.querySelector('#pmQuickTaskForm');if(quick)quick.remove();const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(work);else $('#content').append(work)}requestAnimationFrame(navoWeatherRefreshView);if(navoAuthUser?.role==='admin'&&pmBackupAgeDays()>=7){const banner=document.createElement('div');banner.innerHTML=pmBackupBanner();if(banner.firstElementChild){const otherDashboard=document.querySelector('#content .pm-dashboard-rest-body');if(otherDashboard)otherDashboard.prepend(banner.firstElementChild);else $('#content').append(banner.firstElementChild)}}}if(page==='calculator')requestAnimationFrame(navoCalcUpdateTools);if(page==='calendar')requestAnimationFrame(navoSetupAgendaScroll);if(page==='calendar')requestAnimationFrame(navoUpdateNowLine);if(page==='standards'){requestAnimationFrame(()=>{navoNinUpdateFiles();navoNinRenderResult();navoNinRenderHistory()})}}
 const stat=(label,val,info)=>`<div class="card stat"><span>${label}</span><strong>${val}</strong><span>${info}</span></div>`;
 
 function navoTopChip(label,value,tone=''){
@@ -7244,7 +7298,7 @@ function navoWeatherLocate(){
 document.addEventListener('click',e=>{const btn=e.target.closest('[data-weather-action]');if(!btn)return;e.preventDefault();e.stopPropagation();const action=btn.dataset.weatherAction;if(action==='locate')navoWeatherLocate();else if(action==='reload'){navoWeatherResult=null;navoWeatherFetch()}else if(action==='city')navoWeatherCitySearch()});
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target?.id==='navo-weather-city'){e.preventDefault();navoWeatherCitySearch()}});
 
-function dashboard(){return `<section class="pm-dashboard-week-wrap" aria-label="Wochenplanung"><div class="pm-dashboard-week-details"><div class="pm-dashboard-week-title">📅 Meine Wochenplanung <span class="pm-dashboard-week-hint">Aufgaben · Termine · Tagesauslastung</span></div><div class="pm-dashboard-week-content">${pmWeeklyPanel()}</div></div></section><details class="pm-dashboard-rest"><summary>Weitere Dashboard-Bereiche aufklappen <span class="pm-dashboard-rest-help">Mein Arbeitsplatz · Rückmeldungen · Aufgaben · Projekte</span></summary><div class="pm-dashboard-rest-body">${navoExecutiveDashboard()}</div></details>`}
+function dashboard(){return `<section class="pm-dashboard-week-wrap" aria-label="Wochenplanung"><div class="pm-dashboard-week-details"><div class="pm-dashboard-week-title">📅 Meine Wochenplanung <span class="pm-dashboard-week-hint">Aufgaben · Termine · Tagesauslastung</span></div><div class="pm-dashboard-week-content">${pmWeeklyPanel()}</div></div></section><section class="pm-compose-entry"><div class="pm-compose-entry-copy"><span class="pm-compose-eyebrow">NEU · KLICK-ASSISTENT</span><h3>Zusammenstellen statt neu erfassen</h3><p>Bestehende Aufgaben, Pendenzen, Termine und Notizen per Klick in einen Bericht übernehmen.</p></div><button type="button" class="btn pm-compose-launch" data-pm-compose-open>✦ Zusammenstellen</button><button type="button" class="btn secondary" data-pm9-start style="margin-top:10px">☑ Kontrollliste erstellen</button></section><details class="pm-dashboard-rest"><summary>Weitere Dashboard-Bereiche aufklappen <span class="pm-dashboard-rest-help">Mein Arbeitsplatz · Rückmeldungen · Aufgaben · Projekte</span></summary><div class="pm-dashboard-rest-body">${navoExecutiveDashboard()}</div></details>`}
 function dateDiff(a,b){if(!a||!b)return null;return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/86400000)}
 function projectSchedule(p,ts){let today=new Date().toLocaleDateString('sv-SE'),dates=[p.start,p.end,...ts.flatMap(t=>[t.start,t.due])].filter(Boolean).sort(),begin=dates[0]||today,finish=dates[dates.length-1]||begin,total=Math.max(1,dateDiff(begin,finish)||1),remaining=p.end!=null&&p.end!==''?dateDiff(today,p.end):null;let dated=ts.filter(t=>t.due).length;return `<details class="schedule" open><summary><b>📅 Terminplan</b> · ${dated}/${ts.length} Aufgaben terminiert ${remaining===null?'· Projektende offen':`· ${remaining<0?'<span class="schedule-overdue">'+Math.abs(remaining)+' Tage überfällig</span>':remaining+' Tage bis Projektende'}`}</summary><p class="schedule-meta">Projekt: ${esc(p.start||'Start offen')} → ${esc(p.end||'Ende offen')} · Termine und Dauer direkt anpassbar. Änderungen werden gespeichert.</p><div class="schedule-row"><b class="schedule-title">Projektstart / Projektende</b><div class="schedule-actions"><input aria-label="Projektstart" class="schedule-date" style="width:140px" type="date" data-project-date="start" data-project-id="${esc(p.id)}" value="${esc(p.start||'')}"><input aria-label="Projektende" class="schedule-date" style="width:140px" type="date" data-project-date="end" data-project-id="${esc(p.id)}" value="${esc(p.end||'')}"></div><span class="schedule-meta">${remaining===null?'Offen':remaining+' Tage'}</span></div>${[...ts].sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).map(t=>{let left=t.due?dateDiff(today,t.due):null,barStart=t.start||t.due||begin,offset=Math.max(0,Math.min(100,(dateDiff(begin,barStart)||0)/total*100)),width=Math.max(2,Math.min(100-offset,((dateDiff(barStart,t.due)||0)+1)/total*100));return `<div class="schedule-row"><div class="schedule-title">${taskTip(t)}<div class="schedule-meta">${t.status==='Erledigt'?'✓ Erledigt':left===null?'Kein Endtermin':left<0?'<span class="schedule-overdue">'+Math.abs(left)+' Tage überfällig</span>':left===0?'Heute fällig':left+' Tage verbleibend'}</div></div><div><div class="schedule-track" title="${esc(t.start||'Start offen')} bis ${esc(t.due||'Ende offen')}">${t.due?`<span class="schedule-bar ${t.status==='Erledigt'?'done':''}" style="left:${offset}%;width:${width}%"></span>`:''}</div><div class="schedule-actions" style="margin-top:6px"><input aria-label="Aufgabenstart" title="Startdatum" class="schedule-date" style="width:140px" type="date" data-task-date="start" data-task-id="${esc(t.id)}" value="${esc(t.start||'')}"><input aria-label="Aufgabenende" title="Fälligkeit" class="schedule-date" style="width:140px" type="date" data-task-date="due" data-task-id="${esc(t.id)}" value="${esc(t.due||'')}"></div></div><button class="btn small secondary" data-action="edit" data-kind="task" data-id="${esc(t.id)}">Bearbeiten</button></div>`}).join('')||'<p class="schedule-meta">Noch keine Aufgaben vorhanden.</p>'}</details>`}
 function navoPortfolioGroup(p){return navoProjectCompleted(p)||p.status==='Abgeschlossen'?'completed':(p.status==='Planung'||!p.status?'planned':(['On Hold','Pausiert'].includes(p.status)?'hold':'active'))}
@@ -8512,7 +8566,7 @@ function meetings(){
    return {label:days===1?'Noch 1 Tag':`Noch ${days} Tage`, cls:'due-good'};
  };
  const deadlineChip=(date)=>{const s=deadlineState(date);return `<span class="due-chip ${s.cls}">${esc(s.label)}</span>`};
- const meetingCard=(m,mode='planned')=>{const project=state.projects.find(p=>p.id===m.projectId); const prot=navoMeetingHasMinutes(m); const statusChip=mode==='planned'?deadlineChip(m.date):`<span class="due-chip due-late">Quittierung offen</span>`; return `<article class="card navo-staff-meeting" style="margin:0;padding:14px;--staff-color:${navoMemberColor(m.memberId)}"><div class="row" style="justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap"><div style="min-width:0;flex:1"><div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:6px"><span class="tag">${esc(m.type||'Sitzung')}</span><span class="tag">${esc(m.status||'Geplant')}</span></div><h3 style="margin:2px 0 6px;font-size:1.05rem">${esc(m.title)}</h3><p class="muted sub" style="margin:0">📅 ${formatSwissDate(m.date)} · ${esc(m.start||'–')}–${esc(m.end||'–')} Uhr · ${esc(m.location||'Ort offen')}</p><p class="muted sub" style="margin:5px 0 0">Projekt: ${esc(project?.name||'Ohne Projekt')} · Leitung: ${esc(m.chair||'Offen')}</p><div class="navo-meet-staff-list">${navoMeetingStaff(m)}</div>${prot?`<p class="muted sub" style="margin:7px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📝 ${esc((m.decisions||m.minutes||m.followups||'').slice(0,120))}${(m.decisions||m.minutes||m.followups||'').length>120?'…':''}</p>`:''}</div><div style="display:flex;flex-direction:column;gap:7px;align-items:flex-end">${statusChip}<div class="row" style="gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="btn small secondary" data-action="editmeeting" data-id="${esc(m.id)}">Planung bearbeiten</button><button class="btn small" data-action="protocolmeeting" data-id="${esc(m.id)}">📝 Protokoll führen</button><button class="btn small secondary" data-action="printmeeting" data-id="${esc(m.id)}">🖨 PDF</button>${pmMeetingPending(m)?`<button class="btn small" data-pm-meeting-ack="${esc(m.id)}">✓ Quittieren</button>`:""}</div></div></div></article>`};
+ const meetingCard=(m,mode='planned')=>{const project=state.projects.find(p=>p.id===m.projectId); const prot=navoMeetingHasMinutes(m); const statusChip=mode==='planned'?deadlineChip(m.date):`<span class="due-chip due-late">Quittierung offen</span>`; return `<article class="card navo-staff-meeting" style="margin:0;padding:14px;--staff-color:${navoMemberColor(m.memberId)}"><div class="row" style="justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap"><div style="min-width:0;flex:1"><div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:6px"><span class="tag">${esc(m.type||'Sitzung')}</span><span class="tag">${esc(m.status||'Geplant')}</span></div><h3 style="margin:2px 0 6px;font-size:1.05rem">${esc(m.title)}</h3><p class="muted sub" style="margin:0">📅 ${formatSwissDate(m.date)} · ${esc(m.start||'–')}–${esc(m.end||'–')} Uhr · ${esc(m.location||'Ort offen')}</p><p class="muted sub" style="margin:5px 0 0">Projekt: ${esc(project?.name||'Ohne Projekt')} · Leitung: ${esc(m.chair||'Offen')}</p><div class="navo-meet-staff-list">${navoMeetingStaff(m)}</div>${window.pm7MeetingSourcePanel?window.pm7MeetingSourcePanel(m):''}${prot?`<p class="muted sub" style="margin:7px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">📝 ${esc((m.decisions||m.minutes||m.followups||'').slice(0,120))}${(m.decisions||m.minutes||m.followups||'').length>120?'…':''}</p>`:''}</div><div style="display:flex;flex-direction:column;gap:7px;align-items:flex-end">${statusChip}<div class="row" style="gap:6px;flex-wrap:wrap;justify-content:flex-end"><button class="btn small secondary" data-action="editmeeting" data-id="${esc(m.id)}">Planung bearbeiten</button><button class="btn small" data-action="protocolmeeting" data-id="${esc(m.id)}">📝 Protokoll führen</button>${Array.isArray(m.pmComposeLinks)&&m.pmComposeLinks.length?`<button class="btn small secondary" data-pm8-open="${esc(m.id)}">✓ Nachbearbeiten</button>`:''}<button class="btn small secondary" data-action="printmeeting" data-id="${esc(m.id)}">🖨 PDF</button>${pmMeetingPending(m)?`<button class="btn small" data-pm-meeting-ack="${esc(m.id)}">✓ Quittieren</button>`:""}</div></div></div></article>`};
  const allHtml=arr.length?arr.map(m=>{const project=state.projects.find(p=>p.id===m.projectId);const d=deadlineState(m.date);const prot=navoMeetingHasMinutes(m);return `<article class="card navo-staff-meeting" style="margin-bottom:8px;--staff-color:${navoMemberColor(m.memberId)}"><div class="row" style="justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap"><div style="min-width:0;flex:1"><span class="tag">${esc(m.type||'Sitzung')}</span><span class="tag" style="margin-left:5px">${esc(m.status||'Geplant')}</span><h3 style="margin:12px 0 6px">${esc(m.title)}</h3><p class="muted sub" style="margin:0">📅 ${formatSwissDate(m.date)} · ${esc(m.start||'–')}–${esc(m.end||'–')} Uhr · ${esc(m.location||'Ort offen')}</p><p class="muted sub">Projekt: ${esc(project?.name||'Ohne Projekt')} · Leitung: ${esc(m.chair||'Offen')}</p><div class="navo-meet-staff-list">${navoMeetingStaff(m)}</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">${m.date>=today&&m.status!=='Abgeschlossen'&&m.status!=='Abgesagt'?`<span class="due-chip ${d.cls}">${esc(d.label)}</span>`:`<span class="due-chip ${prot?'due-good':'due-soon'}">${prot?'Protokolliert':'Archiv'}</span>`}<div class="row"><button class="btn small secondary" data-action="editmeeting" data-id="${esc(m.id)}">Planung bearbeiten</button><button class="btn small" data-action="protocolmeeting" data-id="${esc(m.id)}">📝 Protokoll führen</button><button class="btn small secondary" data-action="printmeeting" data-id="${esc(m.id)}">🖨 PDF</button><button class="btn small danger" data-action="deletemeeting" data-id="${esc(m.id)}">Löschen</button>${pmMeetingPending(m)?`<button class="btn small" data-pm-meeting-ack="${esc(m.id)}">✓ Quittieren</button>`:""}</div></div></div><details><summary style="cursor:pointer">Traktanden, Teilnehmende und Beschlüsse anzeigen</summary><div class="formgrid" style="margin-top:12px"><div><b>Teilnehmende</b><p class="muted sub" style="white-space:pre-wrap">${esc(m.attendees||'Noch keine Teilnehmenden')}</p><b>Traktanden</b><p class="muted sub" style="white-space:pre-wrap">${esc(m.agenda||'Noch keine Traktanden')}</p></div><div><b>Protokoll / Notizen</b><p class="muted sub" style="white-space:pre-wrap">${esc(m.minutes||'Noch kein Protokoll')}</p><b>Beschlüsse</b><p class="muted sub" style="white-space:pre-wrap">${esc(m.decisions||'Noch keine Beschlüsse')}</p><b>Pendenzen / Verantwortliche</b><p class="muted sub" style="white-space:pre-wrap">${esc((m.protocolTasks||[]).map(x=>[x.text,x.owner,x.due?formatSwissDate(x.due):''].filter(Boolean).join(' · ')).join('\n')||m.followups||'Noch keine Pendenzen')}</p></div></div></details></article>`}).join(''):'<div class="empty">Noch keine Sitzung vorhanden. Plane deine erste Sitzung über «+ Sitzung planen».</div>';
  return `<div class="section-head"><div><h2>Projektmeetings</h2><p class="muted sub">Sitzungen protokollieren und Beschlüsse oder Pendenzen zentral nachverfolgen. <button type="button" class="btn small secondary" data-page="pending">Pendenzen & Entscheide →</button></p></div><button class="btn" data-action="newmeeting">+ Sitzung planen</button></div>
  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-bottom:16px">${stat('Projektmeetings',arr.length,'Alle Einträge')}${stat('Geplant',planned.length,'Anstehende Sitzungen')}${stat('Protokolliert',recorded.length,'Mit Protokoll / Beschlüssen')}${stat('Nachbearbeitung offen',openProtocol.length,'Durchgeführt ohne Protokoll')}</div>
@@ -8572,7 +8626,7 @@ function navoMeetingProtocolModal(meetingId){
  const todo=Array.isArray(m.protocolTasks)?m.protocolTasks:(m.followups?[{text:m.followups,owner:'',due:''}]:[]);
  const participants=navoMeetingStaff(m);
  const guests=(m.guestContacts||[]).map(g=>esc(g.name||'')).filter(Boolean).join(', ');
- $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal meeting-modal-large navo-meet-protocol-modal" role="dialog" aria-modal="true" aria-label="Sitzungsprotokoll"><h2>📝 Sitzungsprotokoll</h2><p class="muted sub">${esc(m.title)} · ${formatSwissDate(m.date)} · ${esc(m.start||'')}–${esc(m.end||'')} Uhr</p><div class="navo-meet-context"><div><small>Projekt</small><strong>${esc(proj(m.projectId))}</strong></div><div><small>Ort</small><strong>${esc(m.location||'Nicht angegeben')}</strong></div><div><small>Sitzungsleitung</small><strong>${esc(m.chair||'Offen')}</strong></div></div><form id="navoProtocolForm"><section class="navo-meet-block"><h3>Teilnehmende</h3><div class="navo-meet-people navo-meet-attendee-readonly">${participants}</div>${guests?`<p class="muted sub">Externe Gäste: ${guests}</p>`:''}<p class="muted sub">Einladungen und Terminangaben kannst du unter «Planung bearbeiten» ändern.</p></section><section class="navo-meet-block"><h3>Traktanden</h3><p class="navo-meet-pre">${esc(m.agenda||'Keine Traktanden erfasst.')}</p></section><div class="formgrid">${field('Tatsächliches Protokolldatum','protocolDate','date',m.protocolDate||new Date().toLocaleDateString('sv-SE'))}${select('Sitzungsstatus','status',['Geplant','Durchgeführt','Abgeschlossen','Abgesagt'].map(x=>[x,x]),m.status==='Geplant'?'Durchgeführt':m.status)}</div>${text('Besprochene Punkte / Ergebnisse','minutes','Diskussion, Ergebnisse, wichtige Aussagen und offene Fragen')}
+ $('#modalRoot').innerHTML=`<div class="modal-bg"><div class="modal meeting-modal-large navo-meet-protocol-modal" role="dialog" aria-modal="true" aria-label="Sitzungsprotokoll"><h2>📝 Sitzungsprotokoll</h2><p class="muted sub">${esc(m.title)} · ${formatSwissDate(m.date)} · ${esc(m.start||'')}–${esc(m.end||'')} Uhr</p><div class="navo-meet-context"><div><small>Projekt</small><strong>${esc(proj(m.projectId))}</strong></div><div><small>Ort</small><strong>${esc(m.location||'Nicht angegeben')}</strong></div><div><small>Sitzungsleitung</small><strong>${esc(m.chair||'Offen')}</strong></div></div><form id="navoProtocolForm"><section class="navo-meet-block"><h3>Teilnehmende</h3><div class="navo-meet-people navo-meet-attendee-readonly">${participants}</div>${guests?`<p class="muted sub">Externe Gäste: ${guests}</p>`:''}<p class="muted sub">Einladungen und Terminangaben kannst du unter «Planung bearbeiten» ändern.</p></section><section class="navo-meet-block"><h3>Traktanden</h3><p class="navo-meet-pre">${esc(m.agenda||'Keine Traktanden erfasst.')}</p></section>${window.pm7MeetingSourcePanel?window.pm7MeetingSourcePanel(m):''}<div class="formgrid">${field('Tatsächliches Protokolldatum','protocolDate','date',m.protocolDate||new Date().toLocaleDateString('sv-SE'))}${select('Sitzungsstatus','status',['Geplant','Durchgeführt','Abgeschlossen','Abgesagt'].map(x=>[x,x]),m.status==='Geplant'?'Durchgeführt':m.status)}</div>${text('Besprochene Punkte / Ergebnisse','minutes','Diskussion, Ergebnisse, wichtige Aussagen und offene Fragen')}
  <section class="navo-meet-block"><div class="navo-protocol-section-head"><div><h3>Beschlüsse / Freigaben</h3><p class="muted sub">Mit Verantwortlichkeit und gegebenenfalls Frist</p></div><button type="button" class="btn small secondary" id="navoAddDecision">+ Beschluss</button></div><div id="navoProtocolDecisions" class="navo-protocol-rows">${navoMeetingProtocolRows(items,'decision')}</div></section>
  <section class="navo-meet-block"><div class="navo-protocol-section-head"><div><h3>Pendenzen / nächste Schritte</h3><p class="muted sub">Jede Massnahme separat mit Verantwortlichem und Fälligkeit</p></div><button type="button" class="btn small secondary" id="navoAddPending">+ Pendenz</button></div><div id="navoProtocolPending" class="navo-protocol-rows">${navoMeetingProtocolRows(todo,'pending')}</div></section>${text('Offene Fragen / weitere Hinweise','protocolRemarks','Was muss noch geklärt werden?')}${field('Nächster Sitzungstermin (optional)','nextMeetingDate','date',m.nextMeetingDate||'')}
  <div class="modal-actions"><button type="button" class="btn secondary" data-action="close">Abbrechen</button><button type="button" class="btn secondary" data-action="editmeeting" data-id="${esc(m.id)}">Planung bearbeiten</button><button type="button" class="btn secondary" data-action="printmeeting" data-id="${esc(m.id)}">PDF (gespeicherte Fassung)</button><button type="submit" class="btn">✓ Protokoll speichern</button></div></form></div></div>`;
@@ -10679,6 +10733,521 @@ document.addEventListener('click',function(e){
    const search=nav.querySelector('[data-pm-global-open]');if(search){search.title='Überall suchen (Strg + K)';search.setAttribute('aria-label','Überall suchen')}
  }).observe(nav,{childList:true,subtree:false})}
  sync();
+})();
+</script>
+<style id="pm7-agenda-style">
+.pm7-compose-meeting-settings{margin:16px 0 12px;padding:13px;border:1px solid #3d8893;border-radius:12px;background:rgba(31,84,99,.38)}
+.pm7-compose-meeting-settings>strong{font-size:13px;display:block;margin-bottom:10px;color:#8af1e6}
+.pm7-compose-meeting-settings small{display:block;font-size:11px;line-height:1.5;color:#bad4dc;margin-top:8px}
+.pm7-compose-datetime{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:9px}
+.pm7-compose-datetime label{display:grid;gap:4px;font-size:11px;font-weight:700;color:#c6dfe3}
+.pm7-compose-datetime input{width:100%;min-width:0;height:39px;box-sizing:border-box;border-radius:8px;border:1px solid #4b9da7;background:#153e50;color:#fff;padding:6px 8px;color-scheme:dark}
+.pm7-compose-create{background:#148f8c!important;color:#fff!important;border-color:#42c7bf!important}
+.pm7-source-panel{margin:12px 0;padding:12px;border:1.5px solid #398b94;border-radius:12px;background:rgba(19,66,80,.42)}
+.pm7-source-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding-bottom:9px;border-bottom:1px solid rgba(94,166,177,.27)}
+.pm7-source-head strong{font-size:13px}.pm7-source-head small{font-size:11px;color:#9bcbd0}
+.pm7-source-list{display:grid;gap:6px;margin-top:8px}.pm7-source-row{display:flex;align-items:center;gap:9px;padding:8px 9px;background:rgba(9,36,49,.48);border-radius:9px;border:1px solid rgba(95,159,171,.25)}
+.pm7-source-check{display:inline-flex;align-items:center;justify-content:center;flex:none;width:25px;height:25px;border:1px solid #6b9da6;border-radius:8px;font-size:11px;color:#bce7e6}.pm7-source-check.is-done{background:#145b53;border-color:#4bc4a0;color:#c4fff3}
+.pm7-source-main{flex:1;min-width:0}.pm7-source-main strong{display:block;font-size:12px;overflow-wrap:anywhere}.pm7-source-main small{display:block;margin-top:3px;color:#a8c9d2;font-size:10px}
+.pm7-source-actions{display:flex;flex-wrap:wrap;gap:6px}.pm7-source-actions .btn{min-height:31px!important;padding:5px 8px!important;font-size:11px!important}
+body.pm-fluent-light .pm7-compose-meeting-settings{background:#d5e8eb;border-color:#8db8be}body.pm-fluent-light .pm7-compose-meeting-settings>strong{color:#1c6267}
+body.pm-fluent-light .pm7-compose-meeting-settings small,body.pm-fluent-light .pm7-compose-datetime label{color:#375e68}
+body.pm-fluent-light .pm7-compose-datetime input{background:#f3f8f8;color:#173b46;border-color:#a6c6cc;color-scheme:light}
+body.pm-fluent-light .pm7-source-panel{background:#e0eff0;border-color:#8eb7bb}body.pm-fluent-light .pm7-source-head small,body.pm-fluent-light .pm7-source-main small{color:#4c727a}
+body.pm-fluent-light .pm7-source-row{background:#f1f7f7;border-color:#bbd6d8}body.pm-fluent-light .pm7-source-check{color:#406671}
+@media(max-width:660px){.pm7-compose-datetime{grid-template-columns:1fr}.pm7-source-row{flex-wrap:wrap}.pm7-source-actions{width:100%;justify-content:flex-end}}
+</style>
+<script id="pm7-meeting-linked-script">
+/* Verknuepfte Quellen anzeigen und nach der Sitzung gezielt nachfuehren. */
+(function(){
+ 'use strict';
+ const h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const resolve=link=>{
+  if(link.kind==='task')return (state.tasks||[]).find(x=>x.id===link.id);
+  if(link.kind==='pending')return (state.pendingRecords||[]).find(x=>x.id===link.id);
+  if(link.kind==='meeting')return (state.meetings||[]).find(x=>x.id===link.id);
+  if(link.kind==='calendarNote')return (state.calendarNotes||[]).find(x=>x.id===link.id);
+  if(link.kind==='note')return typeof pmActiveNotes==='function'?(pmActiveNotes()||[]).find(x=>x.id===link.id):null;
+  return null;
+ };
+ const type=k=>({task:'Aufgabe',pending:'Pendenz',meeting:'Sitzung',calendarNote:'Termin',note:'Notiz'})[k]||k;
+ const title=(src,link)=>src?.name||src?.title||link.title||'Eintrag';
+ window.pm7MeetingSourcePanel=function(m){
+  const links=Array.isArray(m?.pmComposeLinks)?m.pmComposeLinks:[];
+  if(!links.length)return '';
+  const rows=links.map((link,i)=>{
+    const item=resolve(link),kind=link.kind,closed=item&&(kind==='task'?item.status==='Erledigt':kind==='pending'?['Erledigt','Entschieden','Verworfen'].includes(item.status):false);
+    const status=item?(item.status||'Verknüpft'):'Quelle nicht mehr vorhanden';
+    const edit=kind==='task'?'tasks':kind==='pending'?'pending':kind==='meeting'?'meetings':kind==='calendarNote'?'calendar':'notes';
+    const canView=navoAuthCanView(edit),canEdit=(kind==='task'||kind==='pending'&&item?.type!=='Entscheid')?navoAuthCanEdit(edit):false;
+    return `<div class="pm7-source-row"><span class="pm7-source-check ${closed?'is-done':''}">${closed?'✓':(i+1)}</span><div class="pm7-source-main"><strong>${h(!canView?'Eintrag ohne Berechtigung':item?title(item,link):link.title||'Verknüpfter Eintrag')}</strong><small>${h(type(kind))} · ${h(canView?status:'Nicht freigegeben')}</small></div><div class="pm7-source-actions">${canEdit&&item&&!closed?`<button type="button" class="btn small secondary" data-pm7-done="${h(kind)}" data-pm7-id="${h(link.id)}" data-pm7-meeting="${h(m.id)}">✓ Erledigt</button>`:''}${canView&&item?`<button type="button" class="btn small secondary" data-pm7-open="${h(kind)}" data-pm7-id="${h(link.id)}">Öffnen</button>`:''}</div></div>`;
+  }).join('');
+  const done=links.filter(l=>{const o=resolve(l);return o&&(l.kind==='task'?o.status==='Erledigt':l.kind==='pending'?['Erledigt','Entschieden','Verworfen'].includes(o.status):false)}).length;
+  return `<section class="pm7-source-panel" data-pm7-source-panel="${h(m.id)}"><div class="pm7-source-head"><strong>↗ Verknüpfte Agendapunkte (${links.length})</strong><div class="pm8-source-actions"><small>${done} erledigte Aufgaben / Pendenzen · live aus Originaldaten</small><button type="button" class="btn small" data-pm8-open="${h(m.id)}">✓ Sitzung nachbearbeiten</button></div></div><div class="pm7-source-list">${rows}</div></section>`;
+ };
+ const redraw=meetingId=>{
+   const m=state.meetings.find(x=>x.id===meetingId);if(!m)return;
+   document.querySelectorAll('[data-pm7-source-panel]').forEach(el=>{
+    if(el.dataset.pm7SourcePanel===meetingId){const holder=document.createElement('div');holder.innerHTML=window.pm7MeetingSourcePanel(m);el.replaceWith(holder.firstElementChild)}
+   });
+ };
+ document.addEventListener('click',e=>{
+  const done=e.target.closest('[data-pm7-done]');
+  if(done){
+   e.preventDefault();e.stopImmediatePropagation();
+   const kind=done.dataset.pm7Done,entryId=done.dataset.pm7Id,meetingId=done.dataset.pm7Meeting;
+   const source=resolve({kind,id:entryId});if(!source)return;
+   if(kind==='task'){
+    if(!navoAuthCanEdit('tasks')){navoAuthForbidden();return}
+    const block=source.pmBlockedBy&&state.tasks.find(x=>x.id===source.pmBlockedBy&&x.status!=='Erledigt');
+    if(block){alert('Zuerst die vorausgesetzte Aufgabe «'+block.name+'» erledigen.');return}
+    if(!confirm('Aufgabe «'+source.name+'» als erledigt quittieren und archivieren?'))return;
+    source.status='Erledigt';source.completedAt=new Date().toLocaleDateString('sv-SE');
+    if(typeof pm105ReconcileTimers==='function')pm105ReconcileTimers();
+   }else if(kind==='pending'){
+    if(!navoAuthCanEdit('pending')){navoAuthForbidden();return}
+    if(source.type==='Entscheid'){alert('Entscheide müssen im Pendenzenregister freigegeben bzw. entschieden werden.');return}
+    if(!confirm('Pendenz «'+source.title+'» als erledigt markieren?'))return;
+    const old=source.status;source.status='Erledigt';source.manualEdited=true;
+    if(!Array.isArray(source.history))source.history=[];
+    source.history.push({at:new Date().toISOString(),user:typeof navoBriefName==='function'?navoBriefName():'Anwender',from:old,to:'Erledigt',action:'In Sitzungsagenda erledigt'});
+   }else return;
+   save();redraw(meetingId);
+   return;
+  }
+  const open=e.target.closest('[data-pm7-open]');if(!open)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const kind=open.dataset.pm7Open,entryId=open.dataset.pm7Id,src=resolve({kind,id:entryId});if(!src)return;
+  if(kind==='task'&&navoAuthCanView('tasks')){modal('task',src);return}
+  if(kind==='pending'&&navoAuthCanView('pending')){pmPendingModal(src);return}
+  if(kind==='meeting'&&navoAuthCanView('meetings')){meetingModal(src);return}
+  if(kind==='calendarNote'&&navoAuthCanView('calendar')){if(typeof navoOpenCalendarNoteModal==='function')navoOpenCalendarNoteModal(src);else{page='calendar';document.getElementById('modalRoot').innerHTML='';render()}return}
+  if(kind==='note'&&navoAuthCanView('notes')){page='notes';document.getElementById('modalRoot').innerHTML='';render()}
+ },true);
+})();
+</script>
+
+<script id="pm-compose-assistant-v1">
+/* Zusammenstellen: rein lesender Assistent. Er verändert keine Originaleinträge. */
+(function(){
+ 'use strict';
+ const types=[['task','Aufgaben','tasks'],['pending','Pendenzen','pending'],['appointment','Termine','calendar'],['note','Notizen','notes']];
+ let model=null;
+ const text=x=>String(x??'');
+ const html=x=>text(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const plain=x=>{const el=document.createElement('div');el.innerHTML=text(x);return (el.textContent||el.innerText||'').replace(/\s+/g,' ').trim()};
+ const short=(x,n=450)=>plain(x).slice(0,n);
+ const dateLabel=d=>/^\d{4}-\d{2}-\d{2}$/.test(d||'')?d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4):text(d||'');
+ const can=kind=>{try{return navoAuthCanView(kind)}catch{return false}};
+ const selected=()=>model?.items.filter(x=>model.chosen.has(x.key)&&model.enabled.has(x.kind))||[];
+ function collect(){
+  const pr=model.project;
+  const valid=p=>pr==='all'||p===pr;
+  const out=[];
+  const add=(kind,src,entries,fn)=>{if(!can(src))return;for(const obj of entries){if(!valid(obj.projectId||''))continue;const item=fn(obj);if(!item)continue;out.push({key:(kind==='appointment'?(entries===state.meetings?'meeting:':'calendarNote:'):kind+':')+text(obj.id),kind,sourceKind:kind==='appointment'?(entries===state.meetings?'meeting':'calendarNote'):kind,sourceId:text(obj.id),projectId:obj.projectId||'',...item})}};
+  add('task','tasks',state.tasks||[],x=>({title:x.name||'Aufgabe',date:x.due||x.pmPlanDate||'',meta:[x.status||'',x.priority?'Priorität: '+x.priority:'',x.due?'Fällig: '+dateLabel(x.due):''].filter(Boolean).join(' · '),detail:short(x.description||'',600)}));
+  add('pending','pending',state.pendingRecords||[],x=>({title:x.title||'Pendenz',date:x.due||'',meta:[x.type||'Pendenz',x.status||'',x.due?'Frist: '+dateLabel(x.due):'',x.owner||''].filter(Boolean).join(' · '),detail:short(x.description||'',600)}));
+  add('appointment','calendar',state.calendarNotes||[],x=>({title:x.title||'Termin',date:x.date||'',meta:[dateLabel(x.date),(x.start||'')+(x.end?'–'+x.end:''),x.location||''].filter(Boolean).join(' · '),detail:short(x.text||x.description||'',600)}));
+  add('appointment','calendar',state.meetings||[],x=>({title:x.title||'Meeting',date:x.date||'',meta:['Projektmeeting',dateLabel(x.date),(x.start||'')+(x.end?'–'+x.end:''),x.location||''].filter(Boolean).join(' · '),detail:short(x.agenda||x.description||'',600)}));
+  if(can('notes'))for(const n of pmActiveNotes()){const linked=state.tasks.find(t=>t.id===n.taskId);const pid=n.projectId||linked?.projectId||'';if(!valid(pid))continue;out.push({key:'note:'+text(n.id),kind:'note',sourceKind:'note',sourceId:text(n.id),projectId:pid,title:n.title||'Notiz',date:(n.updatedAt||n.createdAt||'').slice(0,10),meta:n.status||'Notiz',detail:short(n.content||'',600)})}
+  const order={task:0,pending:1,appointment:2,note:3};out.sort((a,b)=>order[a.kind]-order[b.kind]||(a.date||'9999').localeCompare(b.date||'9999')||a.title.localeCompare(b.title,'de-CH'));
+  return out;
+ }
+ function projectName(){return model.project==='all'?'Alle Projekte':(state.projects||[]).find(p=>p.id===model.project)?.name||'Projekt'}
+ const typeName=k=>types.find(x=>x[0]===k)?.[1]||k;
+ function reportTitle(){return ({besprechung:'Besprechungsunterlage',wochenbericht:'Wochenbericht',uebersicht:'Projektübersicht'})[model.mode]||'Projektübersicht'}
+ function present(){const picked=selected(),counts=types.map(t=>[t[0],picked.filter(i=>i.kind===t[0])]).filter(x=>x[1].length);return `<h3>${html(reportTitle())}</h3><div class="pm-compose-meta">${html(projectName())} · ${dateLabel(new Date().toLocaleDateString('sv-SE'))} · ${picked.length} ausgewählte Einträge</div>${counts.length?counts.map(([kind,list])=>`<section><h4>${html(typeName(kind))} (${list.length})</h4>${list.map(x=>`<article><strong>${html(x.title)}</strong><small>${html(x.meta||x.date||'')} ${model.project==='all'&&x.projectId?' · '+html((state.projects||[]).find(p=>p.id===x.projectId)?.name||''):''}</small>${x.detail?`<p>${html(x.detail)}</p>`:''}</article>`).join('')}</section>`).join(''):'<p>Wähle links die gewünschten Einträge aus. Die Vorschau aktualisiert sich automatisch.</p>'}`}
+ function refresh(){
+  const root=document.getElementById('pm-compose-dialog');if(!root||!model)return;
+  const visible=model.items.filter(x=>model.enabled.has(x.kind)&&(!model.search||[x.title,x.meta,x.detail].join(' ').toLocaleLowerCase('de-CH').includes(model.search)));
+  const list=root.querySelector('#pm-compose-list');
+  list.innerHTML=visible.length?visible.map(x=>`<label class="pm-compose-item"><input type="checkbox" data-pm-compose-item="${html(x.key)}" ${model.chosen.has(x.key)?'checked':''}><span><strong>${html(x.title)}</strong><small>${html(typeName(x.kind))} · ${html(x.meta||'Ohne Zusatzangaben')}${model.project==='all'&&x.projectId?' · '+html((state.projects||[]).find(p=>p.id===x.projectId)?.name||''):''}</small></span></label>`).join(''):'<div class="pm-compose-empty">Keine passenden Einträge gefunden. Wähle andere Bereiche oder ein anderes Projekt.</div>';
+  root.querySelector('#pm-compose-preview').innerHTML=present();
+  root.querySelector('#pm-compose-selected-count').textContent=selected().length+' ausgewählt · '+visible.length+' sichtbar';
+  root.querySelectorAll('[data-pm-compose-export]').forEach(b=>b.disabled=!selected().length);
+  const create=root.querySelector('[data-pm7-create-meeting]');if(create)create.disabled=!selected().length||!can('meetings')||!navoAuthCanEdit('meetings');
+ }
+ function open(){
+  if(!can('dashboard'))return;
+  model={project:'all',mode:'besprechung',enabled:new Set(types.filter(t=>can(t[2])).map(t=>t[0])),items:[],chosen:new Set(),search:''};
+  model.items=collect();
+  // Vorbelegung: offene Aufgaben/Pendenzen und kommende Termine; Notizen bewusst manuell wählen.
+  const today=new Date().toLocaleDateString('sv-SE');
+  model.items.forEach(x=>{if(x.kind==='task'){const t=(state.tasks||[]).find(t=>'task:'+t.id===x.key);if(t&&t.status!=='Erledigt')model.chosen.add(x.key)}else if(x.kind==='pending'){const p=(state.pendingRecords||[]).find(p=>'pending:'+p.id===x.key);if(p&&!['Erledigt','Entschieden','Verworfen'].includes(p.status))model.chosen.add(x.key)}else if(x.kind==='appointment'&&x.date>=today)model.chosen.add(x.key)});
+  const projects=(state.projects||[]).filter(p=>p&&p.id).map(p=>`<option value="${html(p.id)}">${html(p.name)}</option>`).join('');
+  const typeMarkup=types.filter(t=>can(t[2])).map(t=>`<label class="pm-compose-type"><input type="checkbox" data-pm-compose-type="${t[0]}" checked>${t[1]}</label>`).join('');
+  document.getElementById('modalRoot').innerHTML=`<div class="modal-bg" id="pm-compose-overlay"><div class="modal" id="pm-compose-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-compose-title"><header class="pm-compose-head"><div><span class="pm-compose-eyebrow">PM MANAGER · KLICK-ASSISTENT</span><h2 id="pm-compose-title">✦ Zusammenstellen</h2><p>Bestehende Einträge auswählen · Vorschau prüfen · direkt drucken oder als PDF speichern</p></div><button type="button" class="btn secondary pm-compose-close" data-pm-compose-close aria-label="Schliessen">×</button></header><div class="pm-compose-body"><div class="pm-compose-left"><div class="pm-compose-field"><label for="pm-compose-project">1 · Projekt</label><select id="pm-compose-project"><option value="all">Alle Projekte</option>${projects}</select></div><div class="pm-compose-field"><label for="pm-compose-mode">2 · Ausgabe</label><select id="pm-compose-mode"><option value="besprechung">Besprechungsunterlage</option><option value="uebersicht">Projektübersicht</option><option value="wochenbericht">Wochenbericht</option></select></div><span class="pm-compose-section-title">3 · Inhalte auswählen</span><div class="pm-compose-types">${typeMarkup}</div><div class="pm-compose-field"><label for="pm-compose-search">Einträge suchen</label><input type="search" id="pm-compose-search" placeholder="Aufgabe, Stichwort, Termin …" autocomplete="off"></div><div class="pm-compose-tools"><span class="pm-compose-counter" id="pm-compose-selected-count"></span><span><button type="button" class="btn small secondary" data-pm-compose-all="1">Alle sichtbaren</button> <button type="button" class="btn small secondary" data-pm-compose-none="1">Auswahl leeren</button></span></div><div id="pm-compose-list" class="pm-compose-list"></div></div><div class="pm-compose-right"><span class="pm-compose-section-title">4 · Fertige Vorschau</span><div id="pm-compose-preview" class="pm-compose-preview" aria-live="polite"></div><div class="pm7-compose-meeting-settings"><strong>Besprechung direkt erstellen</strong><div class="pm7-compose-datetime"><label>Datum <input id="pm7-meeting-date" type="date" value="${new Date().toLocaleDateString('sv-SE')}"></label><label>Beginn <input id="pm7-meeting-start" type="time" value="09:00"></label><label>Ende <input id="pm7-meeting-end" type="time" value="10:00"></label></div><small>Agenda wird aus der Auswahl erstellt. Alle Originaleinträge bleiben erhalten.</small></div><div class="pm-compose-actions"><button type="button" class="btn pm7-compose-create" data-pm7-create-meeting>♧ Als Sitzung übernehmen</button><button type="button" class="btn secondary" data-pm-compose-export="copy">Text kopieren</button><button type="button" class="btn" data-pm-compose-export="print">🖨 Drucken / PDF</button></div><p class="muted sub" style="margin-top:12px;font-size:11px">Bestehende Aufgaben, Pendenzen und Notizen bleiben erhalten. Nur «Als Sitzung übernehmen» erstellt eine neue Sitzung.</p></div></div></div></div>`;
+  refresh();document.getElementById('pm-compose-project')?.focus();
+ }
+ function rebuild(){const old=model.chosen;model.items=collect();const known=new Set(model.items.map(x=>x.key));model.chosen=new Set([...old].filter(x=>known.has(x)));refresh()}
+ function createMeeting(){
+  const picked=selected();if(!picked.length)return;
+  if(!navoAuthCanEdit('meetings')){navoAuthForbidden();return}
+  const root=document.getElementById('pm-compose-dialog');if(!root)return;
+  const date=root.querySelector('#pm7-meeting-date')?.value||'';
+  const start=root.querySelector('#pm7-meeting-start')?.value||'';
+  const end=root.querySelector('#pm7-meeting-end')?.value||'';
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!/^\d{2}:\d{2}$/.test(start)||!/^\d{2}:\d{2}$/.test(end)||end<=start){alert('Bitte ein gültiges Sitzungsdatum und eine Endzeit nach dem Beginn wählen.');return}
+  const projectIds=[...new Set(picked.map(x=>x.projectId).filter(Boolean))];
+  const projectId=model.project!=='all'?model.project:projectIds.length===1?projectIds[0]:'';
+  const title='Projektkoordination'+(projectId?' · '+((state.projects||[]).find(p=>p.id===projectId)?.name||'Projekt'):' · Projektübergreifend');
+  const agenda=picked.map((x,i)=>`${i+1}. ${x.kind==='task'?'Aufgabe':x.kind==='pending'?'Pendenz':x.kind==='appointment'?'Termin':'Notiz'}: ${x.title}${!projectId&&x.projectId?' ['+((state.projects||[]).find(p=>p.id===x.projectId)?.name||'Projekt')+']':''}${x.date?' · '+dateLabel(x.date):''}`).join('\n');
+  const links=picked.map(x=>({kind:x.sourceKind||x.kind,id:x.sourceId||x.key.split(':').slice(1).join(':'),title:x.title,projectId:x.projectId||'',linkedAt:new Date().toISOString()}));
+  const entry={id:id(),title,type:'Koordinationssitzung',projectId,date,start,end,location:'',chair:'',secretary:'',status:'Geplant',agenda,notes:'Automatisch aus dem Klick-Assistenten zusammengestellt.',pmComposeLinks:links,pmComposeCreatedAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
+  // Nur eine neue Sitzung; referenzierte Aufgaben und Pendenzen werden nicht dupliziert.
+  state.meetings.push(entry);
+  try{save()}catch(err){state.meetings=state.meetings.filter(m=>m.id!==entry.id);alert('Die Sitzung konnte nicht gespeichert werden. Bitte den verfügbaren Browserspeicher prüfen.');return}
+  model=null;document.getElementById('modalRoot').innerHTML='';page='meetings';render();
+  // Existing dialog for optional editing (no duplicate input required).
+  if(confirm('Sitzung mit '+picked.length+' verknüpften Einträgen erstellt.\n\nMöchtest du jetzt noch Teilnehmende, Ort oder Sitzungstitel anpassen?'))meetingModal(entry);
+ }
+ function printable(){const content=present();return `<!DOCTYPE html><html lang="de-CH"><head><meta charset="utf-8"><title>PM Manager · ${html(reportTitle())}</title><style>body{font:13px/1.55 Arial,Helvetica,sans-serif;color:#263b45;margin:0;background:#fff}.toolbar{padding:14px 22px;background:#153d4d;color:white;display:flex;justify-content:space-between;align-items:center}.toolbar button{background:#24ada6;color:white;border:0;border-radius:8px;padding:10px 15px;cursor:pointer}main{max-width:920px;margin:25px auto;padding:15px 28px}.brand{color:#287981;font-weight:800;font-size:13px;letter-spacing:.12em}h3{font-size:27px;color:#183f4c;margin:12px 0}.pm-compose-meta{color:#617883;border-bottom:2px solid #44aaa9;padding-bottom:18px}h4{color:#197f83;font-size:17px;margin:24px 0 10px;padding-bottom:8px;border-bottom:1px solid #b6d0d5}article{padding:10px 0;border-bottom:1px solid #dae4e6;break-inside:avoid}article strong{display:block;font-size:14px}article small{color:#5f737c;display:block;margin:3px 0}article p{white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0;color:#384c55}@page{size:A4;margin:14mm}@media print{.toolbar{display:none}main{margin:0;padding:0}}</style></head><body><div class="toolbar"><b>PM Manager · Druckansicht</b><button onclick="window.print()">Drucken / als PDF speichern</button></div><main><div class="brand">PM MANAGER · ZUSAMMENSTELLUNG</div>${content}</main></body></html>`}
+ function copiedText(){const lines=[reportTitle(),projectName(),dateLabel(new Date().toLocaleDateString('sv-SE')),''];for(const [kind,label] of types){const entries=selected().filter(x=>x.kind===kind);if(!entries.length)continue;lines.push(label.toUpperCase());for(const x of entries){lines.push('• '+x.title+(x.meta?' ('+x.meta+')':''));if(x.detail)lines.push('  '+x.detail)}lines.push('')}return lines.join('\n')}
+ document.addEventListener('click',event=>{
+  const create=event.target.closest('[data-pm7-create-meeting]');if(create){event.preventDefault();event.stopImmediatePropagation();createMeeting();return}
+  const b=event.target.closest('[data-pm-compose-open],[data-pm-compose-close],[data-pm-compose-all],[data-pm-compose-none],[data-pm-compose-export]');if(!b)return;
+  event.preventDefault();event.stopImmediatePropagation();
+  if(b.hasAttribute('data-pm-compose-open')){open();return}
+  if(!model)return;
+  if(b.hasAttribute('data-pm-compose-close')){document.getElementById('modalRoot').innerHTML='';model=null;return}
+  const visible=model.items.filter(x=>model.enabled.has(x.kind)&&(!model.search||[x.title,x.meta,x.detail].join(' ').toLocaleLowerCase('de-CH').includes(model.search)));
+  if(b.hasAttribute('data-pm-compose-all')){visible.forEach(x=>model.chosen.add(x.key));refresh();return}
+  if(b.hasAttribute('data-pm-compose-none')){model.chosen.clear();refresh();return}
+  if(!selected().length)return;
+  if(b.dataset.pmComposeExport==='print'){
+   const win=window.open('','_blank');if(!win){alert('Bitte Pop-ups für die lokale Druckansicht zulassen.');return}
+   win.document.open();win.document.write(printable());win.document.close();win.focus();return;
+  }
+  if(b.dataset.pmComposeExport==='copy'){
+   const content=copiedText();if(navigator.clipboard?.writeText){navigator.clipboard.writeText(content).then(()=>{b.textContent='✓ Kopiert';setTimeout(()=>b.textContent='Text kopieren',1800)}).catch(()=>window.prompt('Text markieren und kopieren:',content))}else window.prompt('Text markieren und kopieren:',content);
+  }
+ },true);
+ document.addEventListener('change',event=>{
+  const el=event.target;if(!model||!el.closest('#pm-compose-dialog'))return;
+  if(el.id==='pm-compose-project'){model.project=el.value;model.chosen.clear();model.items=collect();refresh()}
+  else if(el.id==='pm-compose-mode'){model.mode=el.value;refresh()}
+  else if(el.hasAttribute('data-pm-compose-type')){if(el.checked)model.enabled.add(el.dataset.pmComposeType);else model.enabled.delete(el.dataset.pmComposeType);refresh()}
+  else if(el.hasAttribute('data-pm-compose-item')){if(el.checked)model.chosen.add(el.dataset.pmComposeItem);else model.chosen.delete(el.dataset.pmComposeItem);refresh()}
+ },true);
+ document.addEventListener('input',event=>{const el=event.target;if(el?.id!=='pm-compose-search'||!model)return;model.search=el.value.toLocaleLowerCase('de-CH').trim();refresh()},true);
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&document.getElementById('pm-compose-dialog')){document.getElementById('modalRoot').innerHTML='';model=null}},true);
+})();
+</script>
+
+<style id="pm8-batch-review-styles">
+.pm8-source-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.pm8-review{width:min(1120px,calc(100vw - 26px));max-width:1120px;max-height:94vh;overflow:auto;background:#103342;color:#ecfafa;border:2px solid #41969d;border-radius:19px;padding:24px;box-shadow:0 28px 70px #0008}
+.pm8-review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}
+.pm8-review-head h2{margin:3px 0 4px;color:#fff;font-size:24px}.pm8-review-head p{margin:0;color:#b5d5dc;font-size:13px}
+.pm8-review-head .pm8-eye{font-size:11px;font-weight:800;color:#6ee0d5;letter-spacing:.11em}
+.pm8-grid{display:grid;gap:9px}.pm8-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,210px);gap:11px;align-items:center;border:1px solid #397988;border-radius:13px;padding:13px;background:#153c4b}
+.pm8-item strong{display:block;overflow-wrap:anywhere;font-size:14px}.pm8-item small{color:#acd1d7;display:block;margin-top:4px}.pm8-inputs{display:flex;flex-direction:column;gap:7px;align-items:stretch}
+.pm8-inputs select,.pm8-inputs input{width:100%;min-height:38px;border-radius:9px;border:1px solid #679aa7;padding:7px 10px;background:#234a59;color:#fff;box-sizing:border-box;font:inherit}
+.pm8-inputs label{font-size:11px;color:#c4e3e7;font-weight:650}.pm8-inputs input:focus,.pm8-inputs select:focus{outline:2px solid #61cfc8;outline-offset:1px}
+.pm8-preview{margin-top:16px;padding:14px;border-radius:13px;border:1px solid #458b91;background:#0c2937}
+.pm8-preview h3{margin:0 0 9px;font-size:17px;color:#79e2dc}.pm8-preview-list{display:grid;gap:7px}.pm8-preview-row{font-size:12px;line-height:1.5;border-bottom:1px solid #285361;padding:5px 0;overflow-wrap:anywhere}
+.pm8-warn{color:#ffd39b!important}.pm8-muted{font-size:12px;color:#bdd7dc}.pm8-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:18px}.pm8-review button:disabled{opacity:.45;cursor:not-allowed}
+body.pm-fluent-light .pm8-review,body.pm-light .pm8-review,body.pm-refresh-light .pm8-review{background:#e1eeee;color:#1c3d47;border-color:#75b2b9}
+body.pm-fluent-light .pm8-review-head h2,body.pm-light .pm8-review-head h2,body.pm-refresh-light .pm8-review-head h2{color:#143b44}
+body.pm-fluent-light .pm8-review-head p,body.pm-light .pm8-review-head p,body.pm-refresh-light .pm8-review-head p,body.pm-fluent-light .pm8-item small,body.pm-light .pm8-item small,body.pm-refresh-light .pm8-item small{color:#527a83}
+body.pm-fluent-light .pm8-item,body.pm-light .pm8-item,body.pm-refresh-light .pm8-item{background:#eff6f6;border-color:#a1c9cc}
+body.pm-fluent-light .pm8-inputs select,body.pm-fluent-light .pm8-inputs input,body.pm-light .pm8-inputs select,body.pm-light .pm8-inputs input,body.pm-refresh-light .pm8-inputs select,body.pm-refresh-light .pm8-inputs input{background:#f7fbfb;color:#19424c;border-color:#a0c3c9;color-scheme:light}
+body.pm-fluent-light .pm8-inputs label,body.pm-light .pm8-inputs label,body.pm-refresh-light .pm8-inputs label{color:#43656c}
+body.pm-fluent-light .pm8-preview,body.pm-light .pm8-preview,body.pm-refresh-light .pm8-preview{background:#d4e6e8;border-color:#a0c8ca}
+body.pm-fluent-light .pm8-preview h3,body.pm-light .pm8-preview h3,body.pm-refresh-light .pm8-preview h3{color:#176d72}
+body.pm-fluent-light .pm8-muted,body.pm-light .pm8-muted,body.pm-refresh-light .pm8-muted{color:#466b73}
+@media(max-width:700px){.pm8-review{padding:14px}.pm8-item{grid-template-columns:1fr}.pm8-source-actions{justify-content:flex-start}.pm8-review-head h2{font-size:20px}}
+</style>
+<script id="pm8-batch-meeting-followup">
+/* PM 8.0: Preview-first bulk updating of ORIGINAL tasks and pendencies. */
+(function(){
+ 'use strict';
+ const safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const donePending=p=>['Erledigt','Entschieden','Verworfen'].includes(p.status);
+ const closed=(kind,obj)=>kind==='task'?obj.status==='Erledigt':kind==='pending'?donePending(obj):false;
+ const allowed=kind=>kind==='task'?'tasks':kind==='pending'?'pending':null;
+ const get=(kind,sourceId)=>kind==='task'?(state.tasks||[]).find(t=>t.id===sourceId):kind==='pending'?(state.pendingRecords||[]).find(t=>t.id===sourceId):kind==='meeting'?(state.meetings||[]).find(t=>t.id===sourceId):kind==='calendarNote'?(state.calendarNotes||[]).find(t=>t.id===sourceId):kind==='note'&&typeof pmActiveNotes==='function'?(pmActiveNotes()||[]).find(t=>t.id===sourceId):null;
+ const uniqueKey=(meetingId,kind,sourceId)=>[meetingId,kind,sourceId].join('::');
+ let active=null;
+ function duplicate(meetingId,kind,sourceId){const key=uniqueKey(meetingId,kind,sourceId);return (state.tasks||[]).find(t=>t.pm8FollowupKey===key)}
+ function prepare(m){
+  const seen=new Set();return (m.pmComposeLinks||[]).filter(l=>{const key=String(l.kind)+'::'+String(l.id);if(!l.id||seen.has(key))return false;seen.add(key);return true}).map(l=>{
+   const obj=get(l.kind,l.id),taskAllowed=navoAuthCanEdit('tasks');
+   const writable=(l.kind==='task'||l.kind==='pending')&&obj&&!(l.kind==='pending'&&obj.type==='Entscheid')&&navoAuthCanEdit(allowed(l.kind));
+   const prior=duplicate(m.id,l.kind,l.id);
+   return {key:uniqueKey(m.id,l.kind,l.id),kind:l.kind,sourceId:l.id,obj,title:obj?.name||obj?.title||l.title||'Eintrag',action:'skip',due:obj?.due||'',newTitle:'Nacharbeit: '+(obj?.name||obj?.title||l.title||'Agendapunkt'),writable,taskAllowed,prior};
+  });
+ }
+ function open(meetingId){
+  const m=(state.meetings||[]).find(x=>x.id===meetingId);
+  if(!m||!Array.isArray(m.pmComposeLinks)||!m.pmComposeLinks.length)return;
+  if(!navoAuthCanView('meetings')){navoAuthForbidden();return}
+  const entries=prepare(m);const existing=document.querySelector('#navoProtocolForm');
+  if(existing&&![...existing.querySelectorAll('textarea,input,select')].every(el=>el.type==='checkbox'||el.type==='button'||el.value===el.defaultValue)){
+   if(!confirm('Es können noch nicht gespeicherte Protokolländerungen vorhanden sein. Ohne Speichern zur Nachbearbeitung wechseln?'))return;
+  }
+  active={meetingId,entries,stage:'edit'};
+  draw();
+ }
+ function options(e){
+  const arr=[['skip','Nicht ändern']];
+  if(e.writable){arr.push(['open','Bleibt offen'],['done','Erledigt'],['due','Neue Frist'])}
+  if(e.taskAllowed)arr.push(['task',e.prior?'Neue Aufgabe (bereits vorhanden)':'Neue Aufgabe']);
+  return arr.map(([v,t])=>`<option value="${v}" ${e.action===v?'selected':''}>${safe(t)}</option>`).join('');
+ }
+ function valid(){
+  if(!active)return ['Keine Bearbeitung aktiv'];
+  const problems=[];
+  for(const e of active.entries){
+   if(e.action==='skip')continue;
+   const obj=get(e.kind,e.sourceId);
+   if(e.action==='task'){
+    if(!navoAuthCanEdit('tasks'))problems.push('Keine Berechtigung für neue Aufgaben: '+e.title);
+    if(!e.newTitle.trim())problems.push('Aufgabentitel fehlt: '+e.title);
+    if(duplicate(active.meetingId,e.kind,e.sourceId))problems.push('Eine Nacharbeitsaufgabe besteht bereits: '+e.title);
+    continue;
+   }
+   if(!obj||!e.writable||!navoAuthCanEdit(allowed(e.kind)))problems.push('Nicht bearbeitbar: '+e.title);
+   if(e.kind==='pending'&&obj?.type==='Entscheid')problems.push('Entscheid darf nicht direkt geändert werden: '+e.title);
+   if(e.action==='due'&&!/^\d{4}-\d{2}-\d{2}$/.test(e.due))problems.push('Datum fehlt: '+e.title);
+   if(e.action==='done'&&e.kind==='task'){
+    const blocker=obj?.pmBlockedBy&&(state.tasks||[]).find(x=>x.id===obj.pmBlockedBy&&x.status!=='Erledigt');
+    // A blocked task may be completed in the same batch; dependencies are evaluated as a graph below.
+    if(blocker){const linked=active.entries.find(x=>x.kind==='task'&&x.sourceId===blocker.id&&x.action==='done');if(!linked)problems.push('Vorausgesetzte Aufgabe nicht erledigt: '+e.title+' (wartet auf '+blocker.name+')')}
+   }
+  }
+  return problems;
+ }
+ function description(e){
+  if(e.action==='skip')return '';
+  if(e.action==='done')return 'Als erledigt markieren: '+e.title;
+  if(e.action==='open')return 'Status auf Offen setzen: '+e.title;
+  if(e.action==='due')return 'Neue Frist '+(e.due||'nicht gewählt')+': '+e.title;
+  if(e.action==='task')return 'Neue Aufgabe „'+e.newTitle+'“'+(e.prior?' (existiert bereits – wird nicht dupliziert)':'')+' erstellen';
+  return '';
+ }
+ function draw(){
+  if(!active)return;
+  const m=state.meetings.find(x=>x.id===active.meetingId);if(!m){active=null;return}
+  const summary=active.entries.filter(e=>e.action!=='skip');
+  const issues=valid();
+  const reviewing=active.stage==='review';
+  const rows=active.entries.map((e,i)=>{
+   const obj=get(e.kind,e.sourceId);
+   const disabled=!e.writable&&!e.taskAllowed;
+   const info=(e.kind==='task'?'Aufgabe':e.kind==='pending'?'Pendenz':e.kind==='note'?'Notiz':e.kind==='calendarNote'?'Termin':'Sitzung')+' · '+(obj?.status||(!obj?'Quelle nicht vorhanden':'Verknüpft'));
+   return `<div class="pm8-item" data-pm8-row="${i}"><div><strong>${i+1}. ${safe(e.title)}</strong><small>${safe(info)}${e.prior?' · Nacharbeitsaufgabe bereits angelegt':''}</small></div><div class="pm8-inputs"><label for="pm8-action-${i}">Aktion</label><select id="pm8-action-${i}" data-pm8-action="${i}" ${reviewing||disabled?'disabled':''}>${options(e)}</select>${!reviewing&&e.action==='due'?`<label for="pm8-date-${i}">Neues Fälligkeitsdatum</label><input id="pm8-date-${i}" type="date" data-pm8-due="${i}" value="${safe(e.due)}">`:''}${!reviewing&&e.action==='task'?`<label for="pm8-title-${i}">Name der neuen Aufgabe</label><input id="pm8-title-${i}" type="text" maxlength="240" data-pm8-title="${i}" value="${safe(e.newTitle)}" ${e.prior?'disabled':''}>`:''}${reviewing&&e.action!=='skip'?`<small>${safe(description(e))}</small>`:''}${disabled?'<small>Nur lesbar · keine Bearbeitungsberechtigung</small>':''}</div></div>`;
+  }).join('');
+  const notes=issues.length?`<div class="pm8-warn" role="alert">${issues.map(x=>'<div>⚠ '+safe(x)+'</div>').join('')}</div>`:'<span class="pm8-muted">Alle Änderungen wurden geprüft. Die Originaleinträge werden erst beim Speichern verändert.</span>';
+  document.getElementById('modalRoot').innerHTML=`<div class="modal-bg" id="pm8-overlay"><section class="modal pm8-review" role="dialog" aria-modal="true" aria-labelledby="pm8-title"><header class="pm8-review-head"><div><span class="pm8-eye">PM MANAGER 8.0 · SITZUNGS-NACHBEARBEITUNG</span><h2 id="pm8-title">${reviewing?'Änderungen prüfen':'Agendapunkte gemeinsam nachbearbeiten'}</h2><p>${safe(m.title)} · ${safe(m.date||'')} · ${active.entries.length} verknüpfte Einträge</p></div><button type="button" class="btn secondary" data-pm8-close>✕ Schliessen</button></header><div class="pm8-grid">${rows||'<p>Keine verknüpften Einträge.</p>'}</div><div class="pm8-preview"><h3>${reviewing?'Vorschau vor dem Speichern':'Deine geplanten Änderungen'} · ${summary.length}</h3><div class="pm8-preview-list">${summary.length?summary.map(e=>`<div class="pm8-preview-row">✓ ${safe(description(e))}</div>`).join(''):'<div class="pm8-muted">Noch keine Änderungen gewählt. Wähle rechts bei den Agendapunkten eine Aktion aus.</div>'}</div><div style="margin-top:10px">${notes}</div></div><div class="pm8-actions"><button type="button" class="btn secondary" data-pm8-cancel>${reviewing?'← Zurück zur Auswahl':'Abbrechen'}</button>${reviewing?`<button type="button" class="btn" data-pm8-save ${!summary.length||issues.length?'disabled':''}>✓ ${summary.length} Änderungen gemeinsam speichern</button>`:`<button type="button" class="btn" data-pm8-review ${!summary.length||issues.length?'disabled':''}>Änderungen prüfen →</button>`}</div></section></div>`;
+  document.querySelector('[data-pm8-action]')?.focus({preventScroll:true});
+ }
+ function commit(){
+  if(!active||active.stage!=='review')return;
+  const problems=valid();if(problems.length){active.stage='edit';draw();alert(problems.join('\n'));return}
+  const changes=active.entries.filter(e=>e.action!=='skip');if(!changes.length)return;
+  const meeting=state.meetings.find(m=>m.id===active.meetingId);if(!meeting)return;
+  const originalTasks=structuredClone(state.tasks||[]),originalPending=structuredClone(state.pendingRecords||[]),originalMeeting=structuredClone(meeting);
+  const timestamp=new Date().toISOString(),actor=typeof navoBriefName==='function'?navoBriefName():'Anwender';
+  try{
+   // Pre-flight in the actual current state (meeting may have changed since opening dialog).
+   const fresh=valid();if(fresh.length)throw Error(fresh.join('\n'));
+   // Close dependencies first to allow other tasks in the same batch to be closed safely.
+   const ordered=[...changes].sort((a,b)=>a.action==='done'&&a.kind==='task'?-1:b.action==='done'&&b.kind==='task'?1:0);
+   let created=0;
+   for(const e of ordered){
+    const obj=get(e.kind,e.sourceId);
+    if(e.action==='task'){
+     if(duplicate(meeting.id,e.kind,e.sourceId))throw Error('Nacharbeitsaufgabe existiert bereits: '+e.title);
+     const sourceProject=obj?.projectId||meeting.projectId||'';
+     state.tasks.push({id:id(),name:e.newTitle.trim(),projectId:sourceProject,owner:obj?.owner||obj?.ownerId||'',due:'',status:'Offen',priority:'Mittel',description:'Nachbearbeitung aus Sitzung: '+meeting.title+'\nUrsprünglicher Agendapunkt: '+e.title,pm8FollowupKey:e.key,pm8MeetingId:meeting.id,pm8SourceKind:e.kind,pm8SourceId:e.sourceId,createdAt:timestamp});created++;continue;
+    }
+    if(!obj)throw Error('Quelleneintrag nicht gefunden: '+e.title);
+    if(e.action==='due'){obj.due=e.due}
+    if(e.action==='open'){obj.status='Offen';if(e.kind==='task')delete obj.completedAt}
+    if(e.action==='done'){obj.status='Erledigt';if(e.kind==='task'){obj.completedAt=new Date().toLocaleDateString('sv-SE')}}
+    obj.updatedAt=timestamp;
+    if(e.kind==='pending'){
+     obj.manualEdited=true;obj.history=Array.isArray(obj.history)?obj.history:[];
+     obj.history.push({at:timestamp,user:actor,from:originalPending.find(x=>x.id===obj.id)?.status||'',to:obj.status,action:'Sitzungs-Nachbearbeitung: '+e.action,meetingId:meeting.id,oldDue:originalPending.find(x=>x.id===obj.id)?.due||'',due:obj.due||''});
+    }
+   }
+   meeting.pm8ReviewLog=Array.isArray(meeting.pm8ReviewLog)?meeting.pm8ReviewLog:[];
+   meeting.pm8ReviewLog.push({at:timestamp,by:actor,summary:changes.map(e=>({kind:e.kind,id:e.sourceId,action:e.action,due:e.action==='due'?e.due:'',taskTitle:e.action==='task'?e.newTitle:''}))});
+   meeting.updatedAt=timestamp;
+   // save() catches errors internally; verify persisted data explicitly.
+   save();
+   const raw=localStorage.getItem(KEY),stored=raw?JSON.parse(raw):null;
+   if(!stored||!stored.meetings?.some(x=>x.id===meeting.id&&x.pm8ReviewLog?.some(r=>r.at===timestamp))||created&&!(stored.tasks||[]).some(t=>t.pm8MeetingId===meeting.id&&t.createdAt===timestamp))throw Error('Die Änderungen konnten im lokalen Speicher nicht bestätigt werden.');
+  }catch(err){
+   state.tasks=originalTasks;state.pendingRecords=originalPending;
+   const idx=state.meetings.findIndex(m=>m.id===meeting.id);if(idx>=0)state.meetings[idx]=originalMeeting;
+   alert('Die Sammeländerung wurde abgebrochen: '+err.message);active.stage='edit';draw();return;
+  }
+  const num=changes.length;active=null;
+  document.getElementById('modalRoot').innerHTML='';render();
+  alert(num+' Agendapunkte erfolgreich bearbeitet und gemeinsam gespeichert.');
+ }
+ document.addEventListener('click',e=>{
+  const openButton=e.target.closest('[data-pm8-open]');if(openButton){e.preventDefault();e.stopImmediatePropagation();open(openButton.dataset.pm8Open);return}
+  if(!active||!e.target.closest('#pm8-overlay'))return;
+  if(e.target.closest('[data-pm8-close],[data-pm8-cancel]')){e.preventDefault();e.stopImmediatePropagation();if(active.stage==='review'&&e.target.closest('[data-pm8-cancel]')){active.stage='edit';draw()}else{active=null;document.getElementById('modalRoot').innerHTML='';render()}return}
+  if(e.target.closest('[data-pm8-review]')){e.preventDefault();e.stopImmediatePropagation();if(valid().length){draw();return}active.stage='review';draw();return}
+  if(e.target.closest('[data-pm8-save]')){e.preventDefault();e.stopImmediatePropagation();commit();return}
+ },true);
+ document.addEventListener('change',e=>{
+  if(!active||!e.target.closest('#pm8-overlay')||active.stage!=='edit')return;
+  const el=e.target;
+  if(el.hasAttribute('data-pm8-action')){const item=active.entries[Number(el.dataset.pm8Action)];if(item){item.action=el.value;draw()}}
+  else if(el.hasAttribute('data-pm8-due')){active.entries[Number(el.dataset.pm8Due)].due=el.value;draw()}
+ },true);
+ document.addEventListener('input',e=>{
+  if(!active||!e.target.closest('#pm8-overlay')||active.stage!=='edit')return;
+  if(e.target.hasAttribute('data-pm8-title')){active.entries[Number(e.target.dataset.pm8Title)].newTitle=e.target.value}
+ },true);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&active&&document.getElementById('pm8-overlay')){e.preventDefault();active=null;document.getElementById('modalRoot').innerHTML='';render()}},true);
+ window.pm8OpenMeetingReview=open;
+})();
+</script>
+
+<style id="pm91-work-pdf">
+.pm91-assignment{display:grid;grid-template-columns:1fr 180px;gap:12px;margin:11px 0 8px;padding:10px;border-radius:10px;background:rgba(92,169,182,.09);border:1px solid rgba(109,174,185,.34)}
+.pm91-assignment .pm9-field{margin:0}.pm91-assignment label{font-size:12px;font-weight:700;color:#bad8dc;display:block;margin-bottom:5px}
+.pm91-assignment input,.pm91-assignment select{width:100%;box-sizing:border-box;min-height:38px;background:#103140;border:1px solid #578994;border-radius:9px;color:#f3fafb;padding:8px}
+.pm91-source-detail{color:#a9cdd0;font-size:12px;margin-top:6px;display:block}
+body.pm-fluent-light .pm91-assignment{background:#e8f3f4;border-color:#9bc6cb}
+body.pm-fluent-light .pm91-assignment label{color:#365c67}
+body.pm-fluent-light .pm91-assignment input,body.pm-fluent-light .pm91-assignment select{background:#f6fafb;color:#1c3e4b;border-color:#9bbfc7}
+@media(max-width:570px){.pm91-assignment{grid-template-columns:1fr}}
+</style>
+<script id="pm9-control-center">
+/* Universelles Kontrollcenter. Persistiert ausschliesslich im bestehenden state/JSON-Backup. */
+(function(){
+ 'use strict';
+ const presets=[
+  {id:'daily',name:'Persönliche Tageskontrolle',items:['Tagesprioritäten geprüft','Wichtige Termine kontrolliert','Offene Aufgaben durchgesehen','Pendenzen und Rückmeldungen geprüft','Arbeitstag abgeschlossen']},
+  {id:'meeting',name:'Sitzungsvorbereitung',items:['Traktanden zusammengestellt','Offene Pendenzen geprüft','Teilnehmende und Termin bestätigt','Unterlagen vollständig','Beschlusspunkte vorbereitet']},
+  {id:'start',name:'Projektstart',items:['Projektauftrag und Ziele geklärt','Verantwortlichkeiten festgelegt','Planunterlagen vorhanden','Terminplan kontrolliert','Freigaben und Risiken geprüft']},
+  {id:'work',name:'Arbeitsausführung',items:['Aktuelle Pläne geprüft','Material und Ressourcen verfügbar','Ausführung kontrolliert','Qualität kontrolliert','Dokumentation vollständig']},
+  {id:'issues',name:'Mängelkontrolle',items:['Offene Mängel gesichtet','Zuständigkeiten zugeordnet','Massnahmen geprüft','Nachkontrolle durchgeführt','Restpunkte dokumentiert']},
+  {id:'finish',name:'Projektabschluss',items:['Leistungen kontrolliert','Abnahmen dokumentiert','Restpendenzen geklärt','Schlussdokumentation vollständig','Übergabe abgeschlossen']}
+ ];
+ let active=null,search='',projectFilter='all';
+ const safe=x=>esc(String(x??''));
+ const canEdit=()=>navoAuthCanEdit('checklists');
+ const list=()=>{state.checklists=Array.isArray(state.checklists)?state.checklists:[];return state.checklists};
+ const statusLabels={open:'Offen',ok:'In Ordnung',issue:'Mangel',na:'Nicht relevant'};
+ const progress=c=>{const items=Array.isArray(c.items)?c.items:[];const ok=items.filter(x=>x.status==='ok').length;const evaluated=items.filter(x=>x.status&&x.status!=='open').length;return {total:items.length,ok,issue:items.filter(x=>x.status==='issue').length,open:items.filter(x=>!x.status||x.status==='open').length,percent:items.length?Math.round(100*evaluated/items.length):0}};
+ const source=(kind,key)=>kind==='task'?(state.tasks||[]).find(t=>t.id===key):kind==='pending'?(state.pendingRecords||[]).find(p=>p.id===key):null;
+ const labels=c=>c.projectId?proj(c.projectId):'Persönlich / ohne Projekt';
+ const person=(v)=>{if(!v)return 'Nicht zugewiesen';const byId=(state.members||[]).find(m=>m.id===v);return byId?.name||String(v)};
+ const ownerInfo=(x)=>{const linked=x.sourceKind&&x.sourceId?source(x.sourceKind,x.sourceId):null;
+  const stored=String(x.ownerId||x.owner||'');
+  if(stored)return person(stored);
+  if(linked){const owners=Array.isArray(linked.owners)?linked.owners:Array.isArray(linked.assignees)?linked.assignees:[];
+   if(owners.length)return owners.map(person).join(', ');
+   return person(linked.ownerId||linked.owner||linked.memberId||'');}
+  return 'Nicht zugewiesen';
+ };
+ const dueInfo=(x)=>{const linked=x.sourceKind&&x.sourceId?source(x.sourceKind,x.sourceId):null;return x.due||linked?.due||''};
+ const duePretty=(v)=>{if(!v)return 'Nicht festgelegt';const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})/);return m?`${m[3]}.${m[2]}.${m[1]}`:String(v)};
+ const peopleOptions=(v)=>'<option value="">Nicht zugewiesen</option>'+(state.members||[]).map(m=>`<option value="${safe(m.id)}" ${v===m.id?'selected':''}>${safe(m.name||'Unbenannt')}</option>`).join('');
+ function pdf(c){
+  const reportDate=new Date().toLocaleDateString('de-CH');const p=progress(c);
+  const rows=(c.items||[]).map((x,i)=>{const pending=x.pendingId?(state.pendingRecords||[]).find(r=>r.id===x.pendingId):null;
+   return `<tr><td class="num">${i+1}</td><td><strong>${safe(x.title)}</strong>${x.note?`<div class="note">${safe(x.note)}</div>`:''}${pending?`<div class="note">Verknüpfte Pendenz: ${safe(pending.title||'')}</div>`:''}</td><td>${safe(ownerInfo(x))}</td><td>${safe(duePretty(dueInfo(x)))}</td><td>${safe(statusLabels[x.status]||'Offen')}</td></tr>`;
+  }).join('');
+  const html=`<!doctype html><html lang="de-CH"><head><meta charset="utf-8"><title>${safe(c.title)} · Kontrollbericht</title><style>
+  @page{size:A4 landscape;margin:15mm 13mm}*{box-sizing:border-box}body{margin:0;font:11px Arial,Helvetica,sans-serif;color:#203846}header{border-bottom:3px solid #257e83;padding-bottom:11px;margin-bottom:17px}header .eyebrow{font-size:11px;letter-spacing:2px;color:#36878b;font-weight:800}h1{font-size:23px;margin:6px 0 10px;color:#163a4b}.meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin:12px 0 18px}.meta b{color:#174d5b}.summary{padding:10px 12px;background:#eaf4f4;border-left:4px solid #319a9c;margin-bottom:14px;font-weight:700}table{border-collapse:collapse;width:100%;table-layout:fixed}th{background:#1c4c5d;color:white;text-align:left;font-size:10px;padding:9px 8px}td{border:1px solid #c2d5d9;vertical-align:top;padding:10px 8px;overflow-wrap:anywhere}tr:nth-child(even) td{background:#f1f6f7}.num{width:5%;text-align:center}.note{font-size:10px;color:#566d76;margin-top:5px;white-space:pre-wrap}th:nth-child(2){width:40%}th:nth-child(3){width:22%}th:nth-child(4){width:16%}th:nth-child(5){width:17%}tr{break-inside:avoid}footer{margin-top:18px;padding-top:8px;border-top:1px solid #a8cbd0;font-size:10px;color:#607982}@media screen{body{padding:28px;max-width:1300px;margin:auto}.printbutton{border:0;border-radius:8px;background:#216b79;color:white;padding:11px 20px;cursor:pointer;margin-bottom:22px}}@media print{.printbutton{display:none}}
+  </style></head><body><button class="printbutton" onclick="window.print()">Drucken / Als PDF speichern</button><header><div class="eyebrow">PM MANAGER · KONTROLLCENTER</div><h1>${safe(c.title)}</h1></header><div class="meta"><div><b>Projekt:</b> ${safe(labels(c))}</div><div><b>Vorlage:</b> ${safe(c.templateName||'Eigene Liste')}</div><div><b>Berichtsdatum:</b> ${safe(reportDate)}</div><div><b>Erstellt:</b> ${safe(duePretty((c.createdAt||'').slice(0,10)))}</div></div><div class="summary">${p.total} Kontrollpunkte · ${p.ok} in Ordnung · ${p.open} offen · ${p.issue} Mängel · ${p.percent}% bewertet</div><table><thead><tr><th>Nr.</th><th>Arbeitsausführung / Kontrollpunkt</th><th>Verantwortlich</th><th>Fälligkeit</th><th>Kontrollstatus</th></tr></thead><tbody>${rows}</tbody></table><footer>Erstellt mit PM Manager · Die Kontrollliste ist eine Momentaufnahme. Keine automatische Freigabe oder Aufgabenquittierung.</footer></body></html>`;
+  const w=window.open('','_blank');if(!w){alert('Das PDF-Fenster wurde blockiert. Bitte Pop-ups für den PM Manager erlauben.');return}
+  w.document.open();w.document.write(html);w.document.close();w.focus();
+ }
+
+ function pm9ControlPage(){
+  const all=list(),total=all.length,activeCount=all.filter(c=>!c.archived).length,open=all.filter(c=>!c.archived).reduce((n,c)=>n+progress(c).open,0),issues=all.filter(c=>!c.archived).reduce((n,c)=>n+progress(c).issue,0);
+  const visible=all.filter(c=>(projectFilter==='all'||(c.projectId||'')===projectFilter)&&(!search||[c.title,labels(c),c.templateName].join(' ').toLocaleLowerCase('de-CH').includes(search.toLocaleLowerCase('de-CH')))).sort((a,b)=>Number(!!a.archived)-Number(!!b.archived)||(b.updatedAt||'').localeCompare(a.updatedAt||''));
+  return `<div class="pm9-wrap"><section class="pm9-hero"><div><small>PM MANAGER 9.0 · BAUKASTENSYSTEM</small><h2>☑ Kontrollcenter</h2><p>Vorlagen wählen oder Aufgaben und Pendenzen zusammenklicken. Kontrollieren statt mehrfach erfassen.</p></div><div class="pm9-actions">${canEdit()?'<button class="btn" type="button" data-pm9-start>+ Kontrollliste erstellen</button>':''}</div></section><div class="pm9-kpis"><div class="pm9-kpi"><b>${total}</b><small>Kontrolllisten gesamt</small></div><div class="pm9-kpi"><b>${activeCount}</b><small>Aktive Kontrollen</small></div><div class="pm9-kpi"><b>${open}</b><small>Offene Kontrollpunkte</small></div><div class="pm9-kpi"><b>${issues}</b><small>Festgestellte Mängel</small></div></div><div class="pm9-tools"><input id="pm9-search" type="search" placeholder="Kontrollliste suchen …" value="${safe(search)}" aria-label="Kontrolllisten suchen"><select id="pm9-project-filter"><option value="all">Alle Projekte</option><option value="" ${projectFilter===''?'selected':''}>Persönlich / ohne Projekt</option>${(state.projects||[]).map(p=>`<option value="${safe(p.id)}" ${projectFilter===p.id?'selected':''}>${safe(p.name)}</option>`).join('')}</select></div><div class="pm9-list">${visible.length?visible.map(c=>{const p=progress(c);return `<article class="pm9-card"><div class="pm9-chips"><span class="pm9-chip">${safe(labels(c))}</span>${c.archived?'<span class="pm9-chip">Archiviert</span>':''}${p.issue?`<span class="pm9-chip issue">${p.issue} Mängel</span>`:''}</div><h3>${safe(c.title)}</h3><small>${safe(c.templateName||'Eigene Liste')} · ${p.total} Kontrollpunkte · ${safe((c.updatedAt||'').slice(0,10))}</small><div class="pm9-meta"><small>${p.ok} in Ordnung · ${p.open} offen · ${p.issue} Mängel</small><b>${p.percent}% bewertet</b></div><div class="pm9-meter"><i style="width:${p.percent}%"></i></div><div class="pm9-row-actions"><button class="btn small" type="button" data-pm9-open="${safe(c.id)}">${canEdit()?'Kontrollieren':'Ansehen'} →</button><button class="btn small secondary" type="button" data-pm91-pdf="${safe(c.id)}">⬇ PDF</button>${canEdit()?`<button class="btn small secondary" data-pm9-archive="${safe(c.id)}">${c.archived?'Reaktivieren':'Archivieren'}</button>`:''}</div></article>`}).join(''):'<div class="pm9-blank">Noch keine passenden Kontrolllisten vorhanden. Erstelle deine erste Liste aus einer Vorlage oder vorhandenen Einträgen.</div>'}</div><p class="muted sub">Die Kontrolllisten werden mit deinen lokalen PM-Manager-Daten gespeichert und im normalen JSON-Backup mitgesichert.</p></div>`;
+ }
+ window.pm9ControlPage=pm9ControlPage;
+ function close(){active=null;document.getElementById('modalRoot').innerHTML='';render()}
+ function optionsProjects(selected){return `<option value="">Persönlich / ohne Projekt</option>${(state.projects||[]).map(p=>`<option value="${safe(p.id)}" ${p.id===selected?'selected':''}>${safe(p.name)}</option>`).join('')}`}
+ const sourceEntries=()=>{
+  const pid=active?.projectId||'';
+  const tasks=navoAuthCanView('tasks')?(state.tasks||[]).filter(t=>!pid||t.projectId===pid).map(t=>({kind:'task',id:t.id,title:t.name||'Aufgabe',info:(t.status||'Offen')+' · '+(t.due||'ohne Frist'),projectId:t.projectId||''})):[];
+  const pending=navoAuthCanView('pending')?(state.pendingRecords||[]).filter(p=>p.type!=='Entscheid'&&(!pid||p.projectId===pid)).map(p=>({kind:'pending',id:p.id,title:p.title||'Pendenz',info:(p.status||'Offen')+' · '+(p.due||'ohne Frist'),projectId:p.projectId||''})):[];
+  return [...tasks,...pending].slice(0,200);
+ };
+ function make(){
+  if(!canEdit())return;
+  active={mode:'create',projectId:'',template:'',title:'',presetChosen:new Set(),chosen:new Set(),extra:''};drawCreate();
+ }
+ function drawCreate(){
+  if(!active||active.mode!=='create')return;
+  const preset=presets.find(x=>x.id===active.template),s=sourceEntries();
+  document.getElementById('modalRoot').innerHTML=`<div class="modal-bg" id="pm9-overlay"><section class="modal pm9-dialog" role="dialog" aria-modal="true" aria-labelledby="pm9-dialog-title"><header class="pm9-dialog-head"><div><h2 id="pm9-dialog-title">Kontrollliste zusammenklicken</h2><p>Vorlage auswählen, bestehende Einträge übernehmen oder eigene Punkte ergänzen.</p></div><button class="btn secondary" type="button" data-pm9-close>✕ Schliessen</button></header><div class="pm9-make-grid"><div class="pm9-box"><h3>1 · Grundlage wählen</h3><div class="pm9-field"><label for="pm9-new-project">Projekt</label><select id="pm9-new-project">${optionsProjects(active.projectId)}</select></div><div class="pm9-field"><label for="pm9-template">Vorlage</label><select id="pm9-template"><option value="">Ohne Vorlage</option>${presets.map(p=>`<option value="${p.id}" ${active.template===p.id?'selected':''}>${safe(p.name)}</option>`).join('')}</select></div>${preset?`<div class="pm9-choices">${preset.items.map((v,i)=>`<label class="pm9-choice"><input type="checkbox" data-pm9-preset="${i}" ${active.presetChosen.has(i)?'checked':''}><span>${safe(v)}</span></label>`).join('')}</div><p class="muted sub">Du kannst einzelne Vorlagenpunkte abwählen.</p>`:''}<div class="pm9-field" style="margin-top:13px"><label for="pm9-title-input">Name der Liste</label><input id="pm9-title-input" maxlength="160" placeholder="z. B. Arbeitskontrolle Etappe 1" value="${safe(active.title)}"></div><div class="pm9-field"><label for="pm9-extra">Zusätzliche Kontrollpunkte (optional, eine Zeile pro Punkt)</label><textarea id="pm9-extra" rows="3" maxlength="2500" placeholder="Eigener Kontrollpunkt …">${safe(active.extra)}</textarea></div></div><div class="pm9-box"><h3>2 · Vorhandene Einträge übernehmen</h3><p class="muted sub">Markiere bestehende Aufgaben und Pendenzen. Sie werden nur als Kontrollpunkte verknüpft, nicht kopiert.</p><div class="pm9-choices">${s.length?s.map(x=>`<label class="pm9-choice"><input type="checkbox" data-pm9-source="${safe(x.kind+':'+x.id)}" ${active.chosen.has(x.kind+':'+x.id)?'checked':''}><span>${safe(x.title)}<small>${x.kind==='task'?'Aufgabe':'Pendenz'} · ${safe(x.info)}</small></span></label>`).join(''):'<div class="pm9-blank">Noch keine Aufgaben oder Pendenzen für diese Auswahl vorhanden.</div>'}</div></div></div><div class="pm9-bar"><small id="pm9-new-count">${active.presetChosen.size+active.chosen.size+active.extra.split('\n').filter(x=>x.trim()).length} ausgewählte Kontrollpunkte</small><div class="pm9-actions"><button class="btn secondary" type="button" data-pm9-close>Abbrechen</button><button class="btn" type="button" data-pm9-create>✓ Liste erstellen</button></div></div></section></div>`;
+ }
+ function create(){
+  if(!active||active.mode!=='create'||!canEdit())return;
+  const p=presets.find(x=>x.id===active.template),items=[];
+  if(p)for(const i of [...active.presetChosen].sort((a,b)=>a-b))if(p.items[i])items.push({id:id(),title:p.items[i],status:'open',note:'',sourceKind:'',sourceId:'',pendingId:''});
+  const sources=sourceEntries();for(const k of active.chosen){const src=sources.find(x=>x.kind+':'+x.id===k);if(src&&!items.some(x=>x.sourceKind===src.kind&&x.sourceId===src.id))items.push({id:id(),title:src.title,status:'open',note:'',sourceKind:src.kind,sourceId:src.id,pendingId:''})}
+  for(const t of active.extra.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,40))items.push({id:id(),title:t.slice(0,250),status:'open',note:'',sourceKind:'',sourceId:'',pendingId:''});
+  if(!items.length){alert('Bitte mindestens einen Kontrollpunkt auswählen.');return}
+  const listName=active.title.trim()||p?.name||'Meine Kontrollliste';
+  const now=new Date().toISOString(),c={id:id(),title:listName,projectId:active.projectId,templateId:p?.id||'',templateName:p?.name||'Eigene Liste',items,archived:false,createdAt:now,updatedAt:now};
+  list().push(c);save();active={mode:'edit',listId:c.id};drawEdit();render();
+ }
+ function drawEdit(){
+  if(!active||active.mode!=='edit')return;const c=list().find(x=>x.id===active.listId);if(!c){close();return}const stats=progress(c);const editable=canEdit();
+  document.getElementById('modalRoot').innerHTML=`<div class="modal-bg" id="pm9-overlay"><section class="modal pm9-dialog" role="dialog" aria-modal="true" aria-labelledby="pm9-dialog-title"><header class="pm9-dialog-head"><div><small>${safe(labels(c))} · ${safe(c.templateName)}</small><h2 id="pm9-dialog-title">${safe(c.title)}</h2><p>${stats.ok} in Ordnung · ${stats.open} offen · ${stats.issue} Mängel · ${stats.percent}% bewertet</p></div><button class="btn secondary" type="button" data-pm9-close>✕ Fertig</button></header><div class="pm9-meter" style="margin-bottom:12px"><i style="width:${stats.percent}%"></i></div>${c.items.map((x,i)=>{const linked=x.sourceKind&&x.sourceId?source(x.sourceKind,x.sourceId):null;const pend=x.pendingId?(state.pendingRecords||[]).find(r=>r.id===x.pendingId):null;return `<article class="pm9-item" data-pm9-item="${safe(x.id)}"><strong>${i+1}. ${safe(x.title)}</strong>${x.sourceId?`<small>↗ Verknüpft mit ${x.sourceKind==='task'?'Aufgabe':'Pendenz'} · ${linked?'Aktueller Status: '+safe(linked.status||'Offen'):'Quelleneintrag nicht mehr vorhanden'}</small>`:''}<small class="pm91-source-detail">Verantwortlich: ${safe(ownerInfo(x))} · Fälligkeit: ${safe(duePretty(dueInfo(x)))}</small><div class="pm91-assignment"><div class="pm9-field"><label for="pm91-owner-${i}">Verantwortliche Person</label><select id="pm91-owner-${i}" data-pm91-owner="${safe(x.id)}" ${!editable?'disabled':''}>${peopleOptions(x.ownerId||x.owner||'')}</select></div><div class="pm9-field"><label for="pm91-due-${i}">Fälligkeit</label><input id="pm91-due-${i}" data-pm91-due="${safe(x.id)}" type="date" value="${safe(dueInfo(x))}" ${!editable?'disabled':''}></div></div><div class="pm9-status-actions">${Object.entries(statusLabels).map(([k,n])=>`<button type="button" data-pm9-status="${k}" data-item="${safe(x.id)}" aria-pressed="${(x.status||'open')===k}" ${!editable?'disabled':''}>${k==='ok'?'✓ ':k==='issue'?'⚠ ':k==='na'?'– ':'○ '}${n}</button>`).join('')}</div>${editable?`<div class="pm9-field"><label for="pm9-note-${i}">${x.status==='issue'?'Mangelbeschreibung / Massnahme':'Bemerkung (optional)'}</label><textarea id="pm9-note-${i}" data-pm9-note="${safe(x.id)}" rows="2" placeholder="Bemerkung …">${safe(x.note||'')}</textarea></div>`:x.note?`<p>${safe(x.note)}</p>`:''}${x.status==='issue'?(pend?`<small>☷ Verknüpfte Pendenz: ${safe(pend.title)} · ${safe(pend.status||'Offen')}</small>`:editable&&navoAuthCanEdit('pending')?`<button class="btn small secondary" data-pm9-pending="${safe(x.id)}" type="button">+ Mangel als Pendenz übernehmen</button>`:'<small>Für die Pendenzerstellung ist die Bearbeitungsberechtigung nötig.</small>'):''}</article>`}).join('')}<div class="pm9-bar"><span class="muted sub">Ein Kontrollpunkt schliesst seine verknüpfte Aufgabe nicht automatisch ab.</span><div class="pm9-actions">${editable?'<button class="btn small secondary" data-pm9-add type="button">+ Kontrollpunkt</button>':''}<button class="btn secondary" data-pm91-pdf="${safe(c.id)}" type="button">⬇ Arbeitsausführung / PDF</button><button class="btn" data-pm9-close type="button">Fertig</button></div></div></section></div>`;
+ }
+ function refresh(){if(page==='checklists'){document.getElementById('content').innerHTML=pm9ControlPage()}}
+ function changeItem(itemId,update){const c=list().find(x=>x.id===active?.listId);if(!c||!canEdit())return;const x=c.items.find(i=>i.id===itemId);if(!x)return;update(x);c.updatedAt=new Date().toISOString();save();}
+ document.addEventListener('click',e=>{
+  const trigger=e.target.closest('[data-pm9-start],[data-pm9-open],[data-pm9-close],[data-pm9-create],[data-pm9-status],[data-pm9-pending],[data-pm9-add],[data-pm9-archive],[data-pm91-pdf]');if(!trigger)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  if(trigger.hasAttribute('data-pm91-pdf')){const c=list().find(x=>x.id===trigger.dataset.pm91Pdf);if(c)pdf(c);return}
+  if(trigger.hasAttribute('data-pm9-start')){make();return}
+  if(trigger.hasAttribute('data-pm9-close')){close();return}
+  if(trigger.hasAttribute('data-pm9-open')){active={mode:'edit',listId:trigger.dataset.pm9Open};drawEdit();return}
+  if(trigger.hasAttribute('data-pm9-create')){create();return}
+  if(trigger.hasAttribute('data-pm9-archive')){if(!canEdit())return;const c=list().find(x=>x.id===trigger.dataset.pm9Archive);if(!c)return;c.archived=!c.archived;c.updatedAt=new Date().toISOString();save();refresh();return}
+  if(!active||active.mode!=='edit')return;
+  if(trigger.hasAttribute('data-pm9-status')){changeItem(trigger.dataset.item,x=>{x.status=trigger.dataset.pm9Status});drawEdit();refresh();return}
+  if(trigger.hasAttribute('data-pm9-add')){if(!canEdit())return;const t=prompt('Neuer Kontrollpunkt:');if(!t?.trim())return;const c=list().find(x=>x.id===active.listId);if(!c)return;c.items.push({id:id(),title:t.trim().slice(0,250),status:'open',note:'',sourceKind:'',sourceId:'',pendingId:''});c.updatedAt=new Date().toISOString();save();drawEdit();refresh();return}
+  if(trigger.hasAttribute('data-pm9-pending')){
+   if(!canEdit()||!navoAuthCanEdit('pending'))return;
+   const c=list().find(x=>x.id===active.listId),x=c?.items.find(i=>i.id===trigger.dataset.pm9Pending);if(!x||x.status!=='issue')return;
+   if(x.pendingId&&(state.pendingRecords||[]).some(p=>p.id===x.pendingId)){drawEdit();return}
+   // If this control item was imported from a pending, reuse that same record.
+   const old=x.sourceKind==='pending'?(state.pendingRecords||[]).find(p=>p.id===x.sourceId):null;
+   if(old){x.pendingId=old.id}else{
+    const duplicate=(state.pendingRecords||[]).find(p=>p.pm9ChecklistId===c.id&&p.pm9ItemId===x.id);
+    if(duplicate)x.pendingId=duplicate.id;
+    else{const now=new Date().toISOString(),r={id:id(),type:'Pendenz',status:'Offen',title:'Mangel: '+x.title,projectId:c.projectId||'',description:x.note||'Aus der Kontrollliste '+c.title,owner:x.ownerId?person(x.ownerId):(x.owner||''),ownerId:x.ownerId||'',due:dueInfo(x),createdAt:now,updatedAt:now,manualEdited:true,pm9ChecklistId:c.id,pm9ItemId:x.id,history:[{at:now,user:navoAuthUser?.username||'Anwender',from:'',to:'Offen',action:'Mangel aus Kontrollliste'}]};state.pendingRecords.push(r);x.pendingId=r.id}
+   }
+   c.updatedAt=new Date().toISOString();save();drawEdit();refresh();return;
+  }
+ },true);
+ document.addEventListener('change',e=>{
+  const t=e.target;
+  if(active?.mode==='edit'&&t.hasAttribute('data-pm91-owner')){changeItem(t.dataset.pm91Owner,x=>{x.ownerId=t.value;x.owner=t.value?person(t.value):''});drawEdit();refresh();return}
+  if(active?.mode==='edit'&&t.hasAttribute('data-pm91-due')){changeItem(t.dataset.pm91Due,x=>{x.due=t.value});drawEdit();refresh();return}
+  if(t.id==='pm9-project-filter'){projectFilter=t.value;refresh();return}
+  if(!active||active.mode!=='create')return;
+  if(t.id==='pm9-new-project'){active.projectId=t.value;active.chosen.clear();drawCreate();return}
+  if(t.id==='pm9-template'){active.template=t.value;const p=presets.find(x=>x.id===t.value);active.presetChosen=new Set(p?p.items.map((_,i)=>i):[]);if(!active.title||presets.some(x=>x.name===active.title))active.title=p?.name||'';drawCreate();return}
+  if(t.hasAttribute('data-pm9-preset')){const i=Number(t.dataset.pm9Preset);if(t.checked)active.presetChosen.add(i);else active.presetChosen.delete(i);updateCount();return}
+  if(t.hasAttribute('data-pm9-source')){if(t.checked)active.chosen.add(t.dataset.pm9Source);else active.chosen.delete(t.dataset.pm9Source);updateCount();return}
+ },true);
+ function updateCount(){const box=document.getElementById('pm9-new-count');if(box)box.textContent=(active.presetChosen.size+active.chosen.size+active.extra.split(/\r?\n/).filter(x=>x.trim()).length)+' ausgewählte Kontrollpunkte'}
+ document.addEventListener('input',e=>{
+  const t=e.target;if(t.id==='pm9-search'){search=t.value;refresh();const searchBox=document.getElementById('pm9-search');searchBox?.focus();if(searchBox)searchBox.setSelectionRange(search.length,search.length);return}
+  if(!active)return;
+  if(active.mode==='create'){if(t.id==='pm9-title-input')active.title=t.value;if(t.id==='pm9-extra'){active.extra=t.value;updateCount()}return}
+  if(t.hasAttribute('data-pm9-note')){changeItem(t.dataset.pm9Note,x=>{x.note=t.value})}
+ },true);
 })();
 </script>
 </body></html>
